@@ -47,6 +47,8 @@ const Galeria = ({ imagenes }) => {
                                 <img
                                     src={imagen}
                                     alt={`Imagen ${index + 1}`} 
+
+
                                 />
                         </div>
                     ))}
