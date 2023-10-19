@@ -99,8 +99,9 @@
 @media(max-width: 850px){
 
     .GaleryContainer{
+        padding: 0px;
         width: 90vw;
-        margin: 10px;
+        
     }
 
     .imagenPrincipal{
