@@ -3,7 +3,7 @@
     background-color:rgba(216, 141, 28, 0.996);
     width: 90vw;
     max-width: 1200px;
-    padding: 10px;
+    padding: 15px 15px;
     border-radius: 30px;
     box-shadow:  10px 10px 10px rgba(1, 1, 1, 0.647);
 
@@ -99,8 +99,10 @@
 @media(max-width: 850px){
 
     .GaleryContainer{
-        padding: 0px;
-        width: 90vw;
+        padding: 20px 0px;
+        margin: 20px 0px 20px 0px;
+        max-width:500px ;
+        min-width: 250px;
         
     }
 
@@ -124,7 +126,10 @@
         padding: 20px;
         margin: 10px;
     }
-
+    .imageContainer{
+        width: 250px ;
+        height: 250px;
+    }
     .verMasContainer{
         display: flex;
         justify-content: center;
