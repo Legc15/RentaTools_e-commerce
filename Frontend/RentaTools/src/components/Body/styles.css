@@ -1,0 +1,7 @@
+.body-container {
+  background-color: #fdf5de;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

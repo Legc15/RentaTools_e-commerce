@@ -1,0 +1,10 @@
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-categories-container {
+  display: flex;
+  gap: 20px;
+}
