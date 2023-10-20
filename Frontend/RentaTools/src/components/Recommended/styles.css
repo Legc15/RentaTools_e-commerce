@@ -1,0 +1,10 @@
+.recommended-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-recommended-container {
+  display: flex;
+  gap: 20px;
+}
