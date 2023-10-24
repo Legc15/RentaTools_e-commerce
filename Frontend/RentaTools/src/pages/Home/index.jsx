@@ -1,6 +1,6 @@
-import { Categories } from "../Categories"
-import { Recommended } from "../Recommended"
-import { Searchbar } from "../Searchbar"
+import { Categories } from "../../components/Categories"
+import { Recommended } from "../../components/Recommended"
+import { Searchbar } from "../../components/Searchbar"
 import "./styles.css"
 
 const Body = () => {
