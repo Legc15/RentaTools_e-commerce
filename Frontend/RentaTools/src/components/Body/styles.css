@@ -1,7 +1,49 @@
 .body-container {
   background-color: #fdf5de;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (max-width: 769px) {
+  .card-categories-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-recommended-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 391px) {
+  .card-categories-container {
+    flex-direction: column;
+  }
+
+  .card-recommended-container {
+    flex-direction: column;
+  }
+
+  .card-categories-container button .image-container {
+    display: none;
+  }
+
+  .card-recommended-container .product-description {
+    display: none;
+  }
+
+  .searchbar-container form div {
+    width: 300px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }

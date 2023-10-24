@@ -1,4 +1,3 @@
-import "./components/galeria/Galeria"
 import Body from "./components/Body"
 import Header from "./components/header/Header"
 

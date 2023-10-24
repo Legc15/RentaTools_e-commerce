@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.categories-container .title {
+  text-align: center;
+}
+
 .card-categories-container {
   display: flex;
   gap: 20px;

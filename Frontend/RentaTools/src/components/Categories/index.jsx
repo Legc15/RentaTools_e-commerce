@@ -23,10 +23,10 @@ export const Categories = () => {
 
   return (
     <div className="categories-container">
-      <h1>Buscá en las categorias disponibles</h1>
+      <h1 className="title">Buscá en las categorias disponibles</h1>
       <div className="card-categories-container">
         {categorias.map((cat, index) => (
-          <ProductCard productTitle={cat.title} productImage={cat.img} key={index} />
+          <ProductCard productTitle={cat.title} productImage={cat.image} key={index} />
         ))}
       </div>
     </div>
