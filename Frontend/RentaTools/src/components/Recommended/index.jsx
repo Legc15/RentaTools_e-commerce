@@ -26,8 +26,8 @@ export const Recommended = () => {
   ]
 
   return (
-    <div className="categories-container">
-      <h1>Mirá lo que tenemos recomendado</h1>
+    <div className="recommended-container">
+      <h1 className="title">Mirá lo que tenemos recomendado</h1>
       <div className="card-recommended-container">
         {recomendados.map((cat, index) => (
           <ProductCard productTitle={cat.title} productImage={cat.img} productDescription={cat.description} key={index} />
