@@ -1,0 +1,127 @@
+.header-container{
+    background-color: #FFA833 ;
+    margin: 0px;
+    width: 100vw;
+    height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+h1{
+    margin: 0px;}
+
+.logo-container{
+    display: flex;
+    gap: 15px;
+    padding-left: 10%;
+}
+.nav-bar{
+    padding-right: 10%;
+}
+
+.nav-bar ul{
+    display: flex;
+    gap: 1.3rem;
+    padding-left: 0px;
+}
+
+.nav-bar ul li{
+    list-style-type: none;
+
+}
+
+.nombre-frase{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+li .crear-cuenta{
+    display: flex;
+    padding: 6px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 40px;
+}
+
+li .crear-cuenta:hover{
+    background-color: #6ec5b8;
+}
+
+li .iniciar-sesion{
+    display: flex;
+    padding: 6px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 40px;
+}
+
+li .iniciar-sesion:hover{
+    background-color: #6ec5b8;
+}
+
+.nombre-frase h2{
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.nombre-frase h1{
+    color: #000;
+    font-family: Orbitron;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+@media (max-width: 768px) {
+
+.nombre-frase{
+    display: none;
+}
+
+}
+
+
+
+@media (max-width: 390px){
+
+.nav-bar ul{
+    flex-direction: column;
+}
+
+li .iniciar-sesion{ 
+    font-size: 14px;
+}
+
+li .crear-cuenta{ 
+    font-size: 14px;
+}
+     
+}
+
