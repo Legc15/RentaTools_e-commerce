@@ -1,25 +1,29 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { TextField, Button, Stack, Select, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./styles.css"
+import { postNewProduct } from "../../api/requestHandlers"
+import { ContextGlobal } from "../../api/global.context.helper"
 
 const initialState = {
   name: "",
-  shortDescription: "",
-  category: "",
   productCode: "",
-  pricePerHour: "",
-  pricePerDay: "",
+  shortDescription: "",
   description: "",
-  //images: "",
+  category: { id: "" },
+  pricePerDay: 0,
+  pricePerHour: 0,
+  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
+  //  productImage: "",
 }
 
 const Form = () => {
+  const { categories } = useContext(ContextGlobal)
   const [productInformation, setProductInformation] = useState(initialState)
   const [isFormIncorrect, setIsFormIncorrect] = useState(false)
   const [isFormSent, setIsFormSent] = useState(false)
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
 
     if (Object.values(productInformation).includes("")) {
@@ -27,13 +31,23 @@ const Form = () => {
       setIsFormSent(false)
     } else {
       setIsFormIncorrect(false)
+      const response = await postNewProduct(productInformation)
       setIsFormSent(true)
+      if (response.status === 200) {
+        setIsFormIncorrect(false)
+        setProductInformation(initialState)
+      } else {
+        setIsFormIncorrect(true)
+      }
     }
   }
 
+  const isFormNotComplete = isFormIncorrect && !isFormSent
+  const isFormWithDuplicatedFields = isFormIncorrect && isFormSent
+  const isFormCorrectlyFinished = !isFormIncorrect && isFormSent
+
   return (
     <React.Fragment>
-      <h2 className="form-title">Registrar Producto</h2>
       <form onSubmit={handleSubmit} action={<Link to="/" />} className="form-container">
         <div>
           <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }} className="stack-container">
@@ -63,14 +77,16 @@ const Form = () => {
               label="Categoría del producto"
               variant="outlined"
               color="secondary"
-              onChange={(e) => setProductInformation({ ...productInformation, category: e.target.value })}
-              value={productInformation.category}
+              onChange={(e) => setProductInformation({ ...productInformation, category: { id: e.target.value } })}
+              value={productInformation.category.id}
               className="product-category"
               fullWidth
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {categories.map((cat) => (
+                <MenuItem value={cat.id} key={cat.id}>
+                  {cat.name}
+                </MenuItem>
+              ))}
             </Select>
 
             <TextField
@@ -89,7 +105,7 @@ const Form = () => {
               variant="outlined"
               color="secondary"
               label="Precio por día"
-              onChange={(e) => setProductInformation({ ...productInformation, pricePerDay: e.target.value })}
+              onChange={(e) => setProductInformation({ ...productInformation, pricePerDay: parseFloat(e.target.value) })}
               value={productInformation.pricePerDay}
               fullWidth
             />
@@ -99,7 +115,7 @@ const Form = () => {
               variant="outlined"
               color="secondary"
               label="Precio por hora"
-              onChange={(e) => setProductInformation({ ...productInformation, pricePerHour: e.target.value })}
+              onChange={(e) => setProductInformation({ ...productInformation, pricePerHour: parseFloat(e.target.value) })}
               value={productInformation.pricePerHour}
               fullWidth
             />
@@ -131,7 +147,9 @@ const Form = () => {
         <Button variant="contained" type="submit" className="submit-form">
           Agregar Producto
         </Button>
-        {isFormIncorrect ? <div>Por favor complete todos los campos necesarios.</div> : ""}
+        {isFormNotComplete ? <div className="error-message">Por favor complete todos los campos necesarios.</div> : ""}
+        {isFormWithDuplicatedFields ? <div className="error-message">El nombre o el código de producto ya existen.</div> : ""}
+        {isFormCorrectlyFinished ? <div className="success-message">Producto agregado a la base de datos.</div> : ""}
       </form>
     </React.Fragment>
   )

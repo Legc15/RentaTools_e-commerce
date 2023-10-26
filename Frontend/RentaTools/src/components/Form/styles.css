@@ -41,3 +41,13 @@ label span {
 .form-container .submit-form:hover {
   background-color: #6ec5b8;
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.success-message {
+  color: forestgreen;
+  font-weight: bold;
+}
