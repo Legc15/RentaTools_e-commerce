@@ -13,14 +13,16 @@
     width: 50%;
     gap:30px;
     padding-left: 2rem;
-    
-
 }
+
 .copyright{
     color: white;
     font-size: 1rem;
     font: Roboto;
-    
+}
+
+.copyright-responsive{
+    display: none;
 }
 
 .isologotipo img{
@@ -38,4 +40,25 @@
     justify-content: flex-end;
     font-size: 2rem;
     cursor: pointer;
+}
+
+
+
+@media (max-width: 375px) {
+    .copyright{
+        display:none;
+    }
+
+    .copyright-responsive{
+        display: block;
+        font-size: 12px;
+        color:white;
+    }
+    .socialMedia{
+        padding-right: 3rem;
+    }
+    .isologotipo img{
+        width: 40px;
+        margin-left: 20px;
+    }
 }

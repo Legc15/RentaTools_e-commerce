@@ -13,8 +13,9 @@ const Footer = () => {
                     <img src={logo}></img>
                 </div>
 
-                <div className="copyright">
-                    <p>© 2023 RENTATOOLS LTD.</p>
+                <div >
+                    <p className="copyright">© 2023 RENTATOOLS LTD.</p>
+                    <p className="copyright-responsive">© 2023</p>
                 </div>
             </div>
 
