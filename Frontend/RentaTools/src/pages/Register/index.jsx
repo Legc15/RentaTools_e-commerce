@@ -1,7 +1,12 @@
+import Form from "../../components/Form"
 import "./styles.css"
 
 const Register = () => {
-  return <div>Register</div>
+  return (
+    <div className="body register-container">
+      <Form />
+    </div>
+  )
 }
 
 export default Register
