@@ -7,7 +7,6 @@ import { Button, CardActionArea, CardActions } from "@mui/material"
 import "./styles.css"
 
 export default function ProductCard({ productTitle, productImage, productDescription }) {
-  console.log(productImage)
   return (
     <Card sx={{ maxWidth: 345 }} className="card-container">
       <CardActionArea>

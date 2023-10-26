@@ -3,3 +3,10 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #121212;
 }
+
+.body {
+  background-color: #fdf5de;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
