@@ -23,6 +23,26 @@ export const Recommended = () => {
       img: "https://http2.mlstatic.com/D_NQ_NP_768546-MLA29584378483_032019-V.webp",
       description: "Te sostienen hasta el ánimo en época de elecciones.",
     },
+    {
+      title: "Atornilladora electrica", 
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_880051-MLU45268089191_032021-F.webp",
+      description: "Te atornilla todo y más",
+    },
+    {
+      title: "Martillo demoledor", 
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_603336-MLU72444118265_102023-F.webp",
+      description: "Para tirar abajo esas viejas paredes",
+    },
+    {
+      title: "Sierra caladora", 
+      img: "https://http2.mlstatic.com/D_NQ_NP_872119-MLA52056137655_102022-O.webp",
+      description: "Corta todo tipo de maderas y láminas",
+    },
+    {
+      title: "Amoladora angular", 
+      img: "https://http2.mlstatic.com/D_NQ_NP_2X_868064-MLA51094739462_082022-F.webp",
+      description: "Corta todo ",
+    },
   ]
 
   return (
