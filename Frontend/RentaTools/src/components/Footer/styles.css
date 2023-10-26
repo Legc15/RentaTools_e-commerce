@@ -56,9 +56,11 @@
     }
     .socialMedia{
         padding-right: 3rem;
+        font-size: 1.2rem;
     }
     .isologotipo img{
         width: 40px;
-        margin-left: 20px;
+        margin-left: 0px;
+        
     }
 }
