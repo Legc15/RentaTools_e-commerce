@@ -4,11 +4,22 @@
   align-items: center;
 }
 
-.card-recommended-container {
+ .card-recommended-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  align-items: center;
+  max-width: 600px;
+  padding-top: 20px;
 }
 
 .recommended-container .title {
   text-align: center;
+}
+
+@media (max-width: 391px) {
+  .card-recommended-container {
+    grid-template-columns: repeat (1, 1fr);
+  }
+
 }
