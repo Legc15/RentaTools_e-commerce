@@ -8,7 +8,7 @@ export const Recommended = ({ recommended }) => {
       <h1 className="title">Mirá lo que tenemos recomendado</h1>
       <div className="card-recommended-container">
         {recommended.map((cat, index) => (
-          <ProductCard productTitle={cat.title} productImage={cat.img} productDescription={cat.description} key={index} />
+          <ProductCard productTitle={cat.name} productImage={cat.productImage} productDescription={cat.shortDescription} key={index} />
         ))}
       </div>
     </div>

@@ -1,0 +1,11 @@
+.table-container {
+  padding: 20px;
+  margin: 24px;
+  width: 90%;
+  align-self: center;
+}
+
+.table-header {
+  font-weight: bold;
+  font-size: 1.15rem;
+}
