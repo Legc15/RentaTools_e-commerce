@@ -23,7 +23,7 @@ const Register = () => {
   return (
     <div className="body register-container">
       <div>
-        <Button variant="contained" onClick={navigateToAdmin}>
+        <Button variant="contained" onClick={navigateToAdmin} className="button">
           Regresar al Admin
         </Button>
       </div>

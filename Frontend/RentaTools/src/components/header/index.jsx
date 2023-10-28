@@ -14,7 +14,7 @@ const Header = () => {
 
           <div className="nombre-frase">
             <h1>RentaTools</h1>
-            <h2>“Aqui se inicia la construcción”</h2>
+            <h2>“Aquí se inicia la construcción”</h2>
           </div>
         </div>
       </Link>

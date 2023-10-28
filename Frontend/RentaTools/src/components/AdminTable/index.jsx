@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -6,14 +7,45 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
+import { Button } from "@mui/material"
 import "./styles.css"
+import Swal from "sweetalert2/dist/sweetalert2.js"
+
+import "sweetalert2/src/sweetalert2.scss"
+import { ContextGlobal } from "../../api/global.context.helper"
 
 const AdminTable = ({ products }) => {
+  const { categories } = useContext(ContextGlobal)
+  const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
+
+  const handleDeleteProduct = (id) => {
+    Swal.fire({
+      title: "Eliminar producto",
+      text: "Está seguro que desea eliminar este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("eliminando...", id)
+        Swal.fire("Producto eliminado.", "", "success")
+      } else {
+        console.log("No se eliminó...")
+      }
+    })
+  }
+
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell align="center" className="table-header">
+              ID
+            </TableCell>
             <TableCell align="center" className="table-header">
               Nombre
             </TableCell>
@@ -27,20 +59,31 @@ const AdminTable = ({ products }) => {
               Categoría
             </TableCell>
             <TableCell align="center" className="table-header">
-              Eliminar
+              Acciones
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((product) => (
-            <TableRow key={product.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+          {products.map(({ id, name, productCode, shortDescription, category }) => (
+            <TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell component="th" scope="row" align="center">
-                {product.name}
+                {id}
               </TableCell>
-              <TableCell align="center">{product.productCode}</TableCell>
-              <TableCell align="center">{product.shortDescription}</TableCell>
-              <TableCell align="center">{product.category.id}</TableCell>
-              <TableCell align="center">Eliminar</TableCell>
+
+              <TableCell align="center">{name}</TableCell>
+              <TableCell align="center">{productCode}</TableCell>
+              <TableCell align="center">{shortDescription}</TableCell>
+              <TableCell align="center">{categoriesById[category.id]}</TableCell>
+              <TableCell align="center">
+                <div className="table-buttons">
+                  <Button variant="outlined" type="submit" className="button button-delete" onClick={() => handleDeleteProduct(id)}>
+                    Eliminar
+                  </Button>
+                  <Button variant="contained" type="submit" className="button button-edit">
+                    Editar
+                  </Button>
+                </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

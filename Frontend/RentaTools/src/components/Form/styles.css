@@ -12,11 +12,10 @@ form .stack-container .product-category {
   width: 100%;
 }
 
-label span {
+.img-label span {
   height: 100%;
-  background-color: #6ec5b8;
-  color: rgba(0, 0, 0, 0.9);
   font-weight: bold;
+  text-align: center;
 }
 
 .form-container input {
@@ -38,10 +37,6 @@ label span {
   font-size: 16px;
 }
 
-.form-container .submit-form:hover {
-  background-color: #6ec5b8;
-}
-
 .error-message {
   color: red;
   font-weight: bold;
@@ -50,4 +45,8 @@ label span {
 .success-message {
   color: forestgreen;
   font-weight: bold;
+}
+
+.img-input {
+  display: none;
 }
