@@ -21,7 +21,8 @@
     "@mui/material": "^5.14.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.17.0"
+    "react-router-dom": "^6.17.0",
+    "sweetalert2": "^11.7.32"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.0",

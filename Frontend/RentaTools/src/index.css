@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Inter, sans-serif;
   color: #121212;
 }
 
@@ -9,4 +9,29 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.body .button {
+  font: inherit;
+  font-size: 14px;
+}
+
+.body table .table-header {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+.body table td {
+  font: inherit;
+}
+
+.body table th {
+  font: inherit;
+}
+
+.body input {
+  font: inherit;
 }

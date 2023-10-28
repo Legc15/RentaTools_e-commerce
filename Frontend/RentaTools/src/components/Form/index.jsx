@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { TextField, Button, Stack, Select, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./styles.css"
-import { postNewProduct } from "../../api/requestHandlers"
+//import { postNewProduct } from "../../api/requestHandlers"
 import { ContextGlobal } from "../../api/global.context.helper"
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   category: { id: "" },
   pricePerDay: 0,
   pricePerHour: 0,
-  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
+  productImage: "",
   //  productImage: "",
 }
 
@@ -31,14 +31,15 @@ const Form = () => {
       setIsFormSent(false)
     } else {
       setIsFormIncorrect(false)
-      const response = await postNewProduct(productInformation)
+      console.log(productInformation)
+      // const response = await postNewProduct(productInformation)
       setIsFormSent(true)
-      if (response.status === 200) {
-        setIsFormIncorrect(false)
-        setProductInformation(initialState)
-      } else {
-        setIsFormIncorrect(true)
-      }
+      //   if (response.status === 200) {
+      //     setIsFormIncorrect(false)
+      //     setProductInformation(initialState)
+      //   } else {
+      //     setIsFormIncorrect(true)
+      //   }
     }
   }
 
@@ -133,14 +134,21 @@ const Form = () => {
               multiline
               fullWidth
             />
-            <div className="img-button">
-              <label htmlFor="upload-photo">
-                <input style={{ display: "none" }} id="upload-photo" name="upload-photo" type="file" />
-
-                <Button color="secondary" variant="outlined" component="span">
-                  Cargar imágenes
+            <div>
+              <label htmlFor="upload-photo" className="img-label">
+                <Button variant="contained" component="span" className="img-button button">
+                  Subir imágenes
                 </Button>
               </label>
+              <input
+                id="upload-photo"
+                name="upload-photo"
+                type="file"
+                multiple={true}
+                className="img-input"
+                onChange={(e) => setProductInformation({ ...productInformation, productImage: e.target.files })}
+                //value={productInformation.productImage}
+              />
             </div>
           </Stack>
         </div>

@@ -1,19 +1,12 @@
+/* eslint-disable react/prop-types */
+import Button from "@mui/material/Button"
 
-import React from "react";
-import PropTypes from "prop-types";
-import Button from '@mui/material/Button';
+const HeaderButton = ({ className, buttonLabel }) => {
+  return (
+    <Button variant="contained" className={"button " + className}>
+      {buttonLabel}
+    </Button>
+  )
+}
 
- 
-const HeaderButton = ( {className, buttonLabel} 
-    
-) => {
-    
-
-    return (
-        <Button variant="contained" className={className}>{buttonLabel}</Button>
-    );
-};
-
-
-
-export default HeaderButton;
+export default HeaderButton
