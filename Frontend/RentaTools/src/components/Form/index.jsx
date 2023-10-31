@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { TextField, Button, Stack, Select, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./styles.css"
-//import { postNewProduct } from "../../api/requestHandlers"
+import { postNewProduct } from "../../api/requestHandlers"
 import { ContextGlobal } from "../../api/global.context.helper"
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   category: { id: "" },
   pricePerDay: 0,
   pricePerHour: 0,
-  productImage: "",
+  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
   //  productImage: "",
 }
 
@@ -32,14 +32,14 @@ const Form = () => {
     } else {
       setIsFormIncorrect(false)
       console.log(productInformation)
-      // const response = await postNewProduct(productInformation)
+      const response = await postNewProduct(productInformation)
       setIsFormSent(true)
-      //   if (response.status === 200) {
-      //     setIsFormIncorrect(false)
-      //     setProductInformation(initialState)
-      //   } else {
-      //     setIsFormIncorrect(true)
-      //   }
+      if (response.status === 200) {
+        setIsFormIncorrect(false)
+        setProductInformation(initialState)
+      } else {
+        setIsFormIncorrect(true)
+      }
     }
   }
 
@@ -146,7 +146,7 @@ const Form = () => {
                 type="file"
                 multiple={true}
                 className="img-input"
-                onChange={(e) => setProductInformation({ ...productInformation, productImage: e.target.files })}
+                // onChange={(e) => setProductInformation({ ...productInformation, productImage: e.target.files })}
                 //value={productInformation.productImage}
               />
             </div>

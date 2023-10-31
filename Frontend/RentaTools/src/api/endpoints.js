@@ -9,6 +9,6 @@ const env = import.meta.env.MODE.toUpperCase()
 
 export const getAllProductsEndpoint = () => baseUrl[env] + "products/all"
 export const postNewProductEndpoint = () => baseUrl[env] + "products/create"
-export const deleteProductEndpoint = () => ""
+export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" + id
 export const getCategoriesEndpoint = () => baseUrl[env] + "category/all"
 export const getProductDetail = (id) => console.log(id)

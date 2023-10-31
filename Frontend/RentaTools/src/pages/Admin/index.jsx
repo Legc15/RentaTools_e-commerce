@@ -8,13 +8,14 @@ import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
 
 const Admin = () => {
+  const [isProductDeleted, setIsProductDeleted] = useState(false)
   const { productsList, categories, productsAll, categoryAll } = useContext(ContextGlobal)
   const [isShowProductsList, setIsShowProductsList] = useState(false)
 
   useEffect(() => {
     getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
     getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
-  }, [])
+  }, [isProductDeleted, categoryAll, productsAll])
 
   const navigate = useNavigate()
 
@@ -39,7 +40,7 @@ const Admin = () => {
       </div>
       {isShowProductsList ? (
         <div className="admin-table-container">
-          <AdminTable categories={categories} products={productsList} />
+          <AdminTable categories={categories} products={productsList} setIsProductDeleted={setIsProductDeleted} />
         </div>
       ) : (
         ""
