@@ -13,12 +13,13 @@ import Swal from "sweetalert2/dist/sweetalert2.js"
 
 import "sweetalert2/src/sweetalert2.scss"
 import { ContextGlobal } from "../../api/global.context.helper"
+import { deleteProduct } from "../../api/requestHandlers"
 
-const AdminTable = ({ products }) => {
+const AdminTable = ({ products, setIsProductDeleted }) => {
   const { categories } = useContext(ContextGlobal)
   const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
 
-  const handleDeleteProduct = (id) => {
+  function handleDeleteProduct(id) {
     Swal.fire({
       title: "Eliminar producto",
       text: "Está seguro que desea eliminar este producto?",
@@ -28,12 +29,17 @@ const AdminTable = ({ products }) => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        console.log("eliminando...", id)
-        Swal.fire("Producto eliminado.", "", "success")
+        const response = await deleteProduct(id)
+        if (response.status === 200) {
+          setIsProductDeleted(true)
+          Swal.fire("Producto eliminado.", "", "success")
+        } else {
+          Swal.fire("Hubo un error", response.status.toString(), "error")
+        }
       } else {
-        console.log("No se eliminó...")
+        Swal.fire("Operación cancelada.", "", "info")
       }
     })
   }
@@ -76,7 +82,7 @@ const AdminTable = ({ products }) => {
               <TableCell align="center">{categoriesById[category.id]}</TableCell>
               <TableCell align="center">
                 <div className="table-buttons">
-                  <Button variant="outlined" type="submit" className="button button-delete" onClick={() => handleDeleteProduct(id)}>
+                  <Button variant="outlined" onClick={() => handleDeleteProduct(id)} className="button button-delete">
                     Eliminar
                   </Button>
                   <Button variant="contained" type="submit" className="button button-edit">

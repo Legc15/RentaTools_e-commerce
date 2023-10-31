@@ -50,11 +50,14 @@ export const deleteProduct = async (id) => {
     const response = await fetch(deleteProductEndpoint(productId), {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
-    }).then((response) => response.json())
+    })
+      .then((response) => response)
+      .catch((err) => err)
     return response
   }
-  const dataParsed = await deleteInfo(id).then((result) => {
-    return result
-  })
-  return dataParsed
+  const deleteResponse = await deleteInfo(id)
+    .then((result) => result)
+    .catch((err) => err)
+
+  return deleteResponse
 }
