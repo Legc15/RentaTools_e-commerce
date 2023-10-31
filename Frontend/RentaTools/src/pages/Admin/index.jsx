@@ -15,7 +15,7 @@ const Admin = () => {
   useEffect(() => {
     getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
     getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
-  }, [isProductDeleted, categoryAll, productsAll])
+  }, [isProductDeleted])
 
   const navigate = useNavigate()
 
