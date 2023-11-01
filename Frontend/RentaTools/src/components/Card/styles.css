@@ -1,7 +1,17 @@
 .card-container {
   width: 280px;
+  height: auto;
+  
 }
 
-button .card-content {
-  padding-bottom: 0;
+.card-info{
+  display: flex;
 }
+
+.product-image{
+  width: 30%;
+  height:fit-content;
+  padding: 2%;
+  
+} 
+

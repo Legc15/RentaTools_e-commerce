@@ -9,21 +9,23 @@ import "./styles.css"
 export default function ProductCard({ productTitle, productImage, productDescription }) {
   return (
     <Card sx={{ maxWidth: 345 }} className="card-container">
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={productImage} className="image-container" />
+      
+      <div className="card-info">
+        <img src={productImage} alt={productTitle} className="product-image" />
         <CardContent className="card-content">
-          <Typography gutterBottom variant="h5" component="div" className="product-title">
+          <Typography gutterBottom fontSize={16} component="div" className="product-title">
             {productTitle}
           </Typography>
           {productDescription && (
-            <Typography variant="body2" color="text.secondary" className="product-description">
+            <Typography fontSize={12} color="text.secondary" className="product-description">
               {productDescription}
             </Typography>
           )}
         </CardContent>
-      </CardActionArea>
+      </div>
+
       <CardActions>
-        <Button size="small" color="primary">
+        <Button className="button" size="small" color="secondary">
           Ver más
         </Button>
       </CardActions>
