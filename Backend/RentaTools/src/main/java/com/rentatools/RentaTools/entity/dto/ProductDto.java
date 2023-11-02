@@ -1,10 +1,10 @@
 package com.rentatools.RentaTools.entity.dto;
-
 import com.rentatools.RentaTools.entity.Category;
+import com.rentatools.RentaTools.entity.Image;
 import jakarta.persistence.Column;
 import lombok.*;
+import java.util.List;
 
-import java.util.Locale;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -21,4 +21,5 @@ public class ProductDto {
     private Double pricePerHour;
     private String productImage;
     private Category category;
+    private List<Image> images;
 }

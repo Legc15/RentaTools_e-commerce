@@ -1,5 +1,6 @@
 package com.rentatools.RentaTools.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,4 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     @JsonManagedReference
     private List<Image> images;
-
-
 }

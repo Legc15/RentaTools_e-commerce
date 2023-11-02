@@ -1,10 +1,8 @@
 package com.rentatools.RentaTools.repository;
-
-import com.rentatools.RentaTools.entity.Product;
+import com.rentatools.RentaTools.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-    boolean existsByName(String name);
+public interface UserRepository extends JpaRepository<User, Long> {
 }
