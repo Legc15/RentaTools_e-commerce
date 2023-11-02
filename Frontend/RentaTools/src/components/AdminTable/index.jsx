@@ -16,7 +16,7 @@ import { ContextGlobal } from "../../api/global.context.helper"
 import { deleteProduct } from "../../api/requestHandlers"
 import { useNavigate } from "react-router-dom"
 
-const AdminTable = ({ products, setIsProductDeleted }) => {
+const AdminTable = ({ products, isProductDeleted, setIsProductDeleted }) => {
   const { categories } = useContext(ContextGlobal)
   const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
 
@@ -40,8 +40,9 @@ const AdminTable = ({ products, setIsProductDeleted }) => {
       if (result.isConfirmed) {
         const response = await deleteProduct(id)
         if (response.status === 200) {
-          setIsProductDeleted(true)
+          setIsProductDeleted(!isProductDeleted)
           Swal.fire("Producto eliminado.", "", "success")
+          window.location.reload()
         } else {
           Swal.fire("Hubo un error", response.status.toString(), "error")
         }

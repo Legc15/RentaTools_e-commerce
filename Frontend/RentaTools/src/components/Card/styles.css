@@ -1,17 +1,29 @@
 .card-container {
-  width: 280px;
   height: auto;
-  
+  width: 800px;
+}
+.card-container .card-content:last-child {
+  padding-bottom: 16px;
 }
 
-.card-info{
+.card-info {
   display: flex;
 }
 
-.product-image{
-  width: 30%;
-  height:fit-content;
-  padding: 2%;
-  
-} 
+.card-info.row {
+  flex-direction: row;
+}
 
+.card-info.column {
+  flex-direction: column;
+}
+
+.row .product-image {
+  width: 50%;
+  height: fit-content;
+  padding: 2%;
+}
+
+.card-content .ver-mas {
+  padding: 0px;
+}
