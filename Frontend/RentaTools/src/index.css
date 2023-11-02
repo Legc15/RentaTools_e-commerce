@@ -4,6 +4,10 @@ body {
   color: #121212;
 }
 
+.page-container {
+  padding: 36px;
+}
+
 .body {
   background-color: #fdf5de;
   min-height: 100vh;

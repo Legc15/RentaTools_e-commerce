@@ -14,10 +14,17 @@ import Swal from "sweetalert2/dist/sweetalert2.js"
 import "sweetalert2/src/sweetalert2.scss"
 import { ContextGlobal } from "../../api/global.context.helper"
 import { deleteProduct } from "../../api/requestHandlers"
+import { useNavigate } from "react-router-dom"
 
 const AdminTable = ({ products, setIsProductDeleted }) => {
   const { categories } = useContext(ContextGlobal)
   const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
+
+  const navigate = useNavigate()
+
+  const navigateToEditPage = (id) => {
+    navigate("/admin/edit/" + id)
+  }
 
   function handleDeleteProduct(id) {
     Swal.fire({
@@ -85,7 +92,7 @@ const AdminTable = ({ products, setIsProductDeleted }) => {
                   <Button variant="outlined" onClick={() => handleDeleteProduct(id)} className="button button-delete">
                     Eliminar
                   </Button>
-                  <Button variant="contained" type="submit" className="button button-edit">
+                  <Button variant="contained" type="submit" className="button button-edit" onClick={() => navigateToEditPage(id)}>
                     Editar
                   </Button>
                 </div>

@@ -1,32 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react"
 import { TextField, Button, Stack, Select, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./styles.css"
-import { ContextGlobal } from "../../api/global.context.helper"
-import useForm from "../../hooks/useForm"
+import { ContextGlobal } from "../../../api/global.context.helper"
+import useForm from "../../../hooks/useForm"
 
-const initialState = {
-  name: "",
-  productCode: "",
-  shortDescription: "",
-  description: "",
-  category: { id: "" },
-  pricePerDay: 0,
-  pricePerHour: 0,
-  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
-  images: [],
-}
-
-const Form = () => {
+const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
+  const { formData, setFormData, handleSubmit, handleInputChange } = useForm(initialState)
   const { categories } = useContext(ContextGlobal)
+
   const [isFormIncorrect, setIsFormIncorrect] = useState(false)
   const [isFormSent, setIsFormSent] = useState(false)
-
-  const { formData, setFormData, handleSubmit, handleInputChange } = useForm(initialState)
-
-  async function handleSubmitProduct() {
-    console.log("hola")
-  }
 
   const isFormNotComplete = isFormIncorrect && !isFormSent
   const isFormWithDuplicatedFields = isFormIncorrect && isFormSent
@@ -34,7 +19,11 @@ const Form = () => {
 
   return (
     <React.Fragment>
-      <form onSubmit={(e) => handleSubmit(e, handleSubmitProduct)} action={<Link to="/" />} className="form-container">
+      <form
+        onSubmit={(e) => handleSubmit(e, () => handleSubmitProduct({ setIsFormIncorrect, setIsFormSent, formData }))}
+        action={<Link to="/" />}
+        className="form-container"
+      >
         <div>
           <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }} className="stack-container">
             <TextField
@@ -145,7 +134,7 @@ const Form = () => {
           </Stack>
         </div>
         <Button variant="contained" type="submit" className="submit-form">
-          Agregar Producto
+          {buttonLabel}
         </Button>
         {isFormNotComplete ? <div className="error-message">Por favor complete todos los campos necesarios.</div> : ""}
         {isFormWithDuplicatedFields ? <div className="error-message">El nombre o el código de producto ya existen.</div> : ""}
@@ -155,4 +144,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default ProductForm

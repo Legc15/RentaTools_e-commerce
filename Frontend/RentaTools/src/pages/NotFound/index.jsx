@@ -1,18 +1,18 @@
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 
-const Error = () => {
+const NotFound = () => {
   const navigate = useNavigate()
 
   return (
     <div className="body  page-container">
       <h1>Error</h1>
-      <h4>Usted no está autenticado para esta acción.</h4>
-      <Button variant="contained" onClick={() => navigate("/")}>
-        Volver a inicio
+      <h4>Producto inexistente.</h4>
+      <Button variant="contained" onClick={() => navigate("/admin")}>
+        Volver al admin
       </Button>
     </div>
   )
 }
 
-export default Error
+export default NotFound
