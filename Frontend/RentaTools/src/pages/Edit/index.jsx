@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import NewProductForm from "../../components/Forms/ProductForm"
+import { useContext, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import ProductForm from "../../components/Forms/ProductForm"
 import "./styles.css"
 import { getInformationFromEndpoints } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
@@ -19,11 +19,16 @@ const initialState = {
   images: [],
 }
 
-const Register = () => {
+const Edit = () => {
   const { categories, categoryAll } = useContext(ContextGlobal)
+  const { id } = useParams()
+  const [product, setProduct] = useState(initialState)
 
   useEffect(() => {
     getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
+    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id).then((response) => {
+      response.status !== "NOT_FOUND" ? setProduct(response) : navigateToNotFound()
+    })
   }, [])
 
   const navigate = useNavigate()
@@ -32,7 +37,11 @@ const Register = () => {
     navigate("/admin")
   }
 
-  async function handlePostProduct({ formData, setIsFormIncorrect, setIsFormSent }) {
+  const navigateToNotFound = () => {
+    navigate("/not-found")
+  }
+
+  async function handleEditProduct({ formData, setIsFormIncorrect, setIsFormSent }) {
     if (Object.values(formData).includes("")) {
       console.log("hay cositas para mirar amichi")
     } else {
@@ -51,21 +60,20 @@ const Register = () => {
   }
 
   return (
-    <div className="body register-container  page-container">
+    <div className="body edit-container  page-container">
       <div>
         <Button variant="contained" onClick={navigateToAdmin} className="button">
           Regresar al Admin
         </Button>
       </div>
-      <h2 className="form-title">Registrar Producto</h2>
-      <NewProductForm
-        categories={categories}
-        initialState={initialState}
-        handleSubmitProduct={handlePostProduct}
-        buttonLabel="Agregar producto"
-      />
+      <h2 className="form-title">Editar Producto</h2>
+      {product !== initialState ? (
+        <ProductForm categories={categories} initialState={product} handleSubmitProduct={handleEditProduct} buttonLabel="Editar producto" />
+      ) : (
+        ""
+      )}
     </div>
   )
 }
 
-export default Register
+export default Edit

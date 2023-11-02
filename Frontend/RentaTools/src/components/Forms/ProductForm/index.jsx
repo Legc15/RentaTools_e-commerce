@@ -1,47 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react"
 import { TextField, Button, Stack, Select, MenuItem } from "@mui/material"
 import { Link } from "react-router-dom"
 import "./styles.css"
-import { postNewProduct } from "../../api/requestHandlers"
-import { ContextGlobal } from "../../api/global.context.helper"
+import { ContextGlobal } from "../../../api/global.context.helper"
+import useForm from "../../../hooks/useForm"
 
-const initialState = {
-  name: "",
-  productCode: "",
-  shortDescription: "",
-  description: "",
-  category: { id: "" },
-  pricePerDay: 0,
-  pricePerHour: 0,
-  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
-  //  productImage: "",
-}
-
-const Form = () => {
+const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
+  const { formData, setFormData, handleSubmit, handleInputChange } = useForm(initialState)
   const { categories } = useContext(ContextGlobal)
-  const [productInformation, setProductInformation] = useState(initialState)
+
   const [isFormIncorrect, setIsFormIncorrect] = useState(false)
   const [isFormSent, setIsFormSent] = useState(false)
-
-  async function handleSubmit(event) {
-    event.preventDefault()
-
-    if (Object.values(productInformation).includes("")) {
-      setIsFormIncorrect(true)
-      setIsFormSent(false)
-    } else {
-      setIsFormIncorrect(false)
-      console.log(productInformation)
-      const response = await postNewProduct(productInformation)
-      setIsFormSent(true)
-      if (response.status === 200) {
-        setIsFormIncorrect(false)
-        setProductInformation(initialState)
-      } else {
-        setIsFormIncorrect(true)
-      }
-    }
-  }
 
   const isFormNotComplete = isFormIncorrect && !isFormSent
   const isFormWithDuplicatedFields = isFormIncorrect && isFormSent
@@ -49,37 +19,44 @@ const Form = () => {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit} action={<Link to="/" />} className="form-container">
+      <form
+        onSubmit={(e) => handleSubmit(e, () => handleSubmitProduct({ setIsFormIncorrect, setIsFormSent, formData }))}
+        action={<Link to="/" />}
+        className="form-container"
+      >
         <div>
           <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }} className="stack-container">
             <TextField
+              name="name"
               className="name"
               type="text"
               variant="outlined"
               color="secondary"
               label="Nombre del producto"
-              onChange={(e) => setProductInformation({ ...productInformation, name: e.target.value })}
-              value={productInformation.name}
+              onChange={handleInputChange}
+              value={formData.name}
               fullWidth
             />
             <TextField
+              name="shortDescription"
               className="subtitle"
               type="text"
               variant="outlined"
               color="secondary"
               label="Subtítulo del producto"
-              onChange={(e) => setProductInformation({ ...productInformation, shortDescription: e.target.value })}
-              value={productInformation.shortDescription}
+              onChange={handleInputChange}
+              value={formData.shortDescription}
               fullWidth
             />
           </Stack>
           <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }} className="stack-container">
             <Select
+              name="category"
               label="Categoría del producto"
               variant="outlined"
               color="secondary"
-              onChange={(e) => setProductInformation({ ...productInformation, category: { id: e.target.value } })}
-              value={productInformation.category.id}
+              onChange={(e) => setFormData({ ...formData, category: { id: e.target.value } })}
+              value={formData.category.id}
               className="product-category"
               fullWidth
             >
@@ -91,45 +68,49 @@ const Form = () => {
             </Select>
 
             <TextField
+              name="productCode"
               className="productCode"
               type="text"
               variant="outlined"
               color="secondary"
               label="Código de producto"
-              onChange={(e) => setProductInformation({ ...productInformation, productCode: e.target.value })}
-              value={productInformation.productCode}
+              onChange={handleInputChange}
+              value={formData.productCode}
               fullWidth
             />
             <TextField
+              name="pricePerDay"
               className="pricePerDay"
               type="number"
               variant="outlined"
               color="secondary"
               label="Precio por día"
-              onChange={(e) => setProductInformation({ ...productInformation, pricePerDay: parseFloat(e.target.value) })}
-              value={productInformation.pricePerDay}
+              onChange={handleInputChange}
+              value={formData.pricePerDay}
               fullWidth
             />
             <TextField
+              name="pricePerHour"
               className="pricePerHour"
               type="number"
               variant="outlined"
               color="secondary"
               label="Precio por hora"
-              onChange={(e) => setProductInformation({ ...productInformation, pricePerHour: parseFloat(e.target.value) })}
-              value={productInformation.pricePerHour}
+              onChange={handleInputChange}
+              value={formData.pricePerHour}
               fullWidth
             />
           </Stack>
           <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }} className="stack-container">
             <TextField
+              name="description"
               className="description"
               type="textarea"
               variant="outlined"
               color="secondary"
               label="Descripción del producto"
-              onChange={(e) => setProductInformation({ ...productInformation, description: e.target.value })}
-              value={productInformation.description}
+              onChange={handleInputChange}
+              value={formData.description}
               rows={3}
               multiline
               fullWidth
@@ -153,7 +134,7 @@ const Form = () => {
           </Stack>
         </div>
         <Button variant="contained" type="submit" className="submit-form">
-          Agregar Producto
+          {buttonLabel}
         </Button>
         {isFormNotComplete ? <div className="error-message">Por favor complete todos los campos necesarios.</div> : ""}
         {isFormWithDuplicatedFields ? <div className="error-message">El nombre o el código de producto ya existen.</div> : ""}
@@ -163,4 +144,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default ProductForm

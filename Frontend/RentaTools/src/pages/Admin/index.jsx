@@ -24,7 +24,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="body admin-container">
+    <div className="body admin-container page-container">
       <h2 className="form-title">Panel de Administración</h2>
       <div className="admin-navbar">
         <Button variant="contained" onClick={navigateToAddProduct} className="button button-add">

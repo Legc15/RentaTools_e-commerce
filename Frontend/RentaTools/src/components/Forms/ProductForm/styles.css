@@ -1,4 +1,4 @@
-.register-container .form-container {
+.register-container .form-container .edit-container {
   display: flex;
   gap: 24px;
   flex-direction: column;

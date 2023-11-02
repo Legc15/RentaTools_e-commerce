@@ -11,9 +11,11 @@ export const getInformationFromEndpoints = async (endpoint, id = "") => {
     const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id)).then((response) => response.json())
     return response
   }
-  const dataParsed = await getInfo(id).then((result) => {
-    return result
-  })
+  const dataParsed = await getInfo(id)
+    .then((result) => {
+      return result
+    })
+    .catch((e) => console.log("error", e))
   return dataParsed
 }
 

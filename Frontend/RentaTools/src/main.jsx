@@ -13,6 +13,8 @@ import { Admin, Detail, Register, Home } from "./pages"
 //import Styles
 import "./index.css"
 import Error from "./pages/Error"
+import Edit from "./pages/Edit/index.jsx"
+import NotFound from "./pages/NotFound/index.jsx"
 
 const ProtectedRoute = ({ user, children }) => {
   if (!user) {
@@ -46,8 +48,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="edit/:id"
+              element={
+                <ProtectedRoute user={"usuario"}>
+                  <Edit />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route path="error" element={<Error />} />
+          <Route path="not-found" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

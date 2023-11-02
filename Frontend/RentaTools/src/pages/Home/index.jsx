@@ -16,7 +16,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="body home-container">
+    <div className="body home-container  page-container">
       <Searchbar />
       <Categories categories={categories} />
       <Recommended recommended={productsList} />
