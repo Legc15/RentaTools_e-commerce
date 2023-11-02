@@ -1,0 +1,20 @@
+.admin-table-container .table-container {
+  padding: 20px;
+  margin: 24px;
+  width: 90%;
+  align-self: center;
+}
+
+.table-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.table-buttons .button-delete {
+  color: red;
+  border-color: red;
+}
+
+.table-buttons .button-edit {
+  background-color: green;
+}
