@@ -21,6 +21,7 @@ public class UserDto {
     @Column(nullable = false)
     @NotBlank
     private String password;
-    private boolean esAdmin = false;
-    private boolean esActive = true;
+
+    private boolean esAdmin;
+    private boolean esActive;
 }
