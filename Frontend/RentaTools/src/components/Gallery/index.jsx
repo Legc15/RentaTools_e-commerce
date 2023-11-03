@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
-import { Carousel } from "react-responsive-carousel";
+import  Carousel  from "../Carousel";
 import defaultImage from "../../assets/imagenesGaleria/No-disponible.jpg";
 
 const Galeria = ({ imagenPrincipal, imagenes }) => {
@@ -42,7 +42,9 @@ const Galeria = ({ imagenPrincipal, imagenes }) => {
                     onClick={() => setCarousel(true)}> Ver más
                 </button>
                 {mostrarCarousel ?
-                    <Carousel imagenes={imagenes} /> : null}
+                    <Carousel 
+                        imagenes={imagenes} 
+                        onClose={()=> setCarousel(false)}/> : null}
             </div>
 
         </div>

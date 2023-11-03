@@ -1,0 +1,77 @@
+
+.carousel-wrapper {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Esto añade un fondo oscuro semi-transparente */
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.carousel-container {
+    position: relative;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Añade espacio a los lados para las flechas */
+    
+    background-color: #ffa833;
+    padding: 5vw;
+    width: 70vw;
+    height: 30vh;
+    display: flex;
+    overflow-x: scroll;
+    gap: 5rem;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 25rem;
+    height: 25rem;
+    margin-right: 10px;
+    
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.carousel-close-button {
+    padding: 6px 17px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    background-color: aliceblue;
+    color: #000000;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-arrow-left {
+    left: 100px;
+}
+
+.carousel-arrow-right {
+    right: 100px;
+}
