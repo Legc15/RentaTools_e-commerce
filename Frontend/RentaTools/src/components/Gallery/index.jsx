@@ -1,78 +1,61 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
-import  "./styles.css"
+import "./styles.css";
+import { Carousel } from "react-responsive-carousel";
+import defaultImage from "../../assets/imagenesGaleria/No-disponible.jpg";
 
+const Galeria = ({ imagenPrincipal, imagenes }) => {
+    const [mostrarCarousel, setCarousel] = useState(false)
 
-const Galeria = ({ imagenes }) => {
-    const [mostrarImagenes, setMostrarImagenes] = useState(false);
-    const cantidadInicial = 4;
-
-
-    useEffect(() => {
-        // ACA IRIA LA LÓGICA DE CARGA DE IMAGENES DEL BACK.
-    }, [mostrarImagenes]);
-
-
-    // RUTAS HARCODEADAS POR AHORA,  TRAER DESDE EL BACK.
-    const imagenPrincipal = imagenes[0];
-    /* const imagen1 = imagenes[1];
-    const imagen2 = imagenes[2];
-    const imagen3 = imagenes[3];
-    const imagen4 = imagenes[4];*/
+    console.log(imagenPrincipal, "imagenPrincipal")
+    console.log(imagenes, "imagenes")
 
     return (
-        <div className="GaleryContainer">
         <div>
-            <div className="Galeria">
-                {/* IMAGEN PRINCIOAL DE LA MITAD IZQUIERDA */}
+            <div className="GaleryContainer">
                 <div className="imagenPrincipal">
-                    <div className="">
-                        <img
-                            src={imagenPrincipal}
-                            alt="Imagen principal"
-                            className=""
-                        />
+                    <img src={imagenPrincipal ? imagenPrincipal : defaultImage} alt="Imagen principal" />
+                </div>
+
+                <div className="cuadriculado">
+                    <div className="cuadriculadoImg">
+                        <img src={imagenes[0] ? imagenes[0].url : defaultImage} alt="Imagen 1" />
+                    </div>
+
+                    <div className="cuadriculadoImg">
+                        <img src={imagenes[1] ? imagenes[1].url : defaultImage} alt="Imagen 2" />
+                    </div>
+
+                    <div className="cuadriculadoImg">
+                        <img src={imagenes[2] ? imagenes[2].url : defaultImage} alt="Imagen 3" />
+                    </div>
+
+                    <div className="cuadriculadoImg">
+                        <img src={imagenes[3] ? imagenes[3].url : defaultImage} alt="Imagen 4" />
                     </div>
                 </div>
-
-
-                {/*  MITAD DERECHA DE LA GALERIA EN DESKTOP*/}
-                <div className="cuadriculado">
-                    
-                    {imagenes.slice(0, mostrarImagenes ? undefined : cantidadInicial).map((imagen, index) => (
-                        <div 
-                            key={index} 
-                            className="imageContainer"
-                            >
-                                <img
-                                    src={imagen}
-                                    alt={`Imagen ${index + 1}`} 
-
-
-                                />
-                        </div>
-                    ))}
-                    
-                </div>
-                
-
             </div>
-        </div>
-        <div className="verMasContainer">
+
+            <div className="verMasContainer">
                 <button
                     className="verMasButton"
-                    onClick={() => setMostrarImagenes(true)}
-                    >
-                    Ver Más
+                    onClick={() => setCarousel(true)}> Ver más
                 </button>
-            </div> 
+                {mostrarCarousel ?
+                    <Carousel imagenes={imagenes} /> : null}
+            </div>
+
         </div>
     );
 };
 
 Galeria.propTypes = {
-    imagenes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    imagenes: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string,
+    })),
+    imagenPrincipal: PropTypes.shape({
+        url: PropTypes.string,
+    }),
 };
 
 export default Galeria;
-
