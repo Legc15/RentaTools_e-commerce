@@ -31,6 +31,7 @@ h1 {
 
 .nav-bar {
   padding-right: 7vw;
+  display: flex;
 }
 
 .nav-bar ul {
@@ -124,4 +125,15 @@ li .iniciar-sesion:hover {
   li .crear-cuenta {
     font-size: 14px;
   }
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
