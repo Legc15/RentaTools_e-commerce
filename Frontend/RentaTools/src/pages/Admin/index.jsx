@@ -8,26 +8,9 @@ import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
 import UsersTable from "../../components/UsersTable"
 
-const userList = [
-  {
-    email: "pepitoelpistolero@gmail.com",
-    name: "Pepito",
-    lastName: "elPistolero",
-    isAdmin: true,
-    photo: "url",
-  },
-  {
-    email: "shakeitoff@uol.com",
-    name: "Taylor",
-    lastName: "Swift",
-    isAdmin: false,
-    photo: "url",
-  },
-]
-
 const Admin = () => {
   const [isProductDeleted, setIsProductDeleted] = useState(false)
-  const { productsList, categories, productsAll, categoryAll } = useContext(ContextGlobal)
+  const { productsList, categories, productsAll, categoryAll, users, usersAll } = useContext(ContextGlobal)
   const [isShowProductsList, setIsShowProductsList] = useState(false)
   const [isShowUserList, setIsShowUserList] = useState(false)
 
@@ -48,10 +31,11 @@ const Admin = () => {
   }
 
   const handleListUsers = () => {
-    console.log("holis")
+    setIsShowProductsList(false)
+    getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
     setIsShowUserList(!isShowUserList)
   }
-
+  console.log(users)
   return (
     <div className="body admin-container page-container">
       <h2 className="form-title">Panel de Administración</h2>
@@ -88,7 +72,7 @@ const Admin = () => {
       )}
       {isShowUserList ? (
         <div className="admin-table-container">
-          <UsersTable userList={userList} />
+          <UsersTable userList={users} />
         </div>
       ) : (
         ""
