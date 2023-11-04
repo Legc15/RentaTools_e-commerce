@@ -1,9 +1,17 @@
-import { getAllProductsEndpoint, getCategoriesEndpoint, getProductDetail, postNewProductEndpoint, deleteProductEndpoint } from "./endpoints"
+import {
+  getAllProductsEndpoint,
+  getCategoriesEndpoint,
+  getProductDetail,
+  postNewProductEndpoint,
+  deleteProductEndpoint,
+  getAllUsersEndpoint,
+} from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
   CATEGORY_ALL: getCategoriesEndpoint,
   PRODUCTS_ALL: getAllProductsEndpoint,
   PRODUCT_DETAIL: getProductDetail,
+  USERS_ALL: getAllUsersEndpoint,
 }
 
 export const getInformationFromEndpoints = async (endpoint, id = "") => {

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react"
 
-export const initialState = { productsList: [], categories: [] }
+export const initialState = { productsList: [], categories: [], users: [] }
 
 export const ContextGlobal = createContext(undefined)
 
@@ -11,6 +11,8 @@ export const globalStateReducer = (state, action) => {
       return { ...state, productsList: action.payload }
     case "CATEGORY_ALL":
       return { ...state, categories: action.payload }
+    case "USERS_ALL":
+      return { ...state, users: action.payload }
     default:
       return state
   }

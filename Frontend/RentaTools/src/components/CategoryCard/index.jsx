@@ -5,9 +5,9 @@ import Typography from "@mui/material/Typography"
 import { Button, CardActions } from "@mui/material"
 import "./styles.css"
 
-export default function ProductCard({ productTitle, productImage, productDescription, isHorizontal }) {
+export default function CategoryCard({ productTitle, productImage, productDescription, isHorizontal }) {
   return (
-    <Card sx={{ maxWidth: 345 }} className="card-container">
+    <Card sx={{ maxWidth: 345 }} className="card-container" onClick={() => console.log("holis")}>
       <div className={`${isHorizontal ? "row" : "column"} card-info`}>
         <img src={productImage} alt={productTitle} className="product-image" />
         <CardContent className="card-content">

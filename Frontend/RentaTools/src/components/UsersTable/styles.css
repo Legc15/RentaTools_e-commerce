@@ -18,3 +18,7 @@
 .table-buttons .button-edit {
   background-color: green;
 }
+
+.active-icon {
+  color: green;
+}
