@@ -1,5 +1,11 @@
+h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
 p{
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .view{

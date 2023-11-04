@@ -1,28 +1,73 @@
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import { useRef, useState, useEffect } from 'react';
+import "./styles.css";
 
+function Carousel({ imagenes, onClose }) {
+    const carouselRef = useRef();
+    const [isAtStart, setIsAtStart] = useState(true);
+    const [isAtEnd, setIsAtEnd] = useState(false);
 
-function Carousel({ imagenes }) {
+    const checkScrollPositions = () => {
+        if (!carouselRef.current) {
+            return;
+        }
+
+        setIsAtStart(carouselRef.current.scrollLeft === 0);
+        setIsAtEnd(carouselRef.current.scrollLeft + carouselRef.current.offsetWidth >= carouselRef.current.scrollWidth - 1);
+    };
+
+    const scroll = (scrollOffset) => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollLeft += scrollOffset;
+            setTimeout(checkScrollPositions, 100);
+        }
+    };
+
+    useEffect(() => {
+        checkScrollPositions();
+        carouselRef.current.addEventListener('scroll', checkScrollPositions);
+        return () => {
+            if (carouselRef.current) {
+                carouselRef.current.removeEventListener('scroll', checkScrollPositions);
+            }
+        };
+    }, []);
+
+    const handleClickOutside = (event) => {
+        if (event.target.className === 'carousel-wrapper') {
+            onClose();
+        }
+    };
 
     return (
-        <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-            {imagenes.map((imagen, index) => (
-                <ImageListItem key={index}>
-                    <img
-                        srcSet={`${imagen.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                        src={`${imagen.url}?w=164&h=164&fit=crop&auto=format`}
-                        alt={`imagen ${index}`}
-                        loading="lazy"
-                    />
-                </ImageListItem>
-            ))}
-        </ImageList>
-    )
-
+        <div className='carousel-wrapper' onClick={handleClickOutside}>
+            {!isAtStart && (
+                <FaChevronLeft 
+                    className='carousel-arrow carousel-arrow-left' 
+                    onClick={() => scroll(-200)}
+                />
+            )}
+            <div className='carousel-container' ref={carouselRef}>
+                {imagenes.map((imagen, index) => (
+                    <div className='carousel-item' key={index}>
+                        <img srcSet={imagen.url} src={imagen.url} alt={index} />
+                    </div>
+                ))}
+            </div>
+            {!isAtEnd && (
+                <FaChevronRight 
+                    className='carousel-arrow carousel-arrow-right' 
+                    onClick={() => scroll(200)}
+                />
+            )}
+        </div>
+    );
 }
+
 Carousel.propTypes = {
     imagenes: PropTypes.array.isRequired,
+    onClose: PropTypes.func.isRequired,
 };
 
 export default Carousel;
