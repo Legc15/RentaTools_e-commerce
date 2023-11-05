@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import ProductForm from "../../components/Forms/ProductForm"

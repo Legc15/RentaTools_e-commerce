@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
