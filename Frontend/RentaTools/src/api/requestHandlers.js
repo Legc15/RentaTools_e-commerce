@@ -25,7 +25,7 @@ export const getInformationFromEndpoints = async (endpoint, id = "") => {
     .then((result) => {
       return result
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => e)
   return dataParsed
 }
 
@@ -41,7 +41,7 @@ export const postNewProduct = async (product) => {
         body: JSON.stringify(prod),
       })
         .then((response) => response)
-        .catch((err) => console.error("Error:", err))
+        .catch((err) => err)
       return response
     }
 
@@ -53,7 +53,7 @@ export const postNewProduct = async (product) => {
     //   .catch((error) => console.error("Error:", error))
     return postResponse
   } catch (error) {
-    console.error("Error:", error)
+    error
   }
 }
 

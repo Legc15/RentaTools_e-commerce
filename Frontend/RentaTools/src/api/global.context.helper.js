@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { createContext } from "react"
 
 export const initialState = { productsList: [], categories: [], users: [] }
