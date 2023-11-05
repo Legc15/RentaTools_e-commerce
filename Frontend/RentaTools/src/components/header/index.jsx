@@ -2,16 +2,16 @@ import "./styles.css";
 import logo from "../../assets/imagenesGaleria/Logo-RentaTools.svg.svg";
 import HeaderButton from "../button";
 import { Link } from "react-router-dom";
+import user from "../../assets/imagenesGaleria/userIcon.svg";
 
 const userFalso = {
   name: "Juan",
   lastName: "Perez",
-  photo:
-    "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+  photo: user,
 };
 
 const Header = () => {
-  const isUserLogged = true;
+  const isUserLogged = false;
 
   return (
     <div className="header-container">
@@ -31,17 +31,18 @@ const Header = () => {
       <div className="nav-bar">
         {isUserLogged ? (
           <>
-            {" "}
-            <div className="user-container">
-              <img src={userFalso.photo} alt="hola" className="avatar" />{" "}
-              <h3>
-                {userFalso.name[0]}. {userFalso.lastName[0]}.
-              </h3>
+            <div className="header-box">
+              <div className="user-container">
+                <img src={userFalso.photo} alt="hola" className="avatar" />{" "}
+                <h3>
+                  {userFalso.name[0]}. {userFalso.lastName[0]}.
+                </h3>
+              </div>
+              <HeaderButton
+                className="cerrar-sesion"
+                buttonLabel="Cerrar sesión"
+              />
             </div>
-            <HeaderButton
-              className="cerrar-sesion"
-              buttonLabel="Cerrar sesión"
-            />
           </>
         ) : (
           <ul>
