@@ -11,7 +11,7 @@ const userFalso = {
 };
 
 const Header = () => {
-  const isUserLogged = true;
+  const isUserLogged = false;
 
   return (
     <div className="header-container">
