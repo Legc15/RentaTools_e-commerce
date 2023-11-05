@@ -32,22 +32,27 @@ const Register = () => {
     navigate("/admin")
   }
 
-  async function handlePostProduct({ formData, setIsFormIncorrect, setIsFormSent }) {
-    if (Object.values(formData).includes("")) {
-      console.log("hay cositas para mirar amichi")
-    } else {
-      setIsFormIncorrect(false)
-      // const imageResponse
-      // const response = await postNewProduct(formData)
-      setIsFormSent(true)
-      // if (response.status === 200) {
-      //   setIsFormIncorrect(false)
-      //   setProductInformation(initialState)
-      // } else {
-      //   setIsFormIncorrect(true)
-      // }
+  async function handlePostProduct({ formData, setIsNameDuplicated, setIsFormIncomplete, setIsFormSent }) {
+    // if (Object.values(formData).includes("")) {
+    //   console.log("hay cositas para mirar amichi")
+    // } else {
+    setIsFormIncomplete(false)
+    const parsedName = formData.name.replace(" ", "+")
+    const isNameExist = await getInformationFromEndpoints(ENDPOINTS_CODE.EXIST_NAME, parsedName)
+    if (isNameExist) {
+      setIsNameDuplicated(true)
+      return
     }
-    console.log("hola")
+    setIsNameDuplicated(false)
+    // const imageResponse
+    // const response = await postNewProduct(formData)
+    setIsFormSent(true)
+    // if (response.status === 200) {
+    //   setIsFormIncorrect(false)
+    //   setProductInformation(initialState)
+    // } else {
+    //   setIsFormIncorrect(true)
+    // }
   }
 
   return (

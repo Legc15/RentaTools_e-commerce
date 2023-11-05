@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import CategoryCard from "../CategoryCard"
+import CategoryCard from "../Cards/CategoryCard"
 import "./styles.css"
 
 export const Categories = ({ categories }) => {

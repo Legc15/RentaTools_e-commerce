@@ -5,23 +5,20 @@
   max-width: 100%;
   justify-content: center;
   gap: 1rem;
-  
 }
 
 .searchbar-input {
   width: 60vw;
   background-color: white;
- 
 }
 
 .searchbar-title {
   text-align: center;
 }
 
-form {
+.searchbar-container form {
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  
 }

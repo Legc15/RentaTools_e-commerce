@@ -12,8 +12,8 @@ import "./styles.css"
 import Swal from "sweetalert2/dist/sweetalert2.js"
 
 import "sweetalert2/src/sweetalert2.scss"
-import { ContextGlobal } from "../../api/global.context.helper"
-import { deleteProduct } from "../../api/requestHandlers"
+import { ContextGlobal } from "../../../api/global.context.helper"
+import { deleteProduct } from "../../../api/requestHandlers"
 import { useNavigate } from "react-router-dom"
 
 const AdminTable = ({ products, isProductDeleted, setIsProductDeleted }) => {

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import AdminTable from "../../components/AdminTable"
+import AdminTable from "../../components/Tables/AdminTable"
 import "./styles.css"
 import { getInformationFromEndpoints } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
 import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
-import UsersTable from "../../components/UsersTable"
+import UsersTable from "../../components/Tables/UsersTable"
 
 const Admin = () => {
   const [isProductDeleted, setIsProductDeleted] = useState(false)
@@ -35,7 +35,6 @@ const Admin = () => {
     getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
     setIsShowUserList(!isShowUserList)
   }
-  console.log(users)
   return (
     <div className="body admin-container page-container">
       <h2 className="form-title">Panel de Administración</h2>

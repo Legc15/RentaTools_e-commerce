@@ -13,3 +13,4 @@ export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" +
 export const getCategoriesEndpoint = () => baseUrl[env] + "category/all"
 export const getProductDetail = (id) => baseUrl[env] + "products/" + id
 export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
+export const getIfNameExists = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
