@@ -1,8 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import HeaderButton from "../../components/button"
+import HeaderButton from "../../button"
 import { useState } from 'react';
+import { postNewInformation } from '../../../api/requestHandlers';
+import { ENDPOINTS_CODE } from '../../../api/constants';
 
 
 export default function InputForm() {
@@ -14,23 +16,20 @@ export default function InputForm() {
   password: ''
  });
 
+ const [isFormCorrect, setIsFormCorrect] = useState(false)
+ const [isFormSent, setIsFormSent] = useState(false)
 
- const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  contraseña: /^.{4,12}$/, // 4 a 12 digitos.
-}
 
-const validarFormulario = (e) =>{
-  switch(e.target.name){
-    case "name":
-      if(expresiones.nombre.test(e.target.value) == false){
-        console.log("Por favor verifica nuevamente tu informacion")
-      }
+ const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
 
+const validarFormulario = async() =>{
+  setIsFormSent(true)
+  if(formData.name.trim().length > 3 && formData.lastName.trim().length > 3 && formData.password.trim().length > 4 && emailRegex.test(formData.email)){
+    const response = await postNewInformation(ENDPOINTS_CODE.USER_CREATE, formData)
+  if (response.status === 200) { 
+    setIsFormCorrect(true)
   }
-}
+}}
 
 
 const handleInputChange = (e) =>{
@@ -58,7 +57,9 @@ const handleSubmit = (e) =>{
       <TextField label= "Correo Electronico" type='text' name='email' onChange={handleInputChange} />
       <TextField label= "Contraseña" type="password" name='password' onChange={handleInputChange} />
     </Box>
-    <HeaderButton buttonLabel="Registrar" className="registrar" type="submit"/>
+    {isFormSent && !isFormCorrect ? <div className='error-message'>Uno o mas campos estan incorrectos.</div>: ""}    
+    {isFormSent && isFormCorrect ? <div className='success-message'>Usuario registrado correctamente.</div> : ""}   
+     <HeaderButton buttonLabel="Registrar" className="registrar" type="submit"/>
     </form>
 
   )

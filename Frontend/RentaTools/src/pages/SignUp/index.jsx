@@ -1,4 +1,4 @@
-import InputForm from "../../components/input"
+import InputForm from "../../components/Forms/InputForm"
 import "./styles.css"
 
 const SignUp = () =>{
