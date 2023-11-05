@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
 }
 
 .searchbar-input {
-  width: 500px;
+  width: 100%px;
   background-color: white;
 }
 
