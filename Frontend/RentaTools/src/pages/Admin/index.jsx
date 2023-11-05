@@ -35,7 +35,6 @@ const Admin = () => {
     getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
     setIsShowUserList(!isShowUserList)
   }
-  console.log(users)
   return (
     <div className="body admin-container page-container">
       <h2 className="form-title">Panel de Administración</h2>

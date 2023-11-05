@@ -5,6 +5,7 @@ import {
   postNewProductEndpoint,
   deleteProductEndpoint,
   getAllUsersEndpoint,
+  getIfNameExists,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -12,6 +13,7 @@ const GET_ENDPOINTS_CODE = {
   PRODUCTS_ALL: getAllProductsEndpoint,
   PRODUCT_DETAIL: getProductDetail,
   USERS_ALL: getAllUsersEndpoint,
+  EXIST_NAME: getIfNameExists,
 }
 
 export const getInformationFromEndpoints = async (endpoint, id = "") => {

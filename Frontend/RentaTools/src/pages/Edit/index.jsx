@@ -56,7 +56,6 @@ const Edit = () => {
       //   setIsFormIncorrect(true)
       // }
     }
-    console.log("hola")
   }
 
   return (

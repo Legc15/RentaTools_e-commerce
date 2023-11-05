@@ -10,17 +10,18 @@ const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
   const { formData, setFormData, handleSubmit, handleInputChange } = useForm(initialState)
   const { categories } = useContext(ContextGlobal)
 
-  const [isFormIncorrect, setIsFormIncorrect] = useState(false)
+  const [isFormIncomplete, setIsFormIncomplete] = useState(false)
+  const [isNameDuplicated, setIsNameDuplicated] = useState(false)
   const [isFormSent, setIsFormSent] = useState(false)
 
-  const isFormNotComplete = isFormIncorrect && !isFormSent
-  const isFormWithDuplicatedFields = isFormIncorrect && isFormSent
-  const isFormCorrectlyFinished = !isFormIncorrect && isFormSent
+  const isFormNotComplete = isFormIncomplete && !isFormSent
+  const isFormWithDuplicatedFields = isNameDuplicated && isFormSent
+  const isFormCorrectlyFinished = !isFormIncomplete && !isNameDuplicated && isFormSent
 
   return (
     <React.Fragment>
       <form
-        onSubmit={(e) => handleSubmit(e, () => handleSubmitProduct({ setIsFormIncorrect, setIsFormSent, formData }))}
+        onSubmit={(e) => handleSubmit(e, () => handleSubmitProduct({ setIsFormIncomplete, setIsNameDuplicated, setIsFormSent, formData }))}
         action={<Link to="/" />}
         className="form-container"
       >
