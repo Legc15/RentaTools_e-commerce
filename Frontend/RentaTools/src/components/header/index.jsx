@@ -1,7 +1,7 @@
 import "./styles.css"
 import logo from "../../assets/imagenesGaleria/Logo-RentaTools.svg.svg"
 import HeaderButton from "../button"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import user from "../../assets/imagenesGaleria/userIcon.svg"
 import { useState } from "react"
 import Swal from "sweetalert2/dist/sweetalert2"
@@ -14,6 +14,7 @@ const userFalso = {
 
 const Header = () => {
   const [isLoggedin, setIsLoggedin] = useState(false)
+  const navigate = useNavigate()
 
   const handleLogIn = () => {
     localStorage.setItem("token", "usuario loggeado")
@@ -35,6 +36,10 @@ const Header = () => {
         setIsLoggedin(false)
       }
     })
+  }
+
+  const handleSignUp = () =>{
+    navigate("/signUp")
   }
 
   return (
@@ -68,7 +73,7 @@ const Header = () => {
         ) : (
           <ul>
             <li>
-              <HeaderButton className="crear-cuenta" buttonLabel="Crear Cuenta" />
+              <HeaderButton className="crear-cuenta" buttonLabel="Crear Cuenta" onClick={handleSignUp}/>
             </li>
             <li>
               <HeaderButton className="iniciar-sesion" buttonLabel="Iniciar sesion" onClick={handleLogIn} />

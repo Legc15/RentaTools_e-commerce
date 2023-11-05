@@ -6,6 +6,7 @@ import {
   deleteProductEndpoint,
   getAllUsersEndpoint,
   getIfNameExists,
+  postSignUpUser,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -14,6 +15,11 @@ const GET_ENDPOINTS_CODE = {
   PRODUCT_DETAIL: getProductDetail,
   USERS_ALL: getAllUsersEndpoint,
   EXIST_NAME: getIfNameExists,
+}
+
+const POST_ENDPOINTS_CODE = {
+  USER_CREATE: postSignUpUser,
+  PRODUCT_CREATE: postNewProductEndpoint,
 }
 
 export const getInformationFromEndpoints = async (endpoint, id = "") => {
@@ -46,6 +52,34 @@ export const postNewProduct = async (product) => {
     }
 
     const postResponse = await postInfo(product).then((result) => result)
+    // const postResponse = await postInfo(product)
+    //   .then((result) => {
+    //     return result
+    //   })
+    //   .catch((error) => console.error("Error:", error))
+    return postResponse
+  } catch (error) {
+    console.error("Error:", error)
+  }
+}
+
+export const postNewInformation = async (endpoint, information) => {
+  try {
+    const postInfo = async (prod) => {
+      const response = await fetch(POST_ENDPOINTS_CODE[endpoint](), {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
+        },
+        body: JSON.stringify(prod),
+      })
+        .then((response) => response)
+        .catch((err) => console.error("Error:", err))
+      return response
+    }
+
+    const postResponse = await postInfo(information).then((result) => result)
     // const postResponse = await postInfo(product)
     //   .then((result) => {
     //     return result

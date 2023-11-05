@@ -1,0 +1,52 @@
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+
+}
+
+.signup .registrar {
+    display: flex;
+    padding: 6px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: normal;
+    border: none;
+    color: black;
+    background-color: #6ec5b8;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+  }
+  
+.signup .registrar:hover {
+    background-color: #6ec5b8;
+  }
+
+.body{
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+}
+
+.registro{
+  display: flex;
+  align-items: center;
+  height: 73vh;
+}
