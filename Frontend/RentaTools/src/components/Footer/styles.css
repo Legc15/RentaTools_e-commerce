@@ -3,15 +3,14 @@
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 20px;
 }
 
 .logo-copyright-container {
   display: flex;
   align-items: center;
-  width: 50%;
-  gap: 30px;
-  padding-left: 2rem;
+  gap: 20px;
 }
 
 .copyright {
@@ -32,15 +31,13 @@
 .socialMedia {
   color: white;
   display: flex;
-  width: 50%;
-  padding-right: 10rem;
   gap: 1rem;
-  justify-content: flex-end;
+
   font-size: 2rem;
   cursor: pointer;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   .copyright {
     display: none;
   }
@@ -51,7 +48,6 @@
     color: white;
   }
   .socialMedia {
-    padding-right: 3rem;
     font-size: 1.2rem;
   }
   .isologotipo img {
