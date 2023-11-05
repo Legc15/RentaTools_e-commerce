@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import ProductCard from "../ProductCard"
+import ProductCard from "../Cards/ProductCard"
 import "./styles.css"
 
 export const Recommended = ({ recommended }) => {
