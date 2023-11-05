@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 import App from "./App.jsx"
 
 // import Pages
-import { Admin, Detail, Register, Home } from "./pages"
+import { Admin, Detail, Register, Home, SignUp } from "./pages"
 
 //import Styles
 import "./index.css"
@@ -20,6 +20,7 @@ const ProtectedRoute = ({ user, children }) => {
   if (!user) {
     return <Navigate to="/error" replace />
   }
+
 
   return children
 }
@@ -59,6 +60,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           </Route>
           <Route path="error" element={<Error />} />
           <Route path="not-found" element={<NotFound />} />
+          <Route path="signup" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>
