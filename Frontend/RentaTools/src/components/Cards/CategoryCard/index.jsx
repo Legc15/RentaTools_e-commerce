@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"

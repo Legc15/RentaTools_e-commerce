@@ -45,7 +45,7 @@ const Register = () => {
     }
     setIsNameDuplicated(false)
     // const imageResponse
-    // const response = await postNewProduct(formData)
+    // const response = await postNewInformation(ENDPOINTS_CODE.PRODUCTS_CREATE, formData)
     setIsFormSent(true)
     // if (response.status === 200) {
     //   setIsFormIncorrect(false)

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import ProductForm from "../../components/Forms/ProductForm"
@@ -47,7 +48,7 @@ const Edit = () => {
     } else {
       setIsFormIncorrect(false)
       // const imageResponse
-      // const response = await postNewProduct(formData)
+      // const response = await postNewInformation(ENDPOINT_CODE.PRODUCT_CREATE, formData)
       setIsFormSent(true)
       // if (response.status === 200) {
       //   setIsFormIncorrect(false)

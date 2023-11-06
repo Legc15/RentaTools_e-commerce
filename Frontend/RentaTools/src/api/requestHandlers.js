@@ -31,36 +31,8 @@ export const getInformationFromEndpoints = async (endpoint, id = "") => {
     .then((result) => {
       return result
     })
-    .catch((e) => console.log("error", e))
+    .catch((e) => e)
   return dataParsed
-}
-
-export const postNewProduct = async (product) => {
-  try {
-    const postInfo = async (prod) => {
-      const response = await fetch(postNewProductEndpoint(), {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          "Content-Type": "application/json",
-          // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
-        },
-        body: JSON.stringify(prod),
-      })
-        .then((response) => response)
-        .catch((err) => console.error("Error:", err))
-      return response
-    }
-
-    const postResponse = await postInfo(product).then((result) => result)
-    // const postResponse = await postInfo(product)
-    //   .then((result) => {
-    //     return result
-    //   })
-    //   .catch((error) => console.error("Error:", error))
-    return postResponse
-  } catch (error) {
-    console.error("Error:", error)
-  }
 }
 
 export const postNewInformation = async (endpoint, information) => {
@@ -75,19 +47,14 @@ export const postNewInformation = async (endpoint, information) => {
         body: JSON.stringify(prod),
       })
         .then((response) => response)
-        .catch((err) => console.error("Error:", err))
+        .catch((err) => err)
       return response
     }
 
     const postResponse = await postInfo(information).then((result) => result)
-    // const postResponse = await postInfo(product)
-    //   .then((result) => {
-    //     return result
-    //   })
-    //   .catch((error) => console.error("Error:", error))
     return postResponse
   } catch (error) {
-    console.error("Error:", error)
+    error
   }
 }
 
