@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+
 }
 
 .categories-container .title {
@@ -11,4 +13,6 @@
 .card-categories-container {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }

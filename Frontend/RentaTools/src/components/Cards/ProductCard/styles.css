@@ -16,7 +16,7 @@
 }
 
 .card-info.row {
-  flex-direction: row;
+  display: flex;
 }
 
 .card-info.column {
@@ -27,8 +27,24 @@
   width: 50%;
   height: fit-content;
   padding: 2%;
+  max-height: 10rem;
 }
 
 .card-content .ver-mas {
   padding: 0px;
+}
+
+
+
+@media (max-width: 767px) {
+  .row .product-image {
+    width: 100%;
+    height: fit-content;
+    padding: 2%;
+  }
+
+  .card-info.row {
+  flex-direction: column;
+  justify-content: center;
+}
 }
