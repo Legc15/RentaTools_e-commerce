@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import HeaderButton from "../../button"
@@ -20,7 +19,7 @@ export default function InputForm() {
  const [isFormSent, setIsFormSent] = useState(false)
 
 
- const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+ const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
 
 const validarFormulario = async() =>{
   setIsFormSent(true)
