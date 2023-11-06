@@ -15,3 +15,4 @@ export const getProductDetail = (id) => baseUrl[env] + "products/" + id
 export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
 export const getIfNameExists = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
 export const postSignUpUser = () => baseUrl[env] + "users/create"
+export const putEditedProduct = (id) => baseUrl[env] + "products/update/" + id

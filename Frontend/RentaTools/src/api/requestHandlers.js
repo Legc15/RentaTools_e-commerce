@@ -7,6 +7,7 @@ import {
   getAllUsersEndpoint,
   getIfNameExists,
   postSignUpUser,
+  putEditedProduct,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -20,6 +21,10 @@ const GET_ENDPOINTS_CODE = {
 const POST_ENDPOINTS_CODE = {
   USER_CREATE: postSignUpUser,
   PRODUCT_CREATE: postNewProductEndpoint,
+}
+
+const PUT_ENDPOINTS_CODE = {
+  PRODUCT_EDIT: putEditedProduct,
 }
 
 export const getInformationFromEndpoints = async (endpoint, id = "") => {
@@ -73,4 +78,26 @@ export const deleteProduct = async (id) => {
     .catch((err) => err)
 
   return deleteResponse
+}
+
+export const putEditedInformation = async (endpoint, information, id) => {
+  try {
+    const putInfo = async (prod, id) => {
+      const response = await fetch(PUT_ENDPOINTS_CODE[endpoint](id), {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
+        },
+        body: JSON.stringify(prod),
+      })
+        .then((response) => response)
+        .catch((err) => err)
+      return response
+    }
+    const putResponse = await putInfo(information, id).then((result) => result)
+    return putResponse
+  } catch (error) {
+    error
+  }
 }
