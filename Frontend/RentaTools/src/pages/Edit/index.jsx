@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import ProductForm from "../../components/Forms/ProductForm"
 import "./styles.css"
-import { getInformationFromEndpoints } from "../../api/requestHandlers"
+import { getInformationFromEndpoints, putEditedInformation } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
 import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
@@ -42,20 +42,11 @@ const Edit = () => {
     navigate("/not-found")
   }
 
-  async function handleEditProduct({ formData, setIsFormIncorrect, setIsFormSent }) {
-    if (Object.values(formData).includes("")) {
-      console.log("hay cositas para mirar amichi")
-    } else {
-      setIsFormIncorrect(false)
-      // const imageResponse
-      // const response = await postNewInformation(ENDPOINT_CODE.PRODUCT_CREATE, formData)
+  async function handleEditProduct({ formData, setIsFormSent }) {
+    const response = await putEditedInformation(ENDPOINTS_CODE.PRODUCT_EDIT, formData, id)
+    console.log(response)
+    if (response.status === 200) {
       setIsFormSent(true)
-      // if (response.status === 200) {
-      //   setIsFormIncorrect(false)
-      //   setProductInformation(initialState)
-      // } else {
-      //   setIsFormIncorrect(true)
-      // }
     }
   }
 
