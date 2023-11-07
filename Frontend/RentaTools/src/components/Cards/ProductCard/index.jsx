@@ -13,18 +13,30 @@ export default function ProductCard({ product, isHorizontal }) {
   const goToDetailPage = (id) => navigate("/detail/" + id)
 
   return (
-    <Card sx={{ maxWidth: 345 }} className="card-container">
+    <Card 
+      sx={{ maxWidth: {
+        xs: 200, //celular
+        sm: 200, // tablets
+        md: 345, // desktop
+      } 
+      
+      }} 
+      className="card-container">
       <div className={`${isHorizontal ? "row" : "column"} card-info`} onClick={() => goToDetailPage(id)}>
         <img src={productImage} alt={name} className="product-image" />
         <CardContent className="card-content">
-          <Typography gutterBottom fontSize={16} component="div" className="product-title">
+          <Typography gutterBottom fontSize={20} component="div" className="product-title">
             {name}
           </Typography>
-          <Typography fontSize={12} color="text.secondary" className="product-description">
+          <Typography fontSize={14} color="text.secondary" className="product-description">
             {shortDescription}
           </Typography>
           <CardActions>
-            <Button className="button ver-mas" size="small" color="secondary">
+            <Button 
+              className="button ver-mas" 
+              onClick={()=> goToDetailPage}
+              size="small" 
+              color="secondary">
               Ir a detalle
             </Button>
           </CardActions>
