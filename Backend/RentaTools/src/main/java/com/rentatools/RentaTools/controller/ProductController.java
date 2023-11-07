@@ -2,9 +2,15 @@ package com.rentatools.RentaTools.controller;
 
 import com.rentatools.RentaTools.entity.Product;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
+import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
+import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.ProductService;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +22,9 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
+
 public class ProductController {
+    @Autowired
     private final ProductService productService;
 
     @GetMapping("/all")
@@ -36,9 +44,15 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> createProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<ResponseMessage> createProduct(@Valid @RequestBody ProductDto productDto){
         productService.createProduct(productDto);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto creado correctamente."));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ResponseMessage> updateProduct(@Valid @PathVariable Long id, @RequestBody ProductDto productDto){
+        Product productUpd = productService.updateProduct(id, productDto);
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto actualizado correctamente.", productUpd));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -49,5 +63,7 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto borrado correctamente."));
     }
+
+
 
 }

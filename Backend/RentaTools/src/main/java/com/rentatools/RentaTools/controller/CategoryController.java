@@ -3,6 +3,7 @@ package com.rentatools.RentaTools.controller;
 import com.rentatools.RentaTools.entity.Category;
 import com.rentatools.RentaTools.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequestMapping("/api/category")
 @RequiredArgsConstructor
 public class CategoryController {
+    @Autowired
     private final CategoryService categoryService;
 
     @GetMapping("/all")
