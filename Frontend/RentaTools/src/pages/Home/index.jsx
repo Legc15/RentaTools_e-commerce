@@ -10,9 +10,11 @@ import { ContextGlobal } from "../../api/global.context.helper"
 const Home = () => {
   const { productsList, categories, productsAll, categoryAll } = useContext(ContextGlobal)
 
+  const queryParamsForRecommended = { isRandom: true }
+
   useEffect(() => {
     getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
+    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_SEARCH, queryParamsForRecommended).then((response) => productsAll(response.data))
   }, [])
 
   return (

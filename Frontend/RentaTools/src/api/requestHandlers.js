@@ -9,6 +9,7 @@ import {
   postSignUpUserEndpoint,
   putEditedProductEndpoint,
   patchEditedInformationEndpoint,
+  getProductsByQueryParamsEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -17,6 +18,7 @@ const GET_ENDPOINTS_CODE = {
   PRODUCT_DETAIL: getProductDetailEndpoint,
   USERS_ALL: getAllUsersEndpoint,
   EXIST_NAME: getIfNameExistsEndpoint,
+  PRODUCTS_SEARCH: getProductsByQueryParamsEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
