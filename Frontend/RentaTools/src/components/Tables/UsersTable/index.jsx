@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -14,9 +12,28 @@ import "./styles.css"
 // import Swal from "sweetalert2/dist/sweetalert2.js"
 
 import "sweetalert2/src/sweetalert2.scss"
+import { getInformationFromEndpoints, patchEditedInformation } from "../../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../../api/constants"
+import { useContext, useEffect, useState } from "react"
+import { ContextGlobal } from "../../../api/global.context.helper"
 
-const UsersTable = ({ userList }) => {
+const UsersTable = () => {
+  const { users, usersAll } = useContext(ContextGlobal)
+
+  const [isRoleChanged, setIsRoleChanged] = useState(false)
   const headerTitles = ["ID", "Nombre", "Apellido", "Email", "Activo", "Rol", "Acciones"]
+
+  useEffect(() => {
+    getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
+  }, [isRoleChanged])
+
+  const handleChangeRole = async (id, esAdmin) => {
+    const response = await patchEditedInformation(ENDPOINTS_CODE.USER_EDIT_ROLE, !esAdmin, id)
+    if (response.status === 200) {
+      setIsRoleChanged(!isRoleChanged)
+    }
+  }
+
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
@@ -32,7 +49,7 @@ const UsersTable = ({ userList }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userList.map(({ id, name, lastName, email, esAdmin, esActive }) => (
+          {users.map(({ id, name, lastName, email, esAdmin, esActive }) => (
             <TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell component="th" scope="row" align="center">
                 {id}
@@ -46,7 +63,7 @@ const UsersTable = ({ userList }) => {
               <TableCell align="center">{esAdmin ? "Admin" : "Simple mortal"}</TableCell>
               <TableCell align="center">
                 <div className="table-buttons">
-                  <Button variant="contained" type="submit" className="button button-edit" onClick={() => console.log("cambiar rol")}>
+                  <Button variant="contained" type="submit" className="button button-edit" onClick={() => handleChangeRole(id, esAdmin)}>
                     Cambiar rol
                   </Button>
                 </div>

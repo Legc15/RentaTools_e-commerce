@@ -16,11 +16,24 @@ import Error from "./pages/Error"
 import Edit from "./pages/Edit/index.jsx"
 import NotFound from "./pages/NotFound/index.jsx"
 
+// const AdminProtectedRoute = ({ user, children }) => {
+//   if (user !== "admin") {
+//     return <Navigate to="/error" replace />
+//   }
+//   return children
+// }
+
+// const UserProtectedRoute = ({ user, children }) => {
+//   if (user !== "user") {
+//     return <Navigate to="/error" replace />
+//   }
+//   return children
+// }
+
 const ProtectedRoute = ({ user, children }) => {
   if (!user) {
     return <Navigate to="/error" replace />
   }
-
 
   return children
 }

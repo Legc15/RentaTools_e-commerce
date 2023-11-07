@@ -1,22 +1,13 @@
-import { useContext, useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import AdminTable from "../../components/Tables/AdminTable"
 import "./styles.css"
-import { getInformationFromEndpoints } from "../../api/requestHandlers"
-import { ENDPOINTS_CODE } from "../../api/constants"
 import { Button } from "@mui/material"
-import { ContextGlobal } from "../../api/global.context.helper"
 import UsersTable from "../../components/Tables/UsersTable"
 
 const Admin = () => {
-  const [isProductDeleted, setIsProductDeleted] = useState(false)
-  const { productsList, categories, productsAll, categoryAll, users, usersAll } = useContext(ContextGlobal)
   const [isShowProductsList, setIsShowProductsList] = useState(false)
   const [isShowUserList, setIsShowUserList] = useState(false)
-
-  useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
-  }, [isProductDeleted])
 
   const navigate = useNavigate()
 
@@ -26,13 +17,11 @@ const Admin = () => {
 
   const handleListProducts = () => {
     setIsShowUserList(false)
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
     setIsShowProductsList(!isShowProductsList)
   }
 
   const handleListUsers = () => {
     setIsShowProductsList(false)
-    getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
     setIsShowUserList(!isShowUserList)
   }
   return (
@@ -59,19 +48,14 @@ const Admin = () => {
       </div>
       {isShowProductsList ? (
         <div className="admin-table-container">
-          <AdminTable
-            categories={categories}
-            products={productsList}
-            setIsProductDeleted={setIsProductDeleted}
-            isProductDeleted={isProductDeleted}
-          />
+          <AdminTable />
         </div>
       ) : (
         ""
       )}
       {isShowUserList ? (
         <div className="admin-table-container">
-          <UsersTable userList={users} />
+          <UsersTable />
         </div>
       ) : (
         ""

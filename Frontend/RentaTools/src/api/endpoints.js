@@ -16,3 +16,4 @@ export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
 export const getIfNameExists = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
 export const postSignUpUser = () => baseUrl[env] + "users/create"
 export const putEditedProduct = (id) => baseUrl[env] + "products/update/" + id
+export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role/update/" + id

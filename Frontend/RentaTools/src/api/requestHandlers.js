@@ -8,6 +8,7 @@ import {
   getIfNameExists,
   postSignUpUser,
   putEditedProduct,
+  patchEditedInformationEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -25,6 +26,10 @@ const POST_ENDPOINTS_CODE = {
 
 const PUT_ENDPOINTS_CODE = {
   PRODUCT_EDIT: putEditedProduct,
+}
+
+const PATCH_ENDPOINTS_CODE = {
+  USER_EDIT_ROLE: patchEditedInformationEndpoint,
 }
 
 export const getInformationFromEndpoints = async (endpoint, id = "") => {
@@ -97,6 +102,28 @@ export const putEditedInformation = async (endpoint, information, id) => {
     }
     const putResponse = await putInfo(information, id).then((result) => result)
     return putResponse
+  } catch (error) {
+    error
+  }
+}
+
+export const patchEditedInformation = async (endpoint, information, id) => {
+  try {
+    const patchInfo = async (prod, id) => {
+      const response = await fetch(PATCH_ENDPOINTS_CODE[endpoint](id), {
+        method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
+        },
+        body: JSON.stringify(prod),
+      })
+        .then((response) => response)
+        .catch((err) => err)
+      return response
+    }
+    const patchResponse = await patchInfo(information, id).then((result) => result)
+    return patchResponse
   } catch (error) {
     error
   }
