@@ -11,7 +11,7 @@ body {
 }
 
 .body {
-  background-color: #fdf5de;
+  background:  #cac8c8;
   display: flex;
   flex-direction: column;
   padding-top: 36px;

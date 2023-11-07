@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 20px;
+  box-shadow: #000000 10px 10px 155px;
 }
 
 .logo-copyright-container {
