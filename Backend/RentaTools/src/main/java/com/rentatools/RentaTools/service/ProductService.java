@@ -3,7 +3,10 @@ package com.rentatools.RentaTools.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentatools.RentaTools.entity.Product;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
+import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
+import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
+import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.repository.CategoryRepository;
 import com.rentatools.RentaTools.repository.ImageRepository;
 import com.rentatools.RentaTools.repository.ProductRepository;
@@ -16,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
+//@Transactional
 @RequiredArgsConstructor
 public class ProductService {
     @Autowired
@@ -39,6 +42,7 @@ public class ProductService {
     public Boolean getNameExist(String nameToSearch){
         return productRepository.existsByName(nameToSearch);
     }
+
     public void createProduct(ProductDto productDto){
         try {
             Product product = mapper.convertValue(productDto, Product.class);
@@ -46,6 +50,21 @@ public class ProductService {
         }catch (Exception ex){
             throw new RuntimeException("Error en el guardado del nuevo producto.");
         }
+    }
+
+    public Product updateProduct(Long id, ProductDto productDto) throws ResourceNotFoundException, BadRequestException {
+        if (id == null) throw new BadRequestException("Se necesita un id de producto.");
+        Product productOld = productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto con ID: " + id + " no encontrado."));
+            productOld.setName(productDto.getName());
+            productOld.setProductCode(productDto.getProductCode());
+            productOld.setDescription(productDto.getDescription());
+            productOld.setShortDescription(productDto.getShortDescription());
+            productOld.setProductImage(productDto.getProductImage());
+            productOld.setPricePerDay(productDto.getPricePerDay());
+            productOld.setPricePerHour(productDto.getPricePerHour());
+            productOld.setCategory(productDto.getCategory());
+            return productRepository.save(productOld);
     }
 
     public void deleteProduct(Long id){
