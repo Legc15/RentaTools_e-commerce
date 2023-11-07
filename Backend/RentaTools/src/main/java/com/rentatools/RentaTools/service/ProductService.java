@@ -80,22 +80,6 @@ public class ProductService {
         return suggestionString;
     }
 
-    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
-        Page<Product> productsByPages;
-        if(!isRandom){
-            productsByPages = productRepository.findAll(PageRequest.of(page - 1, productsByPage));
-        }else {
-            productsByPages = productRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
-        }
-        PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
-        paginatedProductsResponse.setCurrentPage(page);
-        paginatedProductsResponse.setProductsByPage(productsByPage);
-        paginatedProductsResponse.setTotalProducts(productsByPages.getTotalElements());
-        paginatedProductsResponse.setTotalPages(productsByPages.getTotalPages());
-        paginatedProductsResponse.setData(productsByPages.getContent());
-        return paginatedProductsResponse;
-    }
-
     public void createProduct(ProductDto productDto){
         try {
             Product product = mapper.convertValue(productDto, Product.class);

@@ -23,5 +23,4 @@ public class UserDto {
     private String password;
     private boolean esAdmin = false;
     private boolean esActive = true;
-
 }
