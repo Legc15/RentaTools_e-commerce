@@ -22,6 +22,7 @@ public class UserDto {
     @NotBlank
     private String password;
 
-    private boolean esAdmin;
-    private boolean esActive;
+    private boolean esAdmin = false;
+    private boolean esActive = true;
+
 }

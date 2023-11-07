@@ -45,4 +45,5 @@ public class UserService {
         userOld.setEsAdmin(esAdmin);
         userRepository.save(userOld);
     }
+
 }
