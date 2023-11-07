@@ -32,9 +32,13 @@ const PATCH_ENDPOINTS_CODE = {
   USER_EDIT_ROLE: patchEditedInformationEndpoint,
 }
 
-export const getInformationFromEndpoints = async (endpoint, id = "") => {
+const PUT_ENDPOINTS_CODE = {
+  PRODUCT_EDIT: putEditedProduct,
+}
+
+export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, itemsPerPage  = 10) => {
   const getInfo = async () => {
-    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id)).then((response) => response.json())
+    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id, categoryId, page, itemsPerPage)).then((response) => response.json())
     return response
   }
   const dataParsed = await getInfo(id)

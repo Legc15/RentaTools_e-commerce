@@ -4,6 +4,7 @@
   align-items: center;
   max-width: 100%;
   justify-content: center;
+  margin: 3.5vh auto;
   gap: 1rem;
 }
 

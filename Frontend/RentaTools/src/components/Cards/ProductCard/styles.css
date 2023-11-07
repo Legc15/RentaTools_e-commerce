@@ -5,6 +5,8 @@
 
 .card-container:hover {
   cursor: pointer;
+  box-shadow: #ffffff 0px 0px 20px;
+  scale: 1.03;
 }
 
 .card-container .card-content:last-child {
@@ -32,3 +34,5 @@
 .card-content .ver-mas {
   padding: 0px;
 }
+
+

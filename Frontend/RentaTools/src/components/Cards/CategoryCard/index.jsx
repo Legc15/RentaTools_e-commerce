@@ -3,12 +3,23 @@
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
+import { useNavigate } from "react-router-dom"
 import { Button, CardActions } from "@mui/material"
 import "./styles.css"
 
-export default function CategoryCard({ productTitle, productImage, productDescription, isHorizontal }) {
+export default function CategoryCard({ category, productTitle, productImage, productDescription, isHorizontal }) {
+  
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/category/${category.id}`)
+  }
+  
   return (
-    <Card sx={{ maxWidth: 345 }} className="card-container" onClick={() => console.log("holis")}>
+    <Card 
+      sx={{ maxWidth: 345 }} 
+      className="card-container" 
+      onClick={handleClick}>
+
       <div className={`${isHorizontal ? "row" : "column"} card-info`}>
         <img src={productImage} alt={productTitle} className="product-image" />
         <CardContent className="card-content">

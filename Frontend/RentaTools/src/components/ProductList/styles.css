@@ -1,0 +1,16 @@
+.listView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 100px;
+}
+.listView .productCard {
+    flex: 0 0 100%; /* Por defecto, en móviles, una columna */
+}
+
+/* Para tabletas y desktop */
+@media (min-width: 600px) {
+    .listView .productCard {
+        flex: 0 0 50%; /* Dos columnas */
+    }
+}
