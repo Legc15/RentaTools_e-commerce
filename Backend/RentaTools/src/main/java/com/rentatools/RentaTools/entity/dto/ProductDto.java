@@ -5,6 +5,8 @@ import com.rentatools.RentaTools.entity.Image;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import java.util.List;
 
 @NoArgsConstructor

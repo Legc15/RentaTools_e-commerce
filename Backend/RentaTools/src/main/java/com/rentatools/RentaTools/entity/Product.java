@@ -9,6 +9,8 @@ import java.util.Set;
 
 @Entity
 @Data
+@Builder
+@Getter @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @RequiredArgsConstructor

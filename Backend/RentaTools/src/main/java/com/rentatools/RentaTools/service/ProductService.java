@@ -93,6 +93,7 @@ public class ProductService {
             productOld.setPricePerHour(productDto.getPricePerHour());
             productOld.setCategory(productDto.getCategory());
             return iProductRepository.save(productOld);
+
     }
 
     public void deleteProduct(Long id){
