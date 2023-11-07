@@ -1,31 +1,31 @@
 import {
   getAllProductsEndpoint,
   getCategoriesEndpoint,
-  getProductDetail,
+  getProductDetailEndpoint,
   postNewProductEndpoint,
   deleteProductEndpoint,
   getAllUsersEndpoint,
-  getIfNameExists,
-  postSignUpUser,
-  putEditedProduct,
+  getIfNameExistsEndpoint,
+  postSignUpUserEndpoint,
+  putEditedProductEndpoint,
   patchEditedInformationEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
   CATEGORY_ALL: getCategoriesEndpoint,
   PRODUCTS_ALL: getAllProductsEndpoint,
-  PRODUCT_DETAIL: getProductDetail,
+  PRODUCT_DETAIL: getProductDetailEndpoint,
   USERS_ALL: getAllUsersEndpoint,
-  EXIST_NAME: getIfNameExists,
+  EXIST_NAME: getIfNameExistsEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
-  USER_CREATE: postSignUpUser,
+  USER_CREATE: postSignUpUserEndpoint,
   PRODUCT_CREATE: postNewProductEndpoint,
 }
 
 const PUT_ENDPOINTS_CODE = {
-  PRODUCT_EDIT: putEditedProduct,
+  PRODUCT_EDIT: putEditedProductEndpoint,
 }
 
 const PATCH_ENDPOINTS_CODE = {

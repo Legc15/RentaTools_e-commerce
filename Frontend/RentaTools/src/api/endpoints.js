@@ -8,12 +8,21 @@ const baseUrl = {
 const env = import.meta.env.MODE.toUpperCase()
 
 export const getAllProductsEndpoint = () => baseUrl[env] + "products/all"
+export const getProductsByQueryParamsEndpoint = (queryParams) => {
+  const queryParamURL = Object.entries(queryParams)
+    .map(([key, val]) => `${key}=${val}`)
+    .join("&")
+  return baseUrl[env] + "products/paginated?" + queryParamURL
+}
+export const getProductDetailEndpoint = (id) => baseUrl[env] + "products/" + id
+export const getIfNameExistsEndpoint = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
+
 export const postNewProductEndpoint = () => baseUrl[env] + "products/create"
 export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" + id
+export const putEditedProductEndpoint = (id) => baseUrl[env] + "products/update/" + id
+
 export const getCategoriesEndpoint = () => baseUrl[env] + "category/all"
-export const getProductDetail = (id) => baseUrl[env] + "products/" + id
+
 export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
-export const getIfNameExists = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
-export const postSignUpUser = () => baseUrl[env] + "users/create"
-export const putEditedProduct = (id) => baseUrl[env] + "products/update/" + id
+export const postSignUpUserEndpoint = () => baseUrl[env] + "users/create"
 export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role/update/" + id
