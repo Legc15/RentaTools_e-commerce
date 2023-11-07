@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -13,12 +12,20 @@ import Swal from "sweetalert2/dist/sweetalert2.js"
 
 import "sweetalert2/src/sweetalert2.scss"
 import { ContextGlobal } from "../../../api/global.context.helper"
-import { deleteProduct } from "../../../api/requestHandlers"
+import { deleteProduct, getInformationFromEndpoints } from "../../../api/requestHandlers"
 import { useNavigate } from "react-router-dom"
+import { ENDPOINTS_CODE } from "../../../api/constants"
 
-const AdminTable = ({ products, isProductDeleted, setIsProductDeleted }) => {
-  const { categories } = useContext(ContextGlobal)
+const AdminTable = () => {
+  const [isProductDeleted, setIsProductDeleted] = useState(false)
+  const { productsList, categories, productsAll, categoryAll } = useContext(ContextGlobal)
+
   const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
+
+  useEffect(() => {
+    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
+    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
+  }, [isProductDeleted])
 
   const navigate = useNavigate()
 
@@ -78,7 +85,7 @@ const AdminTable = ({ products, isProductDeleted, setIsProductDeleted }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map(({ id, name, productCode, shortDescription, category }) => (
+          {productsList.map(({ id, name, productCode, shortDescription, category }) => (
             <TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell component="th" scope="row" align="center">
                 {id}
