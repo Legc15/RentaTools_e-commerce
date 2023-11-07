@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import java.util.HashSet;
+import org.hibernate.validator.constraints.UniqueElements;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "product_sequence")
     @EqualsAndHashCode.Include
     private Long id;
-
     @Column(name = "name", nullable = false)
     @NotBlank(message = "Falta el nombre del producto.")
     private String name;

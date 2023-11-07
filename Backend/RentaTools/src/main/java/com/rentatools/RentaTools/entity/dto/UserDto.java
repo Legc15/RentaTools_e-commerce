@@ -24,5 +24,4 @@ public class UserDto {
     private boolean esAdmin = false;
     private boolean esActive = true;
 
-
 }

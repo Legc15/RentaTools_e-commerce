@@ -6,6 +6,13 @@ import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
 import com.rentatools.RentaTools.repository.IUserRepository;
 import jakarta.transaction.Transactional;
+import com.rentatools.RentaTools.entity.Product;
+import com.rentatools.RentaTools.entity.User;
+import com.rentatools.RentaTools.entity.dto.ProductDto;
+import com.rentatools.RentaTools.entity.dto.UserDto;
+import com.rentatools.RentaTools.entity.dto.UserSecureDto;
+import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
+import com.rentatools.RentaTools.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,4 +55,5 @@ public class UserService {
         userOld.setEsAdmin(esAdmin);
         iUserRepository.save(userOld);
     }
+
 }
