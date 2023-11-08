@@ -40,9 +40,9 @@ const PATCH_ENDPOINTS_CODE = {
 
 
 
-const PUT_ENDPOINTS_CODE = {
-  PRODUCT_EDIT: putEditedProduct,
-}
+// const PUT_ENDPOINTS_CODE = {
+//   PRODUCT_EDIT: putEditedProduct,
+// }
 
 export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, itemsPerPage  = 10) => {
   const getInfo = async () => {
