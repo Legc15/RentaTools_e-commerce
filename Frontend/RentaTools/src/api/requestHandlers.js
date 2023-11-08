@@ -7,7 +7,7 @@ import {
   getAllUsersEndpoint,
   getIfNameExists,
   postSignUpUser,
-  putEditedProduct,
+  //putEditedProduct,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -23,15 +23,15 @@ const POST_ENDPOINTS_CODE = {
   PRODUCT_CREATE: postNewProductEndpoint,
 }
 
-const PUT_ENDPOINTS_CODE = {
-  PRODUCT_EDIT: putEditedProduct,
-}
+// const PUT_ENDPOINTS_CODE = {
+//   PRODUCT_EDIT: putEditedProduct,
+// }
 
-const PUT_ENDPOINTS_CODE = {
-  PRODUCT_EDIT: putEditedProduct,
-}
+// const PUT_ENDPOINTS_CODE = {
+//   PRODUCT_EDIT: putEditedProduct,
+// }
 
-export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, itemsPerPage  = 10, categoryId = null, page = 1, itemsPerPage  = 10) => {
+export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, itemsPerPage  = 10) => {
   const getInfo = async () => {
     const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id, categoryId, page, itemsPerPage)).then((response) => response.json())
     return response

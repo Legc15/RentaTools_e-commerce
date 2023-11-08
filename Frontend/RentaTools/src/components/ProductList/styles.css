@@ -1,16 +1,19 @@
 .listView {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 100px;
 }
-.listView .productCard {
-    flex: 0 0 100%; /* Por defecto, en móviles, una columna */
+
+/* Para móviles */
+@media (max-width: 599px) {
+    .listView {
+        grid-template-columns: repeat(1, 1fr); /* Una columna */
+    }
 }
 
 /* Para tabletas y desktop */
 @media (min-width: 600px) {
-    .listView .productCard {
-        flex: 0 0 50%; /* Dos columnas */
+    .listView {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
     }
 }
