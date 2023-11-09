@@ -5,6 +5,7 @@ import com.rentatools.RentaTools.entity.dto.ProductDto;
 import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
 import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.ProductService;
+import com.rentatools.RentaTools.utilities.PaginateMessage;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,17 @@ public class ProductController {
     public Product getProductById(@PathVariable Long id){
         return productService.getProductById(id);
     }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<PaginateMessage<Product>> getPruductsPaginated(
+            @RequestParam(defaultValue = "1", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer productsByPage,
+            @RequestParam(defaultValue = "false", required = false) boolean isRandom) {
+            //@RequestParam(defaultValue = "0", required = false) Long category) {
+        PaginateMessage<Product> response = productService.getProductByPage(page, productsByPage, isRandom);
+        return ResponseEntity.ok(response);
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity<ResponseMessage> createProduct(@Valid @RequestBody ProductDto productDto){
