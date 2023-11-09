@@ -14,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @RequiredArgsConstructor
+@Table(name = "product")
 public class Product {
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
@@ -45,4 +46,5 @@ public class Product {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "product_feature", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "feature_id"))
     private Set<Feature> features = new HashSet<>();
+
 }

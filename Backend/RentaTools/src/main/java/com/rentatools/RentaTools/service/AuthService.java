@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AuthService {
     @Autowired
-    IUserRepository IUserRepository;
+    IUserRepository iUserRepository;
 
     public LoginMessage login(LoginDto loginDto){
         LoginMessage loginMessage = new LoginMessage(null,"","");
-        User userLogin = IUserRepository.findByEmail(loginDto.getEmail());
+        User userLogin = iUserRepository.findByEmail(loginDto.getEmail());
         if(userLogin != null) {
             String userJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlBhYmxvIEtvbmlnIiwiaWF0IjoxNTE2MjM5MDIyfQ.PBsXzeqBhyzxcI_ijEc7U-bIH0SUvWHzhBXnhPj2LF8";
             if (userLogin.getPassword().equals(loginDto.getPassword())) {
