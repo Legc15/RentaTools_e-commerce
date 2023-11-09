@@ -3,6 +3,7 @@ import com.rentatools.RentaTools.entity.User;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
 import com.rentatools.RentaTools.entity.dto.UserDto;
 import com.rentatools.RentaTools.entity.dto.UserSecureDto;
+import com.rentatools.RentaTools.exceptions.AttributeException;
 import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.UserService;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
@@ -34,5 +35,11 @@ public class UserController {
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Usuario creado correctamente."));
     }
 
-    @
+    @PatchMapping("/role/update/{id}")
+    public  ResponseEntity<ResponseMessage> changeRole(@PathVariable Long id, @Valid @RequestBody boolean isAdmin) throws AttributeException{
+        userService.changeRoleService(id, isAdmin);
+        String admin = (isAdmin)?"Administrador":"Usuario";
+        return ResponseEntity.ok(new ResponseMessage("El ID: " + id + " fue definido como " + admin));
+    }
+
 }

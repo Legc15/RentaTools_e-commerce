@@ -10,9 +10,12 @@ import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.repository.CategoryRepository;
 import com.rentatools.RentaTools.repository.ImageRepository;
 import com.rentatools.RentaTools.repository.ProductRepository;
+import com.rentatools.RentaTools.utilities.PaginateMessage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,6 +44,22 @@ public class ProductService {
 
     public Boolean getNameExist(String nameToSearch){
         return productRepository.existsByName(nameToSearch);
+    }
+
+    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
+        Page<Product> productsByPages;
+        if(!isRandom){
+            productsByPages = productRepository.findAll(PageRequest.of(page - 1, productsByPage));
+        }else {
+            productsByPages = productRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
+        }
+        PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
+        paginatedProductsResponse.setCurrentPage(page);
+        paginatedProductsResponse.setProductsByPage(productsByPage);
+        paginatedProductsResponse.setTotalProducts(productsByPages.getTotalElements());
+        paginatedProductsResponse.setTotalPages(productsByPages.getTotalPages());
+        paginatedProductsResponse.setData(productsByPages.getContent());
+        return paginatedProductsResponse;
     }
 
     public void createProduct(ProductDto productDto){
