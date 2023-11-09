@@ -26,3 +26,4 @@ export const getCategoriesEndpoint = () => baseUrl[env] + "category/all"
 export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
 export const postSignUpUserEndpoint = () => baseUrl[env] + "users/create"
 export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role/update/" + id
+export const postUserValidationEndpoint = () => baseUrl[env] + "auth/login"
