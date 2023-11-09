@@ -44,6 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="/products" element={<List />} />
           <Route path="/products/paginated" element={<List />} />
           <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />

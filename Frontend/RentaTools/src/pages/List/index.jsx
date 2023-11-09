@@ -41,7 +41,6 @@ const List = () => {
                     onChange={handleChange} />
             </div>
             
-            
             {productsList? 
                 <ProductList 
                     products={productsList}
