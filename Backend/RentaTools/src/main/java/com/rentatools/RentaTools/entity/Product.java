@@ -3,17 +3,16 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
 @Getter @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "Product")
+@Table(name = "product")
 public class Product {
-
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "product_sequence")
@@ -36,4 +35,7 @@ public class Product {
     @OrderBy("id ASC")
     @JsonManagedReference
     private List<Image> images;
+    @ManyToMany(targetEntity = Feature.class, cascade = CascadeType.ALL)
+    @JoinTable(name = "product_feature", joinColumns = {@JoinColumn(name = "product_id")}, inverseJoinColumns = {@JoinColumn(name = "feature_id")})
+    private List<Feature> feature = new ArrayList<>();
 }
