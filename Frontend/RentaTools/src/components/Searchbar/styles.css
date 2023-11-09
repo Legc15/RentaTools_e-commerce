@@ -5,12 +5,13 @@
   max-width: 100%;
   justify-content: center;
   margin: 3.5vh auto;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .searchbar-input {
-  width: 60vw;
+  width: 40vw;
   background-color: white;
+  
 }
 
 .searchbar-title {
