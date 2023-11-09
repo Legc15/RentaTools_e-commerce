@@ -16,6 +16,7 @@ import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.repository.CategoryRepository;
 import com.rentatools.RentaTools.repository.ImageRepository;
 import com.rentatools.RentaTools.repository.ProductRepository;
+import com.rentatools.RentaTools.utilities.PaginateMessage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,22 @@ public class ProductService {
         List<String> suggestionString = new ArrayList<>();
         suggestionList.forEach(product -> suggestionString.add(product.getName()));
         return suggestionString;
+    }
+
+    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
+        Page<Product> productsByPages;
+        if(!isRandom){
+            productsByPages = productRepository.findAll(PageRequest.of(page - 1, productsByPage));
+        }else {
+            productsByPages = productRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
+        }
+        PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
+        paginatedProductsResponse.setCurrentPage(page);
+        paginatedProductsResponse.setProductsByPage(productsByPage);
+        paginatedProductsResponse.setTotalProducts(productsByPages.getTotalElements());
+        paginatedProductsResponse.setTotalPages(productsByPages.getTotalPages());
+        paginatedProductsResponse.setData(productsByPages.getContent());
+        return paginatedProductsResponse;
     }
 
     public void createProduct(ProductDto productDto){
