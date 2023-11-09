@@ -9,6 +9,7 @@ import {
   postSignUpUserEndpoint,
   putEditedProductEndpoint,
   patchEditedInformationEndpoint,
+  postUserValidationEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -22,6 +23,7 @@ const GET_ENDPOINTS_CODE = {
 const POST_ENDPOINTS_CODE = {
   USER_CREATE: postSignUpUserEndpoint,
   PRODUCT_CREATE: postNewProductEndpoint,
+  USER_VALIDATION: postUserValidationEndpoint,
 }
 
 const PUT_ENDPOINTS_CODE = {

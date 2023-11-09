@@ -13,10 +13,11 @@ const userFalso = {
 }
 
 const Header = () => {
-  const [isLoggedin, setIsLoggedin] = useState(false)
+  const isUserLogged = localStorage.getItem("role")
+
+  const [isLoggedin, setIsLoggedin] = useState(isUserLogged)
   const navigate = useNavigate()
 
-  
   const handleLogOut = () => {
     Swal.fire({
       text: "Cerrar sesión?",
@@ -28,17 +29,18 @@ const Header = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
+        localStorage.removeItem("role")
         localStorage.removeItem("token")
         setIsLoggedin(false)
       }
     })
   }
 
-  const handleSignIn = () =>{
+  const handleSignIn = () => {
     navigate("/signIn")
   }
 
-  const handleSignUp = () =>{
+  const handleSignUp = () => {
     navigate("/signUp")
   }
 
@@ -73,7 +75,7 @@ const Header = () => {
         ) : (
           <ul>
             <li>
-              <HeaderButton className="crear-cuenta" buttonLabel="Crear Cuenta" onClick={handleSignUp}/>
+              <HeaderButton className="crear-cuenta" buttonLabel="Crear Cuenta" onClick={handleSignUp} />
             </li>
             <li>
               <HeaderButton className="iniciar-sesion" buttonLabel="Iniciar sesion" onClick={handleSignIn} />

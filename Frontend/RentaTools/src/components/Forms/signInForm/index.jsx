@@ -1,30 +1,50 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box"
+import TextField from "@mui/material/TextField"
 import HeaderButton from "../../button"
+import useForm from "../../../hooks/useForm"
+import { ENDPOINTS_CODE } from "../../../api/constants"
+import { postNewInformation } from "../../../api/requestHandlers"
+import { useState } from "react"
+
+const initialData = {
+  email: "",
+  password: "",
+}
 
 export default function SignInForm() {
+  const { formData, handleInputChange, handleSubmit } = useForm(initialData)
+  const [isUserValidated, setIsUserValidated] = useState(false)
+  const [isNewAttempt, setIsNewAttempt] = useState(true)
 
-  const handleLogIn = () => {
-    localStorage.setItem("token", "usuario loggeado")
-    setIsLoggedin(true)
+  const handleLogIn = async () => {
+    setIsNewAttempt(true)
+    const response = await postNewInformation(ENDPOINTS_CODE.USER_VALIDATION, formData).then((response) => response.json())
+    if (!response.role) {
+      setIsUserValidated(false)
+    } else {
+      localStorage.setItem("role", response.role)
+      localStorage.setItem("token", response.jwt)
+      setIsUserValidated(true)
+    }
+    setIsNewAttempt(false)
   }
 
-   
-     return (
-       <form className="formulario" onSubmit={handleLogIn} >
-       <Box
-         sx={{
-           display: 'flex',
-           alignItems: 'center',
-           '& > :not(style)': { m: 1 },
-           flexDirection: "column"
-         }}
-       >
-         <TextField label= "Correo Electronico" type='text' name='email' />
-         <TextField label= "Contraseña" type="password" name='password' />
-       </Box>      
-        <HeaderButton buttonLabel="Ingresar" className="ingresar" type="submit"/>
-       </form>
-   
-     )
-   }
+  return (
+    <form className="formulario" onSubmit={(e) => handleSubmit(e, () => handleLogIn())}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          "& > :not(style)": { m: 1 },
+          flexDirection: "column",
+        }}
+      >
+        <TextField label="Correo Electronico" type="text" name="email" onChange={handleInputChange} />
+        <TextField label="Contraseña" type="password" name="password" onChange={handleInputChange} />
+      </Box>
+      <HeaderButton buttonLabel="Ingresar" className="ingresar" type="submit" />
+      {!isUserValidated && !isNewAttempt ? <div className="error-message">Nombre de usuario o contraseña no válidos.</div> : ""}
+      {isUserValidated ? <div className="success-message">Usuario autenticado. Redirigiendo a su perfil...</div> : ""}
+    </form>
+  )
+}

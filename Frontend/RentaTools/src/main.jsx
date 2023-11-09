@@ -16,27 +16,23 @@ import Error from "./pages/Error"
 import Edit from "./pages/Edit/index.jsx"
 import NotFound from "./pages/NotFound/index.jsx"
 
-// const AdminProtectedRoute = ({ user, children }) => {
-//   if (user !== "admin") {
-//     return <Navigate to="/error" replace />
-//   }
-//   return children
-// }
-
-// const UserProtectedRoute = ({ user, children }) => {
-//   if (user !== "user") {
-//     return <Navigate to="/error" replace />
-//   }
-//   return children
-// }
-
-const ProtectedRoute = ({ user, children }) => {
-  if (!user) {
+const AdminProtectedRoute = ({ children }) => {
+  const role = localStorage.getItem("role")
+  if (role != "ADMIN") {
     return <Navigate to="/error" replace />
   }
 
   return children
 }
+
+// const UserProtectedRoute = ({ children }) => {
+//   const role = localStorage.getItem("role")
+//   if (role != "USER") {
+//     return <Navigate to="/error" replace />
+//   }
+
+//   return children
+// }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -49,32 +45,32 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route
               index
               element={
-                <ProtectedRoute user={"usuario"}>
+                <AdminProtectedRoute>
                   <Admin />
-                </ProtectedRoute>
+                </AdminProtectedRoute>
               }
             />
             <Route
               path="register"
               element={
-                <ProtectedRoute user={"usuario"}>
+                <AdminProtectedRoute>
                   <Register />
-                </ProtectedRoute>
+                </AdminProtectedRoute>
               }
             />
             <Route
               path="edit/:id"
               element={
-                <ProtectedRoute user={"usuario"}>
+                <AdminProtectedRoute>
                   <Edit />
-                </ProtectedRoute>
+                </AdminProtectedRoute>
               }
             />
           </Route>
           <Route path="error" element={<Error />} />
           <Route path="not-found" element={<NotFound />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="signin" element={<SignIn/>} />
+          <Route path="signin" element={<SignIn />} />
         </Route>
       </Routes>
     </BrowserRouter>
