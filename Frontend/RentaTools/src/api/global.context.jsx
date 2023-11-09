@@ -18,7 +18,7 @@ export const ContextProvider = ({ children }) => {
   const usersAll = (user) => {
     dispatch({ type: "USERS_ALL", payload: user })
   }
-
+  
   return (
     <ContextGlobal.Provider value={{ productsList, categories, productsAll, categoryAll, users, usersAll }}>
       {children}
