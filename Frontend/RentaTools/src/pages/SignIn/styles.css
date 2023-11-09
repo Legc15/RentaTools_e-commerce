@@ -1,0 +1,39 @@
+.signin{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    border-radius: 40px;
+    width: auto;
+    padding: 25px
+}
+
+.signin h2{
+    padding: 20px;
+    
+}
+
+.signin .ingresar {
+    display: flex;
+    padding: 6px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: normal;
+    border: none;
+    color: black;
+    background-color: #6ec5b8;
+    border-radius: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .signin .ingresar:hover {
+    background-color: #6ec5b8;
+  }
+
+  

@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 import App from "./App.jsx"
 
 // import Pages
-import { Admin, Detail, Register, Home, SignUp } from "./pages"
+import { Admin, Detail, Register, Home, SignUp, SignIn } from "./pages"
 
 //import Styles
 import "./index.css"
@@ -74,6 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="error" element={<Error />} />
           <Route path="not-found" element={<NotFound />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<SignIn/>} />
         </Route>
       </Routes>
     </BrowserRouter>
