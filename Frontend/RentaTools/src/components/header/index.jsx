@@ -16,11 +16,7 @@ const Header = () => {
   const [isLoggedin, setIsLoggedin] = useState(false)
   const navigate = useNavigate()
 
-  const handleLogIn = () => {
-    localStorage.setItem("token", "usuario loggeado")
-    setIsLoggedin(true)
-  }
-
+  
   const handleLogOut = () => {
     Swal.fire({
       text: "Cerrar sesión?",
@@ -36,6 +32,10 @@ const Header = () => {
         setIsLoggedin(false)
       }
     })
+  }
+
+  const handleSignIn = () =>{
+    navigate("/signIn")
   }
 
   const handleSignUp = () =>{
@@ -76,7 +76,7 @@ const Header = () => {
               <HeaderButton className="crear-cuenta" buttonLabel="Crear Cuenta" onClick={handleSignUp}/>
             </li>
             <li>
-              <HeaderButton className="iniciar-sesion" buttonLabel="Iniciar sesion" onClick={handleLogIn} />
+              <HeaderButton className="iniciar-sesion" buttonLabel="Iniciar sesion" onClick={handleSignIn} />
             </li>
           </ul>
         )}
