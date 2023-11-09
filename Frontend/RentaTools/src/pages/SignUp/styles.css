@@ -42,11 +42,20 @@
   align-items: center;
   background-color: white;
   border-radius: 30px;
-  width: 300px;
+  width: auto;
+  padding: 40px;
 }
 
 .registro{
   display: flex;
   align-items: center;
   height: 73vh;
+}
+
+.logoSignup{
+  padding-bottom: 30px;
+}
+
+.error-message , .success-message{
+  padding-top: 25px;
 }

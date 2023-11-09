@@ -6,13 +6,9 @@
     height: auto;
     border-radius: 40px;
     width: auto;
-    padding: 25px
+    padding: 40px
 }
 
-.signin h2{
-    padding: 20px;
-    
-}
 
 .signin .ingresar {
     display: flex;
@@ -36,4 +32,6 @@
     background-color: #6ec5b8;
   }
 
-  
+  .logoSignin{
+    padding-bottom: 35px;
+  }

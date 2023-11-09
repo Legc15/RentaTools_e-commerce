@@ -56,8 +56,8 @@ const handleSubmit = (e) =>{
       <TextField label= "Correo Electronico" type='text' name='email' onChange={handleInputChange} />
       <TextField label= "Contraseña" type="password" name='password' onChange={handleInputChange} />
     </Box>
-    {isFormSent && !isFormCorrect ? <div className='error-message'>Uno o mas campos estan incorrectos.</div>: ""}    
-    {isFormSent && isFormCorrect ? <div className='success-message'>Usuario registrado correctamente.</div> : ""}   
+    {isFormSent && !isFormCorrect ? <div className="error-message">Uno o mas campos estan incorrectos.</div>: ""}    
+    {isFormSent && isFormCorrect ? <div className="success-message">Usuario registrado correctamente.</div> : ""}   
      <HeaderButton buttonLabel="Registrar" className="registrar" type="submit"/>
     </form>
 
