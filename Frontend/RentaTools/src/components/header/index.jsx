@@ -32,6 +32,7 @@ const Header = () => {
         localStorage.removeItem("role")
         localStorage.removeItem("token")
         setIsLoggedin(false)
+        location.assign("/")
       }
     })
   }
@@ -49,7 +50,7 @@ const Header = () => {
       <Link to="/">
         <div className="logo-container">
           <div className="logo">
-            <img src={logo}></img>
+            <img className="logo-img" src={logo}></img>
           </div>
 
           <div className="nombre-frase">

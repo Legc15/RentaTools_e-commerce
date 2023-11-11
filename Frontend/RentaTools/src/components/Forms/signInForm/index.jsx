@@ -16,6 +16,10 @@ export default function SignInForm() {
   const [isUserValidated, setIsUserValidated] = useState(false)
   const [isNewAttempt, setIsNewAttempt] = useState(true)
 
+  const redirectAccordingToRole = (role) => {
+    location.assign(role === "ADMIN" ? "/admin" : "/")
+  }
+
   const handleLogIn = async () => {
     setIsNewAttempt(true)
     const response = await postNewInformation(ENDPOINTS_CODE.USER_VALIDATION, formData).then((response) => response.json())
@@ -25,6 +29,7 @@ export default function SignInForm() {
       localStorage.setItem("role", response.role)
       localStorage.setItem("token", response.jwt)
       setIsUserValidated(true)
+      setTimeout(() => redirectAccordingToRole(response.role), 2000)
     }
     setIsNewAttempt(false)
   }
@@ -44,7 +49,7 @@ export default function SignInForm() {
       </Box>
       <HeaderButton buttonLabel="Ingresar" className="ingresar" type="submit" />
       {!isUserValidated && !isNewAttempt ? <div className="error-message">Nombre de usuario o contraseña no válidos.</div> : ""}
-      {isUserValidated ? <div className="success-message">Usuario autenticado. Redirigiendo a su perfil...</div> : ""}
+      {isUserValidated ? <div className="success-message">Usuario autenticado. Redirigiendo...</div> : ""}
     </form>
   )
 }
