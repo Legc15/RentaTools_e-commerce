@@ -5,7 +5,7 @@
   width: 50vw;
   height: 30vh;
   max-width: 1200px;
-  padding: 50px;
+  padding: 58px;
   margin: 0;
 }
 
@@ -98,34 +98,41 @@
 }
 /*------------------RESPONSIVE------------------*/
 
-@media (max-width: 768px) {
+@media (max-width:768px){
+  .GaleryContainer{
+    padding: 10px 0px;
+    width: 65vw;
+    height: auto;
+  }
+  .verMasContainer{
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 425px) {
   .GaleryContainer {
-    padding: 20px;
-    margin: 20px 0px 20px 0px;
-    max-width: 500px;
-    min-width: 250px;
-    gap: 50px;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    padding: 0px;
+    
   }
 
   .imagenPrincipal {
     display: none;
   }
 
-  .Galeria {
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: auto;
-    padding: 20px;
-    margin: 10px;
+  .view{
+    padding:0px
   }
   .cuadriculado {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: auto;
-    padding: 20px;
-    margin: 10px;
+    gap:30px;
+    
+    margin: 50px;
   }
   .imageContainer {
     width: 250px;
