@@ -4,11 +4,11 @@
   align-items: center;
   max-width: 100%;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .searchbar-input {
-  width: 60vw;
+  width: 45vw;
   background-color: white;
 }
 

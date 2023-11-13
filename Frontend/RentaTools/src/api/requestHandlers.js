@@ -10,6 +10,7 @@ import {
   putEditedProductEndpoint,
   patchEditedInformationEndpoint,
   postUserValidationEndpoint,
+  getProductsByQueryParamsEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -18,6 +19,7 @@ const GET_ENDPOINTS_CODE = {
   PRODUCT_DETAIL: getProductDetailEndpoint,
   USERS_ALL: getAllUsersEndpoint,
   EXIST_NAME: getIfNameExistsEndpoint,
+  PRODUCTS_PAGINATED: getProductsByQueryParamsEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
@@ -34,9 +36,9 @@ const PATCH_ENDPOINTS_CODE = {
   USER_EDIT_ROLE: patchEditedInformationEndpoint,
 }
 
-export const getInformationFromEndpoints = async (endpoint, id = "") => {
+export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, productsByPage  = 10, totalPages) => {
   const getInfo = async () => {
-    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id)).then((response) => response.json())
+    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id, categoryId, page, productsByPage, totalPages)).then((response) => response.json())
     return response
   }
   const dataParsed = await getInfo(id)
