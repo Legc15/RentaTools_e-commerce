@@ -9,7 +9,7 @@ import App from "./App.jsx"
 
 // import Pages
 import { Admin, Detail, Register, Home, SignUp, SignIn } from "./pages"
-
+import List from "./pages/List"
 //import Styles
 import "./index.css"
 import Error from "./pages/Error"
@@ -40,6 +40,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="/products" element={<List />} />
+          <Route path="/products/paginated" element={<List />} />
+          <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="admin">
             <Route

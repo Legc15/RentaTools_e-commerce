@@ -1,0 +1,21 @@
+.listView {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+/* Para móviles */
+@media (max-width: 599px) {
+    .listView {
+        grid-template-columns: repeat(1, 1fr); /* Una columna */
+    }
+}
+
+/* Para tabletas y desktop */
+@media (min-width: 600px) {
+    .listView {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    }
+}
