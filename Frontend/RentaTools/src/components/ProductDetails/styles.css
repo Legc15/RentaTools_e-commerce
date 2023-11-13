@@ -30,7 +30,6 @@ p {
 
 .product-details-title {
   text-align: left;
-
   margin: 0;
 }
 
@@ -73,13 +72,14 @@ p {
 @media (min-width: 768px) {
   .product-details-container {
     margin: 0px;
-    padding: 50px;
+    padding: 58px;
   }
 
   .product-details-back-button {
     margin: 0;
     padding: 6px 30px;
   }
+  
 }
 
 .products-feature {
@@ -95,4 +95,21 @@ p {
 
 .product-details-features {
   padding-top: 10px;
+}
+
+@media (max-width: 425px) {
+  .view {
+    padding: 0;
+    gap: 0;
+  }
+  
+  .product-details-header{
+    display: flex;
+    flex-direction: column-reverse;
+    gap:20px;
+  }
+
+  .product-details-back-button {
+    margin: 0px;
+  }
 }
