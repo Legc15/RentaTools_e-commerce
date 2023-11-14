@@ -7,10 +7,15 @@ export default function useForm(initialValue) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const handleDateChange = (e, dateName) => {
+    const date = new Date(e["$d"])
+    setFormData({ ...formData, [dateName]: date })
+  }
+
   const handleSubmit = (e, submitFunction) => {
     e.preventDefault()
     submitFunction()
   }
 
-  return { formData, setFormData, handleInputChange, handleSubmit }
+  return { formData, setFormData, handleDateChange, handleInputChange, handleSubmit }
 }

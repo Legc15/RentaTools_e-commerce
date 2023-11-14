@@ -1,36 +1,62 @@
 /* eslint-disable no-console */
-import { useState } from "react"
-import IconButton from "@mui/material/IconButton"
 import SearchIcon from "@mui/icons-material/Search"
 import TextField from "@mui/material/TextField"
 import "./styles.css"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
+import { DatePicker } from "@mui/x-date-pickers/DatePicker"
+import { Button } from "@mui/material"
+import useForm from "../../hooks/useForm"
+const initialState = {
+  search: "",
+  reservationFrom: "",
+  reservationTo: "",
+}
 
 export const Searchbar = () => {
-  const [search, setSearch] = useState("")
+  const { formData, handleInputChange, handleDateChange, handleSubmit } = useForm(initialState)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(search)
+  const handleSearch = () => {
+    console.log(formData)
   }
   return (
     <div>
       {" "}
       <div className="searchbar-container">
         <h1 className="searchbar-title">Encontrá la herramienta que estás buscando!</h1>
-        <form onSubmit={handleSubmit}>
+        <p className="searchbar-description">
+          Ingresá las palabras claves del producto que buscás y las fechas tentativas de cuándo las necesitás
+        </p>
+        <form onSubmit={(e) => handleSubmit(e, () => handleSearch())}>
           <TextField
             id="search-bar"
-            className="searchbar-input"
+            className="searchbar-input text-input"
             label="Ingresá tu búsqueda"
             variant="outlined"
             placeholder="Search..."
             size="small"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            name="search"
+            onChange={handleInputChange}
           />
-          <IconButton type="submit" aria-label="search">
-            <SearchIcon style={{ fill: "#FFA833" }} />
-          </IconButton>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Desde"
+              name="reservationFrom"
+              className="searchbar-input date-input"
+              slotProps={{ textField: { size: "small" } }}
+              onChange={(e) => handleDateChange(e, "reservationFrom")}
+            />
+            <DatePicker
+              label="Hasta"
+              name="reservationTo"
+              className="searchbar-input date-input"
+              slotProps={{ textField: { size: "small" } }}
+              onChange={(e) => handleDateChange(e, "reservationTo")}
+            />
+          </LocalizationProvider>
+          <Button variant="contained" startIcon={<SearchIcon />} type="submit">
+            Buscar
+          </Button>
         </form>
       </div>
     </div>
