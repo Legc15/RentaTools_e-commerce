@@ -1,0 +1,44 @@
+.termsBody {
+  margin: 50px auto;
+  width: 70%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.terms {
+  display: flex;
+  flex-direction: column;
+    gap: 20px;
+    
+    
+}
+.terms p {
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.buttonPolicies {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  text-align: right;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 6px 17px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.terms li {
+  list-style: numbered;
+  padding: 0;
+  margin: 0;
+
+}
+
