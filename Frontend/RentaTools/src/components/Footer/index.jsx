@@ -13,16 +13,17 @@ const Footer = () => {
                     <img src={logo}></img>
                 </div>
 
-                <div >
-                    <p className="copyright">© 2023 RENTATOOLS LTD.</p>
-                    <p className="copyright-responsive">© 2023</p>
+                <div className="copyrightPolicies">
+                    <div><p className="copyright">© 2023 RENTATOOLS LTD.</p></div>
+                    <div className="responsive-policies"></div>
+                    <a href="./Policies">Términos y condiciones</a>
                 </div>
             </div>
 
             <div className="socialMedia">
-                <FontAwesomeIcon icon={faFacebook} />
-                <FontAwesomeIcon icon={faInstagram} />
-                <FontAwesomeIcon icon={faXTwitter} />
+                <div><FontAwesomeIcon icon={faFacebook} /></div>
+                <div><FontAwesomeIcon icon={faInstagram} /></div>
+                <div><FontAwesomeIcon icon={faXTwitter} /></div>
             </div>
         </div>
     )

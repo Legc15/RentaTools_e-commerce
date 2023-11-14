@@ -1,6 +1,6 @@
 .footer-container {
   background-color: #000000;
-  height: 60px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -15,17 +15,28 @@
 
 .copyright {
   color: white;
-  font-size: 1rem;
+  font-size: 0.75rem;
   font: Roboto;
+}
+
+.copyrihtPolicies{
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
 }
 
 .copyright-responsive {
   display: none;
-}
 
+}
+.isologotipo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .isologotipo img {
-  width: 40px;
-  margin-left: 20px;
+  height: 3rem;
+  
 }
 
 .socialMedia {
@@ -44,7 +55,7 @@
 
   .copyright-responsive {
     display: block;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: white;
   }
   .socialMedia {
@@ -54,4 +65,27 @@
     width: 40px;
     margin-left: 0px;
   }
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+a:hover {
+  color: #ffb800;
+  text-decoration: underline;
+}
+a :visited {
+  color: initial;
+}
+
+p {
+  color: white;
+  font-size: 0.8rem;
+  margin: 0%;
+}
+.socialMedia div:hover {
+  color: #ffb800;
+  scale: 1.1;
+
 }
