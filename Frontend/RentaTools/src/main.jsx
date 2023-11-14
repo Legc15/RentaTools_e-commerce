@@ -1,29 +1,40 @@
 /* eslint-disable react/prop-types */
 // import third party libraries
-import React from "react"
-import ReactDOM from "react-dom/client"
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 //import App
-import App from "./App.jsx"
+import App from "./App.jsx";
 
 // import Pages
-import { Admin, Detail, Register, Home, SignUp, SignIn, Features } from "./pages"
-import List from "./pages/List"
+import {
+  Admin,
+  Detail,
+  Register,
+  Home,
+  SignUp,
+  SignIn,
+  Features,
+ 
+  
+} from "./pages";
+import List from "./pages/List";
+import Policies from "./pages/Policies";
 //import Styles
-import "./index.css"
-import Error from "./pages/Error"
-import Edit from "./pages/Edit/index.jsx"
-import NotFound from "./pages/NotFound/index.jsx"
+import "./index.css";
+import Error from "./pages/Error";
+import Edit from "./pages/Edit/index.jsx";
+import NotFound from "./pages/NotFound/index.jsx";
 
 const AdminProtectedRoute = ({ children }) => {
-  const role = localStorage.getItem("role")
+  const role = localStorage.getItem("role");
   if (role != "ADMIN") {
-    return <Navigate to="/error" replace />
+    return <Navigate to="/error" replace />;
   }
 
-  return children
-}
+  return children;
+};
 
 // const UserProtectedRoute = ({ children }) => {
 //   const role = localStorage.getItem("role")
@@ -44,6 +55,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/products/paginated" element={<List />} />
           <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />
+          <Route path="/policies" element={<Policies/>}/>
           <Route path="admin">
             <Route
               index
@@ -86,4 +98,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
-)
+);
