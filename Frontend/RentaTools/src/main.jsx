@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 import App from "./App.jsx"
 
 // import Pages
-import { Admin, Detail, Register, Home, SignUp, SignIn } from "./pages"
+import { Admin, Detail, Register, Home, SignUp, SignIn, Features } from "./pages"
 import List from "./pages/List"
 //import Styles
 import "./index.css"
@@ -58,6 +58,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               element={
                 <AdminProtectedRoute>
                   <Register />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              path="features"
+              element={
+                <AdminProtectedRoute>
+                  <Features />
                 </AdminProtectedRoute>
               }
             />

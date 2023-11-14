@@ -15,6 +15,10 @@ const Admin = () => {
     navigate("/admin/register")
   }
 
+  const navigateToFeatures = () => {
+    navigate("/admin/features")
+  }
+
   const handleListProducts = () => {
     setIsShowUserList(false)
     setIsShowProductsList(!isShowProductsList)
@@ -35,6 +39,9 @@ const Admin = () => {
 
           <Button variant="contained" onClick={navigateToAddProduct} className="button button-add-category">
             Crear categoría
+          </Button>
+          <Button variant="contained" onClick={navigateToFeatures} className="button button-add-feature">
+            Administrar características{" "}
           </Button>
         </div>
         <div className="show-navbar">

@@ -2,9 +2,7 @@ import PropTypes from "prop-types"
 import Galeria from "../Gallery"
 import "./styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBolt, faArrowsSpin, faMusic } from "@fortawesome/free-solid-svg-icons"
-
-const FEATURES_ICON = [faBolt, faArrowsSpin, faMusic]
+import { FEATURE_ICONS } from "../../api/constants"
 
 const ProductDetails = ({ productInfo }) => {
   const { name, description, productImage, images, features } = productInfo
@@ -33,7 +31,7 @@ const ProductDetails = ({ productInfo }) => {
             {features &&
               features.map((feature) => (
                 <p className="products-feature" key={feature.id}>
-                  {<FontAwesomeIcon icon={FEATURES_ICON[feature.id - 1]} />}
+                  {<FontAwesomeIcon icon={FEATURE_ICONS[feature.icon]} />}
                   {feature.name}
                 </p>
               ))}
