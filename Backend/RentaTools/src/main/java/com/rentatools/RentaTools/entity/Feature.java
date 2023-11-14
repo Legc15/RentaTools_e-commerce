@@ -1,24 +1,27 @@
 package com.rentatools.RentaTools.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
-@Table(name = "feature")
+@Data
+@Table(name = "features")
 public class Feature {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "features_sequence")
     private Long id;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "icon", nullable = false)
     private String icon;
-    @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "feature")
-    private List<Product> product = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "features")
+    @JsonBackReference
+    private Set<Product> products = new HashSet<>();
 }

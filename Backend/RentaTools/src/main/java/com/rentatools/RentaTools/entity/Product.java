@@ -3,20 +3,22 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Getter @Setter
+@Data
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @RequiredArgsConstructor
-@Table(name = "product")
 public class Product {
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "product_sequence")
+    @EqualsAndHashCode.Include
     private Long id;
+
     @Column(name = "name", nullable = false)
     @NotBlank(message = "Falta el nombre del producto.")
     private String name;
@@ -28,14 +30,17 @@ public class Product {
     private Double pricePerDay;
     private Double pricePerHour;
     private String productImage;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     @OrderBy("id ASC")
     @JsonManagedReference
     private List<Image> images;
-    @ManyToMany(targetEntity = Feature.class, cascade = CascadeType.ALL)
-    @JoinTable(name = "product_feature", joinColumns = {@JoinColumn(name = "product_id")}, inverseJoinColumns = {@JoinColumn(name = "feature_id")})
-    private List<Feature> feature = new ArrayList<>();
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "product_feature", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "feature_id"))
+    private Set<Feature> features = new HashSet<>();
 }
