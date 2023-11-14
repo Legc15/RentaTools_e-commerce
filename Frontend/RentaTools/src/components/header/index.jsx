@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom"
 import user from "../../assets/imagenesGaleria/userIcon.svg"
 import { useState } from "react"
 import Swal from "sweetalert2/dist/sweetalert2"
+import CustomizedMenus from "../Menu"
+
+
 
 const userFalso = {
   name: "Juan",
@@ -65,14 +68,15 @@ const Header = () => {
           <>
             <div className="header-box">
               <div className="user-container">
-                <img src={userFalso.photo} alt="hola" className="avatar" />{" "}
+                <img src={userFalso.photo} alt="hola" className="avatar" />{""}
                 <h3>
                   {userFalso.name[0]}. {userFalso.lastName[0]}.
                 </h3>
               </div>
-              <HeaderButton className="cerrar-sesion" buttonLabel="Cerrar sesión" onClick={handleLogOut} />
+              <CustomizedMenus handleLogOut={handleLogOut} />
             </div>
           </>
+        
         ) : (
           <ul>
             <li>

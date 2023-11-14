@@ -8,7 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  box-shadow: #ffa833 0px 0px 15px;
+  box-shadow: #000000 0px 5px 25px;
   width: 100dvw;
 }
 
@@ -20,6 +20,11 @@ h1 {
   margin: 0px;
 }
 
+.menu{
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+}
 .logo-container {
   display: flex;
   gap: 15px;
@@ -123,18 +128,19 @@ li .iniciar-sesion:hover {
 }
 
 .logo-img {
-  height: 70px;
+  height: 4rem;
 }
 .avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 2rem;
+  height: 1.5rem;
+  
 }
 
 .user-container {
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin: 0;
 }
 
 .cerrar-sesion {
@@ -150,17 +156,20 @@ li .iniciar-sesion:hover {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  gap: 0.5rem;
+  
 }
 
-h3 {
-  font-size: 20px;
+h3{
+  font-size: 1rem;
   font-weight: 700;
   margin: 0px;
 }
 
-@media (max-width: 391px) {
+@media (max-width: 375px) {
   .header-box {
-    flex-direction: row;
+    flex-direction: row-reverse;
+    gap: 4.5rem;
   }
 
   .user-container {
