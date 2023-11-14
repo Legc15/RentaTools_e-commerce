@@ -17,8 +17,9 @@
   text-align: center;
 }
 
-@media (max-width: 391px) {
+@media (max-width: 375px) {
   .card-recommended-container {
-    grid-template-columns: repeat (1, 1fr);
+    display: flex;
+    gap:25px;
   }
 }

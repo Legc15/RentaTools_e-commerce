@@ -169,10 +169,22 @@ h3{
 @media (max-width: 375px) {
   .header-box {
     flex-direction: row-reverse;
-    gap: 4.5rem;
+    justify-content: space-between;
+    gap: 50px;
   }
 
   .user-container {
     flex-direction: column;
+
+  }
+
+  .header-container button,h3{
+    height: 1.5rem;
+    font-size: 0.6rem;
+    
+  }
+  .header-container{
+    display: flex;
+    justify-content: space-around;
   }
 }
