@@ -1,3 +1,5 @@
+import { faBolt, faArrowsSpin, faEarthAmericas } from "@fortawesome/free-solid-svg-icons"
+
 const ENDPOINTS_CODE = {
   CATEGORY_ALL: "CATEGORY_ALL",
   PRODUCTS_ALL: "PRODUCTS_ALL",
@@ -10,6 +12,7 @@ const ENDPOINTS_CODE = {
   USER_EDIT_ROLE: "USER_EDIT_ROLE",
   USER_VALIDATION: "USER_VALIDATION",
   PRODUCTS_PAGINATED: "PRODUCTS_PAGINATED",
+  FEATURES_ALL: "FEATURES_ALL",
 }
 
 const ENV = {
@@ -18,4 +21,10 @@ const ENV = {
   LOCAL: "LOCAL",
 }
 
-export { ENDPOINTS_CODE, ENV }
+const FEATURE_ICONS = {
+  electric: faBolt,
+  continuous: faArrowsSpin,
+  imported: faEarthAmericas,
+}
+
+export { ENDPOINTS_CODE, ENV, FEATURE_ICONS }

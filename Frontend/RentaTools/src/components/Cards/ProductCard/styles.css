@@ -2,6 +2,15 @@
   height: auto;
   width: 800px;
 }
+.title-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.title-container .favorite {
+  padding: 0;
+}
 
 .card-container:hover {
   cursor: pointer;
