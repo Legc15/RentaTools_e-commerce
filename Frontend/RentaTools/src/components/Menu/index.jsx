@@ -80,7 +80,6 @@ export default function CustomizedMenus({ handleLogOut}) {
                 endIcon={<KeyboardArrowDownIcon />}
                 style={{backgroundColor: 'black', 
                         borderRadius: '15px', 
-                        color: 'white',
                         fontWeight: 'bold',
                         fontSize: '0.8rem',
                         padding: '0.3rem 0.8rem',
@@ -102,7 +101,7 @@ export default function CustomizedMenus({ handleLogOut}) {
                     Mis Favoritos
                 </MenuItem>
                 <MenuItem onClick={handleClose} disableRipple>
-                    <Link to= "/admin" sx={{ textDecoration: "none" }}>
+                    <Link to= "/admin" style={{color: 'rgb(55, 65, 81)', fontFamily: '',fontSize:'1rem'}}>
                     <EngineeringIcon />
                     Panel de Administración
                     </Link>
