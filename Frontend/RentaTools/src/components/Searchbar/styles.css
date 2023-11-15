@@ -4,12 +4,22 @@
   align-items: center;
   max-width: 100%;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
+}
+.searchbar-description {
+  margin: 0px;
+  font-size: 16px;
+}
+.searchbar-input {
+  background-color: white;
 }
 
-.searchbar-input {
-  width: 45vw;
-  background-color: white;
+.searchbar-input.text-input {
+  width: 30vw;
+}
+
+.searchbar-input.date-input {
+  width: 20vw;
 }
 
 .searchbar-title {

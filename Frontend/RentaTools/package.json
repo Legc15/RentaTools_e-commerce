@@ -26,7 +26,10 @@
     "react-icons": "^4.11.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.17.0",
-    "sweetalert2": "^11.7.32"
+    "sweetalert2": "^11.7.32",
+    "vite": "^4.4.5",
+    "@mui/x-date-pickers": "^6.18.1",
+    "dayjs": "^1.11.10"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.0",
