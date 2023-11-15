@@ -15,8 +15,7 @@ p {
 }
 .product-details-container {
   height: auto;
-  margin: 50px;
-  padding: 50px;
+  padding: 16px;
   background-color: #f2f2f2;
   gap: 50px;
 }
@@ -96,6 +95,24 @@ p {
   padding-top: 10px;
 }
 
+.lower-cnt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lower-cnt .date-calendar {
+  margin: 0;
+}
+
+.calendar-title {
+  margin: 0;
+  text-align: center;
+}
+
+.date-calendar .Mui-disabled {
+  text-decoration: line-through;
+}
+
 @media (max-width: 425px) {
   h1 {
     display: none;
@@ -123,22 +140,12 @@ p {
   .product-details-back-button {
     margin: 0px;
   }
-}
+  .lower-cnt {
+    flex-direction: column;
+    gap: 30px;
+  }
 
-.lower-cnt {
-  display: flex;
-  justify-content: space-between;
-}
-
-.lower-cnt .date-calendar {
-  margin: 0;
-}
-
-.calendar-title {
-  margin: 0;
-  text-align: center;
-}
-
-.date-calendar .Mui-disabled {
-  text-decoration: line-through;
+  .calendar-title {
+    text-align: left;
+  }
 }
