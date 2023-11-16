@@ -25,16 +25,19 @@ const ProductDetails = ({ productInfo }) => {
 
       <div className="product-details-container">
         <div className="product-details-header">
-          <h2 className="product-details-title">{name}</h2>
+          <h1 className="product-details-title">{name}</h1>
 
           <button className="product-details-back-button" onClick={() => window.history.back()}>
             Volver Atras
           </button>
         </div>
-
+        <div>
+          <p className="description">{description}</p>
+        </div>
+        
         <div className="product-details-body">
-          <p className="product-details-description">{description}</p>
           <div className="lower-cnt">
+
             <div className="product-details-features">
               <h4>Características del producto</h4>
               {features &&
@@ -45,13 +48,20 @@ const ProductDetails = ({ productInfo }) => {
                   </p>
                 ))}
             </div>
-            <div>
+
+            <div className="calendar">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <h4 className="calendar-title">Disponibilidad del producto</h4>
-                <DateCalendar className="date-calendar" shouldDisableDate={disableReservedDays} readOnly />
+                
+                <DateCalendar 
+                  style={{ width: 250, height: 300 }}
+                  className="date-calendar" 
+                  shouldDisableDate={disableReservedDays} readOnly />
               </LocalizationProvider>
             </div>
+
           </div>
+          
         </div>
       </div>
     </div>

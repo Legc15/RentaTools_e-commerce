@@ -23,17 +23,29 @@ h2 {
   gap: 50px;
 }
 
-.product-details-header {
+.product-details-header{
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
 
 .product-details-title {
+  width: auto;
+  height: auto;
+  color: black;
+  font-size: 1rem;
   text-align: left;
-  margin: 0;
+}
+
+.description{
+  width: 90%; 
+  height: auto;
+  color: black;
+  font-size: 1rem;
+  text-align: justify;
+  padding: 1rem;
 }
 
 .product-details-back-button {
@@ -52,54 +64,13 @@ h2 {
   box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
 
-@media (max-width: 2000px) {
-  .view {
-    gap: 50px;
-  }
-
-  .product-details-title {
-    text-align: center;
-    margin: 0;
-  }
-
-  .product-details-body {
-    align-items: center;
-  }
-
-  .product-details-back-button {
-    gap: 10px;
-    padding: 6px 30px;
-  }
+.product-details-body{
+  
+  width: 95%;
+  padding:1rem;
 }
-
-@media (min-width: 768px) {
-  .product-details-container {
-    margin: 0px;
-    padding: 24px;
-  }
-
-  .product-details-back-button {
-    margin: 0;
-    padding: 6px 30px;
-  }
-}
-
-.products-feature {
-  margin: 2px;
-  margin-top: 5px;
-  padding: 0;
-  font-size: 14px;
-}
-
-.products-feature svg {
-  padding-right: 10px;
-}
-
-.product-details-features {
-  padding-top: 10px;
-}
-
-.lower-cnt {
+.lower-cnt{
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -111,44 +82,61 @@ h2 {
 .calendar-title {
   text-align: center;
 }
-
-.date-calendar .Mui-disabled {
-  text-decoration: line-through;
+.product-details-features{
+  width: 50%;
+  justify-content: flex-start;
+  background-color: blueviolet;
+}
+.calendar{
+  background-color: aqua;
+  width: 60%;
 }
 
-@media (max-width: 425px) {
-  h1 {
-    display: none;
-  }
-
-  .view {
+@media (max-width: 768px){
+  .product-details-container{
     width: 100vw;
-    padding: 0;
-    gap: 0px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
+  }
+}
+
+@media (max-width: 375px) {
+
   }
   .product-details-container {
-    width: 90vw;
-    margin: 0px;
-    padding: 25px;
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
   }
-  .product-details-header {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 25px;
+  
+  .product-details-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
   }
-
   .product-details-description {
-    margin-top: 30px;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+    font-size: 0.8rem;
+  }
+  
+  .lower-cnt{
+    align-items: center;
+    flex-direction: column;
+  }
+  .date-calendar{
+    width: 100vw;
   }
   .product-details-back-button {
     margin: 0px;
+    font-size: 0.8rem;
   }
-  .lower-cnt {
-    flex-direction: column;
-    gap: 30px;
-  }
+  
+  
 
-  .calendar-title {
-    text-align: left;
-  }
-}
+
