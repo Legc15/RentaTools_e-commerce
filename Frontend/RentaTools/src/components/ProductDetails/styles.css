@@ -4,9 +4,10 @@ h2 {
   margin: 0;
 }
 
-p {
-  font-size: 1.6rem;
+.product-details-description {
+  font-size: 1.2rem;
   color: black;
+  margin-top: 8px;
 }
 
 .view {
@@ -25,6 +26,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .product-details-title {
@@ -105,7 +107,6 @@ p {
 }
 
 .calendar-title {
-  margin: 0;
   text-align: center;
 }
 

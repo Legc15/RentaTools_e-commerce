@@ -8,28 +8,22 @@ const Galeria = ({ imagenPrincipal, imagenes }) => {
   const [mostrarCarousel, setCarousel] = useState(false)
 
   return (
-    <div>
-      <div className="GaleryContainer">
+    <div className="GaleryContainer">
+      <div className="imagen-container">
         <div className="imagenPrincipal">
           <img src={imagenPrincipal ? imagenPrincipal : defaultImage} alt="Imagen principal" />
         </div>
 
         <div className="cuadriculado">
-          <div className="cuadriculadoImg">
-            <img src={imagenes[0] ? imagenes[0].url : defaultImage} alt="Imagen 1" />
-          </div>
-
-          <div className="cuadriculadoImg">
-            <img src={imagenes[1] ? imagenes[1].url : defaultImage} alt="Imagen 2" />
-          </div>
-
-          <div className="cuadriculadoImg">
-            <img src={imagenes[2] ? imagenes[2].url : defaultImage} alt="Imagen 3" />
-          </div>
-
-          <div className="cuadriculadoImg">
-            <img src={imagenes[3] ? imagenes[3].url : defaultImage} alt="Imagen 4" />
-          </div>
+          {imagenes.map((imagen, index) => {
+            while (index < 4) {
+              return (
+                <div className="cuadriculadoImg">
+                  <img src={imagen.url || defaultImage} alt="Imagen" />
+                </div>
+              )
+            }
+          })}
         </div>
       </div>
 
