@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 // import third party libraries
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
 
 //import App
-import App from "./App.jsx";
+import App from "./App.jsx"
 
 // import Pages
 import {
@@ -23,27 +23,27 @@ import {
   Edit,
   NotFound,
   Favorites,
-} from "./pages";
+} from "./pages"
 
-import "./index.css";
+import "./index.css"
 
 const AdminProtectedRoute = ({ children }) => {
-  const role = localStorage.getItem("role");
+  const role = localStorage.getItem("role")
   if (role != "ADMIN") {
-    return <Navigate to="/error" replace />;
+    return <Navigate to="/error" replace />
   }
 
-  return children;
-};
+  return children
+}
 
-// const UserProtectedRoute = ({ children }) => {
-//   const role = localStorage.getItem("role")
-//   if (role != "USER") {
-//     return <Navigate to="/error" replace />
-//   }
+const UserProtectedRoute = ({ children }) => {
+  const role = localStorage.getItem("role")
+  if (!role) {
+    return <Navigate to="/error" replace />
+  }
 
-//   return children
-// }
+  return children
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -55,8 +55,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/products/paginated" element={<List />} />
           <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />
-          <Route path="/policies" element={<Policies/>}/>
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/policies" element={<Policies />} />
+          <Route
+            path="/favorites"
+            element={
+              <UserProtectedRoute>
+                <Favorites />
+              </UserProtectedRoute>
+            }
+          />
+
           <Route path="admin">
             <Route
               index
@@ -90,10 +98,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </AdminProtectedRoute>
               }
             />
-            <Route path="categories" element={
-              <AdminProtectedRoute>
-                <Categories/>
-              </AdminProtectedRoute>} 
+            <Route
+              path="categories"
+              element={
+                <AdminProtectedRoute>
+                  <Categories />
+                </AdminProtectedRoute>
+              }
             />
           </Route>
           <Route path="error" element={<Error />} />
@@ -104,4 +115,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
-);
+)
