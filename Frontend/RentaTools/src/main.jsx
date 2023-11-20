@@ -16,18 +16,15 @@ import {
   SignUp,
   SignIn,
   Features,
+  Categories,
+  List,
+  Policies,
+  Error,
+  Edit,
+  NotFound,
+} from "./pages";
 
-} 
-from "./pages";
-
-import Favorites from "./pages/Favorites";
-import List from "./pages/List";
-import Policies from "./pages/Policies";
-//import Styles
 import "./index.css";
-import Error from "./pages/Error";
-import Edit from "./pages/Edit/index.jsx";
-import NotFound from "./pages/NotFound/index.jsx";
 
 const AdminProtectedRoute = ({ children }) => {
   const role = localStorage.getItem("role");
@@ -91,6 +88,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   <Edit />
                 </AdminProtectedRoute>
               }
+            />
+            <Route path="categories" element={
+              <AdminProtectedRoute>
+                <Categories/>
+              </AdminProtectedRoute>} 
             />
           </Route>
           <Route path="error" element={<Error />} />

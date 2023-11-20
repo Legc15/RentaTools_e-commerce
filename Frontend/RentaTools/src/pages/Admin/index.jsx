@@ -19,6 +19,10 @@ const Admin = () => {
     navigate("/admin/features")
   }
 
+  const navigateToAddCategorie = () =>{
+    navigate("/admin/categories")
+  }
+
   const handleListProducts = () => {
     setIsShowUserList(false)
     setIsShowProductsList(!isShowProductsList)
@@ -37,8 +41,8 @@ const Admin = () => {
             Agregar Producto
           </Button>
 
-          <Button variant="contained" onClick={navigateToAddProduct} className="button button-add-category">
-            Crear categoría
+          <Button variant="contained" onClick={navigateToAddCategorie} className="button button-add-category">
+            Administrar Categorias
           </Button>
           <Button variant="contained" onClick={navigateToFeatures} className="button button-add-feature">
             Administrar características{" "}
