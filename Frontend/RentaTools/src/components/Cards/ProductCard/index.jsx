@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder"
 import { useState } from "react"
+import { postNewInformation } from "../../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../../api/constants"
+import { getUserId } from "../../../utils/localStorageHandler"
 
 export default function ProductCard({ product, isHorizontal }) {
   const { id, name, shortDescription, productImage } = product
@@ -15,6 +18,21 @@ export default function ProductCard({ product, isHorizontal }) {
 
   const navigate = useNavigate()
   const goToDetailPage = (id) => navigate("/detail/" + id)
+
+
+  const handleFavoriteClick = async (id) => {
+    const body = {
+      product_id: id,
+      user_id: getUserId(),
+    }
+
+    
+    const response = await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
+    if(response.status === 200) {
+      setIsFavoriteAdded(!isFavoriteAdded)
+    } 
+  
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }} className="card-container">
@@ -25,7 +43,7 @@ export default function ProductCard({ product, isHorizontal }) {
             <Typography gutterBottom fontSize={16} component="div" className="product-title">
               {name}
             </Typography>
-            <IconButton aria-label="add to favorites" className="favorite" onClick={() => setIsFavoriteAdded(!isFavoriteAdded)}>
+            <IconButton aria-label="add to favorites" className="favorite" onClick={() => handleFavoriteClick(id) }>
               {isFavoriteAdded ? <FavoriteIcon /> : <FavoriteBorder />}
             </IconButton>
           </div>

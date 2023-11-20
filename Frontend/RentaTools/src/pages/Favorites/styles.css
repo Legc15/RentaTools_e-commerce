@@ -1,0 +1,11 @@
+.back-button {
+    background-color: #ffffff;
+    margin-right: 5%;
+    text-align: right;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 6px 17px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+}

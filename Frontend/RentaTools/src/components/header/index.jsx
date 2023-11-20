@@ -34,6 +34,7 @@ const Header = () => {
       if (result.isConfirmed) {
         localStorage.removeItem("role")
         localStorage.removeItem("token")
+        localStorage.removeItem("userId")
         setIsLoggedin(false)
         location.assign("/")
       }
