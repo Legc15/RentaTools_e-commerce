@@ -1,39 +1,30 @@
-.detail-container.body {
-    height: auto;
-}
-
-
 .view {
     display: flex;
-    width: 90vw;
+    flex-direction: row-reverse;
+    width: auto;
     height: auto;
-    margin:4rem;
+    padding:3rem;
     gap:1rem
 
 }
 
-@media (max-width: 2000px) {
-    .detail-container {
-        gap: 50px;
-    }
 
-    .view {
-        flex-direction: row;
-    }
-}
 
-@media (max-width:768px) {
+@media (max-width:769px) and (min-width: 426px) {
 
     .view {
         flex-direction: column-reverse;
-        width: 90%;
+        width: auto;
+        align-items: center;
+        justify-content: center;
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) and (min-width: 319px){
     .view {
         flex-direction: column-reverse;
         width: 95%;
         height: auto;
+        padding: 1rem;
     }
 }
