@@ -14,6 +14,12 @@ export const getProductsByQueryParamsEndpoint = (queryParams) => {
     .join("&")
   return baseUrl[env] + "products/paginated?" + queryParamURL
 }
+
+export const postAddFavoriteEndpoint = () => baseUrl[env] + "favorite"
+
+export const postFavoritesEndpoint = (id) => baseUrl[env] + "favorite/update/" + id
+export const getAllFavoritesEndpoint = () => baseUrl[env] + "favorite/all"
+
 export const getProductDetailEndpoint = (id) => baseUrl[env] + "products/" + id
 export const getIfNameExistsEndpoint = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
 

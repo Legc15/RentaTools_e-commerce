@@ -16,9 +16,11 @@ import {
   SignUp,
   SignIn,
   Features,
- 
-  
-} from "./pages";
+
+} 
+from "./pages";
+
+import Favorites from "./pages/Favorites";
 import List from "./pages/List";
 import Policies from "./pages/Policies";
 //import Styles
@@ -56,6 +58,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="/policies" element={<Policies/>}/>
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="admin">
             <Route
               index

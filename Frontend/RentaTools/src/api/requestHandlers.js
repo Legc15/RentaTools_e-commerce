@@ -12,6 +12,9 @@ import {
   postUserValidationEndpoint,
   getProductsByQueryParamsEndpoint,
   getFeaturesAllEndpoint,
+  postAddFavoriteEndpoint,
+  getAllFavoritesEndpoint,
+
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -22,12 +25,14 @@ const GET_ENDPOINTS_CODE = {
   USERS_ALL: getAllUsersEndpoint,
   EXIST_NAME: getIfNameExistsEndpoint,
   PRODUCTS_PAGINATED: getProductsByQueryParamsEndpoint,
+  FAVORITES_ALL: getAllFavoritesEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
   USER_CREATE: postSignUpUserEndpoint,
   PRODUCT_CREATE: postNewProductEndpoint,
   USER_VALIDATION: postUserValidationEndpoint,
+  FAVORITES_ADD: postAddFavoriteEndpoint,
 }
 
 const PUT_ENDPOINTS_CODE = {
@@ -37,6 +42,8 @@ const PUT_ENDPOINTS_CODE = {
 const PATCH_ENDPOINTS_CODE = {
   USER_EDIT_ROLE: patchEditedInformationEndpoint,
 }
+
+
 
 export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, productsByPage = 10, totalPages) => {
   const getInfo = async () => {

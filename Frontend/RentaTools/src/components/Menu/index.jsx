@@ -8,15 +8,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Divider from '@mui/material/Divider';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EngineeringIcon from '@mui/icons-material/Engineering';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { isAdmin } from '../../utils/localStorageHandler';
 
 
 
 const StyledMenu = styled((props) => (
     <Menu
         elevation={0}
-        
+
         anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'right',
@@ -56,7 +56,7 @@ const StyledMenu = styled((props) => (
 }));
 
 // eslint-disable-next-line react/prop-types
-export default function CustomizedMenus({ handleLogOut}) {
+export default function CustomizedMenus({ handleLogOut }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -78,12 +78,13 @@ export default function CustomizedMenus({ handleLogOut}) {
                 disableElevation
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
-                style={{backgroundColor: 'black', 
-                        borderRadius: '15px', 
-                        fontWeight: 'bold',
-                        fontSize: '0.8rem',
-                        padding: '0.3rem 0.8rem',
-                        }}
+                style={{
+                    backgroundColor: 'black',
+                    borderRadius: '15px',
+                    fontWeight: 'bold',
+                    fontSize: '0.8rem',
+                    padding: '0.3rem 0.8rem',
+                }}
             >
                 MENU
             </Button>
@@ -97,24 +98,26 @@ export default function CustomizedMenus({ handleLogOut}) {
                 onClose={handleClose}
             >
                 <MenuItem onClick={handleClose} disableRipple>
-                    <FavoriteIcon />
-                    Mis Favoritos
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                    <Link to= "/admin" style={{color: 'rgb(55, 65, 81)', fontFamily: '',fontSize:'1rem'}}>
-                    <EngineeringIcon />
-                    Panel de Administración
+                    <Link to="/favorites" style={{ color: 'rgb(55, 65, 81)', fontFamily: '', fontSize: '1rem' }}>
+                        <FavoriteIcon />
+                        Mis Favoritos
                     </Link>
                 </MenuItem>
+
+                { isAdmin()? 
+                <MenuItem onClick={handleClose} disableRipple>
+                    <Link to="/admin" style={{ color: 'rgb(55, 65, 81)', fontFamily: '', fontSize: '1rem' }}>
+                        <EngineeringIcon />
+                        Panel de Administración
+                    </Link>
+                </MenuItem> 
+                : ""
+                }
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleLogOut} disableRipple>
                     <LogoutIcon />
                     Cerrar Sesión
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                    <MoreHorizIcon />
-                    More
-                </MenuItem>
+                </MenuItem>                
             </StyledMenu>
         </div>
     );

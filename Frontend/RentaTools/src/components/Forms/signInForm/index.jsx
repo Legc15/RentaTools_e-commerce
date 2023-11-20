@@ -27,6 +27,7 @@ export default function SignInForm() {
       setIsUserValidated(false)
     } else {
       localStorage.setItem("role", response.role)
+      localStorage.setItem("userId", response.userId)
       localStorage.setItem("token", response.jwt)
       setIsUserValidated(true)
       setTimeout(() => redirectAccordingToRole(response.role), 2000)
