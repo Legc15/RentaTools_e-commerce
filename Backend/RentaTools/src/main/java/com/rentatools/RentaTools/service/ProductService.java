@@ -3,15 +3,12 @@ package com.rentatools.RentaTools.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentatools.RentaTools.entity.Product;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
-import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
 import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
-import com.rentatools.RentaTools.exceptions.ValidationFailedException;
-import com.rentatools.RentaTools.repository.CategoryRepository;
-import com.rentatools.RentaTools.repository.ImageRepository;
-import com.rentatools.RentaTools.repository.ProductRepository;
+import com.rentatools.RentaTools.repository.ICategoryRepository;
+import com.rentatools.RentaTools.repository.IImageRepository;
+import com.rentatools.RentaTools.repository.IProductRepository;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,32 +23,32 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductService {
     @Autowired
-    private final ProductRepository productRepository;
+    private final IProductRepository IProductRepository;
     @Autowired
-    private final CategoryRepository categoryRepository;
+    private final ICategoryRepository ICategoryRepository;
     @Autowired
-    private final ImageRepository imageRepository;
+    private final IImageRepository IImageRepository;
     @Autowired
     ObjectMapper mapper;
 
     public List<Product> getAllProducts(){
-        return productRepository.findAll();
+        return IProductRepository.findAll();
     }
 
     public Product getProductById(Long Id){
-        return productRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado."));
+        return IProductRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado."));
     }
 
     public Boolean getNameExist(String nameToSearch){
-        return productRepository.existsByName(nameToSearch);
+        return IProductRepository.existsByName(nameToSearch);
     }
 
     public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
         Page<Product> productsByPages;
         if(!isRandom){
-            productsByPages = productRepository.findAll(PageRequest.of(page - 1, productsByPage));
+            productsByPages = IProductRepository.findAll(PageRequest.of(page - 1, productsByPage));
         }else {
-            productsByPages = productRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
+            productsByPages = IProductRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
         }
         PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
         paginatedProductsResponse.setCurrentPage(page);
@@ -65,7 +62,7 @@ public class ProductService {
     public void createProduct(ProductDto productDto){
         try {
             Product product = mapper.convertValue(productDto, Product.class);
-            productRepository.save(product);
+            IProductRepository.save(product);
         }catch (Exception ex){
             throw new RuntimeException("Error en el guardado del nuevo producto.");
         }
@@ -73,7 +70,7 @@ public class ProductService {
 
     public Product updateProduct(Long id, ProductDto productDto) throws ResourceNotFoundException, BadRequestException {
         if (id == null) throw new BadRequestException("Se necesita un id de producto.");
-        Product productOld = productRepository.findById(id)
+        Product productOld = IProductRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto con ID: " + id + " no encontrado."));
             productOld.setName(productDto.getName());
             productOld.setProductCode(productDto.getProductCode());
@@ -83,12 +80,13 @@ public class ProductService {
             productOld.setPricePerDay(productDto.getPricePerDay());
             productOld.setPricePerHour(productDto.getPricePerHour());
             productOld.setCategory(productDto.getCategory());
-            return productRepository.save(productOld);
+            return IProductRepository.save(productOld);
     }
 
     public void deleteProduct(Long id){
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        if (optionalProduct.isPresent()){productRepository.deleteById(id);}
+        Optional<Product> optionalProduct = IProductRepository.findById(id);
+        if (optionalProduct.isPresent()){
+            IProductRepository.deleteById(id);}
         else throw new ResourceNotFoundException("Producto con ID: " + id + " no encontrado.");
     }
 

@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginMessage {
+    Long UserId;
     String Role;
     String JWT;
 }

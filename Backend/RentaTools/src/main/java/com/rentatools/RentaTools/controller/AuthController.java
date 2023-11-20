@@ -1,5 +1,4 @@
 package com.rentatools.RentaTools.controller;
-
 import com.rentatools.RentaTools.entity.dto.LoginDto;
 import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.service.AuthService;
@@ -16,12 +15,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
     @Autowired
-    AuthService authService;
+    private final AuthService authService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginMessage> loginMessageResponseEntity(@Valid @RequestBody LoginDto loginDto)throws BadRequestException {
         if (loginDto.getEmail() == null || loginDto.getPassword() == null) throw new BadRequestException("Falta email o password para el login.");
-        LoginMessage loginMessage = new LoginMessage("", "");
+        LoginMessage loginMessage = new LoginMessage(null,"", "");
         return ResponseEntity.ok(authService.login(loginDto));
     }
 
