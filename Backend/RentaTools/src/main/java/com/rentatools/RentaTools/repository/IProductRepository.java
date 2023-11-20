@@ -1,5 +1,4 @@
 package com.rentatools.RentaTools.repository;
-
 import com.rentatools.RentaTools.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
+
     boolean existsByName(String name);
 
     @Query(value = "SELECT * FROM product ORDER BY RAND()", nativeQuery = true)

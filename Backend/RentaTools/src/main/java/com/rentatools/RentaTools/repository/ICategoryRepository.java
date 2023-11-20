@@ -10,8 +10,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICategoryRepository extends JpaRepository<Category, Long> {
-    boolean existsByName(String name);
-
-    @Query(value = "SELECT * FROM product ORDER BY RAND()", nativeQuery = true)
-    Page<Product> findAllRandom(PageRequest pageRequest);
 }

@@ -12,12 +12,10 @@ import com.rentatools.RentaTools.utilities.PaginateMessage;
 import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
 import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
-import com.rentatools.RentaTools.exceptions.ValidationFailedException;
-import com.rentatools.RentaTools.repository.CategoryRepository;
-import com.rentatools.RentaTools.repository.ImageRepository;
-import com.rentatools.RentaTools.repository.ProductRepository;
+import com.rentatools.RentaTools.repository.ICategoryRepository;
+import com.rentatools.RentaTools.repository.IImageRepository;
+import com.rentatools.RentaTools.repository.IProductRepository;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -80,21 +78,6 @@ public class ProductService {
         return suggestionString;
     }
 
-    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
-        Page<Product> productsByPages;
-        if(!isRandom){
-            productsByPages = productRepository.findAll(PageRequest.of(page - 1, productsByPage));
-        }else {
-            productsByPages = productRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
-        }
-        PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
-        paginatedProductsResponse.setCurrentPage(page);
-        paginatedProductsResponse.setProductsByPage(productsByPage);
-        paginatedProductsResponse.setTotalProducts(productsByPages.getTotalElements());
-        paginatedProductsResponse.setTotalPages(productsByPages.getTotalPages());
-        paginatedProductsResponse.setData(productsByPages.getContent());
-        return paginatedProductsResponse;
-    }
 
     public void createProduct(ProductDto productDto){
         try {
