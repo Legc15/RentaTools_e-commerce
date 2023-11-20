@@ -22,6 +22,7 @@ import {
   Error,
   Edit,
   NotFound,
+  Favorites,
 } from "./pages";
 
 import "./index.css";
