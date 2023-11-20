@@ -1,6 +1,6 @@
-.card-container {
+.card-categories-container .card-container {
   height: auto;
-  width: 800px;
+  width: 240px;
 }
 .card-container .card-content:last-child {
   padding-bottom: 16px;

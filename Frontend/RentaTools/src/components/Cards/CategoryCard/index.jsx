@@ -3,7 +3,6 @@
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
-import { Button, CardActions } from "@mui/material"
 import "./styles.css"
 
 export default function CategoryCard({ productTitle, productImage, productDescription, isHorizontal }) {
@@ -20,11 +19,6 @@ export default function CategoryCard({ productTitle, productImage, productDescri
               {productDescription}
             </Typography>
           )}
-          <CardActions>
-            <Button className="button ver-mas" size="small" color="secondary">
-              Ver más
-            </Button>
-          </CardActions>
         </CardContent>
       </div>
     </Card>
