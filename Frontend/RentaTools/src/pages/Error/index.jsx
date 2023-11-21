@@ -5,7 +5,7 @@ const Error = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="body  page-container">
+    <div className="body padding page-container">
       <h1>Error</h1>
       <h4>Usted no está autenticado para esta acción.</h4>
       <Button variant="contained" onClick={() => navigate("/")}>

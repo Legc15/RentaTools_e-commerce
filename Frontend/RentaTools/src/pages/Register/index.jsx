@@ -56,7 +56,7 @@ const Register = () => {
   }
 
   return (
-    <div className="body register-container  page-container">
+    <div className="body padding register-container  page-container">
       <div>
         <Button variant="contained" onClick={navigateToAdmin} className="button">
           Regresar al Admin

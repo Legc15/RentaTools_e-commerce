@@ -21,7 +21,7 @@ const Features = () => {
   }, [isNewFeatureAdded])
 
   return (
-    <div className="body features-container  page-container">
+    <div className="body padding features-container  page-container">
       <div>
         <Button variant="contained" onClick={navigateToAdmin} className="button">
           Regresar al Admin

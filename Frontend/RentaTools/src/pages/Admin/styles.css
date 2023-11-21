@@ -1,3 +1,5 @@
+@import "../../colors.css";
+
 .admin-navbar {
   display: flex;
   justify-content: center;
@@ -10,4 +12,36 @@
 .show-navbar {
   display: flex;
   gap: 10px;
+}
+
+.admin-toolbar > div {
+  position: inherit;
+}
+
+.admin-box {
+  display: flex;
+  min-height: 100vh;
+  font-family: inherit;
+}
+
+.admin-buttons .admin-icon {
+  min-width: 0;
+  padding-right: 14px;
+}
+
+.admin-box .admin-table-show {
+  background-color: var(--light-orange);
+  min-width: calc(100vw - 240px);
+}
+
+.admin-toolbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+}
+
+.admin-toolbox svg {
+  font-size: 6em;
 }
