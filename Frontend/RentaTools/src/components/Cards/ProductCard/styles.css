@@ -41,3 +41,13 @@
 .card-content .ver-mas {
   padding: 0px;
 }
+
+.favorite:hover{
+  transform: scale(1.2);
+  
+
+}
+.card-container:hover{
+  box-shadow: rgb(96, 96, 96) 0px 2px 5px;
+  transform: scale(1.03);
+}
