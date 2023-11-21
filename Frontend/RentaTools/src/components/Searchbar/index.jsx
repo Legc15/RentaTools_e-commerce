@@ -24,9 +24,7 @@ export const Searchbar = () => {
       {" "}
       <div className="searchbar-container">
         <h1 className="searchbar-title">Encontrá la herramienta que estás buscando!</h1>
-        <p className="searchbar-description">
-          Ingresá las palabras claves del producto que buscás y las fechas tentativas de cuándo las necesitás
-        </p>
+
         <form onSubmit={(e) => handleSubmit(e, () => handleSearch())}>
           <TextField
             id="search-bar"

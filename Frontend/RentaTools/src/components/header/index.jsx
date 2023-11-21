@@ -7,8 +7,6 @@ import { useState } from "react"
 import Swal from "sweetalert2/dist/sweetalert2"
 import CustomizedMenus from "../Menu"
 
-
-
 const userFalso = {
   name: "Juan",
   lastName: "Perez",
@@ -69,15 +67,14 @@ const Header = () => {
           <>
             <div className="header-box">
               <div className="user-container">
-                <img src={userFalso.photo} alt="hola" className="avatar" />{""}
                 <h3>
                   {userFalso.name[0]}. {userFalso.lastName[0]}.
                 </h3>
+                <h6>Hola Juan Carlos!</h6>
               </div>
               <CustomizedMenus handleLogOut={handleLogOut} />
             </div>
           </>
-        
         ) : (
           <ul>
             <li>

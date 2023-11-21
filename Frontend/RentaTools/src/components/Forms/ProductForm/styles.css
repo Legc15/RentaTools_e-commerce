@@ -1,3 +1,5 @@
+@import "../../../colors.css";
+
 .register-container .form-container .edit-container {
   display: flex;
   gap: 24px;
@@ -19,19 +21,19 @@ form .stack-container .product-category {
 }
 
 .form-container input {
-  background-color: #faf9f6;
+  background-color: var(--light-orange);
 }
 
 .form-container .product-category {
-  background-color: #faf9f6;
+  background-color: var(--light-orange);
 }
 
 .form-container .description {
-  background-color: #faf9f6;
+  background-color: var(--light-orange);
 }
 
 .form-container .submit-form {
-  background-color: #ffa833;
+  background-color: var(--dark-orange);
   color: rgba(0, 0, 0, 0.9);
   font-weight: bold;
   font-size: 16px;

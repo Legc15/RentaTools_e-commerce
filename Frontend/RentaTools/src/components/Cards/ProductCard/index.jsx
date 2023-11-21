@@ -12,26 +12,27 @@ import { postNewInformation } from "../../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../../api/constants"
 import { getUserId } from "../../../utils/localStorageHandler"
 
-export default function ProductCard({ product, isHorizontal }) {
+export default function ProductCard({ product, isHorizontal, isProductFavorited }) {
   const { id, name, shortDescription, productImage } = product
-  const [isFavoriteAdded, setIsFavoriteAdded] = useState(false)
+  const [isFavoriteAdded, setIsFavoriteAdded] = useState(isProductFavorited)
 
   const navigate = useNavigate()
   const goToDetailPage = (id) => navigate("/detail/" + id)
 
-
   const handleFavoriteClick = async (id) => {
+    if (!getUserId()) {
+      navigate("/signin")
+    }
+
     const body = {
       product_id: id,
       user_id: getUserId(),
     }
 
-    
     const response = await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
-    if(response.status === 200) {
+    if (response.status === 200) {
       setIsFavoriteAdded(!isFavoriteAdded)
-    } 
-  
+    }
   }
 
   return (
@@ -43,7 +44,7 @@ export default function ProductCard({ product, isHorizontal }) {
             <Typography gutterBottom fontSize={16} component="div" className="product-title">
               {name}
             </Typography>
-            <IconButton aria-label="add to favorites" className="favorite" onClick={() => handleFavoriteClick(id) }>
+            <IconButton aria-label="add to favorites" className="favorite" onClick={() => handleFavoriteClick(id)}>
               {isFavoriteAdded ? <FavoriteIcon /> : <FavoriteBorder />}
             </IconButton>
           </div>

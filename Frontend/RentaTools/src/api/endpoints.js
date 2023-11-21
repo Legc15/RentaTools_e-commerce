@@ -18,7 +18,7 @@ export const getProductsByQueryParamsEndpoint = (queryParams) => {
 export const postAddFavoriteEndpoint = () => baseUrl[env] + "favorite"
 
 export const postFavoritesEndpoint = (id) => baseUrl[env] + "favorite/update/" + id
-export const getAllFavoritesEndpoint = () => baseUrl[env] + "favorite/all"
+export const getAllFavoritesEndpoint = (id) => baseUrl[env] + "favorite/user/" + id
 
 export const getProductDetailEndpoint = (id) => baseUrl[env] + "products/" + id
 export const getIfNameExistsEndpoint = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam

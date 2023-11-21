@@ -1,8 +1,10 @@
+@import "../../colors.css";
+
 .termsBody {
   margin: 50px auto;
   width: 70%;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   display: flex;
@@ -22,8 +24,8 @@
 }
 
 .buttonPolicies {
-  background-color: white;
-  color: #ffb800;
+  background-color: var(--white-color);
+  color: var(--dark-orange);
   cursor: pointer;
   border-radius: 20px;
   padding: 0.375rem 1.0625rem;
@@ -34,8 +36,8 @@
 }
 
 .buttonPolicies:hover {
-  background-color: #ffb800;
-  color: white;
+  background-color: var(--dark-orange);
+  color: var(--white-color);
   transition: 0.5s;
 }
 
@@ -51,16 +53,16 @@
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
+  text-decoration: underline;
 }
 
 .terms-discrecion {
   font-size: 0.8rem;
   text-align: center;
-  color: black;
+  color: var(--black-color);
 }
 
 .terms-descripcion {
   font-size: 1rem;
-color: black;
-
+  color: var(--black-color);
 }
