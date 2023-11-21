@@ -2,75 +2,110 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import AdminTable from "../../components/Tables/AdminTable"
 import "./styles.css"
-import { Button } from "@mui/material"
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+} from "@mui/material"
 import UsersTable from "../../components/Tables/UsersTable"
+import { faBoxesStacked, faHammer, faList, faPlus, faToolbox, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Admin = () => {
+  const [isShowInitialToolbox, setIsShowInitialToolbox] = useState(true)
   const [isShowProductsList, setIsShowProductsList] = useState(false)
   const [isShowUserList, setIsShowUserList] = useState(false)
 
   const navigate = useNavigate()
 
-  const navigateToAddProduct = () => {
-    navigate("/admin/register")
-  }
-
-  const navigateToFeatures = () => {
-    navigate("/admin/features")
-  }
-
-  const navigateToAddCategorie = () =>{
-    navigate("/admin/categories")
-  }
-
   const handleListProducts = () => {
     setIsShowUserList(false)
+    setIsShowInitialToolbox(false)
     setIsShowProductsList(!isShowProductsList)
   }
 
   const handleListUsers = () => {
     setIsShowProductsList(false)
+    setIsShowInitialToolbox(false)
     setIsShowUserList(!isShowUserList)
   }
-  return (
-    <div className="body admin-container page-container">
-      <h2 className="form-title">Panel de Administración</h2>
-      <div className="admin-navbar">
-        <div className="create-navbar">
-          <Button variant="contained" onClick={navigateToAddProduct} className="button button-add">
-            Agregar Producto
-          </Button>
 
-          <Button variant="contained" onClick={navigateToAddCategorie} className="button button-add-category">
-            Administrar Categorias
-          </Button>
-          <Button variant="contained" onClick={navigateToFeatures} className="button button-add-feature">
-            Administrar características{" "}
-          </Button>
-        </div>
-        <div className="show-navbar">
-          <Button variant="contained" onClick={handleListProducts} className="button button-list">
-            {isShowProductsList ? "Ocultar Listado" : "Listar Productos"}
-          </Button>
-          <Button variant="contained" onClick={handleListUsers} className="button button-add-category">
-            {isShowUserList ? "Ocultar Listado" : "Listar Usuarios"}
-          </Button>
-        </div>
-      </div>
-      {isShowProductsList ? (
-        <div className="admin-table-container">
-          <AdminTable />
-        </div>
-      ) : (
-        ""
-      )}
-      {isShowUserList ? (
-        <div className="admin-table-container">
-          <UsersTable />
-        </div>
-      ) : (
-        ""
-      )}
+  const adminButtons = [
+    { name: "Agregar producto", function: () => navigate("/admin/register"), icon: <FontAwesomeIcon icon={faPlus} /> },
+    { name: "Administrar categorías", function: () => navigate("/admin/categories"), icon: <FontAwesomeIcon icon={faBoxesStacked} /> },
+    { name: "Administrar características", function: () => navigate("/admin/features"), icon: <FontAwesomeIcon icon={faList} /> },
+    { name: "Listar productos", function: handleListProducts, icon: <FontAwesomeIcon icon={faHammer} /> },
+    { name: "Listar usuarios", function: handleListUsers, icon: <FontAwesomeIcon icon={faUser} /> },
+  ]
+
+  const drawerWidth = 240
+
+  return (
+    <div className="body admin-container">
+      <Box className="admin-box">
+        <CssBaseline />
+        <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}></AppBar>
+        <Drawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          variant="permanent"
+          anchor="left"
+          className="admin-toolbar"
+        >
+          <Toolbar />
+          <Divider />
+          <List className="admin-buttons">
+            {adminButtons.map((button, index) => (
+              <ListItem key={index} disablePadding>
+                <ListItemButton onClick={button.function}>
+                  <ListItemIcon className="admin-icon">{button.icon}</ListItemIcon>
+                  <ListItemText primary={button.name} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </Drawer>
+        <Box component="main" className="admin-table-show" sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}>
+          {isShowProductsList ? (
+            <div className="admin-table-container">
+              <AdminTable />
+            </div>
+          ) : (
+            ""
+          )}
+          {isShowUserList ? (
+            <div className="admin-table-container">
+              <UsersTable />
+            </div>
+          ) : (
+            ""
+          )}
+          {isShowInitialToolbox ? (
+            <div className="admin-toolbox">
+              <FontAwesomeIcon icon={faToolbox} size="2xl" />
+              <h2>Bienvenido, admin!</h2>
+              <h3>Para iniciar, por favor elegí una opción del menú</h3>
+            </div>
+          ) : (
+            ""
+          )}
+        </Box>
+      </Box>
     </div>
   )
 }

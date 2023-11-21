@@ -5,7 +5,7 @@ const NotFound = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="body  page-container">
+    <div className="body padding page-container">
       <h1>Error</h1>
       <h4>Producto inexistente.</h4>
       <Button variant="contained" onClick={() => navigate("/admin")}>
