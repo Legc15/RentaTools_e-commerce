@@ -6,7 +6,8 @@
   align-items: center;
   max-width: 100%;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
 }
 .searchbar-description {
   margin: 0px;
@@ -18,11 +19,11 @@
 }
 
 .searchbar-input.text-input {
-  width: 30vw;
+  width: 25vw;
 }
 
 .searchbar-input.date-input {
-  width: 20vw;
+  width: 15vw;
 }
 
 .searchbar-title {

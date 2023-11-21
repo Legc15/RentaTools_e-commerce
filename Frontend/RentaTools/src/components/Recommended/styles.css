@@ -1,7 +1,7 @@
 .recommended-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
 }
 
 .card-recommended-container {
@@ -10,11 +10,12 @@
   gap: 80px;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .recommended-container .title {
-  text-align: center;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 @media (max-width: 375px) {

@@ -12,6 +12,7 @@
   gap: 20px;
 }
 .terms {
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -43,6 +44,7 @@
 
 .terms li {
   list-style: none;
+  margin-bottom: 50px;
 }
 
 .terms-bullet {
@@ -50,16 +52,18 @@
   margin-bottom: 10px;
 }
 .terms-title {
+  text-decoration:underline;
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 700;
   text-align: center;
   text-decoration: underline;
 }
 
 .terms-discrecion {
-  font-size: 0.8rem;
+  width: 80%;
+  font-size: 1rem;
   text-align: center;
-  color: var(--black-color);
+  color: black;
 }
 
 .terms-descripcion {

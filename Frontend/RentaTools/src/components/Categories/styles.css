@@ -1,15 +1,15 @@
 .categories-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .categories-container .title {
-  text-align: center;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 .card-categories-container {
   display: flex;
   gap: 20px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
