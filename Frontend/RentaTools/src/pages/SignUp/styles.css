@@ -1,42 +1,41 @@
+@import "../../colors.css";
 
-.formulario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
 }
 
 .signup .registrar {
-    display: flex;
-    padding: 6px 17px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    font-style: normal;
-    line-height: normal;
-    border: none;
-    color: black;
-    background-color: #6ec5b8;
-    border-radius: 40px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    
-  }
-  
-.signup .registrar:hover {
-    background-color: #6ec5b8;
-  }
+  display: flex;
+  padding: 6px 17px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  line-height: normal;
+  border: none;
+  color: var(--black-color);
+  background-color: var(--green);
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
-.body{
+.signup .registrar:hover {
+  background-color: var(--green);
+}
+
+.body {
   display: flex;
   align-items: center;
   height: auto;
 }
 
-.signup{
+.signup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,16 +45,17 @@
   padding: 40px;
 }
 
-.registro{
+.registro {
   display: flex;
   align-items: center;
   height: 73vh;
 }
 
-.logoSignup{
+.logoSignup {
   padding-bottom: 30px;
 }
 
-.error-message , .success-message{
+.error-message,
+.success-message {
   padding-top: 25px;
 }

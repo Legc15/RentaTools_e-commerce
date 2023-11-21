@@ -1,17 +1,16 @@
+@import "./colors.css";
 body {
   margin: 0px;
   font-family: Inter, sans-serif;
-  color: #121212;
+  color: var(--black-color);
 }
-
-
 
 .page-container {
   padding: 36px;
 }
 
 .body {
-  background-color: #f6f5f2;
+  background-color: var(--light-orange);
   display: flex;
   flex-direction: column;
   padding-top: 36px;
@@ -40,4 +39,3 @@ body {
 .body input {
   font: inherit;
 }
-

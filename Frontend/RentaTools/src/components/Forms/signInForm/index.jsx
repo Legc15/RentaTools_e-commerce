@@ -5,6 +5,7 @@ import useForm from "../../../hooks/useForm"
 import { ENDPOINTS_CODE } from "../../../api/constants"
 import { postNewInformation } from "../../../api/requestHandlers"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const initialData = {
   email: "",
@@ -51,6 +52,18 @@ export default function SignInForm() {
       <HeaderButton buttonLabel="Ingresar" className="ingresar" type="submit" />
       {!isUserValidated && !isNewAttempt ? <div className="error-message">Nombre de usuario o contraseña no válidos.</div> : ""}
       {isUserValidated ? <div className="success-message">Usuario autenticado. Redirigiendo...</div> : ""}
+      {!isUserValidated ? (
+        <div className="signup-div">
+          {" "}
+          <p className="searchbar-description">No tenés usuario? </p>{" "}
+          <Link className="signup-link" to="/signup">
+            {" "}
+            Registrate acá
+          </Link>{" "}
+        </div>
+      ) : (
+        ""
+      )}
     </form>
   )
 }

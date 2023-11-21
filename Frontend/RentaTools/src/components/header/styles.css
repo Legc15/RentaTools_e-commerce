@@ -1,5 +1,7 @@
+@import "../../colors.css";
+
 .header-container {
-  background-color: #ffa833;
+  background-color: var(--dark-orange);
   margin: 0px;
   height: 90px;
   display: flex;
@@ -8,7 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 99;
-  box-shadow: #000000 0px 5px 25px;
+  box-shadow: var(--black-color) 0px 5px 25px;
   width: 100dvw;
 }
 
@@ -20,7 +22,7 @@ h1 {
   margin: 0px;
 }
 
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   font-size: 10px;
@@ -61,13 +63,13 @@ li .crear-cuenta {
   font-weight: 700;
   line-height: normal;
   border: none;
-  color: black;
+  color: var(--black-color);
   background-color: aliceblue;
   border-radius: 40px;
 }
 
 li .crear-cuenta:hover {
-  background-color: #6ec5b8;
+  background-color: var(--green);
 }
 
 li .iniciar-sesion {
@@ -81,17 +83,17 @@ li .iniciar-sesion {
   font-weight: 700;
   line-height: normal;
   border: none;
-  color: black;
+  color: var(--black-color);
   background-color: aliceblue;
   border-radius: 40px;
 }
 
 li .iniciar-sesion:hover {
-  background-color: #6ec5b8;
+  background-color: var(--green);
 }
 
 .nombre-frase h2 {
-  color: #000;
+  color: var(--black-color);
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
@@ -99,7 +101,7 @@ li .iniciar-sesion:hover {
 }
 
 .nombre-frase h1 {
-  color: #000;
+  color: var(--black-color);
   font-family: Orbitron;
   font-size: 35px;
   font-style: normal;
@@ -133,13 +135,16 @@ li .iniciar-sesion:hover {
 .avatar {
   width: 2rem;
   height: 1.5rem;
-  
 }
 
 .user-container {
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  margin: 0;
+}
+
+.user-container h6 {
   margin: 0;
 }
 
@@ -157,10 +162,9 @@ li .iniciar-sesion:hover {
   justify-content: space-between;
   width: 100%;
   gap: 0.5rem;
-  
 }
 
-h3{
+h3 {
   font-size: 1rem;
   font-weight: 700;
   margin: 0px;
@@ -175,15 +179,14 @@ h3{
 
   .user-container {
     flex-direction: column;
-
   }
 
-  .header-container button,h3{
+  .header-container button,
+  h3 {
     height: 1.5rem;
     font-size: 0.6rem;
-    
   }
-  .header-container{
+  .header-container {
     display: flex;
     justify-content: space-around;
   }

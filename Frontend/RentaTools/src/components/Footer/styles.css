@@ -1,5 +1,7 @@
+@import "../../colors.css";
+
 .footer-container {
-  background-color: #000000;
+  background-color: var(--black-color);
   height: 100px;
   display: flex;
   align-items: center;
@@ -14,12 +16,12 @@
 }
 
 .copyright {
-  color: white;
+  color: var(--white-color);
   font-size: 0.75rem;
   font: Roboto;
 }
 
-.copyrihtPolicies{
+.copyrihtPolicies {
   display: flex;
   flex-direction: column;
   gap: 10rem;
@@ -27,7 +29,6 @@
 
 .copyright-responsive {
   display: none;
-
 }
 .isologotipo {
   display: flex;
@@ -36,11 +37,10 @@
 }
 .isologotipo img {
   height: 3rem;
-  
 }
 
 .socialMedia {
-  color: white;
+  color: var(--white-color);
   display: flex;
   gap: 1rem;
 
@@ -56,7 +56,7 @@
   .copyright-responsive {
     display: block;
     font-size: 0.75rem;
-    color: white;
+    color: var(--white-color);
   }
   .socialMedia {
     font-size: 1.2rem;
@@ -67,12 +67,12 @@
   }
 }
 a {
-  color: white;
+  color: var(--white-color);
   text-decoration: none;
   font-size: 0.8rem;
 }
 a:hover {
-  color: #ffb800;
+  color: var(--dark-orange);
   text-decoration: underline;
 }
 a :visited {
@@ -80,12 +80,11 @@ a :visited {
 }
 
 p {
-  color: white;
+  color: var(--white-color);
   font-size: 0.8rem;
   margin: 0%;
 }
 .socialMedia div:hover {
-  color: #ffb800;
+  color: var(--dark-orange);
   scale: 1.1;
-
 }
