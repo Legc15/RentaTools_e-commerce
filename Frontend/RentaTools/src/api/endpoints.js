@@ -16,6 +16,8 @@ export const getProductsByQueryParamsEndpoint = (queryParams) => {
 }
 
 export const postAddFavoriteEndpoint = () => baseUrl[env] + "favorite"
+export const deleteFavoriteEndpoint = () => baseUrl[env] + "favorite/delete" 
+
 
 export const postFavoritesEndpoint = (id) => baseUrl[env] + "favorite/update/" + id
 export const getAllFavoritesEndpoint = (id) => baseUrl[env] + "favorite/user/" + id
@@ -35,3 +37,4 @@ export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role
 export const postUserValidationEndpoint = () => baseUrl[env] + "auth/login"
 
 export const getFeaturesAllEndpoint = () => baseUrl[env] + "feature/all"
+

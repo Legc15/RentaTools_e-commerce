@@ -10,11 +10,13 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder"
 import { useState } from "react"
 import { postNewInformation } from "../../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../../api/constants"
+
 import { getUserId } from "../../../utils/localStorageHandler"
 
 export default function ProductCard({ product, isHorizontal, isProductFavorited }) {
   const { id, name, shortDescription, productImage } = product
   const [isFavoriteAdded, setIsFavoriteAdded] = useState(isProductFavorited)
+
 
   const navigate = useNavigate()
   const goToDetailPage = (id) => navigate("/detail/" + id)
@@ -29,10 +31,9 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
       user_id: getUserId(),
     }
 
-    const response = await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
-    if (response.status === 200) {
-      setIsFavoriteAdded(!isFavoriteAdded)
-    }
+    await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
+    setIsFavoriteAdded(!isFavoriteAdded)
+    
   }
 
   return (
