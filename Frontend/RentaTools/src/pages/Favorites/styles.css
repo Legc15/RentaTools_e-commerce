@@ -11,3 +11,16 @@
   font-style: normal;
   font-weight: 700;
 }
+
+.favs{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5rem 0;
+  gap: 40px;
+}
+
+.title {
+  font-size: 1rem;
+  text-align: left;
+}
