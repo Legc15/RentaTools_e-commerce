@@ -8,13 +8,18 @@ import { useNavigate } from "react-router-dom"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder"
 import { useState } from "react"
-import { postNewInformation } from "../../../api/requestHandlers"
+import { getInformationFromEndpoints, deleteInformation, postNewInformation } from "../../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../../api/constants"
+
 import { getUserId } from "../../../utils/localStorageHandler"
+
 
 export default function ProductCard({ product, isHorizontal, isProductFavorited }) {
   const { id, name, shortDescription, productImage } = product
   const [isFavoriteAdded, setIsFavoriteAdded] = useState(isProductFavorited)
+  const [favorites, setFavorites] = useState([]);
+
+  
 
   const navigate = useNavigate()
   const goToDetailPage = (id) => navigate("/detail/" + id)
@@ -23,17 +28,30 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
     if (!getUserId()) {
       navigate("/signin")
     }
-
     const body = {
       product_id: id,
-      user_id: getUserId(),
+      user_id: parseInt(getUserId()),
     }
 
-    const response = await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
-    if (response.status === 200) {
-      setIsFavoriteAdded(!isFavoriteAdded)
+    //console.log(body); 
+
+    if (isFavoriteAdded) {
+
+      await deleteInformation({ endpoint: ENDPOINTS_CODE.FAVORITES_RMV, body });
+      setFavorites(favorites.filter((product) => product.id !== id));
+      setIsFavoriteAdded(false)
+    } else {
+
+      const product = await getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id);
+      await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
+      setFavorites([...favorites, product]);
+      setIsFavoriteAdded(true)
     }
   }
+
+  //console.log(favorites); 
+  
+
 
   return (
     <Card sx={{ maxWidth: 345 }} className="card-container">
