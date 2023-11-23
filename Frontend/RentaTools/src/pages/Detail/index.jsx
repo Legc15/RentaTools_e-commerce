@@ -22,8 +22,7 @@ const Detail = () => {
   const hasInformation = Object.keys(product).length > 0
 
   return (
-    <div className="detail-container body">
-      <h1>Detalle de Producto</h1>
+    <div className="detail-container">
       <ProductDetails productInfo={hasInformation ? product : objectNotFound} />
     </div>
   )

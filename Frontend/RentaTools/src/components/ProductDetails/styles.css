@@ -23,17 +23,29 @@ h2 {
   gap: 50px;
 }
 
-.product-details-header {
+.product-details-header{
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
 
 .product-details-title {
+  width: auto;
+  height: auto;
+  color: black;
+  font-size: 1rem;
   text-align: left;
-  margin: 0;
+}
+
+.description{
+  width: auto; 
+  height: auto;
+  color: black;
+  font-size: 0.8rem;
+  text-align: justify;
+  padding: 0 1rem;
 }
 
 .product-details-back-button {
@@ -52,55 +64,14 @@ h2 {
   box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
 
-@media (max-width: 2000px) {
-  .view {
-    gap: 50px;
-  }
-
-  .product-details-title {
-    text-align: center;
-    margin: 0;
-  }
-
-  .product-details-body {
-    align-items: center;
-  }
-
-  .product-details-back-button {
-    gap: 10px;
-    padding: 6px 30px;
-  }
+.product-details-body{
+  width: 95%;
+  padding:1rem;
 }
-
-@media (min-width: 768px) {
-  .product-details-container {
-    margin: 0px;
-    padding: 24px;
-  }
-
-  .product-details-back-button {
-    margin: 0;
-    padding: 6px 30px;
-  }
-}
-
-.products-feature {
-  margin: 2px;
-  margin-top: 5px;
-  padding: 0;
-  font-size: 14px;
-}
-
-.products-feature svg {
-  padding-right: 10px;
-}
-
-.product-details-features {
-  padding-top: 10px;
-}
-
-.lower-cnt {
+.lower-cnt{
+  width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -112,43 +83,129 @@ h2 {
   text-align: center;
 }
 
-.date-calendar .Mui-disabled {
-  text-decoration: line-through;
+.product-details-features{
+  width: 50%;
+  text-align: left;
+  background-color: #dad8d8;
+  font-size: 0.85rem;
+}
+.products-feature{
+  padding: 0.7rem;
+  color:black;
+}
+.calendar{
+  border-left: 2px solid grey;
+  background-color: white;
+  width: 50%;
+  font-size: 0.85rem;
+  text-align: left;
+  padding-left: 1rem;
 }
 
-@media (max-width: 425px) {
-  h1 {
-    display: none;
+@media (max-width: 769px) and (min-width: 426px){
+
+  .details-container{
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
+  }
+  .product-details-container{
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
   }
 
-  .view {
-    width: 100vw;
+  .product-details-title {
+    font-size: 1rem;
+  }
+  .product-details-features{
+    text-align: left;
+    width: 50%;
+
+  }
+  .product-details-header{
+    width: 95%;
+  }
+
+  .products-feature{
+    padding: 1rem;
+  }
+  .lower-cnt{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 425px) and (min-width: 319px){
+
+    h4{
+      font-size: 1rem;
+      padding-left: 0.5rem;
+    }
+  .view{
+    align-items: center;
+    width:100%;
+    margin: 0;
     padding: 0;
-    gap: 0px;
+  }
+  .product-details-body{
+    padding: 0;
+    margin: 0;
+  }
+  .product-details-header{
+    width: 90%;
+    padding: 1rem;
   }
   .product-details-container {
-    width: 90vw;
-    margin: 0px;
-    padding: 25px;
+    width: 90%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
+  
   }
-  .product-details-header {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 25px;
+  .lower-cnt{
+    width: 105%;
+    flex-direction: column;
+  }
+  .product-details-title {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
   }
 
+  .product-details-features{
+    width: 100%;
+    background-color: white;
+    text-align: left;
+    font-size: 0.85rem;
+    margin-top: 1rem ;
+  }
   .product-details-description {
-    margin-top: 30px;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+    font-size: 0.8rem;
+  }
+  
+  .calendar{
+    border: none;
+    margin-top: 1rem;
+    padding: 0;
+    width: 100%;
+  }
+  .calendar-title{
+    text-align: left;
   }
   .product-details-back-button {
     margin: 0px;
+    padding: 6px 20px;
+    font-size: 15px;
   }
-  .lower-cnt {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .calendar-title {
-    text-align: left;
-  }
+  
 }
+
+
