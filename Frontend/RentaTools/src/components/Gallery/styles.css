@@ -96,7 +96,7 @@
 
 /*------------------RESPONSIVE------------------*/
 
-@media (max-width: 768px) {
+@media (max-width: 769px) and (min-width: 426px){
   .GaleryContainer {
     padding: 10px 0px;
     width: 65vw;
@@ -107,13 +107,12 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 425px) and (min-width: 319px){
   .GaleryContainer {
     justify-content: center;
     height: auto;
     width: 100vw;
     padding: 0px;
-    margin: 0px;
   }
 
   .imagenPrincipal {
@@ -135,6 +134,7 @@
     width: 85%;
   }
   .cuadriculado {
+    width: 80%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -142,10 +142,7 @@
     gap: 30px;
     margin: 50px;
   }
-  .imageContainer {
-    width: 250px;
-    height: 250px;
-  }
+  
   .verMasContainer {
     display: flex;
     justify-content: center;
@@ -157,14 +154,3 @@
   }
 }
 
-@media (max-width: 375px) {
-  .GaleryContainer {
-    justify-content: center;
-    height: auto;
-    width: 100vw;
-  }
-
-  .imagenPrincipal {
-    display: none;
-  }
-}
