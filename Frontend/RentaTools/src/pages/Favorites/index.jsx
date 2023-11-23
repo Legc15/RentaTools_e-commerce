@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/Cards/ProductCard";
-import { getInformationFromEndpoints, postNewInformation, deleteInformation } from "../../api/requestHandlers";
+import { getInformationFromEndpoints } from "../../api/requestHandlers";
 import { ENDPOINTS_CODE } from "../../api/constants";
 import "./styles.css";
 import { getUserId } from "../../utils/localStorageHandler";
@@ -12,18 +12,20 @@ export default function Favorites() {
     
     const [favorites, setFavorites] = useState([])
     const filtredProducts = productInformation.filter((product) => favorites.includes(product.id))
-    console.log(filtredProducts)
-    if (getUserId()) {
+    
+    
         useEffect(() => {
+            if (getUserId()){
             getInformationFromEndpoints(ENDPOINTS_CODE.FAVORITES_ALL, getUserId()).then((response) => {
                 setFavorites(response)
             })
             getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => {
                 setProductInformation(response)
             })
+        }
         }, [])
-    }
-    console.log(favorites)
+    
+    
     const isProductFavorited = (id) => {
         return favorites.includes(id)
     }
@@ -51,7 +53,7 @@ export default function Favorites() {
                             <ProductCard
                                 key={product.id}
                                 product={product}
-                                isProductFavorited={isProductFavorited(product.id)}
+                                isProductFavorited={isProductFavorited}
                             />
                         );
                     })
