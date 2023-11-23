@@ -37,3 +37,10 @@
   font-size: 0.5rem;
   text-align: left;
 }
+
+@media(max-width: 768px) {
+  .terms-top {
+    padding: 3rem 2rem 0rem 2rem;
+    gap: 0rem;
+  }
+}
