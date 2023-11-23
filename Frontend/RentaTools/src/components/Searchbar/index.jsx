@@ -20,11 +20,11 @@ export const Searchbar = () => {
     console.log(formData)
   }
   return (
-    <div>
+    <>
       {" "}
       <div className="searchbar-container">
         <h1 className="searchbar-title">Encontrá la herramienta que estás buscando!</h1>
-        <form onSubmit={(e) => handleSubmit(e, () => handleSearch())}>
+        <form onSubmit={(e) => handleSubmit(e, () => handleSearch())} className="searchbar-bars">
           <TextField
             id="search-bar"
             className="searchbar-input text-input"
@@ -56,6 +56,6 @@ export const Searchbar = () => {
           </Button>
         </form>
       </div>
-    </div>
+    </>
   )
 }
