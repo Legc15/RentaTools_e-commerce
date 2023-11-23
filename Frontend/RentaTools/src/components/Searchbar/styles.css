@@ -36,3 +36,15 @@
   justify-content: center;
   gap: 1rem;
 }
+
+@media (max-width: 768px) {
+  .searchbar-container form  {
+   flex-direction: column; 
+
+  }
+
+  .searchbar-input.text-input,
+  .searchbar-input.date-input{
+    width: 100%;
+  } 
+  }
