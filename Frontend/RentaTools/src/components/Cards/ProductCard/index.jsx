@@ -13,13 +13,10 @@ import { ENDPOINTS_CODE } from "../../../api/constants"
 
 import { getUserId } from "../../../utils/localStorageHandler"
 
-
 export default function ProductCard({ product, isHorizontal, isProductFavorited }) {
   const { id, name, shortDescription, productImage } = product
   const [isFavoriteAdded, setIsFavoriteAdded] = useState(isProductFavorited)
-  const [favorites, setFavorites] = useState([]);
-
-  
+  const [favorites, setFavorites] = useState([])
 
   const navigate = useNavigate()
   const goToDetailPage = (id) => navigate("/detail/" + id)
@@ -33,25 +30,16 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
       user_id: parseInt(getUserId()),
     }
 
-    //console.log(body); 
-
     if (isFavoriteAdded) {
-
-      await deleteInformation({ endpoint: ENDPOINTS_CODE.FAVORITES_RMV, body });
-      setFavorites(favorites.filter((product) => product.id !== id));
-      setIsFavoriteAdded(false)
+      await deleteInformation({ endpoint: ENDPOINTS_CODE.FAVORITES_RMV, body })
+      setFavorites(favorites.filter((product) => product.id !== id))
     } else {
-
-      const product = await getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id);
+      const product = await getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id)
       await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
-      setFavorites([...favorites, product]);
-      setIsFavoriteAdded(true)
+      setFavorites([...favorites, product])
     }
+    setIsFavoriteAdded(!isFavoriteAdded)
   }
-
-  //console.log(favorites); 
-  
-
 
   return (
     <Card sx={{ maxWidth: 345 }} className="card-container">
