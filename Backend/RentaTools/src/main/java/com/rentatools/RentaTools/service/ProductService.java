@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,32 +24,32 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductService {
     @Autowired
-    private final IProductRepository IProductRepository;
+    private final IProductRepository iProductRepository;
     @Autowired
-    private final ICategoryRepository ICategoryRepository;
+    private final ICategoryRepository iCategoryRepository;
     @Autowired
-    private final IImageRepository IImageRepository;
+    private final IImageRepository iImageRepository;
     @Autowired
     ObjectMapper mapper;
 
     public List<Product> getAllProducts(){
-        return IProductRepository.findAll();
+        return iProductRepository.findAll();
     }
 
     public Product getProductById(Long Id){
-        return IProductRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado."));
+        return iProductRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado."));
     }
 
     public Boolean getNameExist(String nameToSearch){
-        return IProductRepository.existsByName(nameToSearch);
+        return iProductRepository.existsByName(nameToSearch);
     }
 
     public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
         Page<Product> productsByPages;
         if(!isRandom){
-            productsByPages = IProductRepository.findAll(PageRequest.of(page - 1, productsByPage));
+            productsByPages = iProductRepository.findAll(PageRequest.of(page - 1, productsByPage));
         }else {
-            productsByPages = IProductRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
+            productsByPages = iProductRepository.findAllRandom(PageRequest.of(page - 1, productsByPage));
         }
         PaginateMessage<Product> paginatedProductsResponse = new PaginateMessage<>();
         paginatedProductsResponse.setCurrentPage(page);
@@ -59,10 +60,21 @@ public class ProductService {
         return paginatedProductsResponse;
     }
 
+    public List<Product> getBarProductsByDate(String productSearch, String startingDate, String endingDate){
+        return iProductRepository.findSuggestions(productSearch);
+    }
+
+    public List<String> getSuggestion(String barString){
+        List<Product> suggestionList = iProductRepository.findSuggestions(barString);
+        List<String> suggestionString = new ArrayList<>();
+        suggestionList.forEach(product -> suggestionString.add(product.getName()));
+        return suggestionString;
+    }
+
     public void createProduct(ProductDto productDto){
         try {
             Product product = mapper.convertValue(productDto, Product.class);
-            IProductRepository.save(product);
+            iProductRepository.save(product);
         }catch (Exception ex){
             throw new RuntimeException("Error en el guardado del nuevo producto.");
         }
@@ -70,7 +82,7 @@ public class ProductService {
 
     public Product updateProduct(Long id, ProductDto productDto) throws ResourceNotFoundException, BadRequestException {
         if (id == null) throw new BadRequestException("Se necesita un id de producto.");
-        Product productOld = IProductRepository.findById(id)
+        Product productOld = iProductRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto con ID: " + id + " no encontrado."));
             productOld.setName(productDto.getName());
             productOld.setProductCode(productDto.getProductCode());
@@ -80,13 +92,13 @@ public class ProductService {
             productOld.setPricePerDay(productDto.getPricePerDay());
             productOld.setPricePerHour(productDto.getPricePerHour());
             productOld.setCategory(productDto.getCategory());
-            return IProductRepository.save(productOld);
+            return iProductRepository.save(productOld);
     }
 
     public void deleteProduct(Long id){
-        Optional<Product> optionalProduct = IProductRepository.findById(id);
+        Optional<Product> optionalProduct = iProductRepository.findById(id);
         if (optionalProduct.isPresent()){
-            IProductRepository.deleteById(id);}
+            iProductRepository.deleteById(id);}
         else throw new ResourceNotFoundException("Producto con ID: " + id + " no encontrado.");
     }
 

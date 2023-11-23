@@ -4,6 +4,8 @@ import com.rentatools.RentaTools.entity.dto.ProductDto;
 import com.rentatools.RentaTools.entity.dto.UserDto;
 import com.rentatools.RentaTools.entity.dto.UserSecureDto;
 import com.rentatools.RentaTools.exceptions.AttributeException;
+import com.rentatools.RentaTools.exceptions.BadRequestException;
+import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
 import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.UserService;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
@@ -35,8 +37,13 @@ public class UserController {
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Usuario creado correctamente."));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getById(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException{
+        return ResponseEntity.ok(userService.GetUserById(id));
+    }
+
     @PatchMapping("/role/update/{id}")
-    public  ResponseEntity<ResponseMessage> changeRole(@PathVariable Long id, @Valid @RequestBody boolean isAdmin) throws AttributeException{
+    public  ResponseEntity<ResponseMessage> changeRole(@PathVariable Long id, @Valid @RequestBody boolean isAdmin) throws BadRequestException, ResourceNotFoundException {
         userService.changeRoleService(id, isAdmin);
         String admin = (isAdmin)?"Administrador":"Usuario";
         return ResponseEntity.ok(new ResponseMessage("El ID: " + id + " fue definido como " + admin));

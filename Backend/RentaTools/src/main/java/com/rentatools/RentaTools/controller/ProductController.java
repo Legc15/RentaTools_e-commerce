@@ -7,6 +7,7 @@ import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.ProductService;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
+import com.rentatools.RentaTools.utilities.SearchBarDate;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,16 @@ public class ProductController {
     public Boolean getExistName(@RequestParam String name){
         System.out.println(name);
         return productService.getNameExist(name);
+    }
+
+    @GetMapping("/suggestion")
+    public ResponseEntity<List<String>> getSuggestion(@RequestBody String barString){
+        return ResponseEntity.ok(productService.getSuggestion(barString));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> getProductByDate(@RequestBody SearchBarDate searchBarDate){
+        return ResponseEntity.ok(productService.getBarProductsByDate(searchBarDate.getSearch(), searchBarDate.getStartDate(), searchBarDate.getEndDate()));
     }
 
     @GetMapping("/{id}")

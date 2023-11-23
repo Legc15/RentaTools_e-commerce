@@ -22,13 +22,24 @@ public class FavoriteController {
     private final FavoriteService favoriteService;
 
     @GetMapping("/all")
-    private ResponseEntity<List<Favorite>> getAllFavorites(){
+    public ResponseEntity<List<Favorite>> getAllFavorites(){
         return ResponseEntity.ok(favoriteService.getAllFavorites());
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Long>> getFavoritesByUser(@PathVariable Long id){
+        return ResponseEntity.ok(favoriteService.getFavoritesByUsersId(id));
+    }
+
     @PostMapping()
-    private ResponseEntity<String> saveFavorite(@Valid @RequestBody FavoriteDto favoriteDto) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<String> saveFavorite(@Valid @RequestBody FavoriteDto favoriteDto) throws BadRequestException, ResourceNotFoundException {
         favoriteService.saveFavorite(favoriteDto);
         return ResponseEntity.ok("Producto agregado a favoritos correctamente.");
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteFavorite(@Valid @RequestBody FavoriteDto favoriteDto) throws BadRequestException, ResourceNotFoundException{
+        favoriteService.delete(favoriteDto);
+        return ResponseEntity.ok("Favorito eliminado correctamente.");
     }
 }
