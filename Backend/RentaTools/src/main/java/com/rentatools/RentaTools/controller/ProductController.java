@@ -40,7 +40,7 @@ public class ProductController {
         return productService.getNameExist(name);
     }
 
-    @GetMapping("/suggestion")
+    @PostMapping("/suggestion")
     public ResponseEntity<List<String>> getSuggestion(@RequestBody String barString){
         return ResponseEntity.ok(productService.getSuggestion(barString));
     }
