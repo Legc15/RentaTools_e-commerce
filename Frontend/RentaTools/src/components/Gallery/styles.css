@@ -2,7 +2,10 @@
 
 .GaleryContainer {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  flex-direction: row;
+  height: 35vh;
   background-color: var(--white-color);
   max-width: 1200px;
   padding: 1.2rem;
@@ -31,7 +34,7 @@
 }
 
 .cuadriculado {
-  width: 43%;
+  width: 45%;
   display: grid;
   grid-template-rows: repeat(2, 1fr); /* 2 filas iguales */
   grid-template-columns: repeat(2, 1fr);
@@ -62,6 +65,7 @@
 }
 
 .verMasContainer {
+  height: 10vh;
   background-color: var(--white-color);
   display: flex;
   justify-content: flex-end;
@@ -98,10 +102,14 @@
 
 @media (max-width: 769px) and (min-width: 426px){
   .GaleryContainer {
-    padding: 10px 0px;
-    width: 65vw;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
     height: auto;
   }
+  
   .verMasContainer {
     margin-top: 0px;
   }
