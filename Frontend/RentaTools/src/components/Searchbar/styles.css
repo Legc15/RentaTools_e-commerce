@@ -38,13 +38,19 @@
 }
 
 @media (max-width: 768px) {
-  .searchbar-container form  {
-   flex-direction: column; 
-
+  .searchbar-container form {
+    flex-direction: column;
   }
 
   .searchbar-input.text-input,
-  .searchbar-input.date-input{
+  .searchbar-input.date-input {
     width: 100%;
-  } 
   }
+}
+.suggestions-title {
+  margin: 0;
+}
+
+.suggestions li {
+  font-size: 14px;
+}

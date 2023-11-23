@@ -16,6 +16,8 @@ import {
   getAllFavoritesEndpoint,
   deleteFavoriteEndpoint,
   getUserEndpoint,
+  getSearchEndpoint,
+  getSearchSuggestionsEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -28,6 +30,8 @@ const GET_ENDPOINTS_CODE = {
   EXIST_NAME: getIfNameExistsEndpoint,
   PRODUCTS_PAGINATED: getProductsByQueryParamsEndpoint,
   FAVORITES_ALL: getAllFavoritesEndpoint,
+  SEARCH: getSearchEndpoint,
+  SUGGESTIONS: getSearchSuggestionsEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
@@ -58,6 +62,26 @@ export const getInformationFromEndpoints = async (endpoint, id = "", categoryId 
     return response
   }
   const dataParsed = await getInfo(id)
+    .then((result) => {
+      return result
+    })
+    .catch((e) => e)
+  return dataParsed
+}
+
+export const getInformationFromEndpointsWithBody = async (endpoint, body) => {
+  const getInfo = async () => {
+    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](), {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
+      },
+      body: JSON.stringify(body),
+    }).then((response) => response.json())
+    return response
+  }
+  const dataParsed = await getInfo()
     .then((result) => {
       return result
     })
