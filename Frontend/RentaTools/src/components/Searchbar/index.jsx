@@ -7,6 +7,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 import { Button } from "@mui/material"
 import useForm from "../../hooks/useForm"
+import { useState } from "react"
 const initialState = {
   search: "",
   reservationFrom: "",
@@ -14,11 +15,25 @@ const initialState = {
 }
 
 export const Searchbar = () => {
-  const { formData, handleInputChange, handleDateChange, handleSubmit } = useForm(initialState)
-
+  const { formData, setFormData, handleDateChange, handleSubmit } = useForm(initialState)
+  const suggestionsArray = [
+    "Martillo de demolición",
+    "Martillo de demolición hexagonal",
+    "Taladro de martillo giratorio",
+    "Taladro de martillo giratorio inalámbrico",
+  ]
+  const [suggestions, setSuggestions] = useState(suggestionsArray)
+  const [isShowSuggestions, setIsShowSuggestions] = useState(false)
   const handleSearch = () => {
     console.log(formData)
   }
+
+  const handleInputChange = (e) => {
+    setIsShowSuggestions(true)
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setSuggestions(suggestions.filter((sugg) => sugg.includes(formData.search)))
+  }
+
   return (
     <>
       {" "}
@@ -55,6 +70,16 @@ export const Searchbar = () => {
             Buscar
           </Button>
         </form>
+        {isShowSuggestions ? (
+          <div className="suggestions">
+            <h6 className="suggestions-title">Sugerencias:</h6>
+            {suggestions.map((suggestions, index) => (
+              <li key={index}>{suggestions}</li>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   )
