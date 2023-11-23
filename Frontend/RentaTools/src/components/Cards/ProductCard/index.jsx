@@ -13,7 +13,7 @@ import { ENDPOINTS_CODE } from "../../../api/constants"
 
 import { getUserId } from "../../../utils/localStorageHandler"
 
-export default function ProductCard({ product, isHorizontal, isProductFavorited }) {
+export default function ProductCard({ product, isHorizontal, isProductFavorited, onFavoriteClick }) {
   const { id, name, shortDescription, productImage } = product
   const [isFavoriteAdded, setIsFavoriteAdded] = useState(isProductFavorited)
 
@@ -31,34 +31,56 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
       user_id: getUserId(),
     }
 
-    await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
-    setIsFavoriteAdded(!isFavoriteAdded)
-    
-  }
+    if (isProductFavorited(productId)) {
+      const body = {
+        product_id: productId,
+        user_Id: getUserId(),
+      }
+      console.log(body)
+      await deleteInformation({ endpoint: ENDPOINTS_CODE.FAVORITES_RMV, body });
+      setFavorites(
+        favorites.filter((product) => product.id !== productId)
+      );
+    } else {
+      await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, { productId });
+      const product = await getInformationFromEndpoints(
+        ENDPOINTS_CODE.PRODUCT_DETAIL,
+        productId
+      );
+      await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
+      setIsFavoriteAdded(!isFavoriteAdded)
+    }
 
-  return (
-    <Card sx={{ maxWidth: 345 }} className="card-container">
-      <div className={`${isHorizontal ? "row" : "column"} card-info`}>
-        <img src={productImage} alt={name} className="product-image" onClick={() => goToDetailPage(id)} />
-        <CardContent className="card-content">
-          <div className="title-container">
-            <Typography gutterBottom fontSize={16} component="div" className="product-title">
-              {name}
-            </Typography>
-            <IconButton aria-label="add to favorites" className="favorite" onClick={() => handleFavoriteClick(id)}>
-              {isFavoriteAdded ? <FavoriteIcon /> : <FavoriteBorder />}
-            </IconButton>
-          </div>
-          <Typography fontSize={12} color="text.secondary" className="product-description">
-            {shortDescription}
+
+
+
+    setFavorites([...favorites, product]);
+  }
+};
+
+return (
+  <Card sx={{ maxWidth: 345 }} className="card-container">
+    <div className={`${isHorizontal ? "row" : "column"} card-info`}>
+      <img src={productImage} alt={name} className="product-image" onClick={() => goToDetailPage(id)} />
+      <CardContent className="card-content">
+        <div className="title-container">
+          <Typography gutterBottom fontSize={16} component="div" className="product-title">
+            {name}
           </Typography>
-          <CardActions>
-            <Button className="button ver-mas" size="small" color="secondary" onClick={() => goToDetailPage(id)}>
-              Ver detalle
-            </Button>
-          </CardActions>
-        </CardContent>
-      </div>
-    </Card>
-  )
+          <IconButton aria-label="add to favorites" className="favorite" onClick={() => handleFavoriteClick(id)}>
+            {isFavoriteAdded ? <FavoriteIcon /> : <FavoriteBorder />}
+          </IconButton>
+        </div>
+        <Typography fontSize={12} color="text.secondary" className="product-description">
+          {shortDescription}
+        </Typography>
+        <CardActions>
+          <Button className="button ver-mas" size="small" color="secondary" onClick={() => goToDetailPage(id)}>
+            Ver detalle
+          </Button>
+        </CardActions>
+      </CardContent>
+    </div>
+  </Card>
+)
 }

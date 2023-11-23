@@ -14,8 +14,7 @@ import {
   getFeaturesAllEndpoint,
   postAddFavoriteEndpoint,
   getAllFavoritesEndpoint,
-  
-
+  deleteFavoriteEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -44,7 +43,10 @@ const PATCH_ENDPOINTS_CODE = {
   USER_EDIT_ROLE: patchEditedInformationEndpoint,
 }
 
-
+const DELETE_ENDPOINTS_CODE = {
+  FAVORITES_RMV: deleteFavoriteEndpoint,
+  PRODUCT_DELETE: deleteProductEndpoint,
+}
 
 export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, productsByPage = 10, totalPages) => {
   const getInfo = async () => {
@@ -84,17 +86,18 @@ export const postNewInformation = async (endpoint, information) => {
   }
 }
 
-export const deleteProduct = async (id) => {
-  const deleteInfo = async (productId) => {
-    const response = await fetch(deleteProductEndpoint(productId), {
+export const deleteInformation= async({ id="", body="", endpoint }) => {
+  const deleteInfo = async (productId, body) => {
+    const response = await fetch(DELETE_ENDPOINTS_CODE[endpoint](productId), {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      body: JSON.stringify(body),
       // FALTA PASARLE EL TOKEN DE AUTENTICACIÓN
     })
       .then((response) => response)
       .catch((err) => err)
     return response
   }
-  const deleteResponse = await deleteInfo(id)
+  const deleteResponse = await deleteInfo(id, body)
     .then((result) => result)
     .catch((err) => err)
 

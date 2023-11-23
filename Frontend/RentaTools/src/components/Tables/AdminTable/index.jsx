@@ -12,7 +12,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js"
 
 import "sweetalert2/src/sweetalert2.scss"
 import { ContextGlobal } from "../../../api/global.context.helper"
-import { deleteProduct, getInformationFromEndpoints } from "../../../api/requestHandlers"
+import { deleteInformation, getInformationFromEndpoints } from "../../../api/requestHandlers"
 import { useNavigate } from "react-router-dom"
 import { ENDPOINTS_CODE } from "../../../api/constants"
 
@@ -45,7 +45,7 @@ const AdminTable = () => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await deleteProduct(id)
+        const response = await deleteInformation({id, endpoint:ENDPOINTS_CODE.PRODUCT_DELETE})
         if (response.status === 200) {
           setIsProductDeleted(!isProductDeleted)
           Swal.fire("Producto eliminado.", "", "success")
