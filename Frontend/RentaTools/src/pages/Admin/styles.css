@@ -45,3 +45,25 @@
 .admin-toolbox svg {
   font-size: 6em;
 }
+
+.admin-alert {
+  font-size: 1.5rem;
+}
+
+.body-alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 177px);
+  width: 100%;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
