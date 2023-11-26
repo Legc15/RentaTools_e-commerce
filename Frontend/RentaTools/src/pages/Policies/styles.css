@@ -24,7 +24,7 @@
   padding: 20px;
 }
 
-.buttonPolicies {
+.buttonBack {
   background-color: var(--white-color);
   color: var(--dark-orange);
   cursor: pointer;
@@ -36,7 +36,7 @@
   border: 0;
 }
 
-.buttonPolicies:hover {
+.buttonBack:hover {
   background-color: var(--dark-orange);
   color: var(--white-color);
   transition: 0.5s;

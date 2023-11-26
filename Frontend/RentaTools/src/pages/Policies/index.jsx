@@ -5,7 +5,7 @@ const Policies = () => {
     <>
       <div className="terms-top">
         <button
-          className="buttonPolicies"
+          className="buttonBack"
           onClick={() => window.history.back()}
         >
           Volver Atras
