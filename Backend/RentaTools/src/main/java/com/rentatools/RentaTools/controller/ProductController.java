@@ -2,9 +2,17 @@ package com.rentatools.RentaTools.controller;
 
 import com.rentatools.RentaTools.entity.Product;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
+import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
+import com.rentatools.RentaTools.exceptions.ValidationFailedException;
 import com.rentatools.RentaTools.service.ProductService;
+import com.rentatools.RentaTools.utilities.PaginateMessage;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
+import com.rentatools.RentaTools.utilities.SearchBarDate;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +24,9 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
+
 public class ProductController {
+    @Autowired
     private final ProductService productService;
 
     @GetMapping("/all")
@@ -30,15 +40,42 @@ public class ProductController {
         return productService.getNameExist(name);
     }
 
+    @PostMapping("/suggestion")
+    public ResponseEntity<List<String>> getSuggestion(@RequestBody String barString){
+        return ResponseEntity.ok(productService.getSuggestion(barString));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> getProductByDate(@RequestBody SearchBarDate searchBarDate){
+        return ResponseEntity.ok(productService.getBarProductsByDate(searchBarDate.getSearch(), searchBarDate.getStartDate(), searchBarDate.getEndDate()));
+    }
+
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id){
         return productService.getProductById(id);
     }
 
+    @GetMapping("/paginated")
+    public ResponseEntity<PaginateMessage<Product>> getPruductsPaginated(
+            @RequestParam(defaultValue = "1", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer productsByPage,
+            @RequestParam(defaultValue = "false", required = false) boolean isRandom) {
+            //@RequestParam(defaultValue = "0", required = false) Long category) {
+        PaginateMessage<Product> response = productService.getProductByPage(page, productsByPage, isRandom);
+        return ResponseEntity.ok(response);
+    }
+
+
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> createProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<ResponseMessage> createProduct(@Valid @RequestBody ProductDto productDto){
         productService.createProduct(productDto);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto creado correctamente."));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ResponseMessage> updateProduct(@Valid @PathVariable Long id, @RequestBody ProductDto productDto){
+        Product productUpd = productService.updateProduct(id, productDto);
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto actualizado correctamente.", productUpd));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -49,5 +86,7 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Producto borrado correctamente."));
     }
+
+
 
 }

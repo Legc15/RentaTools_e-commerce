@@ -1,34 +1,27 @@
 package com.rentatools.RentaTools.entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import java.util.List;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
-@Entity
-@Table(name = "Users")
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
+@Data
+@Entity
+@Table(name = "users")
 public class User {
     @Id
-    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String name;
     private String lastName;
-    @Column(nullable = false, unique = true)
+    @Email(message = "Formato inválido de email.")
+    @NotBlank(message = "Debe ingresar el email.")
+    @Size(max = 80)
     private String email;
-    @Column(nullable = false)
+    @NotBlank(message = "Debe ingresar un password.")
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "UserRoles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private List<Role> roles;
-    private boolean active;
+    private boolean esAdmin;
+    private boolean esActive;
 }

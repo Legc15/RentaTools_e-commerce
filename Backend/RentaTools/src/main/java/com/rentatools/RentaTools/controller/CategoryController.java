@@ -1,14 +1,13 @@
 package com.rentatools.RentaTools.controller;
-
 import com.rentatools.RentaTools.entity.Category;
+import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
 import com.rentatools.RentaTools.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -16,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/category")
 @RequiredArgsConstructor
 public class CategoryController {
+    @Autowired
     private final CategoryService categoryService;
 
     @GetMapping("/all")
@@ -27,5 +27,21 @@ public class CategoryController {
             return ResponseEntity.ok(categories);
         }
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<Category> saveCategory(@RequestBody Category category){
+        return ResponseEntity.ok(categoryService.saveCategory(category));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category){
+        return ResponseEntity.ok(categoryService.updateCategory(category));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(categoryService.deleteById(id));
+    }
+
 
 }
