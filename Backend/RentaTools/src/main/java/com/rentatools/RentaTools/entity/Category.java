@@ -1,15 +1,13 @@
 package com.rentatools.RentaTools.entity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @Entity
-@Table(name = "CATEGORY")
 @Data
 @AllArgsConstructor @NoArgsConstructor
+@Table(name = "category")
 public class Category {
     @Id
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
@@ -18,9 +16,7 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
     private String description;
+    @Column(nullable = false)
     private String image;
-    @JsonIgnore
-    @OneToMany(mappedBy = "category")
-    private List<Product> product;
     private Boolean deleted;
 }

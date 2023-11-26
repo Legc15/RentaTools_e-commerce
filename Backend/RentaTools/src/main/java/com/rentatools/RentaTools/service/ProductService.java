@@ -1,5 +1,4 @@
 package com.rentatools.RentaTools.service;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentatools.RentaTools.entity.Product;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
@@ -9,25 +8,18 @@ import com.rentatools.RentaTools.repository.ICategoryRepository;
 import com.rentatools.RentaTools.repository.IImageRepository;
 import com.rentatools.RentaTools.repository.IProductRepository;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
-import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
-import com.rentatools.RentaTools.exceptions.BadRequestException;
-import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
-import com.rentatools.RentaTools.repository.ICategoryRepository;
-import com.rentatools.RentaTools.repository.IImageRepository;
-import com.rentatools.RentaTools.repository.IProductRepository;
-import com.rentatools.RentaTools.utilities.PaginateMessage;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-//@Transactional
+@Transactional
 @RequiredArgsConstructor
 public class ProductService {
     @Autowired
