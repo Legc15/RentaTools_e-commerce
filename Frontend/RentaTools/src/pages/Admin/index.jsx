@@ -78,14 +78,14 @@ const Admin = () => {
 
   if (isMobile) {
     return (
-      <div className="body admin-container">
-        <div>
-        <button className="buttonBack" onClick={() => window.history.back()}>
+      <div className="body-alert">
+        <div className="button-container">
+        <button className="button-Back" onClick={() => window.history.back()}>
           Volver Atras
-        </button>{" "}
+        </button>
         </div>
         
-        <h1>por favor conectese desde una pc</h1>
+        <h1 className="admin-alert">por favor conectese desde una pc</h1>
       </div>
     );
   } else {
