@@ -13,10 +13,10 @@ export default function Favorites() {
 
   useEffect(() => {
     if (getUserId()) {
-      getInformationFromEndpoints(ENDPOINTS_CODE.FAVORITES_ALL, getUserId()).then((response) => {
+      getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.FAVORITES_ALL, id: getUserId() }).then((response) => {
         setFavorites(response)
       })
-      getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => {
+      getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_ALL }).then((response) => {
         setProductInformation(response)
       })
     }

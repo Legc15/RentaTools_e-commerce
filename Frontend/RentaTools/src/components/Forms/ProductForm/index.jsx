@@ -21,7 +21,9 @@ const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
   return (
     <React.Fragment>
       <form
-        onSubmit={(e) => handleSubmit(e, () => handleSubmitProduct({ setIsFormIncomplete, setIsNameDuplicated, setIsFormSent, formData }))}
+        onSubmit={(e) =>
+          handleSubmit(e, () => handleSubmitProduct({ setIsFormIncomplete, setIsNameDuplicated, setIsFormSent, formData, setFormData }))
+        }
         action={<Link to="/" />}
         className="form-container"
       >

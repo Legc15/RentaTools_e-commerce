@@ -15,25 +15,24 @@ const Categories = () => {
   }
 
   const [categories, setCategories] = useState([])
-
+  const [categoriesForm, setCategoriesForm] = useState({ id: "", name: "", description: "" })
+  const [isNewCategory, setIsNewCategory] = useState(true)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => setCategories(response))
-  })
-
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.CATEGORY_ALL }).then((response) => setCategories(response))
+  }, [])
 
   return (
     <div className="body padding">
       <div>
-
         <Button variant="contained" onClick={navigateToAdmin} className="button">
           Regresar al Admin
         </Button>
       </div>
       <h1>Administrar Categorias</h1>
       <div className="information">
-        <CategoriesForm></CategoriesForm>
-        <CategoriesTable categories={categories} />
+        <CategoriesForm categoriesForm={categoriesForm} setCategoriesForm={setCategoriesForm} isNewCategory={isNewCategory} />
+        <CategoriesTable categories={categories} setCategoriesForm={setCategoriesForm} setIsNewCategory={setIsNewCategory} />
       </div>
     </div>
   )

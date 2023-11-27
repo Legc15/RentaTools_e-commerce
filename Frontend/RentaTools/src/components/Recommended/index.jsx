@@ -8,12 +8,11 @@ import ProductCard from "../Cards/ProductCard"
 import "./styles.css"
 
 export const Recommended = ({ recommended }) => {
-  const recommendedTen = recommended.slice(0, 10)
   const [favorites, setFavorites] = useState([])
 
   if (getUserId()) {
     useEffect(() => {
-      getInformationFromEndpoints(ENDPOINTS_CODE.FAVORITES_ALL, getUserId()).then((response) => {
+      getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.FAVORITES_ALL, id: getUserId() }).then((response) => {
         setFavorites(response)
       })
     }, [])
@@ -26,7 +25,7 @@ export const Recommended = ({ recommended }) => {
     <div className="recommended-container">
       <h1 className="title">RECOMENDADO</h1>
       <div className="card-recommended-container">
-        {recommendedTen.map((product) => (
+        {recommended.map((product) => (
           <ProductCard product={product} key={product.id} isHorizontal={true} isProductFavorited={isProductFavorited(product.id)} />
         ))}
       </div>

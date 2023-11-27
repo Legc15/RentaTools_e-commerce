@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import NewProductForm from "../../components/Forms/ProductForm"
 import "./styles.css"
-import { getInformationFromEndpoints } from "../../api/requestHandlers"
+import { getInformationFromEndpoints, postNewInformation } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
 import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
@@ -23,7 +23,7 @@ const Register = () => {
   const { categories, categoryAll } = useContext(ContextGlobal)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.CATEGORY_ALL }).then((response) => categoryAll(response))
   }, [])
 
   const navigate = useNavigate()
@@ -32,27 +32,23 @@ const Register = () => {
     navigate("/admin")
   }
 
-  async function handlePostProduct({ formData, setIsNameDuplicated, setIsFormIncomplete, setIsFormSent }) {
-    // if (Object.values(formData).includes("")) {
-    //   console.log("hay cositas para mirar amichi")
-    // } else {
+  async function handlePostProduct({ formData, setIsNameDuplicated, setIsFormIncomplete, setIsFormSent, setFormData }) {
     setIsFormIncomplete(false)
     const parsedName = formData.name.replace(" ", "+")
-    const isNameExist = await getInformationFromEndpoints(ENDPOINTS_CODE.EXIST_NAME, parsedName)
+    const isNameExist = await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.EXIST_NAME, parsedName })
     if (isNameExist) {
       setIsNameDuplicated(true)
       return
     }
     setIsNameDuplicated(false)
-    // const imageResponse
-    // const response = await postNewInformation(ENDPOINTS_CODE.PRODUCTS_CREATE, formData)
+    const response = await postNewInformation(ENDPOINTS_CODE.PRODUCT_CREATE, formData)
     setIsFormSent(true)
-    // if (response.status === 200) {
-    //   setIsFormIncorrect(false)
-    //   setProductInformation(initialState)
-    // } else {
-    //   setIsFormIncorrect(true)
-    // }
+    if (response.status === 200) {
+      setIsFormIncomplete(false)
+      setFormData(initialState)
+    } else {
+      setIsFormIncomplete(true)
+    }
   }
 
   return (

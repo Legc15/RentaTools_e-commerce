@@ -19,19 +19,22 @@ export const postAddFavoriteEndpoint = () => baseUrl[env] + "favorite"
 export const deleteFavoriteEndpoint = () => baseUrl[env] + "favorite/delete"
 
 export const postFavoritesEndpoint = (id) => baseUrl[env] + "favorite/update/" + id
-export const getAllFavoritesEndpoint = (id) => baseUrl[env] + "favorite/user/" + id
+export const getAllFavoritesEndpoint = ({ id }) => baseUrl[env] + "favorite/user/" + id
 
-export const getProductDetailEndpoint = (id) => baseUrl[env] + "products/" + id
-export const getIfNameExistsEndpoint = (queryParam) => baseUrl[env] + "products/existname?name=" + queryParam
+export const getProductDetailEndpoint = ({ id }) => baseUrl[env] + "products/" + id
+export const getIfNameExistsEndpoint = ({ parsedName }) => baseUrl[env] + "products/existname?name=" + parsedName
 
 export const postNewProductEndpoint = () => baseUrl[env] + "products/create"
 export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" + id
 export const putEditedProductEndpoint = (id) => baseUrl[env] + "products/update/" + id
 
 export const getCategoriesEndpoint = () => baseUrl[env] + "category/all"
+export const putCategoriesEndpoint = () => baseUrl[env] + "category/update"
+export const postCategoriesEndpoint = () => baseUrl[env] + "category/create"
+export const deleteCategoriesEndpoint = (id) => baseUrl[env] + "category/delete/" + id
 
 export const getAllUsersEndpoint = () => baseUrl[env] + "users/all"
-export const getUserEndpoint = (id) => baseUrl[env] + "users/" + id
+export const getUserEndpoint = ({ id }) => baseUrl[env] + "users/" + id
 export const postSignUpUserEndpoint = () => baseUrl[env] + "users/create"
 export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role/update/" + id
 export const postUserValidationEndpoint = () => baseUrl[env] + "auth/login"

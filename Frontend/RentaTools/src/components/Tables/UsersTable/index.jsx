@@ -24,7 +24,7 @@ const UsersTable = () => {
   const headerTitles = ["ID", "Nombre", "Apellido", "Email", "Activo", "Rol", "Acciones"]
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.USERS_ALL).then((response) => usersAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.USERS_ALL }).then((response) => usersAll(response))
   }, [isRoleChanged])
 
   const handleChangeRole = async (id, esAdmin) => {

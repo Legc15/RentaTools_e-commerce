@@ -17,7 +17,7 @@ const Features = () => {
   const [isNewFeatureAdded, setIsNewFeatureAdded] = useState(false)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.FEATURES_ALL).then((response) => setFeatures(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.FEATURES_ALL }).then((response) => setFeatures(response))
   }, [isNewFeatureAdded])
 
   return (

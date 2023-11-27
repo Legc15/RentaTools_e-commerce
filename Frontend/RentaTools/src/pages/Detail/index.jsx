@@ -16,7 +16,7 @@ const Detail = () => {
   }
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id).then((response) => setProduct(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCT_DETAIL, id }).then((response) => setProduct(response))
   }, [id])
 
   const hasInformation = Object.keys(product).length > 0

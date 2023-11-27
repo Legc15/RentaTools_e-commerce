@@ -11,8 +11,10 @@ const Home = () => {
   const { productsList, categories, productsAll, categoryAll } = useContext(ContextGlobal)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.CATEGORY_ALL }).then((response) => categoryAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_PAGINATED, isRandom: true }).then((response) =>
+      productsAll(response.data)
+    )
   }, [])
 
   return (

@@ -1,5 +1,5 @@
-.information{
-    display: flex;
-    gap: 200px;
-    flex-direction: column;
+.information {
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
 }
