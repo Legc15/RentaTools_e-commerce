@@ -15,7 +15,7 @@ const Categories = () => {
   }
 
   const [categories, setCategories] = useState([])
-  const [categoriesForm, setCategoriesForm] = useState({ id: "", name: "", description: "" })
+  const [categoriesForm, setCategoriesForm] = useState({ id: "", name: "", description: "", image: "" })
   const [isNewCategory, setIsNewCategory] = useState(true)
 
   useEffect(() => {
