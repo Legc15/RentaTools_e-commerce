@@ -46,4 +46,4 @@ export const postUserValidationEndpoint = () => baseUrl[env] + "auth/login"
 export const getFeaturesAllEndpoint = () => baseUrl[env] + "feature/all"
 
 export const getSearchEndpoint = () => baseUrl[env] + "products/search"
-export const getSearchSuggestionsEndpoint = () => baseUrl[env] + "products/suggestion"
+export const getSearchSuggestionsEndpoint = ({ barString }) => baseUrl[env] + "products/suggestion?barString=" + barString
