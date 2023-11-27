@@ -16,10 +16,10 @@ import { ENDPOINTS_CODE } from "../../../api/constants"
 const CategoriesTable = ({ categories, setCategoriesForm, setIsNewCategory }) => {
   const [isCategoryDeleted, setIsCategoryDeleted] = useState(false)
 
-  const handleDeleteCategory = (id) => {
+  const handleDeleteCategory = (id, name) => {
     Swal.fire({
-      title: "Eliminar categoría",
-      text: "Está seguro que desea eliminar esta categoría?",
+      title: `Está seguro que desea eliminar la categoría "${name}"?`,
+      text: "Recordá que si la categoría tiene productos asociados no se podrá borrar.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -83,7 +83,7 @@ const CategoriesTable = ({ categories, setCategoriesForm, setIsNewCategory }) =>
               </TableCell>
               <TableCell align="center">
                 <div className="table-buttons">
-                  <Button variant="outlined" className="button button-delete" onClick={() => handleDeleteCategory(id)}>
+                  <Button variant="outlined" className="button button-delete" onClick={() => handleDeleteCategory(id, name)}>
                     Eliminar
                   </Button>
                   <Button
