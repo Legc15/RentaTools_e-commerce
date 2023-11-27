@@ -26,8 +26,8 @@ const Edit = () => {
   const [product, setProduct] = useState(initialState)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id).then((response) => {
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.CATEGORY_ALL }).then((response) => categoryAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCT_DETAIL, id }).then((response) => {
       response.status !== "NOT_FOUND" ? setProduct(response) : navigateToNotFound()
     })
   }, [])

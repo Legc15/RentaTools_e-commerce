@@ -23,8 +23,8 @@ const AdminTable = () => {
   const categoriesById = categories.reduce((obj, item) => Object.assign(obj, { [item.id]: item.name }), {})
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.CATEGORY_ALL).then((response) => categoryAll(response))
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_ALL).then((response) => productsAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.CATEGORY_ALL }).then((response) => categoryAll(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_ALL }).then((response) => productsAll(response))
   }, [isProductDeleted])
 
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ const AdminTable = () => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await deleteInformation({id, endpoint:ENDPOINTS_CODE.PRODUCT_DELETE})
+        const response = await deleteInformation({ id, endpoint: ENDPOINTS_CODE.PRODUCT_DELETE })
         if (response.status === 200) {
           setIsProductDeleted(!isProductDeleted)
           Swal.fire("Producto eliminado.", "", "success")

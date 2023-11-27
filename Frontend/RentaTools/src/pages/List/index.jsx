@@ -13,7 +13,7 @@ const List = () => {
   const [totalPages, setTotalPages] = useState(0)
 
   useEffect(() => {
-    getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCTS_PAGINATED, { page }).then((response) => {
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_PAGINATED, page }).then((response) => {
       productsAll(response.data)
       setTotalPages(response.totalPages)
     })

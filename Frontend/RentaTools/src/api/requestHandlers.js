@@ -18,6 +18,9 @@ import {
   getUserEndpoint,
   getSearchEndpoint,
   getSearchSuggestionsEndpoint,
+  postCategoriesEndpoint,
+  putCategoriesEndpoint,
+  deleteCategoriesEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -39,10 +42,12 @@ const POST_ENDPOINTS_CODE = {
   PRODUCT_CREATE: postNewProductEndpoint,
   USER_VALIDATION: postUserValidationEndpoint,
   FAVORITES_ADD: postAddFavoriteEndpoint,
+  CATEGORY_CREATE: postCategoriesEndpoint,
 }
 
 const PUT_ENDPOINTS_CODE = {
   PRODUCT_EDIT: putEditedProductEndpoint,
+  CATEGORY_EDIT: putCategoriesEndpoint,
 }
 
 const PATCH_ENDPOINTS_CODE = {
@@ -52,13 +57,23 @@ const PATCH_ENDPOINTS_CODE = {
 const DELETE_ENDPOINTS_CODE = {
   FAVORITES_RMV: deleteFavoriteEndpoint,
   PRODUCT_DELETE: deleteProductEndpoint,
+  CATEGORY_DELETE: deleteCategoriesEndpoint,
 }
 
-export const getInformationFromEndpoints = async (endpoint, id = "", categoryId = null, page = 1, productsByPage = 10, totalPages) => {
+export const getInformationFromEndpoints = async ({
+  endpoint,
+  id = "",
+  categoryId = null,
+  page = 1,
+  productsByPage = 10,
+  totalPages,
+  isRandom,
+  parsedName,
+}) => {
   const getInfo = async () => {
-    const response = await fetch(GET_ENDPOINTS_CODE[endpoint](id, categoryId, page, productsByPage, totalPages)).then((response) =>
-      response.json()
-    )
+    const response = await fetch(
+      GET_ENDPOINTS_CODE[endpoint]({ id, categoryId, page, productsByPage, totalPages, isRandom, parsedName })
+    ).then((response) => response.json())
     return response
   }
   const dataParsed = await getInfo(id)
@@ -106,6 +121,7 @@ export const postNewInformation = async (endpoint, information) => {
     }
 
     const postResponse = await postInfo(information).then((result) => result)
+
     return postResponse
   } catch (error) {
     error

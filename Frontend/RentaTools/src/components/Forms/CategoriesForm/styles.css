@@ -12,8 +12,14 @@
   padding: 30px;
 }
 
-.titulo-description{
+.titulo-description {
   width: auto;
 }
 
+.categories-box .category-description {
+  width: 500px;
+}
 
+.categories-box .category-name {
+  width: 300px;
+}

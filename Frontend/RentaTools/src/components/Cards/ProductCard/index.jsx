@@ -34,7 +34,7 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
       await deleteInformation({ endpoint: ENDPOINTS_CODE.FAVORITES_RMV, body })
       setFavorites(favorites.filter((product) => product.id !== id))
     } else {
-      const product = await getInformationFromEndpoints(ENDPOINTS_CODE.PRODUCT_DETAIL, id)
+      const product = await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCT_DETAIL, id })
       await postNewInformation(ENDPOINTS_CODE.FAVORITES_ADD, body)
       setFavorites([...favorites, product])
     }
