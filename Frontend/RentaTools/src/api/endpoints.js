@@ -15,6 +15,10 @@ export const getProductsByQueryParamsEndpoint = (queryParams) => {
   return baseUrl[env] + "products/paginated?" + queryParamURL
 }
 
+export const getProductsBySearch = ({ searchBar }) => {
+  return baseUrl[env] + "products/search?searchBar=" + searchBar
+}
+
 export const postAddFavoriteEndpoint = () => baseUrl[env] + "favorite"
 export const deleteFavoriteEndpoint = () => baseUrl[env] + "favorite/delete"
 

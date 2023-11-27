@@ -64,6 +64,14 @@ const CategoriesForm = ({ categoriesForm, setCategoriesForm, isNewCategory }) =>
             value={categoriesForm.description}
             onChange={handleInputChange}
           />
+          <TextField
+            label="URL de imagen"
+            type="text"
+            className="category-image"
+            name="image"
+            value={categoriesForm.image}
+            onChange={handleInputChange}
+          />
         </Box>
         <HeaderButton buttonLabel={isNewCategory ? "Crear Categoria" : "Modificar Categoria"} className="registrar" type="submit" />
         {isCategoryIncorrect ? (

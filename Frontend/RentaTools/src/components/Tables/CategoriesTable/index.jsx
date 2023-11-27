@@ -42,9 +42,9 @@ const CategoriesTable = ({ categories, setCategoriesForm, setIsNewCategory }) =>
     })
   }
 
-  const handleEditCategory = ({ id, name, description }) => {
+  const handleEditCategory = ({ id, name, description, image }) => {
     setIsNewCategory(false)
-    setCategoriesForm({ id, name, description })
+    setCategoriesForm({ id, name, description, image })
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }
 

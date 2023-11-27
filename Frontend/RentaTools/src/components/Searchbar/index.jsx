@@ -8,6 +8,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker"
 import { Button } from "@mui/material"
 import useForm from "../../hooks/useForm"
 import { useState } from "react"
+import { getInformationFromEndpoints } from "../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../api/constants"
+import ProductList from "../ProductList"
 const initialState = {
   search: "",
   reservationFrom: "",
@@ -24,8 +27,15 @@ export const Searchbar = () => {
   ]
   const [suggestions, setSuggestions] = useState(suggestionsArray)
   const [isShowSuggestions, setIsShowSuggestions] = useState(false)
-  const handleSearch = () => {
-    console.log(formData)
+  const [results, setResults] = useState([])
+  const [isSearchInitiated, setIsSearchInitiated] = useState(false)
+
+  const handleSearch = async () => {
+    setIsSearchInitiated(false)
+    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_SEARCH, searchBar: formData.searchBar }).then((response) =>
+      setResults(response)
+    )
+    setIsSearchInitiated(true)
   }
 
   const handleInputChange = (e) => {
@@ -47,7 +57,7 @@ export const Searchbar = () => {
             variant="outlined"
             placeholder="Search..."
             size="small"
-            name="search"
+            name="searchBar"
             onChange={handleInputChange}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -70,13 +80,23 @@ export const Searchbar = () => {
             Buscar
           </Button>
         </form>
-        {isShowSuggestions ? (
+        {isSearchInitiated && isShowSuggestions ? (
           <div className="suggestions">
             <h6 className="suggestions-title">Sugerencias:</h6>
             {suggestions.map((suggestions, index) => (
               <li key={index}>{suggestions}</li>
             ))}
           </div>
+        ) : (
+          ""
+        )}
+
+        {isSearchInitiated ? (
+          <>
+            <h1 className="title">RESULTADOS</h1>
+            {results.length ? <ProductList products={results} /> : <h3>No se encontraron resultados.</h3>}
+            <hr />
+          </>
         ) : (
           ""
         )}

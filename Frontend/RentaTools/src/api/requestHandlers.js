@@ -21,6 +21,7 @@ import {
   postCategoriesEndpoint,
   putCategoriesEndpoint,
   deleteCategoriesEndpoint,
+  getProductsBySearch,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -35,6 +36,7 @@ const GET_ENDPOINTS_CODE = {
   FAVORITES_ALL: getAllFavoritesEndpoint,
   SEARCH: getSearchEndpoint,
   SUGGESTIONS: getSearchSuggestionsEndpoint,
+  PRODUCTS_SEARCH: getProductsBySearch,
 }
 
 const POST_ENDPOINTS_CODE = {
@@ -69,11 +71,15 @@ export const getInformationFromEndpoints = async ({
   totalPages,
   isRandom,
   parsedName,
+  searchBar,
 }) => {
   const getInfo = async () => {
     const response = await fetch(
-      GET_ENDPOINTS_CODE[endpoint]({ id, categoryId, page, productsByPage, totalPages, isRandom, parsedName })
-    ).then((response) => response.json())
+      GET_ENDPOINTS_CODE[endpoint]({ id, categoryId, page, productsByPage, totalPages, isRandom, parsedName, searchBar })
+    ).then((response) => {
+      return response.json()
+    })
+
     return response
   }
   const dataParsed = await getInfo(id)

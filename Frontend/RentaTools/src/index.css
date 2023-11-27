@@ -2,7 +2,7 @@
 body {
   margin: 0px;
   font-family: Inter, sans-serif;
-  color: #121212;;
+  color: #121212;
   color: var(--black-color);
 }
 
@@ -45,4 +45,13 @@ body {
 
 .body input {
   font: inherit;
+}
+
+.body hr {
+  background: var(--black-color);
+  color: var(--black-color);
+  border-color: var(--black-color);
+  height: 1px;
+  width: 100%;
+  border-radius: 50%;
 }
