@@ -30,20 +30,21 @@
   position: relative;
   overflow-x: hidden;
   scrollbar-width: none; /* Añade espacio a los lados para las flechas */
-
   background-color: var(--dark-orange);
-  padding: 5vw;
-  width: 70vw;
-  height: 30vh;
+  padding: 3rem;
+  width: 60vw;
+  height: 15rem;
   display: flex;
+  justify-content: space-around;
   overflow-x: scroll;
-  gap: 5rem;
+  gap: 1rem;
 }
 
 .carousel-item {
+  
   flex: 0 0 auto;
-  width: 25rem;
-  height: 25rem;
+  width: 15rem;
+  height: 15rem;
   margin-right: 10px;
 }
 
@@ -51,6 +52,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .carousel-close-button {
@@ -79,18 +81,63 @@
 }
 
 .carousel-arrow-left {
-  left: 100px;
+  left: 16%;
+}
+.carousel-arrow-right {
+  right: 16%;
 }
 .carousel-arrow-left :hover {
   scale: 1.1;
 }
-.carousel-arrow-right {
-  right: 100px;
-}
+
 .carousel-arrow-right :hover {
   scale: 1.1;
 }
 .carousel-arrow-left,
 .carousel-arrow-right {
   animation: blink 1.3s linear infinite;
+}
+
+@media (max-width: 769px) and (min-width: 426px) {
+  .carousel-container {
+    padding: 2rem;
+    margin: 0;
+    width: 85vw;
+    height: 50vh;
+  }
+  .carousel-item {
+    width: 20rem;
+    height: 20rem;
+  }
+  .carousel-arrow-right {
+    right: 50px;
+    font-size: 4rem;
+  }
+  .carousel-arrow-left {
+    left: 50px;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 425px) and (min-width: 319px) {
+  .carousel-container {
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    width: 90vw;
+    height: 40vh;
+  }
+  .carousel-item {
+    width: 12rem;
+    height: 13rem;
+  }
+
+  .carousel-arrow-right {
+    right: 20px;
+    font-size: 4rem;
+  }
+  .carousel-arrow-left {
+    left: 20px;
+    font-size: 4rem;
+  }
 }
