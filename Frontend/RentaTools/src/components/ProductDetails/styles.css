@@ -12,13 +12,9 @@ h2 {
   margin-top: 8px;
 }
 
-.view {
-  background-color: rgba(201, 201, 201, 0.56);
-  box-shadow: 5px 5px 10px rgba(1, 1, 1, 0.647);
-  flex-direction: column-reverse;
-}
+
 .product-details-container {
-  padding: 16px;
+  width: 45%;
   background-color: var(--white-color);
   gap: 50px;
 }
@@ -55,6 +51,7 @@ h2 {
   cursor: pointer;
   border-radius: 15px;
   padding: 6px 17px;
+  margin-right: 1rem;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -126,16 +123,19 @@ h2 {
   }
   .product-details-header {
     width: 100%;
-    padding: 1rem;
+    
   }
-
+  
   .products-feature {
     padding: 1rem;
   }
   .lower-cnt {
+  
     display: flex;
     flex-direction: row;
   }
+
+
 }
 
 @media (max-width: 425px) and (min-width: 319px) {
@@ -167,7 +167,10 @@ h2 {
   .lower-cnt {
     width: 105%;
     flex-direction: column;
+
   }
+
+  
   .product-details-title {
     font-size: 1rem;
     text-align: center;

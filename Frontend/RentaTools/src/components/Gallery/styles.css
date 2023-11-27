@@ -2,32 +2,34 @@
 
 .GaleryContainer {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  width: 45%;
   background-color: var(--white-color);
-  max-width: 1200px;
-  padding: 1.2rem;
   margin: 0;
   align-items: center;
 }
 
 .imagenPrincipal {
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
+  width: 50%;
   border: solid 0.5px rgb(151, 150, 150);
-  height: 75%;
+  height: 100%;
   border-radius: 10px;
-  background-color: grey;
+  
   cursor: pointer;
   object-fit: cover;
   object-position: center;
 }
 .imagenPrincipal img {
   border-radius: 10px;
-  width: 100%;
+  width: 95%;
+  height: 95%;
+
 }
 
 .cuadriculado {
@@ -62,12 +64,12 @@
 }
 
 .verMasContainer {
-  height: 10vh;
+  height: 5vh;
   background-color: var(--white-color);
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 .verMasButton {
   font-size: 15px;
@@ -92,6 +94,9 @@
 }
 
 .imagen-container {
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-around;
   display: flex;
 }
 
@@ -99,7 +104,7 @@
 
 @media (max-width: 769px) and (min-width: 426px) {
   .GaleryContainer {
-    flex-direction: row;
+    
     justify-content: space-around;
     gap: 1rem;
     padding: 1rem 0;
@@ -118,6 +123,13 @@
     height: auto;
     width: 100vw;
     padding: 0px;
+  }
+
+  .imagen-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .imagenPrincipal {
