@@ -10,6 +10,8 @@ import { Link } from "react-router-dom"
 const initialData = {
   email: "",
   password: "",
+  firstName: "",
+  lastName: "",
 }
 
 export default function SignInForm() {
@@ -24,17 +26,20 @@ export default function SignInForm() {
   const handleLogIn = async () => {
     setIsNewAttempt(true)
     const response = await postNewInformation(ENDPOINTS_CODE.USER_VALIDATION, formData).then((response) => response.json())
+    
     if (!response.role) {
       setIsUserValidated(false)
     } else {
       localStorage.setItem("role", response.role)
       localStorage.setItem("userId", response.userId)
       localStorage.setItem("token", response.jwt)
+
       setIsUserValidated(true)
       setTimeout(() => redirectAccordingToRole(response.role), 2000)
     }
     setIsNewAttempt(false)
   }
+  
 
   return (
     <form className="formulario" onSubmit={(e) => handleSubmit(e, () => handleLogIn())}>

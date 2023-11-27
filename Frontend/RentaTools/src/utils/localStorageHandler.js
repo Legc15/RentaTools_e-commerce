@@ -9,3 +9,11 @@ export function isUser() {
 export function getUserId() {
     return localStorage.getItem("userId")
 }
+
+export function getFirstName() {
+    return localStorage.getItem("name");
+}
+
+export function getLastName() {
+    return localStorage.getItem("lastName");
+}
