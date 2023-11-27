@@ -72,10 +72,11 @@ export const getInformationFromEndpoints = async ({
   isRandom,
   parsedName,
   searchBar,
+  barString,
 }) => {
   const getInfo = async () => {
     const response = await fetch(
-      GET_ENDPOINTS_CODE[endpoint]({ id, categoryId, page, productsByPage, totalPages, isRandom, parsedName, searchBar })
+      GET_ENDPOINTS_CODE[endpoint]({ id, categoryId, page, productsByPage, totalPages, isRandom, parsedName, searchBar, barString })
     ).then((response) => {
       return response.json()
     })

@@ -38,10 +38,12 @@ export const Searchbar = () => {
     setIsSearchInitiated(true)
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = async (e) => {
     setIsShowSuggestions(true)
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    setSuggestions(suggestions.filter((sugg) => sugg.includes(formData.search)))
+    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.SUGGESTIONS, barString: formData.searchBar }).then((response) =>
+      setSuggestions(response)
+    )
   }
 
   return (
@@ -80,7 +82,7 @@ export const Searchbar = () => {
             Buscar
           </Button>
         </form>
-        {isSearchInitiated && isShowSuggestions ? (
+        {isShowSuggestions ? (
           <div className="suggestions">
             <h6 className="suggestions-title">Sugerencias:</h6>
             {suggestions.map((suggestions, index) => (
