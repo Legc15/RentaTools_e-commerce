@@ -3,20 +3,18 @@ import logo from "../../assets/imagenesGaleria/Logo-RentaTools.svg.svg"
 import HeaderButton from "../button"
 import { Link, useNavigate } from "react-router-dom"
 import user from "../../assets/imagenesGaleria/userIcon.svg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Swal from "sweetalert2/dist/sweetalert2"
 import CustomizedMenus from "../Menu"
-
-const userFalso = {
-  name: "Juan",
-  lastName: "Perez",
-  photo: user,
-}
+import { getInformationFromEndpoints } from "../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../api/constants"
+import { getUserId } from "../../utils/localStorageHandler"
 
 const Header = () => {
   const isUserLogged = localStorage.getItem("role")
 
   const [isLoggedin, setIsLoggedin] = useState(isUserLogged)
+  const [userInfo, setUserInfo] = useState({})
   const navigate = useNavigate()
 
   const handleLogOut = () => {
@@ -38,6 +36,12 @@ const Header = () => {
       }
     })
   }
+
+  useEffect(() => {
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.USER_ID, id: getUserId() }).then((response) => {
+      setUserInfo(response)
+    })
+  }, [])
 
   const handleSignIn = () => {
     navigate("/signIn")
@@ -68,9 +72,9 @@ const Header = () => {
             <div className="header-box">
               <div className="user-container">
                 <h3>
-                  {userFalso.name[0]}. {userFalso.lastName[0]}.
+                  {userInfo.name[0]}. {userInfo.lastName[0]}.
                 </h3>
-                <h6>Hola Juan Carlos!</h6>
+                <h6>Hola {userInfo.name}!</h6>
               </div>
               <CustomizedMenus handleLogOut={handleLogOut} />
             </div>
