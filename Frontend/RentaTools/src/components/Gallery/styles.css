@@ -2,12 +2,10 @@
 
 .GaleryContainer {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: center;
-  flex-direction: row;
+  width: 100%;
   background-color: var(--white-color);
-  max-width: 1200px;
-  padding: 1.2rem;
   margin: 0;
   align-items: center;
 }
@@ -28,6 +26,7 @@
 .imagenPrincipal img {
   border-radius: 10px;
   width: 100%;
+
 }
 
 .cuadriculado {
@@ -92,6 +91,8 @@
 }
 
 .imagen-container {
+  padding: 1rem;
+  justify-content: space-around;
   display: flex;
 }
 
@@ -99,7 +100,7 @@
 
 @media (max-width: 769px) and (min-width: 426px) {
   .GaleryContainer {
-    flex-direction: row;
+    
     justify-content: space-around;
     gap: 1rem;
     padding: 1rem 0;
@@ -118,6 +119,13 @@
     height: auto;
     width: 100vw;
     padding: 0px;
+  }
+
+  .imagen-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .imagenPrincipal {
