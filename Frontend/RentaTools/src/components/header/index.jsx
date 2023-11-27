@@ -2,16 +2,13 @@ import "./styles.css"
 import logo from "../../assets/imagenesGaleria/Logo-RentaTools.svg.svg"
 import HeaderButton from "../button"
 import { Link, useNavigate } from "react-router-dom"
-import user from "../../assets/imagenesGaleria/userIcon.svg"
-import { useState } from "react"
+//import userIcon from "../../assets/imagenesGaleria/userIcon.svg"
+import { useEffect, useState } from "react"
 import Swal from "sweetalert2/dist/sweetalert2"
 import CustomizedMenus from "../Menu"
+import { getInformationFromEndpoints } from "../../api/requestHandlers"
 
-const userFalso = {
-  name: "Juan",
-  lastName: "Perez",
-  photo: user,
-}
+
 
 const Header = () => {
   const isUserLogged = localStorage.getItem("role")
@@ -33,6 +30,8 @@ const Header = () => {
         localStorage.removeItem("role")
         localStorage.removeItem("token")
         localStorage.removeItem("userId")
+        localStorage.removeItem("firstName")
+        localStorage.removeItem("lastName")
         setIsLoggedin(false)
         location.assign("/")
       }
@@ -47,6 +46,27 @@ const Header = () => {
     navigate("/signUp")
   }
 
+  const [name, setName] = useState(localStorage.getItem("name") || '');
+  const [lastName, setLastName] = useState(localStorage.getItem("lastName") || '');
+  useEffect(() => {
+    const userId = localStorage.getItem("userId")
+    if (userId) {
+      fetchUserData(userId);
+    }
+    
+    },[] );
+
+    async function fetchUserData(userId) {
+      const userData = await getInformationFromEndpoints({
+          endpoint: 'USER_ID',
+          id: userId,
+      });
+
+      setName(userData.name);
+      setLastName(userData.lastName);
+    }
+
+  
   return (
     <div className="header-container">
       <Link to="/">
@@ -68,9 +88,9 @@ const Header = () => {
             <div className="header-box">
               <div className="user-container">
                 <h3>
-                  {userFalso.name[0]}. {userFalso.lastName[0]}.
+                  {name? name[0]: ''}. {lastName? lastName[0]: ''}.
                 </h3>
-                <h6>Hola Juan Carlos!</h6>
+                <h6>Hola {name} {lastName}!</h6>
               </div>
               <CustomizedMenus handleLogOut={handleLogOut} />
             </div>
