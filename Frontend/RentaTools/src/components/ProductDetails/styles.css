@@ -5,7 +5,19 @@ h2 {
   font-weight: 700;
   margin: 0;
 }
-
+.main p{
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  min-height: 78vh;
+}
 .product-details-description {
   font-size: 1.2rem;
   color: var(--black-color);
@@ -85,6 +97,7 @@ h2 {
   text-align: left;
   background-color: #dad8d8;
   font-size: 0.85rem;
+  padding: 1rem;
 }
 .products-feature {
   padding: 0.7rem;
@@ -95,9 +108,11 @@ h2 {
   background-color: white;
   width: 50%;
   font-size: 0.85rem;
-  text-align: left;
-  padding-left: 1rem;
+  padding:1rem ;
+  
 }
+
+
 
 @media (max-width: 769px) and (min-width: 426px) {
   .details-container {
@@ -153,6 +168,7 @@ h2 {
     padding: 0;
     margin: 0;
   }
+  
   .product-details-header {
     width: 90%;
     padding: 1rem;

@@ -1,0 +1,22 @@
+
+.react-calendar {
+    border-radius: 15px;
+}
+.react-calendar__tile:disabled {
+    background-color: #d8d4d4;
+    color: rgb(0, 0, 0);
+    text-decoration: line-through;
+    padding:10px;
+    
+}
+
+.react-calendar__month-view__days__day{
+    border-radius: 30px;
+    padding: 0.5rem;
+    
+    
+}
+
+.abbr{
+    font-size: 10px;
+}

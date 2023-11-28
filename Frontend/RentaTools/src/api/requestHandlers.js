@@ -22,6 +22,8 @@ import {
   putCategoriesEndpoint,
   deleteCategoriesEndpoint,
   getProductsBySearch,
+  getReservationsByUserEndpoint,
+  getReservationsByProductEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -37,6 +39,8 @@ const GET_ENDPOINTS_CODE = {
   SEARCH: getSearchEndpoint,
   SUGGESTIONS: getSearchSuggestionsEndpoint,
   PRODUCTS_SEARCH: getProductsBySearch,
+  RESERVATIONS_USER: getReservationsByUserEndpoint,
+  RESERVATIONS_PRODUCT: getReservationsByProductEndpoint,
 }
 
 const POST_ENDPOINTS_CODE = {
@@ -200,3 +204,4 @@ export const patchEditedInformation = async (endpoint, information, id) => {
     error
   }
 }
+
