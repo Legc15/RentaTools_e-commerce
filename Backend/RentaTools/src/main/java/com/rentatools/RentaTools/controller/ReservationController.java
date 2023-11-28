@@ -24,7 +24,7 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.GetAllReservation());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/product/{id}")
     public  ResponseEntity<List<ReservationDates>> getAllReservationByProduct(@PathVariable Long id){
         return ResponseEntity.ok(reservationService.GetAllReservationByProduct(id));
     }

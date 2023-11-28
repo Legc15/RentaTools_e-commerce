@@ -1,10 +1,12 @@
 package com.rentatools.RentaTools.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rentatools.RentaTools.entity.Feature;
 import com.rentatools.RentaTools.entity.Product;
+import com.rentatools.RentaTools.entity.dto.ProductBasicDto;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
 import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.exceptions.ResourceNotFoundException;
-import com.rentatools.RentaTools.repository.ICategoryRepository;
+import com.rentatools.RentaTools.repository.IFeatureRepository;
 import com.rentatools.RentaTools.repository.IImageRepository;
 import com.rentatools.RentaTools.repository.IProductRepository;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
@@ -25,7 +27,7 @@ public class ProductService {
     @Autowired
     private final IProductRepository iProductRepository;
     @Autowired
-    private final ICategoryRepository iCategoryRepository;
+    private final IFeatureRepository iFeatureRepository;
     @Autowired
     private final IImageRepository iImageRepository;
     @Autowired
@@ -59,8 +61,11 @@ public class ProductService {
         return paginatedProductsResponse;
     }
 
-    public List<Product> getBarProductsByDate(String productSearch, String startingDate, String endingDate){
-        return iProductRepository.findSuggestions(productSearch);
+    public List<ProductBasicDto> getBarProductsByDate(String productSearch, String startingDate, String endingDate){
+        List<Product> listProduct = iProductRepository.findSuggestions(productSearch);
+        List<ProductBasicDto> basicProduct = new ArrayList<>();
+        listProduct.forEach(product -> basicProduct.add(mapper.convertValue(product, ProductBasicDto.class)));
+        return basicProduct;
     }
 
     public List<String> getSuggestion(String barString){
@@ -70,6 +75,18 @@ public class ProductService {
         return suggestionString;
     }
 
+    public String addFeatureToProduct(Long productId, Long featureId){
+        Product product = iProductRepository.findById(productId).orElseThrow(()-> new ResourceNotFoundException("El producto no existe."));
+        Feature feature = iFeatureRepository.findById(featureId).orElseThrow(()-> new ResourceNotFoundException("No existe la característica."));
+        product.getFeatures().add(feature);
+        feature.getProducts().add(product);
+        try {
+            iProductRepository.save(product);
+        }catch (Exception ex){
+            throw new RuntimeException("Error en el guardado de la característica en el producto.");
+        }
+        return "Característica guardada correctamente en el producto.";
+    }
 
     public void createProduct(ProductDto productDto){
         try {
