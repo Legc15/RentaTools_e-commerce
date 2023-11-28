@@ -47,3 +47,6 @@ export const getFeaturesAllEndpoint = () => baseUrl[env] + "feature/all"
 
 export const getSearchEndpoint = () => baseUrl[env] + "products/search"
 export const getSearchSuggestionsEndpoint = ({ barString }) => baseUrl[env] + "products/suggestion?barString=" + barString
+
+export const getReservationsByUserEndpoint = ({id}) => baseUrl[env] + "reservation/user/" + id;
+export const getReservationsByProductEndpoint = ({id}) => baseUrl[env] + "reservation/product/" + id;

@@ -1,18 +1,45 @@
 import PropTypes from "prop-types"
 import Galeria from "../Gallery"
+import 'react-calendar/dist/Calendar.css'
 import "./styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FEATURE_ICONS } from "../../api/constants"
-import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers"
+import { LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import { useEffect, useState } from "react"
+import { getInformationFromEndpoints } from "../../api/requestHandlers"
+import { isValid, isWithinInterval, parseISO } from "date-fns";
+import Calendar from 'react-calendar'
+
 
 const ProductDetails = ({ productInfo }) => {
-  const { name, description, productImage, images, features } = productInfo
+  const { id, name, description, productImage, images, features } = productInfo
+  const [disabledDates, setDisableDates] = useState([]);
 
-  const disabledDates = [new Date("2023-11-20"), new Date("2023-11-30")]
+  useEffect(() => {
+    const fetchReservations = async () => {
+      const reservations = await getInformationFromEndpoints({
+        endpoint: 'RESERVATIONS_PRODUCT',
+        id: id,
+      });
+      
+      if (reservations) {
+        const reservationIntervals = reservations.map(reservation => {
+          const startDate = parseISO(reservation.startDate);
+          const endDate = parseISO(reservation.endDate);
+          return (isValid(startDate) && isValid(endDate)) ? { start: startDate, end: endDate } : null;
+        }).filter(interval => interval !== null);
+        setDisableDates(reservationIntervals);
+      }
+    };
 
-  const disableReservedDays = (date) => {
-    return date > disabledDates[0] && date < disabledDates[1]
+    fetchReservations();
+  }, [id]);
+
+  const disableReservedDays = ({date}) => {
+    return disabledDates.some(interval =>
+      isWithinInterval(date, {start: interval.start, end: interval.end })
+    );
   }
 
   return (
@@ -34,12 +61,12 @@ const ProductDetails = ({ productInfo }) => {
         <div>
           <p className="description">{description}</p>
         </div>
-        
+
         <div className="product-details-body">
           <div className="lower-cnt">
 
             <div className="product-details-features">
-              <h4>Características</h4>
+              <h4 className="calendar-title">Características</h4>
               {features &&
                 features.map((feature) => (
                   <p className="products-feature" key={feature.id}>
@@ -49,19 +76,22 @@ const ProductDetails = ({ productInfo }) => {
                 ))}
             </div>
 
-            <div className="calendar">
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <h4 className="calendar-title">Disponibilidad</h4>
-                
-                <DateCalendar 
-                  style={{ width: 250, height: 300 }}
-                  className="date-calendar" 
-                  shouldDisableDate={disableReservedDays} readOnly />
-              </LocalizationProvider>
-            </div>
+            {disabledDates.length > 0 ? (
+              <div className="calendar">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <h4 className="calendar-title">Disponibilidad Alquiler</h4>
+
+                  <Calendar
+                    tileDisabled={disableReservedDays}
+                  />
+                </LocalizationProvider>
+              </div>
+            ) : (
+              <div>Información de Reservas no disponible</div>
+            )}
 
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -70,6 +100,7 @@ const ProductDetails = ({ productInfo }) => {
 
 ProductDetails.propTypes = {
   productInfo: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     features: PropTypes.array,
     description: PropTypes.string,

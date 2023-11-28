@@ -59,8 +59,7 @@
 }
 
 .cuadriculadoImg:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s;
+  box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
 
 .verMasContainer {
@@ -89,8 +88,7 @@
 }
 
 .imagenPrincipal:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s;
+  box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
 
 .imagen-container {
