@@ -42,7 +42,7 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} className="card-container">
+    <Card sx={{ maxWidth: 500 }} className="card-container">
       <div className={`${isHorizontal ? "row" : "column"} card-info`}>
         <img src={productImage} alt={name} className="product-image" onClick={() => goToDetailPage(id)} />
         <CardContent className="card-content">

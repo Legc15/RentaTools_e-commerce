@@ -27,7 +27,7 @@ export default function Favorites() {
   }
 
   return (
-    <div>
+    <div className="favorites-container">
       <div className="terms-top">
         <div className=".title">
           <h1>FAVORITOS</h1>
