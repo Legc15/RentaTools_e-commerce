@@ -33,8 +33,8 @@
 }
 
 .row .product-image {
-  width: 50%;
-  height: fit-content;
+  height: 200px;
+  width: auto;
   padding: 2%;
 }
 
@@ -42,12 +42,10 @@
   padding: 0px;
 }
 
-.favorite:hover{
+.favorite:hover {
   transform: scale(1.2);
-  
-
 }
-.card-container:hover{
+.card-container:hover {
   box-shadow: rgb(96, 96, 96) 0px 2px 5px;
   transform: scale(1.03);
 }

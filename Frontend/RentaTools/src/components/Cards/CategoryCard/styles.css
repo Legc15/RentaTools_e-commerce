@@ -26,8 +26,8 @@
 }
 
 .row .product-image {
-  width: 50%;
-  height: fit-content;
+  height: 160px;
+  width: auto;
   padding: 2%;
 }
 

@@ -11,7 +11,7 @@
   font-weight: 700;
 }
 
-.favs{
+.favs {
   background-color: rgb(218, 218, 218);
   display: flex;
   justify-content: center;
@@ -21,10 +21,9 @@
 }
 .favs img {
   width: 12rem;
-  
 }
 
-.column.card-info{
+.column.card-info {
   justify-content: center;
   align-items: center;
 }
@@ -38,9 +37,18 @@
   text-align: left;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .terms-top {
     padding: 3rem 2rem 0rem 2rem;
     gap: 0rem;
   }
+}
+
+.favorites-container {
+  min-height: calc(100vh - 177px);
+  background-color: var(--gray);
+}
+
+.favs p {
+  color: var(--black-color);
 }

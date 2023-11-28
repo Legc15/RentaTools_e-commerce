@@ -60,6 +60,7 @@ export const Searchbar = () => {
             placeholder="Search..."
             size="small"
             name="searchBar"
+            value={formData.searchBar}
             onChange={handleInputChange}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -85,8 +86,10 @@ export const Searchbar = () => {
         {isShowSuggestions ? (
           <div className="suggestions">
             <h6 className="suggestions-title">Sugerencias:</h6>
-            {suggestions.map((suggestions, index) => (
-              <li key={index}>{suggestions}</li>
+            {suggestions.map((suggestion, index) => (
+              <li className="suggestion" onClick={() => setFormData({ ...formData, searchBar: suggestion })} key={index}>
+                {suggestion}
+              </li>
             ))}
           </div>
         ) : (
