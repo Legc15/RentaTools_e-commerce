@@ -49,3 +49,13 @@
   box-shadow: rgb(96, 96, 96) 0px 2px 5px;
   transform: scale(1.03);
 }
+
+@media (max-width: 425px) {
+  .card-container {
+    width: 350px;
+  }
+  .row .product-image {
+    height: 120px;
+    width: auto;
+  }
+}
