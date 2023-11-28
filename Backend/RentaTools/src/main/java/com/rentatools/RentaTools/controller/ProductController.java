@@ -1,24 +1,18 @@
 package com.rentatools.RentaTools.controller;
-
 import com.rentatools.RentaTools.entity.Product;
+import com.rentatools.RentaTools.entity.dto.ProductBasicDto;
 import com.rentatools.RentaTools.entity.dto.ProductDto;
-import com.rentatools.RentaTools.entity.dto.ProductUpdDto;
-import com.rentatools.RentaTools.exceptions.ValidationFailedException;
+import com.rentatools.RentaTools.exceptions.BadRequestException;
 import com.rentatools.RentaTools.service.ProductService;
 import com.rentatools.RentaTools.utilities.PaginateMessage;
 import com.rentatools.RentaTools.utilities.ResponseMessage;
-import com.rentatools.RentaTools.utilities.SearchBarDate;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -40,14 +34,17 @@ public class ProductController {
         return productService.getNameExist(name);
     }
 
-    @PostMapping("/suggestion")
-    public ResponseEntity<List<String>> getSuggestion(@RequestBody String barString){
+    @GetMapping("/suggestion")
+    public ResponseEntity<List<String>> getSuggestion(@RequestParam String barString){
         return ResponseEntity.ok(productService.getSuggestion(barString));
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Product>> getProductByDate(@RequestBody SearchBarDate searchBarDate){
-        return ResponseEntity.ok(productService.getBarProductsByDate(searchBarDate.getSearch(), searchBarDate.getStartDate(), searchBarDate.getEndDate()));
+    public ResponseEntity<List<ProductBasicDto>> getProductByDate(
+            @RequestParam(defaultValue = "", required = true) String searchBar,
+            @RequestParam(defaultValue = "", required = false) String startDate,
+            @RequestParam(defaultValue = "", required = false) String endDate) {
+        return ResponseEntity.ok(productService.getBarProductsByDate(searchBar, startDate, endDate));
     }
 
     @GetMapping("/{id}")
@@ -65,6 +62,11 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("/{productId}/addFeature/{featureId}")
+    public ResponseEntity<String> addFeature(@PathVariable Long productId, @PathVariable Long featureId) throws BadRequestException {
+        if(productId == null || featureId == null) throw new BadRequestException("Debe pasar los id de producto y de csrscterística.");
+        return ResponseEntity.ok(productService.addFeatureToProduct(productId,featureId));
+    }
 
     @PostMapping("/create")
     public ResponseEntity<ResponseMessage> createProduct(@Valid @RequestBody ProductDto productDto){
