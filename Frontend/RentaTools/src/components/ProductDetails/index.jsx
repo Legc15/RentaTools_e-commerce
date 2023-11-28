@@ -1,7 +1,6 @@
 import PropTypes from "prop-types"
 import Galeria from "../Gallery"
 import 'react-calendar/dist/Calendar.css'
-import "./customCalendar.css"
 import "./styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FEATURE_ICONS } from "../../api/constants"
