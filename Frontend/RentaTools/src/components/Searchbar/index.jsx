@@ -11,6 +11,7 @@ import { useState } from "react"
 import { getInformationFromEndpoints } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
 import ProductList from "../ProductList"
+import Autocomplete from "@mui/material/Autocomplete"
 const initialState = {
   search: "",
   reservationFrom: "",
@@ -19,50 +20,56 @@ const initialState = {
 
 export const Searchbar = () => {
   const { formData, setFormData, handleDateChange, handleSubmit } = useForm(initialState)
-  const suggestionsArray = [
-    "Martillo de demolición",
-    "Martillo de demolición hexagonal",
-    "Taladro de martillo giratorio",
-    "Taladro de martillo giratorio inalámbrico",
-  ]
-  const [suggestions, setSuggestions] = useState(suggestionsArray)
-  const [isShowSuggestions, setIsShowSuggestions] = useState(false)
+
+  const [suggestions, setSuggestions] = useState([])
   const [results, setResults] = useState([])
   const [isSearchInitiated, setIsSearchInitiated] = useState(false)
 
   const handleSearch = async () => {
     setIsSearchInitiated(false)
-    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_SEARCH, searchBar: formData.searchBar }).then((response) =>
+    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCTS_SEARCH, searchBar: formData.search }).then((response) =>
       setResults(response)
     )
     setIsSearchInitiated(true)
   }
+  console.log(results)
 
   const handleInputChange = async (e) => {
-    setIsShowSuggestions(true)
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.SUGGESTIONS, barString: formData.searchBar }).then((response) =>
+    await getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.SUGGESTIONS, barString: formData.search }).then((response) =>
       setSuggestions(response)
     )
   }
-
+  console.log(suggestions)
+  console.log(formData)
   return (
     <>
       {" "}
       <div className="searchbar-container">
         <h1 className="searchbar-title">Encontrá la herramienta que estás buscando!</h1>
         <form onSubmit={(e) => handleSubmit(e, () => handleSearch())} className="searchbar-bars">
-          <TextField
-            id="search-bar"
-            className="searchbar-input text-input"
-            label="Ingresá tu búsqueda"
-            variant="outlined"
-            placeholder="Search..."
-            size="small"
-            name="searchBar"
-            value={formData.searchBar}
-            onChange={handleInputChange}
+          <Autocomplete
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            options={suggestions.map((suggestion) => suggestion)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                id="search-bar"
+                className="searchbar-input text-input"
+                label="Ingresá tu búsqueda"
+                name="search"
+                value={formData.searchBar}
+                onChange={handleInputChange}
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
           />
+
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label="Desde"
@@ -83,18 +90,6 @@ export const Searchbar = () => {
             Buscar
           </Button>
         </form>
-        {isShowSuggestions ? (
-          <div className="suggestions">
-            <h6 className="suggestions-title">Sugerencias:</h6>
-            {suggestions.map((suggestion, index) => (
-              <li className="suggestion" onClick={() => setFormData({ ...formData, searchBar: suggestion })} key={index}>
-                {suggestion}
-              </li>
-            ))}
-          </div>
-        ) : (
-          ""
-        )}
 
         {isSearchInitiated ? (
           <>
