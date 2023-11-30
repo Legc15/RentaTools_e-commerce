@@ -1,0 +1,50 @@
+.rent{
+    width: auto;
+    padding: 100px;
+    flex-direction: row;
+    background-color: red;
+}
+
+.titulo{
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+.info{
+    gap: 30px;
+    display: flex;
+}
+
+.accion_alquilar{
+    background-color: black ;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.accion_volverAtras{
+    background-color: grey ;
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.datos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    gap: 40px
+}
+

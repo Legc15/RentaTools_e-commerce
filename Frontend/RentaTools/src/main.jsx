@@ -24,7 +24,8 @@ import {
   NotFound,
   Favorites,
   Reservas,
-} from "./pages";
+  Rent
+} from "./pages"
 
 import "./index.css";
 
@@ -113,6 +114,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="not-found" element={<NotFound />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
+          <Route path="rent" element={<Rent />} />
         </Route>
       </Routes>
     </BrowserRouter>
