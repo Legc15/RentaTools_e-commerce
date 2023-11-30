@@ -25,6 +25,7 @@ h2 {
 }
 
 .product-details-container {
+  max-width: 800px;
   width: 45%;
   background-color: var(--white-color);
   gap: 50px;
@@ -88,7 +89,9 @@ h2 {
 }
 
 .calendar-title {
+  margin:0;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .product-details-features {
@@ -109,24 +112,46 @@ h2 {
   font-size: 0.85rem;
   padding: 1rem;
 }
+.react-calendar{
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
 
-.react-calendar {
-  border-radius: 15px;
+
+.react-calendar__tile:enabled {
+  border: 0.15rem solid #ffffff;
+  background-color: rgb(43, 214, 52);
 }
 .react-calendar__tile:disabled {
-  background-color: #d8d4d4;
-  color: var(--black-color);
+  border: 6px solid #ffffff;
+  color: rgb(156, 156, 156);
   text-decoration: line-through;
 }
-
-.react-calendar__month-view__days__day {
-  border-radius: 30px;
-  padding: 0.5rem;
+.react-calendar__tile {
+  
+  height: 40px; /* Cambia esto según el tamaño que desees */
+  border-radius: 50%; /* Esto hace que el día sea un círculo perfecto */
+  display: flex; /* Esto centra el número del día dentro del círculo */
+  justify-content: center;
+  align-items: center;
 }
 
-.abbr {
-  font-size: 10px;
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(32, 116, 29, 0);
+  }
 }
+
+.react-calendar__tile:enabled {
+  animation: shadow-pulse 2s infinite;
+}
+
+
+
 
 @media (max-width: 769px) and (min-width: 426px) {
   .details-container {
@@ -166,7 +191,7 @@ h2 {
 @media (max-width: 425px) and (min-width: 319px) {
   h4 {
     font-size: 1rem;
-    padding-left: 0.5rem;
+    
   }
   .view {
     align-items: center;
@@ -180,33 +205,35 @@ h2 {
   }
 
   .product-details-header {
-    width: 90%;
-    padding: 1rem;
+    width: 100%;
+    ;
   }
   .product-details-container {
+    margin-top: 1rem;
+    background-color: #ffffff;
     width: 90%;
     height: 100%;
     justify-content: center;
     align-items: center;
     text-align: justify;
+    
   }
   .lower-cnt {
     width: 105%;
     flex-direction: column;
+
   }
 
   .product-details-title {
     font-size: 1rem;
-    text-align: center;
-    margin: 0;
+    text-align: left;
   }
 
   .product-details-features {
-    width: 100%;
-    background-color: white;
+    width: 90%;
+    background-color:white;
     text-align: left;
     font-size: 0.85rem;
-    margin-top: 1rem;
   }
   .product-details-description {
     justify-content: center;
@@ -217,16 +244,29 @@ h2 {
 
   .calendar {
     border: none;
-    margin-top: 1rem;
     padding: 0;
     width: 100%;
   }
+
+  .calendar h4{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+  
+  }
   .calendar-title {
     text-align: left;
+    margin-top: 1rem;
+    
   }
   .product-details-back-button {
-    margin: 0px;
-    padding: 6px 20px;
+    margin: 2px;
+    padding: 6px 10px;
     font-size: 15px;
   }
+
+  .products-feature{
+    padding: 0.5rem 0;
+  }
+
 }
