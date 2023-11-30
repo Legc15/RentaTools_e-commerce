@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { getReservationsByUserEndpoint } from '/src/api/endpoints';
+import {useParams}  from 'react-router';
+
+
 
 const Reservas = () => {
+  const {id} = useParams();
   const [userReservations, setUserReservations] = useState([]);
 
   useEffect(() => {
     const fetchReservations = async () => {
       try {
-        const userRes = await fetch(getReservationsByUserEndpoint({ id: 'userId' }));
+        const userRes = await fetch(getReservationsByUserEndpoint({ id}));
         const userResData = await userRes.json();
         console.log('User reservations data:', userResData); // Log the response data
         if (Array.isArray(userResData)) { // Check if the response data is an array
