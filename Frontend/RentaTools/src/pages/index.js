@@ -12,6 +12,7 @@ import Error from "./Error"
 import Edit from "./Edit"
 import NotFound from "./NotFound"
 import Favorites from "./Favorites"
+import Reservas from "./Reservas"
  
 
-export { Admin, Register, Detail, Home, SignUp, SignIn, Features, Categories, List, Policies, Error, Edit, NotFound, Favorites }
+export { Admin, Register, Detail, Home, SignUp, SignIn, Features, Categories, List, Policies, Error, Edit, NotFound, Favorites , Reservas}
