@@ -13,17 +13,17 @@ const Rent = () => {
                 <RentCard />
                 <div className='datos'>
                     <div>
-                        <h2 className='titulo'>Tus datos</h2>
+                        <h2 className='titulo'>Tus Datos</h2>
                         <RentTable />
                     </div>
 
                     <div>
-                        <h2 className='titulo'>Dato de alquiler</h2>
+                        <h2 className='titulo'>Datos de Reserva</h2>
                         <RentTable2 />
                     </div>
                     <div className='botones'>
-                    <button type="submit" className='accion_volverAtras'>VOLVER ATRAS</button>
-                    <button type='submit' className='accion_alquilar'>ALQUILAR</button>
+                    <button type="submit" className='accion_volverAtras'>VOLVER</button>
+                    <button type='submit' className='accion_alquilar'>CONFIRMAR RESERVA</button>
                     
                     </div>
                 </div>
