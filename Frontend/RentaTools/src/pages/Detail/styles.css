@@ -1,7 +1,7 @@
 .detail-container {
     display: flex;
     justify-content: space-around;
-    padding: 3rem;
+    
     align-items: center;
     height: 90vh;
 }
@@ -37,14 +37,18 @@
 
     .detail-container{
         margin: 0;
-        padding: 1rem;
+        padding: 0;
         width: auto;
         height: auto;
         
     }
-    
+
     .view {
         flex-direction: column-reverse;
-        gap:2.5rem;
+        gap:2.5rem;        
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 }
