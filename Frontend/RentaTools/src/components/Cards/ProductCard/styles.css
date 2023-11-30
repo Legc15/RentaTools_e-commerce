@@ -50,7 +50,7 @@
   transform: scale(1.03);
 }
 
-@media (max-width: 425px) {
+@media (max-width: 376px) {
   .card-container {
     width: 350px;
   }
