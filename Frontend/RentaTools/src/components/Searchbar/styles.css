@@ -59,6 +59,7 @@
 @media (max-width: 768px) {
   .searchbar-container form {
     flex-direction: column;
+    height: 100%;
   }
 
   .searchbar-input.text-input,
