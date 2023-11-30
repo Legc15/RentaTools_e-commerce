@@ -12,6 +12,9 @@ import { getInformationFromEndpoints } from "../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../api/constants"
 import ProductList from "../ProductList"
 import Autocomplete from "@mui/material/Autocomplete"
+import dayjs from "dayjs"
+import es from "dayjs/locale/es"
+
 const initialState = {
   search: "",
   reservationFrom: "",
@@ -68,13 +71,14 @@ export const Searchbar = () => {
             )}
           />
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider adapterLocale={es} dateAdapter={AdapterDayjs}>
             <DatePicker
               label="Desde"
               name="reservationFrom"
               className="searchbar-input date-input"
               slotProps={{ textField: { size: "small" } }}
               onChange={(e) => handleDateChange(e, "reservationFrom")}
+              minDate={dayjs()}
             />
             <DatePicker
               label="Hasta"
@@ -82,6 +86,7 @@ export const Searchbar = () => {
               className="searchbar-input date-input"
               slotProps={{ textField: { size: "small" } }}
               onChange={(e) => handleDateChange(e, "reservationTo")}
+              minDate={dayjs()}
             />
           </LocalizationProvider>
           <Button variant="contained" startIcon={<SearchIcon />} type="submit">

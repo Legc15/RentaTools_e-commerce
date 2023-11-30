@@ -9,6 +9,11 @@
   gap: 2rem;
   padding-bottom: 2.5rem;
 }
+
+button.Mui-disabled {
+  text-decoration: line-through;
+}
+
 .searchbar-description {
   margin: 0px;
   font-size: 16px;
