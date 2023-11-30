@@ -8,7 +8,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { useEffect, useState } from "react"
 import { getInformationFromEndpoints } from "../../api/requestHandlers"
-import { isValid, isWithinInterval, parseISO } from "date-fns";
+import { isValid, isWithinInterval, parseISO, isBefore } from "date-fns";
 import Calendar from 'react-calendar'
 
 
@@ -18,21 +18,25 @@ const ProductDetails = ({ productInfo }) => {
 
   useEffect(() => {
     const fetchReservations = async () => {
-      const reservations = await getInformationFromEndpoints({
-        endpoint: 'RESERVATIONS_PRODUCT',
-        id: id,
-      });
-      
-      if (reservations) {
-        const reservationIntervals = reservations.map(reservation => {
-          const startDate = parseISO(reservation.startDate);
-          const endDate = parseISO(reservation.endDate);
-          return (isValid(startDate) && isValid(endDate)) ? { start: startDate, end: endDate } : null;
-        }).filter(interval => interval !== null);
-        setDisableDates(reservationIntervals);
+      try {
+        const reservations = await getInformationFromEndpoints({
+          endpoint: 'RESERVATIONS_PRODUCT',
+          id: id,
+        });
+  
+        if (Array.isArray(reservations)) {
+          const reservationIntervals = reservations.map(reservation => {
+            const startDate = parseISO(reservation.startDate);
+            const endDate = parseISO(reservation.endDate);
+            return (isValid(startDate) && isValid(endDate) && isBefore(startDate, endDate)) ? { start: startDate, end: endDate } : null;
+          }).filter(interval => interval !== null);
+          setDisableDates(reservationIntervals);
+        }
+      } catch (error) {
+        console.error('Failed to fetch reservations:', error);
       }
     };
-
+  
     fetchReservations();
   }, [id]);
 
