@@ -32,7 +32,6 @@ export const Searchbar = () => {
     )
     setIsSearchInitiated(true)
   }
-  console.log(results)
 
   const handleInputChange = async (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -40,8 +39,7 @@ export const Searchbar = () => {
       setSuggestions(response)
     )
   }
-  console.log(suggestions)
-  console.log(formData)
+
   return (
     <>
       {" "}
