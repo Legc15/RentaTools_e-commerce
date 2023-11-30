@@ -204,4 +204,3 @@ export const patchEditedInformation = async (endpoint, information, id) => {
     error
   }
 }
-

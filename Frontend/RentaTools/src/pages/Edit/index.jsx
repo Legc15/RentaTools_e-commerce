@@ -44,7 +44,7 @@ const Edit = () => {
 
   async function handleEditProduct({ formData, setIsFormSent }) {
     const response = await putEditedInformation(ENDPOINTS_CODE.PRODUCT_EDIT, formData, id)
-    console.log(response)
+
     if (response.status === 200) {
       setIsFormSent(true)
     }

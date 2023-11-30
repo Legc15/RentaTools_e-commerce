@@ -1,45 +1,24 @@
 import PropTypes from "prop-types"
 import Galeria from "../Gallery"
-import 'react-calendar/dist/Calendar.css'
+import "react-calendar/dist/Calendar.css"
 import "./styles.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FEATURE_ICONS } from "../../api/constants"
 import { LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
-import { useEffect, useState } from "react"
-import { getInformationFromEndpoints } from "../../api/requestHandlers"
-import { isValid, isWithinInterval, parseISO } from "date-fns";
-import Calendar from 'react-calendar'
+import { isWithinInterval, parseISO } from "date-fns"
+import Calendar from "react-calendar"
 
+const ProductDetails = ({ productInfo, reservations }) => {
+  const { name, description, productImage, images, features } = productInfo
 
-const ProductDetails = ({ productInfo }) => {
-  const { id, name, description, productImage, images, features } = productInfo
-  const [disabledDates, setDisableDates] = useState([]);
-
-  useEffect(() => {
-    const fetchReservations = async () => {
-      const reservations = await getInformationFromEndpoints({
-        endpoint: 'RESERVATIONS_PRODUCT',
-        id: id,
-      });
-      
-      if (reservations) {
-        const reservationIntervals = reservations.map(reservation => {
-          const startDate = parseISO(reservation.startDate);
-          const endDate = parseISO(reservation.endDate);
-          return (isValid(startDate) && isValid(endDate)) ? { start: startDate, end: endDate } : null;
-        }).filter(interval => interval !== null);
-        setDisableDates(reservationIntervals);
+  const disableReservedDays = ({ date }) => {
+    return reservations.some((interval) => {
+      //acá filtro todos los intervalos donde la endDate sea antes de la startDate
+      if (interval.startDate <= interval.endDate) {
+        return isWithinInterval(date, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
       }
-    };
-
-    fetchReservations();
-  }, [id]);
-
-  const disableReservedDays = ({date}) => {
-    return disabledDates.some(interval =>
-      isWithinInterval(date, {start: interval.start, end: interval.end })
-    );
+    })
   }
 
   return (
@@ -64,7 +43,6 @@ const ProductDetails = ({ productInfo }) => {
 
         <div className="product-details-body">
           <div className="lower-cnt">
-
             <div className="product-details-features">
               <h4 className="calendar-title">Características</h4>
               {features &&
@@ -76,22 +54,14 @@ const ProductDetails = ({ productInfo }) => {
                 ))}
             </div>
 
-            {disabledDates.length > 0 ? (
-              <div className="calendar">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <h4 className="calendar-title">Disponibilidad Alquiler</h4>
+            <div className="calendar">
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <h4 className="calendar-title">Disponibilidad Alquiler</h4>
 
-                  <Calendar
-                    tileDisabled={disableReservedDays}
-                  />
-                </LocalizationProvider>
-              </div>
-            ) : (
-              <div>Información de Reservas no disponible</div>
-            )}
-
+                <Calendar tileDisabled={disableReservedDays} minDate={new Date()} locale="es-ES" />
+              </LocalizationProvider>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -99,6 +69,7 @@ const ProductDetails = ({ productInfo }) => {
 }
 
 ProductDetails.propTypes = {
+  reservations: PropTypes.array,
   productInfo: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,

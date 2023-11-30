@@ -5,12 +5,12 @@ h2 {
   font-weight: 700;
   margin: 0;
 }
-.main p{
+.main p {
   font-size: 2rem;
   font-weight: 700;
   color: black;
 }
-.main{
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,6 @@ h2 {
   color: var(--black-color);
   margin-top: 8px;
 }
-
 
 .product-details-container {
   width: 45%;
@@ -108,8 +107,7 @@ h2 {
   background-color: white;
   width: 50%;
   font-size: 0.85rem;
-  padding:1rem ;
-  
+  padding: 1rem;
 }
 
 .react-calendar {
@@ -117,20 +115,16 @@ h2 {
 }
 .react-calendar__tile:disabled {
   background-color: #d8d4d4;
-  color: rgb(0, 0, 0);
+  color: var(--black-color);
   text-decoration: line-through;
-  padding:10px;
-  
 }
 
-.react-calendar__month-view__days__day{
+.react-calendar__month-view__days__day {
   border-radius: 30px;
   padding: 0.5rem;
-  
-  
 }
 
-.abbr{
+.abbr {
   font-size: 10px;
 }
 
@@ -158,19 +152,15 @@ h2 {
   }
   .product-details-header {
     width: 100%;
-    
   }
-  
+
   .products-feature {
     padding: 1rem;
   }
   .lower-cnt {
-  
     display: flex;
     flex-direction: row;
   }
-
-
 }
 
 @media (max-width: 425px) and (min-width: 319px) {
@@ -188,7 +178,7 @@ h2 {
     padding: 0;
     margin: 0;
   }
-  
+
   .product-details-header {
     width: 90%;
     padding: 1rem;
@@ -203,10 +193,8 @@ h2 {
   .lower-cnt {
     width: 105%;
     flex-direction: column;
-
   }
 
-  
   .product-details-title {
     font-size: 1rem;
     text-align: center;
