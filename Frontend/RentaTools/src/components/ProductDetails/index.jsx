@@ -2,15 +2,21 @@ import PropTypes from "prop-types"
 import Galeria from "../Gallery"
 import "react-calendar/dist/Calendar.css"
 import "./styles.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { FEATURE_ICONS } from "../../api/constants"
-import { LocalizationProvider } from "@mui/x-date-pickers"
+import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { isWithinInterval, parseISO } from "date-fns"
-import Calendar from "react-calendar"
+import dayjs from "dayjs"
+import { useState } from "react"
+import HeaderButton from "../button"
 
+const initialDates = {
+  reservationFrom: "",
+  reservationTo: "",
+  isShowDates: false,
+}
 const ProductDetails = ({ productInfo, reservations }) => {
   const { name, description, productImage, images, features } = productInfo
+  const [reservedDates, setReservedDates] = useState(initialDates)
 
   const disableReservedDays = ({ date }) => {
     return reservations.some((interval) => {
@@ -19,6 +25,18 @@ const ProductDetails = ({ productInfo, reservations }) => {
         return isWithinInterval(date, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
       }
     })
+  }
+
+  const handleResetDates = () => setReservedDates(initialDates)
+
+  const keepReservedDates = (date) => {
+    if (reservedDates.reservationFrom === "") {
+      setReservedDates({ ...reservedDates, reservationFrom: date, isShowDates: true })
+    } else if (date > reservedDates.reservationFrom) {
+      setReservedDates({ ...reservedDates, reservationTo: date, isShowDates: true })
+    } else {
+      setReservedDates({ ...reservedDates, reservationFrom: date, isShowDates: true })
+    }
   }
 
   return (
@@ -48,7 +66,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
               {features &&
                 features.map((feature) => (
                   <p className="products-feature" key={feature.id}>
-                    {<FontAwesomeIcon icon={FEATURE_ICONS[feature.icon]} />} {feature.name}
+                    <i className={`fa-solid ${feature.icon}`}></i> {feature.name}
                   </p>
                 ))}
             </div>
@@ -57,11 +75,38 @@ const ProductDetails = ({ productInfo, reservations }) => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <h4 className="calendar-title">Disponibilidad Alquiler</h4>
 
-                <Calendar view="month" maxDetail="month" tileDisabled={disableReservedDays} minDate={new Date()} locale="es-ES" />
+                <StaticDatePicker
+                  view="month"
+                  maxDetail="month"
+                  tileDisabled={disableReservedDays}
+                  minDate={dayjs()}
+                  locale="es-ES"
+                  onChange={(e) => {
+                    keepReservedDates(e.toDate())
+                  }}
+                />
               </LocalizationProvider>
             </div>
           </div>
+          {reservedDates.isShowDates ? (
+            <>
+              <div className="dates-selected">
+                <h3>
+                  Seleccionaste del {reservedDates.reservationFrom ? reservedDates.reservationFrom.toLocaleDateString("es-ES") : ""} hasta
+                  el {reservedDates.reservationTo ? reservedDates.reservationTo.toLocaleDateString("es-ES") : ""}
+                </h3>
+                <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
+              </div>
+            </>
+          ) : (
+            ""
+          )}
         </div>
+        {reservedDates.reservationFrom && reservedDates.reservationTo ? (
+          <HeaderButton buttonLabel="Iniciar Reserva" onClick={handleResetDates} className="reservation-button" />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   )
