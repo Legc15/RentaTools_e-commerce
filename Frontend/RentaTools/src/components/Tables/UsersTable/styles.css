@@ -11,14 +11,14 @@
   gap: 5px;
 }
 .table-buttons .button-delete {
-  color: red;
-  border-color: red;
+  color: var(--delete-red);
+  border-color: var(--delete-red);
 }
 
 .table-buttons .button-edit {
-  background-color: green;
+  background-color: var(--confirm-green);
 }
 
 .active-icon {
-  color: green;
+  color: var(--confirm-green);
 }

@@ -34,18 +34,18 @@ form .stack-container .product-category {
 
 .form-container .submit-form {
   background-color: var(--dark-orange);
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--black-color);
   font-weight: bold;
   font-size: 16px;
 }
 
 .error-message {
-  color: red;
+  color: var(--delete-red);
   font-weight: bold;
 }
 
 .success-message {
-  color: forestgreen;
+  color: var(--confirm-green);
   font-weight: bold;
 }
 

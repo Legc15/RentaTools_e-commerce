@@ -1,50 +1,49 @@
-.rent{
-    width: auto;
-    padding: 100px;
-    flex-direction: row;
-    background-color: red;
+@import "../../colors.css";
+
+.rent {
+  width: auto;
+  padding: 100px;
+  flex-direction: row;
 }
 
-.titulo{
-    font-size: 20px;
-    color: white;
-    background-color: black;
-    padding: 10px;
+.titulo {
+  font-size: 20px;
+  color: var(--white-color);
+  background-color: var(--black-color);
+  padding: 10px;
 }
 
-.info{
-    gap: 30px;
-    display: flex;
+.info {
+  gap: 30px;
+  display: flex;
 }
 
-.accion_alquilar{
-    background-color: black ;
-    color: white;
-    border: none;
-    font-size: 20px;
-    padding: 20px;
-    border-radius: 30px;
+.datos .botones .accion_alquilar {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 30px;
 }
 
-.accion_volverAtras{
-    background-color: grey ;
-    color: white;
-    border: none;
-    font-size: 20px;
-    padding: 20px;
-    border-radius: 30px;
+.datos .botones .accion_volverAtras {
+  background-color: var(--dark-gray);
+  color: var(--white-color);
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 30px;
 }
 
-.datos{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
+.datos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.botones{
-    display: flex;
-    justify-content: center;
-    gap: 40px
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
-

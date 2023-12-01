@@ -8,6 +8,7 @@ import { isWithinInterval, parseISO } from "date-fns"
 import dayjs from "dayjs"
 import { useState } from "react"
 import HeaderButton from "../button"
+import { Link } from "react-router-dom"
 
 const initialDates = {
   reservationFrom: "",
@@ -103,7 +104,9 @@ const ProductDetails = ({ productInfo, reservations }) => {
           )}
         </div>
         {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-          <HeaderButton buttonLabel="Iniciar Reserva" onClick={handleResetDates} className="reservation-button" />
+          <Link to={{ pathname: "/rent" }} state={reservedDates}>
+            <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
+          </Link>
         ) : (
           ""
         )}

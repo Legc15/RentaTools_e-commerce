@@ -1,3 +1,5 @@
+@import "../../../colors.css";
+
 .admin-table-container .table-container {
   padding: 20px;
   margin: 24px;
@@ -11,10 +13,10 @@
   gap: 5px;
 }
 .table-buttons .button-delete {
-  color: red;
-  border-color: red;
+  color: var(--delete-red);
+  border-color: var(--delete-red);
 }
 
 .table-buttons .button-edit {
-  background-color: green;
+  background-color: var(--confirm-green);
 }

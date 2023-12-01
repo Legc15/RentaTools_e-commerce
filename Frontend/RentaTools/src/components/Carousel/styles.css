@@ -41,7 +41,6 @@
 }
 
 .carousel-item {
-  
   flex: 0 0 auto;
   width: 15rem;
   height: 15rem;
@@ -62,7 +61,7 @@
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
-  background-color: aliceblue;
+  background-color: var(--white-color);
   color: var(--black-color);
   border-radius: 40px;
   border: none;
