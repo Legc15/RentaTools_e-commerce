@@ -10,6 +10,21 @@ h2 {
   font-weight: 700;
   color: black;
 }
+
+.calendar .css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
+  display: none;
+}
+
+.dates-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+.calendar .MuiDialogActions-root.MuiDialogActions-spacing.MuiPickersLayout-actionBar.css-knqc4i-MuiDialogActions-root {
+  display: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -24,12 +39,17 @@ h2 {
   margin-top: 8px;
 }
 
-.product-details-container {
+.product-details-container .reservation-button {
+  margin: 16px;
+}
 
+.product-details-container {
   max-width: 800px;
-  width: 45%;
+  width: 55%;
   background-color: var(--white-color);
-  gap: 50px;
+  gap: 10px;
+  margin: 36px;
+  padding: 16px;
 }
 
 .product-details-header {
@@ -90,18 +110,18 @@ h2 {
 }
 
 .calendar-title {
-  margin:0;
+  margin: 0;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.calendar h4{
-  margin:0;
+.calendar h4 {
+  margin: 0;
 }
 
 .product-details-features {
   width: 50%;
-  max-height: 285px;
+
   text-align: left;
   background-color: #dad8d8;
   font-size: 0.85rem;
@@ -112,19 +132,17 @@ h2 {
   color: black;
 }
 .calendar {
-  max-height: 285px;
   border-left: 2px solid grey;
   background-color: white;
   width: 50%;
   font-size: 0.85rem;
   padding: 1rem;
 }
-.react-calendar{
+.react-calendar {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   transform: scale(0.9);
 }
-
 
 .react-calendar__tile:enabled {
   border: 0.15rem solid #ffffff;
@@ -136,7 +154,6 @@ h2 {
   text-decoration: line-through;
 }
 .react-calendar__tile {
-  
   height: 40px; /* Cambia esto según el tamaño que desees */
   border-radius: 50%; /* Esto hace que el día sea un círculo perfecto */
   display: flex; /* Esto centra el número del día dentro del círculo */
@@ -144,8 +161,7 @@ h2 {
   align-items: center;
 }
 
-@keyframes shadow-pulse
-{
+@keyframes shadow-pulse {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
   }
@@ -157,9 +173,6 @@ h2 {
 .react-calendar__tile:enabled {
   animation: shadow-pulse 2s infinite;
 }
-
-
-
 
 @media (max-width: 769px) and (min-width: 426px) {
   .details-container {
@@ -197,9 +210,16 @@ h2 {
 }
 
 @media (max-width: 425px) and (min-width: 319px) {
+  .dates-selected {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    gap: 5px;
+  }
+
   h4 {
     font-size: 1rem;
-    
   }
   .product-details-body {
     padding: 0;
@@ -217,12 +237,10 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: justify;
-    
   }
   .lower-cnt {
     width: 105%;
     flex-direction: column;
-
   }
 
   .product-details-title {
@@ -232,7 +250,7 @@ h2 {
 
   .product-details-features {
     width: 90%;
-    background-color:white;
+    background-color: white;
     text-align: left;
     font-size: 0.85rem;
   }
@@ -248,19 +266,16 @@ h2 {
     padding: 0;
     margin-bottom: 2.5rem;
     width: 100%;
-    
   }
 
-  .calendar h4{
+  .calendar h4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-left: 1rem;
-  
   }
   .calendar-title {
     text-align: left;
     margin-top: 1rem;
-    
   }
   .product-details-back-button {
     margin: 2px;
@@ -268,8 +283,7 @@ h2 {
     font-size: 15px;
   }
 
-  .products-feature{
+  .products-feature {
     padding: 0.5rem 0;
   }
-
 }

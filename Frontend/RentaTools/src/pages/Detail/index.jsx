@@ -9,32 +9,24 @@ const Detail = () => {
   const { id } = useParams()
   const [product, setProduct] = useState({})
   const [reservations, setReservations] = useState([])
-
-  const objectNotFound = {
-    name: "Título no disponible",
-    description: "No description available",
-    imagenDeReserva: { url: "../../assets/imagenesGaleria/No-disponible.jpg" },
-  }
+  const [isFirstRender, setIsFirstRender] = useState(false)
 
   useEffect(() => {
-    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCT_DETAIL, id }).then((response) => setProduct(response))
+    getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.PRODUCT_DETAIL, id }).then((response) => {
+      setProduct(response)
+      setIsFirstRender(true)
+    })
     getInformationFromEndpoints({
       endpoint: ENDPOINTS_CODE.RESERVATIONS_PRODUCT,
       id: id,
     }).then((response) => setReservations(response))
-  }, [id])
+  }, [])
 
   if (product.status === "NOT_FOUND") {
     window.location.replace("/not-found")
   }
 
-  const hasInformation = Object.keys(product).length > 0
-
-  return (
-    <div className="detail-container">
-      <ProductDetails productInfo={hasInformation ? product : objectNotFound} reservations={reservations} />
-    </div>
-  )
+  return <div className="detail-container">{isFirstRender ? <ProductDetails productInfo={product} reservations={reservations} /> : ""}</div>
 }
 
 export default Detail
