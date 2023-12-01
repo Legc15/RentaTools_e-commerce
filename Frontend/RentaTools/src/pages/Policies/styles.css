@@ -1,9 +1,8 @@
 @import "../../colors.css";
 
-.termsBody {
+.policiesBody {
   margin: 50px auto;
   width: 70%;
-  padding: 20px;
   background-color: var(--white-color);
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -11,47 +10,31 @@
   flex-direction: column;
   gap: 20px;
 }
-.terms {
+.policies {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.terms-top {
+.policies-top {
   display: flex;
-  justify-content: flex-start;
-  padding: 20px;
+  align-items: center;
+  padding: 0 40px; 
+  height: 100px;
+
 }
 
-.button-Back {
-  background-color: var(--white-color);
-  color: var(--dark-orange);
-  cursor: pointer;
-  border-radius: 20px;
-  padding: 0.375rem 1.0625rem;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 700;
-  border: 0;
-}
-
-.button-Back:hover {
-  background-color: var(--dark-orange);
-  color: var(--white-color);
-  transition: 0.5s;
-}
-
-.terms li {
+.policies li {
   list-style: none;
   margin-bottom: 50px;
 }
 
-.terms-bullet {
+.policies-bullet {
   font-size: 1.4rem;
   margin-bottom: 10px;
 }
-.terms-title {
+.policies-title {
   text-decoration:underline;
   font-size: 3rem;
   font-weight: 700;
@@ -59,14 +42,30 @@
   text-decoration: underline;
 }
 
-.terms-discrecion {
+.policies-discrecion {
   width: 80%;
   font-size: 1rem;
   text-align: center;
   color: black;
 }
 
-.terms-descripcion {
+.policies-descripcion {
   font-size: 1rem;
   color: var(--black-color);
+}
+
+.button-Back{
+  background-color: var(--white-color);
+  text-align: right;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 6px 17px;
+  margin-right: 1rem;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+.button-Back:hover {
+  background-color: var(--white-color);
+  box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
