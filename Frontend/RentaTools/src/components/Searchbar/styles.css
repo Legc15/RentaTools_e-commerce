@@ -20,7 +20,7 @@ button.Mui-disabled {
   color: var(--black-color);
 }
 .searchbar-input {
-  background-color: white;
+  background-color: var(--white-color);
 }
 
 .searchbar-input.text-input {

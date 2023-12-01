@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -8,7 +9,13 @@ import Paper from "@mui/material/Paper"
 import { Button } from "@mui/material"
 import "./styles.css"
 
-const ReservationDetailTable = () => {
+const ReservationDetailTable = ({ reservedDates }) => {
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
@@ -27,8 +34,8 @@ const ReservationDetailTable = () => {
         </TableHead>
         <TableBody>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="center">14 de febrero de 2028</TableCell>
-            <TableCell align="center">17 de febrero de 2028</TableCell>
+            <TableCell align="center">{reservedDates.reservationFrom.toLocaleDateString("es-ES", options)}</TableCell>
+            <TableCell align="center">{reservedDates.reservationTo.toLocaleDateString("es-ES", options)}</TableCell>
             <TableCell align="center">
               <Button>Modificar Fecha</Button>
             </TableCell>

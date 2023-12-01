@@ -52,7 +52,7 @@
   margin-bottom: 10px;
 }
 .terms-title {
-  text-decoration:underline;
+  text-decoration: underline;
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
@@ -63,7 +63,7 @@
   width: 80%;
   font-size: 1rem;
   text-align: center;
-  color: black;
+  color: var(--black-color);
 }
 
 .terms-descripcion {

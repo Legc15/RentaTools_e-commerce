@@ -5,4 +5,8 @@
   --light-orange: #faf9f6;
   --white-color: #f5f5f5;
   --gray: rgb(218, 218, 218);
+  --dark-gray: #808080;
+  --blue-link: rgb(12, 12, 122);
+  --delete-red: #ff0f0f;
+  --confirm-green: #34b233;
 }

@@ -1,5 +1,6 @@
-.img-categories img{
-    width: 160px;
-    height: 135px;
-    background-color: aqua;
+@import "../../../colors.css";
+.img-categories img {
+  width: 160px;
+  height: 135px;
+  background-color: var(--green);
 }

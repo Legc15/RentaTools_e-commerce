@@ -64,7 +64,7 @@ li .crear-cuenta {
   line-height: normal;
   border: none;
   color: var(--black-color);
-  background-color: aliceblue;
+  background-color: var(--white-color);
   border-radius: 40px;
 }
 
@@ -84,7 +84,7 @@ li .iniciar-sesion {
   line-height: normal;
   border: none;
   color: var(--black-color);
-  background-color: aliceblue;
+  background-color: var(--white-color);
   border-radius: 40px;
 }
 
