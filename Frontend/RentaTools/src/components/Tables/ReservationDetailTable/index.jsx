@@ -5,40 +5,38 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
+import { Button } from "@mui/material"
 import "./styles.css"
 
-
-const RentTable = () => {
- 
+const ReservationDetailTable = () => {
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center" className="table-header">
-              Nombre
+              Desde
             </TableCell>
             <TableCell align="center" className="table-header">
-              Apellido
+              Hasta
             </TableCell>
             <TableCell align="center" className="table-header">
-              Correo Electronico
+              Acción
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          
-            <TableRow  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-
-              <TableCell align="center">Digital</TableCell>
-              <TableCell align="center">house</TableCell>
-              <TableCell align="center">DigitalHouse@gmail.com</TableCell>
-            </TableRow>
-          
+          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell align="center">14 de febrero de 2028</TableCell>
+            <TableCell align="center">17 de febrero de 2028</TableCell>
+            <TableCell align="center">
+              <Button>Modificar Fecha</Button>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
   )
 }
 
-export default RentTable
+export default ReservationDetailTable
