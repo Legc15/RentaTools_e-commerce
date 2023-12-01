@@ -24,6 +24,10 @@ const Detail = () => {
     }).then((response) => setReservations(response))
   }, [id])
 
+  if (product.status === "NOT_FOUND") {
+    window.location.replace("/not-found")
+  }
+
   const hasInformation = Object.keys(product).length > 0
 
   return (
