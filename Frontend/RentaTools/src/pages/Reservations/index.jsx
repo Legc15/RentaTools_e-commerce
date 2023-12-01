@@ -4,7 +4,7 @@ import {useParams}  from 'react-router';
 
 
 
-const Reservas = () => {
+const Reservations = () => {
   const {id} = useParams();
   const [userReservations, setUserReservations] = useState([]);
 
@@ -37,4 +37,4 @@ const Reservas = () => {
   );
 };
 
-export default Reservas;
+export default Reservations;

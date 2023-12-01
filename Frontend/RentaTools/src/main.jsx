@@ -23,7 +23,7 @@ import {
   Edit,
   NotFound,
   Favorites,
-  Reservas,
+  Reservations,
   Rent
 } from "./pages"
 
@@ -58,7 +58,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="products/:category" element={<List />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="/policies" element={<Policies />} />
-          <Route path="/reservas" element={<Reservas />} />
+          <Route path="/reservations" element={<Reservations />} />
           <Route
             path="/favorites"
             element={
