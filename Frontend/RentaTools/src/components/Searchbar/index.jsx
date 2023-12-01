@@ -86,7 +86,7 @@ export const Searchbar = () => {
               className="searchbar-input date-input"
               slotProps={{ textField: { size: "small" } }}
               onChange={(e) => handleDateChange(e, "reservationTo")}
-              minDate={dayjs()}
+              minDate={dayjs(formData.reservationFrom).add(1, "d")}
             />
           </LocalizationProvider>
           <Button variant="contained" startIcon={<SearchIcon />} type="submit">

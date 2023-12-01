@@ -9,6 +9,8 @@ body {
 .page-container {
   padding-right: 36px;
   padding-left: 36px;
+  min-height: calc(100vh - 177px);
+  background-color: var(--gray);
 }
 
 .body {

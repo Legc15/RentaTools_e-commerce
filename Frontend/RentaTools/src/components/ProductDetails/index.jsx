@@ -48,9 +48,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
               {features &&
                 features.map((feature) => (
                   <p className="products-feature" key={feature.id}>
-                    {<FontAwesomeIcon icon={FEATURE_ICONS[feature.icon]} />}
-                    {" "}
-                    {feature.name}
+                    {<FontAwesomeIcon icon={FEATURE_ICONS[feature.icon]} />} {feature.name}
                   </p>
                 ))}
             </div>
@@ -59,12 +57,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <h4 className="calendar-title">Disponibilidad Alquiler</h4>
 
-                <Calendar 
-                  view="month"
-                  maxDetail="month"
-                  tileDisabled={disableReservedDays} 
-                  minDate={new Date()} 
-                  locale="es-ES" />
+                <Calendar view="month" maxDetail="month" tileDisabled={disableReservedDays} minDate={new Date()} locale="es-ES" />
               </LocalizationProvider>
             </div>
           </div>
