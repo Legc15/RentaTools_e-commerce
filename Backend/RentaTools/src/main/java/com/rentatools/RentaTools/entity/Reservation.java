@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -23,15 +25,15 @@ public class Reservation {
     @Temporal(TemporalType.DATE)
     @NotNull(message = "Debe especificar una fecha de inicio de reserva.")
     @Column(nullable = false)
-    private Date ReservationFrom;
+    private LocalDate ReservationFrom;
 
     @Temporal(TemporalType.TIME)
-    private Date ReservationFromTime;
+    private LocalTime ReservationFromTime;
 
     @Temporal(TemporalType.DATE)
     @NotNull(message = "Debe especificar una fecha de finalización de reserva.")
     @Column(nullable = false)
-    private Date ReservationTo;
+    private LocalDate ReservationTo;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

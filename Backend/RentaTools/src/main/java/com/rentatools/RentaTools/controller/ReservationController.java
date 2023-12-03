@@ -1,5 +1,6 @@
 package com.rentatools.RentaTools.controller;
 import com.rentatools.RentaTools.entity.Reservation;
+import com.rentatools.RentaTools.entity.dto.ReservationDto;
 import com.rentatools.RentaTools.service.ReservationService;
 import com.rentatools.RentaTools.utilities.ReservationDates;
 import lombok.Getter;
@@ -28,4 +29,15 @@ public class ReservationController {
     public  ResponseEntity<List<ReservationDates>> getAllReservationByProduct(@PathVariable Long id){
         return ResponseEntity.ok(reservationService.GetAllReservationByProduct(id));
     }
+
+    @GetMapping("/user/{id}")
+    public  ResponseEntity<List<Reservation>> getAllReservationByUser(@PathVariable Long id){
+        return ResponseEntity.ok(reservationService.GetAllReservationByUser(id));
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<String> createReservation(@RequestBody ReservationDto reservationDto){
+        return ResponseEntity.ok(reservationService.createReservation(reservationDto));
+    }
+
 }
