@@ -22,4 +22,6 @@ public interface IProductRepository extends JpaRepository<Product, Long>, JpaSpe
     List<Product> findSuggestions(String suggestion);
 
     List<Product> findByCategoryId(Long categoryId);
+
+    List<Product> findByFeaturesId(Long featureId);
 }
