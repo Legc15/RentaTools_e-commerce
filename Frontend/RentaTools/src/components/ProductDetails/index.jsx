@@ -16,7 +16,7 @@ const initialDates = {
   isShowDates: false,
 }
 const ProductDetails = ({ productInfo, reservations }) => {
-  const { name, description, productImage, images, features } = productInfo
+  const { name, description, productImage, images, features, id } = productInfo
   const [reservedDates, setReservedDates] = useState(initialDates)
 
   const disableReservedDays = ({ date }) => {
@@ -104,7 +104,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
           )}
         </div>
         {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-          <Link to={{ pathname: "/rent" }} state={reservedDates}>
+          <Link to={{ pathname: "/rent" }} state={{reservedDates, id}}>
             <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
           </Link>
         ) : (

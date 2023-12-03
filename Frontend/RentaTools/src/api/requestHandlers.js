@@ -24,6 +24,7 @@ import {
   getProductsBySearch,
   getReservationsByUserEndpoint,
   getReservationsByProductEndpoint,
+  postNewReservationSEndpoint
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -49,6 +50,7 @@ const POST_ENDPOINTS_CODE = {
   USER_VALIDATION: postUserValidationEndpoint,
   FAVORITES_ADD: postAddFavoriteEndpoint,
   CATEGORY_CREATE: postCategoriesEndpoint,
+  RESERVATIONS_CREATE: postNewReservationSEndpoint
 }
 
 const PUT_ENDPOINTS_CODE = {
