@@ -1,42 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { getReservationsByUserEndpoint } from '/src/api/endpoints';
+import {useParams}  from 'react-router';
+
+
 
 const Reservas = () => {
-  const [bookedProducts, setBookedProducts] = useState([]);
-  const [previousBookings, setPreviousBookings] = useState([]);
+  const {id} = useParams();
+  const [userReservations, setUserReservations] = useState([]);
 
   useEffect(() => {
-    // Fetch bookedProducts and previousBookings data here
-    // This is just a placeholder. Replace it with actual data fetching.
-    setBookedProducts([
-        { id: 1, name: 'Taladro' },
-        { id: 2, name: 'Generador' },
-        { id: 3, name: 'Mezcladora de Concreto' },
-        { id: 4, name: 'Andamios' },
-        { id: 5, name: 'Herramientas Eléctricas' }
-      
-    ]);
+    const fetchReservations = async () => {
+      try {
+        const userRes = await fetch(getReservationsByUserEndpoint({ id}));
+        const userResData = await userRes.json();
+        console.log('User reservations data:', userResData); // Log the response data
+        if (Array.isArray(userResData)) { // Check if the response data is an array
+          setUserReservations(userResData);
+        } else {
+          console.error('Expected an array but received:', userResData);
+        }
+      } catch (error) {
+        console.error('Error fetching reservations:', error);
+      }
+    };
 
-    setPreviousBookings([
-        { id: 1, name: 'Máquina 1', date: '2022-01-01' },
-        { id: 2, name: 'Máquina 2', date: '2022-01-02' },
-    
-    ]);
+    fetchReservations();
   }, []);
 
   return (
-    <div className="reservas-container">
-      <h1>Reservas activas</h1>
-      <ul>
-        {bookedProducts.map(product => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
-      <h2>Hiatorial de Reservas</h2>
-      <ul>
-        {previousBookings.map(booking => (
-          <li key={booking.id}>{booking.name} - {booking.date}</li>
-        ))}
-      </ul>
+    <div>
+      <h2>User Reservations</h2>
+      {Array.isArray(userReservations) && userReservations.map(reservation => ( // Check if userReservations is an array before calling map
+        <div key={reservation.id}>{/* Render reservation details here */}</div>
+      ))}
     </div>
   );
 };
