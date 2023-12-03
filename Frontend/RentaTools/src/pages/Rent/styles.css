@@ -2,7 +2,7 @@
 
 .rent {
   width: auto;
-  padding: 100px;
+  padding: 60px;
   flex-direction: row;
 }
 
@@ -19,13 +19,21 @@
 }
 
 .datos .botones .accion_alquilar {
-  background-color: var(--black-color);
+  background-color: var(--confirm-green);
   color: var(--white-color);
   border: none;
   font-size: 20px;
   padding: 20px;
   border-radius: 30px;
 }
+
+.reserva_confirmada .accion_enviarMail{
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 30px;}
 
 .datos .botones .accion_volverAtras {
   background-color: var(--dark-gray);
@@ -46,4 +54,17 @@
   display: flex;
   justify-content: center;
   gap: 40px;
+}
+
+.datos_reserva{
+  display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reserva_confirmada{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
 }

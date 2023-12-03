@@ -50,3 +50,4 @@ export const getSearchSuggestionsEndpoint = ({ barString }) => baseUrl[env] + "p
 
 export const getReservationsByUserEndpoint = ({id}) => baseUrl[env] + "reservation/user/" + id;
 export const getReservationsByProductEndpoint = ({id}) => baseUrl[env] + "reservation/product/" + id;
+export const postNewReservationSEndpoint = () => baseUrl[env] + "reservation/create"
