@@ -29,7 +29,7 @@ export default function Favorites() {
   return (
     <div className="favorites-container">
       <div className="terms-top">
-        <div className=".title">
+        <div className="title">
           <h1>FAVORITOS</h1>
         </div>
         <button className="back-button" onClick={() => window.history.back()}>
