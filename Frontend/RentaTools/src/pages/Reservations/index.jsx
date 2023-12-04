@@ -4,8 +4,8 @@ const Reservations = () => {
   
 
   return (
-    <div>
-      <h1>Reservas</h1>
+    <div className="reservas-container">
+      <h1>RESERVAS</h1>
       <ReservationsTable />
     </div>
   );

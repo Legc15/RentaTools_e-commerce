@@ -1,0 +1,19 @@
+.table-Container{
+    padding: 2rem;
+    width: 80%;
+}
+
+.table-body{
+    width: 80%;
+    padding:2rem;
+}
+
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--black-color);
+    border-bottom: 1px solid var(--black-color);
+}
