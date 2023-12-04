@@ -1,20 +1,104 @@
+@import "../../../colors.css";
+* {
+    box-sizing: border-box;
+}
 .table-Container{
-    padding: 2rem;
-    margin: 2rem;
-    width: 80%;
-    border: 1px solid var(--black-color)
+    border: 1px solid var(--black-color);
 }
-    .table-body{
-    width: 80%;
-    padding:2rem;
-}
+
 
 .filter-buttons{
     display: flex;
     justify-content: center;
-    width: 100%;
-    gap: 2rem;
+    gap: 1rem;
     padding: 1.5rem;
-    
     border-bottom: 1px solid var(--black-color);
+}
+
+#alert-dialog-title{
+    display: flex;
+    justify-content: center;
+}
+
+.tabla-reservas td{
+    padding: 0 2rem;
+}
+
+/* .MuiTable-root{
+    background-color: aqua;
+} */
+
+@media (max-width: 768px) and (min-width: 426px){
+    
+    
+    .MuiTable-root{
+        display:block !important
+    }
+    
+    .table-Container{
+        width: auto;
+        margin-bottom: 1rem;
+    }
+    .filter-buttons {
+        background-color: var(--black-color);
+    }
+
+    .filter-buttons button{
+        font-size: 0.7rem;
+        width: 280px;
+        margin: 0.5rem 0;
+    }
+
+    .tabla-reservas {
+        padding:0;
+        width: 70%;
+
+    }
+
+    .tabla-reservas td{
+        padding: 0.2rem;
+    }
+    .tabla-reservas button{
+        font-size: 0.5rem;
+    }
+    
+}
+
+@media (max-width:425px) and (min-width: 320px){
+
+
+    .MuiTable-root{
+        display:block !important
+    }
+
+    .table-Container{
+        width: 60%;
+        margin-bottom: 1rem;
+    }
+
+    .filter-buttons {
+        display: flex;;
+        flex-direction: column;
+        align-items: center;
+    
+        background-color: var(--black-color);
+    }
+    .filter-buttons button{
+        width: 280px;
+        margin: 0.5rem 0;
+    }
+
+    .tabla-reservas {
+        padding:0;
+        width: 70%;
+
+    }
+
+    .tabla-reservas td{
+        padding: 0.2rem;
+    }
+    .tabla-reservas button{
+        font-size: 0.5rem;
+    }
+    
 }
