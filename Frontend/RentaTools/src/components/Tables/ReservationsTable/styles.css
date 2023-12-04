@@ -1,9 +1,10 @@
 .table-Container{
     padding: 2rem;
+    margin: 2rem;
     width: 80%;
+    border: 1px solid var(--black-color)
 }
-
-.table-body{
+    .table-body{
     width: 80%;
     padding:2rem;
 }
@@ -14,6 +15,6 @@
     width: 100%;
     gap: 2rem;
     padding: 1.5rem;
-    border-top: 1px solid var(--black-color);
+    
     border-bottom: 1px solid var(--black-color);
 }

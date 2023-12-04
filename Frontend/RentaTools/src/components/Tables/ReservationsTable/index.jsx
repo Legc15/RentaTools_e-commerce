@@ -16,7 +16,7 @@ import Typography from "@mui/material/Typography";
 const ReservationsTable = () => {
   const id = getUserId();
   const [userReservations, setUserReservations] = useState([]);
-  const [dateFilter, setDateFilter] = useState("asc"); // 'asc' para ascendente, 'desc' para descendente
+  const [dateFilter, setDateFilter] = useState("desc"); // 'asc' para ascendente, 'desc' para descendente
 
   const handleCancelReserve = () => {
     Swal.fire({
@@ -61,7 +61,7 @@ const ReservationsTable = () => {
     fetchReservations();
   }, [id, dateFilter]); // Agrega dateFilter como dependencia para que el efecto se ejecute cuando cambie
 
-  const [filter, setFilter] = useState('all'); // 'all' para todas las reservas, 'active' para reservas activas, 'finished' para reservas finalizadas
+  const [filter, setFilter] = useState('active'); // 'all' para todas las reservas, 'active' para reservas activas, 'finished' para reservas finalizadas
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -71,22 +71,35 @@ const ReservationsTable = () => {
     <TableContainer component={Paper} className="table-Container">
       <div className="filter-buttons">
         <Button onClick={toggleDateFilter} variant="contained" color="primary">
-          {dateFilter === "asc" ? "Orden Desc." : "Orden Ascendente"}
+          {dateFilter === "asc" ? "Orden Ascendente" : "Orden descendente"}
         </Button>
 
-        <Button onClick={() => handleFilterChange('active')} variant="contained" color="primary">
+        <Button onClick={() => handleFilterChange('active')} 
+          variant="contained" 
+          color="primary" 
+          style={filter === 'active' ? { backgroundColor: 'green' } : {}}
+        >
           reservas activas
         </Button>
 
-        <Button onClick={() => handleFilterChange('finished')} variant="contained" color="primary">
+        <Button onClick={() => handleFilterChange('finished')} 
+          variant="contained" 
+          color="primary"
+          style={filter === 'finished' ? { backgroundColor: 'green' } : {}}
+        
+          >
           reservas finalizadas
         </Button>
-        <Button onClick={() => handleFilterChange('all')} variant="contained" color="primary">
-          Limpiar filtros
+        <Button onClick={() => handleFilterChange('all')} 
+          variant="contained" 
+          color="primary"
+          style={filter === 'all' ? { backgroundColor: 'green' } : {}}
+          >
+          HISTORIAL COMPLETO
         </Button>
       </div>
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableHead></TableHead>
+        
         <TableHead>
           <TableRow>
             <TableCell align="center">
@@ -119,6 +132,7 @@ const ReservationsTable = () => {
             <TableRow
               key={index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              style={new Date(reservation.reservationTo) > new Date() ? { backgroundColor: 'whitesmoke' } : {}}
             >
               <TableCell align="center">{reservation.id}</TableCell>
               <TableCell align="left">{reservation.product.name}</TableCell>
@@ -129,7 +143,7 @@ const ReservationsTable = () => {
               <TableCell align="center">
                 {new Date(reservation.reservationTo) > new Date()
                   ? (
-                    <Typography color="green" variant="h6">
+                    <Typography className="active" color="green" variant="h6" style={{ fontWeight: 600 }}>
                       ACTIVO
                     </Typography>)
                   : (
