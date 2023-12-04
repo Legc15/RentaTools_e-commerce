@@ -15,14 +15,16 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 0 25px 40px 40px;
 }
 
 .policies-top {
   display: flex;
   align-items: center;
-  padding: 0 40px; 
+  padding: 0 40px 40px 40px;
   height: 100px;
-
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .policies li {
@@ -35,11 +37,12 @@
   margin-bottom: 10px;
 }
 .policies-title {
-  text-decoration:underline;
-  font-size: 3rem;
+  text-decoration: underline;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   text-decoration: underline;
+  margin-top: 1rem;
 }
 
 .policies-discrecion {
@@ -54,7 +57,7 @@
   color: var(--black-color);
 }
 
-.button-Back{
+.button-Back {
   background-color: var(--white-color);
   text-align: right;
   cursor: pointer;
