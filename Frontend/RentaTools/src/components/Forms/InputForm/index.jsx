@@ -22,29 +22,36 @@ export default function InputForm() {
 
   const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
 
+
   const validarFormulario = async () => {
+  setIsButtonDisabled(true)
+
+  if (
+    formData.name.trim().length > 3 &&
+    formData.lastName.trim().length > 3 &&
+    formData.password.trim().length > 4 &&
+    emailRegex.test(formData.email)
+  ) {
+    const response = await postNewInformation(ENDPOINTS_CODE.USER_CREATE, formData)
+    if (response.status === 200) {
+      setIsFormCorrect(true);
+      setIsFormSent(true)
+      setIsButtonDisabled(true);
+
+      setTimeout(() => {
+        location.assign("/signIn")
+      }, 2000)
+    } else {
+      setIsFormCorrect(false);
+      setIsFormSent(true)
+      setIsButtonDisabled(false);
+    }
+  } else {
+    setIsFormCorrect(false);
     setIsFormSent(true)
-
-
-    if (
-      formData.name.trim().length > 3 &&
-      formData.lastName.trim().length > 3 &&
-      formData.password.trim().length > 4 &&
-      emailRegex.test(formData.email)
-    ) {
-      const response = await postNewInformation(ENDPOINTS_CODE.USER_CREATE, formData)
-      if (response.status === 200) {
-        setIsFormCorrect(true);
-        setIsButtonDisabled(true);
-
-        setTimeout(() => {
-          location.assign("/signIn")
-        }, 2000)
-      }else {
-        setIsButtonDisabled(false);
-      }
-    } 
+    setIsButtonDisabled(false);
   }
+}
 
 
   const handleInputChange = (e) => {
