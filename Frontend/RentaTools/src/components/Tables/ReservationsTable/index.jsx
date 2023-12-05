@@ -82,7 +82,10 @@ const ReservationsTable = () => {
   //const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   return (
-    <TableContainer omponent={Paper} className="table-Container">
+    <TableContainer 
+      component={Paper} 
+      className="table-Container">
+      
       <div className="filter-buttons">
 
 
@@ -122,28 +125,27 @@ const ReservationsTable = () => {
 
         <Table
           className="tabla-reservas"
-          sx={{ minWidth: 200, margin: isMobile ? "0" : "auto" }}
+          sx={{ width: "auto", margin: isMobile ? "0" : "auto" }}
           aria-label="simple table"
-          style={{ display: 'block', maxHeight: '500px', overflowY: 'auto' }}
         >
           <TableHead>
             <TableRow>
-              <TableCell align="center">
+              <TableCell 
+                className="id-column"
+                align="center">
                 <h3>ID</h3>
               </TableCell>
               <TableCell align="left">
                 <h3>PRODUCTO</h3>
               </TableCell>
               <TableCell align="center" className="table-header">
-                <h3>DESDE</h3>
+                <h3>PERÍODO</h3>
               </TableCell>
-              <TableCell align="center" className="table-header">
-                <h3>HASTA</h3>
-              </TableCell>
+
               <TableCell align="center" className="table-header">
                 <h3>ESTADO</h3>
               </TableCell>
-              <TableCell align="center" className="table-header">
+              <TableCell align="center" className="action-column">
                 <h3>ACCIÓN</h3>
               </TableCell>
             </TableRow>
@@ -157,9 +159,9 @@ const ReservationsTable = () => {
                 if (filter === "finished")
                   return new Date(reservation.reservationTo) <= new Date();
               })
-              .map((reservation, index) => (
+              .map((reservation) => (
                 <TableRow
-                  key={index}
+                  key={reservation.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   style={
                     new Date(reservation.reservationTo) > new Date()
@@ -168,6 +170,7 @@ const ReservationsTable = () => {
                   }
                 >
                   <TableCell
+                    className="id-column"
                     align="center"
                     style={{ fontSize: isMobile ? "10px" : "14px" }}
                   >
@@ -183,14 +186,9 @@ const ReservationsTable = () => {
                     align="center"
                     style={{ fontSize: isMobile ? "10px" : "14px" }}
                   >
-                    {reservation.reservationFrom}
+                    {`${new Date(reservation.reservationFrom).toLocaleDateString('es-ES')} - ${new Date(reservation.reservationTo).toLocaleDateString('es-ES')}`}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                    style={{ fontSize: isMobile ? "10px" : "14px" }}
-                  >
-                    {reservation.reservationTo}
-                  </TableCell>
+                  
                   <TableCell
                     align="center"
                     style={{ fontSize: isMobile ? "10px" : "14px" }}
@@ -200,18 +198,22 @@ const ReservationsTable = () => {
                         className="active"
                         color="green"
                         style={{ fontWeight: isMobile ? 300 : 500 }}
-                        variant={"subtitle2"}
+                        variant={"subtitle3"}
                       >
                         ACTIVO
                       </Typography>
                     ) : (
-                      <Typography color="grey" variant="subtitle2">
+                      <Typography color="grey" variant="subtitle3">
                         FINALIZADA
                       </Typography>
                     )}
                   </TableCell>
 
-                  <TableCell align="center">
+                  <TableCell 
+                    align="center" 
+                    className="boton-modificar"
+                    >
+                    
                     {new Date(reservation.reservationTo) > new Date() ? (
                       <Button
                         style={{
