@@ -68,3 +68,7 @@
     align-items: center;
     gap: 25px;
 }
+
+.mensaje-error{
+  color: var(--delete-red);
+}
