@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AdminTable from "../../components/Tables/AdminTable";
-import "./styles.css";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import AdminTable from "../../components/Tables/AdminTable"
+import "./styles.css"
 import {
   AppBar,
   Box,
@@ -14,43 +14,41 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-} from "@mui/material";
-import UsersTable from "../../components/Tables/UsersTable";
-import {
-  faBoxesStacked,
-  faHammer,
-  faList,
-  faPlus,
-  faToolbox,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { isMobile } from "react-device-detect";
+} from "@mui/material"
+import UsersTable from "../../components/Tables/UsersTable"
+import { faBoxesStacked, faHammer, faList, faPlus, faToolbox, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { isMobile } from "react-device-detect"
 
 const Admin = () => {
-  const [isShowInitialToolbox, setIsShowInitialToolbox] = useState(true);
-  const [isShowProductsList, setIsShowProductsList] = useState(false);
-  const [isShowUserList, setIsShowUserList] = useState(false);
+  const [isShowInitialToolbox, setIsShowInitialToolbox] = useState(true)
+  const [isShowProductsList, setIsShowProductsList] = useState(false)
+  const [isShowUserList, setIsShowUserList] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleListProducts = () => {
-    setIsShowUserList(false);
-    setIsShowInitialToolbox(false);
-    setIsShowProductsList(!isShowProductsList);
-  };
+    setIsShowUserList(false)
+    setIsShowInitialToolbox(false)
+    setIsShowProductsList(!isShowProductsList)
+  }
 
   const handleListUsers = () => {
-    setIsShowProductsList(false);
-    setIsShowInitialToolbox(false);
-    setIsShowUserList(!isShowUserList);
-  };
+    setIsShowProductsList(false)
+    setIsShowInitialToolbox(false)
+    setIsShowUserList(!isShowUserList)
+  }
 
   const adminButtons = [
     {
       name: "Agregar producto",
       function: () => navigate("/admin/register"),
       icon: <FontAwesomeIcon icon={faPlus} />,
+    },
+    {
+      name: "Administrar productos",
+      function: handleListProducts,
+      icon: <FontAwesomeIcon icon={faHammer} />,
     },
     {
       name: "Administrar categorías",
@@ -63,31 +61,26 @@ const Admin = () => {
       icon: <FontAwesomeIcon icon={faList} />,
     },
     {
-      name: "Listar productos",
-      function: handleListProducts,
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      name: "Listar usuarios",
+      name: "Administrar usuarios",
       function: handleListUsers,
       icon: <FontAwesomeIcon icon={faUser} />,
     },
-  ];
+  ]
 
-  const drawerWidth = 240;
+  const drawerWidth = 240
 
   if (isMobile) {
     return (
       <div className="body-alert">
         <div className="button-container">
-        <button className="button-Back" onClick={() => window.history.back()}>
-          Volver Atras
-        </button>
+          <button className="button-Back" onClick={() => window.history.back()}>
+            Volver Atras
+          </button>
         </div>
-        
+
         <h1 className="admin-alert">por favor conectese desde una pc</h1>
       </div>
-    );
+    )
   } else {
     return (
       <div className="body admin-container">
@@ -119,9 +112,7 @@ const Admin = () => {
               {adminButtons.map((button, index) => (
                 <ListItem key={index} disablePadding>
                   <ListItemButton onClick={button.function}>
-                    <ListItemIcon className="admin-icon">
-                      {button.icon}
-                    </ListItemIcon>
+                    <ListItemIcon className="admin-icon">{button.icon}</ListItemIcon>
                     <ListItemText primary={button.name} />
                   </ListItemButton>
                 </ListItem>
@@ -129,11 +120,7 @@ const Admin = () => {
             </List>
             <Divider />
           </Drawer>
-          <Box
-            component="main"
-            className="admin-table-show"
-            sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-          >
+          <Box component="main" className="admin-table-show" sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}>
             {isShowProductsList ? (
               <div className="admin-table-container">
                 <AdminTable />
@@ -160,8 +147,8 @@ const Admin = () => {
           </Box>
         </Box>
       </div>
-    );
+    )
   }
-};
+}
 
-export default Admin;
+export default Admin
