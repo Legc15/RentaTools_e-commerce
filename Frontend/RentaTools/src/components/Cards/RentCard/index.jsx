@@ -6,27 +6,22 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import "./styles.css"
 
-export default function RentCard({ productInfo }) {
+export default function RentCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}  className='card'>
-      <CardActionArea >
+    <Card sx={{ maxWidth: 345 }} className='card'>
+      <CardActionArea>
         <CardMedia
           component="img"
           height="330"
-          src={productInfo.productImage}
-          style={{
-            padding: '15px',
-            height: "100%",
-            width: "100%",
-          }}
-
+          src="https://rentatools-images.s3.us-east-2.amazonaws.com/ProductDetailImages/1p7-1.jpg"
+          
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="div">
-            {productInfo.name}
+          Taladro de martillo giratorio
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {productInfo.description}
+            Motor más potente: potente motor industrial de 1,600 vatios de energía de impacto para una velocidad rápida de perforación o astillado en hormigón, ladrillo, arcilla, metal, roca, mampostería, pared y otros materiales duros.
           </Typography>
         </CardContent>
       </CardActionArea>

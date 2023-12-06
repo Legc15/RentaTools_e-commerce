@@ -8,8 +8,7 @@ const ProductList = ({ products }) => {
             {products.map((product) => (
                 <ProductCard 
                     key={product.id} 
-                    product={product}
-                    isHorizontal={true} />
+                    product={product} />
             ))}
         </div>
     );
