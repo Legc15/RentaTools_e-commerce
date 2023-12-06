@@ -2,6 +2,22 @@
   gap: 20px;
 }
 
+.MuiCardContent-root {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  width: 280px;
+  gap:1rem;
+}
+
+.title-container{
+  align-items: center;
+}
+
+.product-image{
+  max-width: 250px;
+}
+
 @media (max-width: 769px) {
   .card-categories-container {
     flex-wrap: wrap;
@@ -15,6 +31,14 @@
 
   h1 {
     font-size: 1.7rem;
+  }
+
+  .MuiCardContent-root {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width: 240px;
+    gap:1rem;
   }
 }
 
@@ -41,5 +65,11 @@
 
   h1 {
     font-size: 1.5rem;
+  }
+  .product-image{
+    max-width: 150px;
+  }
+  .MuiCardContent-root{
+    max-width: 200px;
   }
 }
