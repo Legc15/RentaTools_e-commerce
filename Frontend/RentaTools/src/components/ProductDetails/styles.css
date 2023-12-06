@@ -15,6 +15,7 @@ h2 {
   display: none;
 }
 
+
 .dates-selected {
   display: flex;
   justify-content: space-between;
@@ -137,6 +138,8 @@ h2 {
   width: 50%;
   font-size: 0.85rem;
   padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 .react-calendar {
   border-bottom-left-radius: 1rem;
