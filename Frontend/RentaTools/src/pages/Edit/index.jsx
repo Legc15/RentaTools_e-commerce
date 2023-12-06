@@ -76,7 +76,7 @@ const Edit = () => {
             categories={categories}
             initialState={product}
             handleSubmitProduct={handleEditProduct}
-            buttonLabel="Editar producto"
+            buttonLabel="Guardar cambios"
           />
           <h2 className="form-title">Editar Imágenes</h2>
           <ImagesForm buttonLabel="Editar Imágenes" initialState={parsedImages} productId={id} />
