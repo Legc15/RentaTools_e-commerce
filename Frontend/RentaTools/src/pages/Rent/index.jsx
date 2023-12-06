@@ -16,9 +16,11 @@ const Rent = () => {
     const location = useLocation()
     const { reservedDates, productInfo } = location.state
     const [isReservationConfirmed, setIsReservationConfirmed] = useState(false);
+    const [isReservationFailed, setIsReservationFailed] = useState(false);
+
 
     const handleConfirmReservation = async () => {
-
+        setIsReservationFailed(false)
         const reservationData = {
             productId: productInfo.id,
             userId: getUserId(),
@@ -31,6 +33,7 @@ const Rent = () => {
 
         if(response.status === 200){
             setIsReservationConfirmed(true);
+        }else{setIsReservationFailed(true);
         }
     }
     const navigate = useNavigate()
@@ -91,6 +94,8 @@ const Rent = () => {
                             <HeaderButton type="submit" className="accion_volverAtras" buttonLabel="volver" onClick={navigateToPrevious} />
                             <HeaderButton type="submit" className="accion_alquilar" buttonLabel="confirmar reserva" onClick={handleConfirmReservation} />
                         </div>
+
+                        {isReservationFailed ? <h4 className="mensaje-error">Hubo un error en su reserva, por favor intentalo nuevamente!</h4>: ""}
 
                     </div>
                 </div>
