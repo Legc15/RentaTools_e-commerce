@@ -92,24 +92,30 @@ const ProductDetails = ({ productInfo, reservations }) => {
           {reservedDates.isShowDates ? (
             <>
               <div className="dates-selected">
-                <h3>
+                <h3 className="leyenda-reserva">
                   Seleccionaste del {reservedDates.reservationFrom ? reservedDates.reservationFrom.toLocaleDateString("es-ES") : ""} hasta
                   el {reservedDates.reservationTo ? reservedDates.reservationTo.toLocaleDateString("es-ES") : ""}
                 </h3>
                 <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
+                {reservedDates.reservationFrom && reservedDates.reservationTo ? (
+                  <Link to={{ pathname: "/rent" }} state={{ reservedDates, id }}>
+                    <HeaderButton 
+                      buttonLabel="Iniciar Reserva" 
+                      className="reservation-button"
+                      />
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
             </>
           ) : (
             ""
           )}
         </div>
-        {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-          <Link to={{ pathname: "/rent" }} state={{reservedDates, id}}>
-            <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
-          </Link>
-        ) : (
-          ""
-        )}
+
+
+
       </div>
     </div>
   )
