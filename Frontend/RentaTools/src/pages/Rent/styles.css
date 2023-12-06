@@ -19,7 +19,7 @@
 }
 
 .datos .botones .accion_alquilar {
-  background-color: var(--confirm-green);
+  background-color: var(--black-color);
   color: var(--white-color);
   border: none;
   font-size: 20px;

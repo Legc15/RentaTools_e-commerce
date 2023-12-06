@@ -104,7 +104,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
           )}
         </div>
         {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-          <Link to={{ pathname: "/rent" }} state={{reservedDates, id}}>
+          <Link to={{ pathname: "/rent" }} state={{reservedDates, productInfo}}>
             <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
           </Link>
         ) : (
