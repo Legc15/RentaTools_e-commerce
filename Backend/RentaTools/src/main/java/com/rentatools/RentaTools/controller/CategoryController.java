@@ -40,7 +40,12 @@ public class CategoryController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) throws ResourceNotFoundException {
-        return ResponseEntity.ok(categoryService.deleteById(id));
+        String response = categoryService.deleteById(id);
+        if(response == "No debe haber productos con esta categoría para poder eliminarla."){
+            return ResponseEntity.status(406).body(response);
+        }else{
+            return ResponseEntity.ok(response);
+        }
     }
 
 

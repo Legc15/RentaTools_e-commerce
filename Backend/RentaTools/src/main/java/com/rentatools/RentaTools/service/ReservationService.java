@@ -34,6 +34,9 @@ public class ReservationService {
     private final IUserRepository iUserRepository;
 
     @Autowired
+    private final EmailService emailService;
+
+    @Autowired
     private final ObjectMapper mapper;
 
     public List<Reservation> GetAllReservation(){
@@ -63,6 +66,7 @@ public class ReservationService {
         reservation.setReservationTo(reservationDto.getReservationTo());
         reservation.setReservationFromTime(reservationDto.getReservationFromTime());
         iReservationRepository.save(reservation);
+        emailService.sendEmailReservation(reservation);
         return "Reserva creada correctamente.";
     }
 

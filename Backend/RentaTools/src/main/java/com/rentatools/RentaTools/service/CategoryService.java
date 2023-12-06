@@ -58,6 +58,6 @@ public class CategoryService {
         if(iProductRepository.findByCategoryId(id).isEmpty()){
             iCategoryRepository.delete(category);
             return "Categoría eliminada de la Base de datos.";
-        }else throw new RuntimeException("No debe haber productos con esta categoría para poder eliminarla.");
+        }else return "No debe haber productos con esta categoría para poder eliminarla.";
     }
 }

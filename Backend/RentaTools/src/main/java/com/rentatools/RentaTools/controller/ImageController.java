@@ -25,10 +25,24 @@ public class ImageController {
         return imageService.getAllImages();
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Image> updateImage(@RequestBody Image image){
+        return ResponseEntity.ok(imageService.updateImage(image));
+    }
     @PostMapping("/create")
     public ResponseEntity<ResponseMessage> CreateImage(@RequestBody ImageDto imageDto){
         imageService.createImage(imageDto);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Imagen creada correctamente."));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteImage(@PathVariable Long id){
+        if(id == null) return ResponseEntity.status(400).body("Falta id de imagen.");
+        String response = imageService.deleteImage(id);
+        if(response == "Imagen no existe."){
+            return ResponseEntity.status(404).body(response);
+        }
+        return ResponseEntity.ok(response);
     }
 
 }

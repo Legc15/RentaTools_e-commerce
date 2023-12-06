@@ -44,7 +44,7 @@ public class FeatureService {
         try {
             return iFeatureRepository.save(feature);
         } catch (Exception ex) {
-            throw new RuntimeException("Error al actualizar la categoría.");
+            throw new RuntimeException("Error al actualizar la característica.");
         }
     }
 
@@ -55,6 +55,6 @@ public class FeatureService {
         if(iProductRepository.findByFeaturesId(id).isEmpty()){
             iFeatureRepository.delete(feature);
             return "Característica eliminada de la Base de datos.";
-        }else throw new RuntimeException("No debe haber productos con esta característica para poder eliminarla.");
+        }else return "No debe haber productos con esta característica para poder eliminarla.";
     }
 }
