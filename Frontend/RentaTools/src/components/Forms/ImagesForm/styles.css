@@ -1,0 +1,38 @@
+@import "../../../colors.css";
+
+.plus-icon {
+  cursor: pointer;
+  display: flex;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.plus-icon:hover {
+  background-color: var(--gray);
+}
+
+.add-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-inputs {
+  width: 100%;
+}
+
+.image-form {
+  width: 100%;
+}
+
+.add-images .delete-button {
+  background-color: var(--delete-red);
+}
+
+.add-images .edit-button {
+  background-color: var(--confirm-green);
+}
+
+.add-images .add-button {
+  background-color: var(--dark-orange);
+}

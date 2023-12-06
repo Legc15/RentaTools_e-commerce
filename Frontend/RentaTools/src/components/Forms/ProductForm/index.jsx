@@ -118,22 +118,21 @@ const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
               multiline
               fullWidth
             />
-            <div>
-              <label htmlFor="upload-photo" className="img-label">
-                <Button variant="contained" component="span" className="img-button button">
-                  Subir imágenes
-                </Button>
-              </label>
-              <input
-                id="upload-photo"
-                name="upload-photo"
-                type="file"
-                multiple={true}
-                className="img-input"
-                // onChange={(e) => setProductInformation({ ...productInformation, productImage: e.target.files })}
-                //value={productInformation.productImage}
-              />
-            </div>
+          </Stack>
+
+          <Stack>
+            <TextField
+              name="productImage"
+              className="productImage"
+              type="text"
+              variant="outlined"
+              color="secondary"
+              label="URL de imagen de portada"
+              onChange={handleInputChange}
+              value={formData.productImage}
+              rows={1}
+              fullWidth
+            />
           </Stack>
         </div>
         <Button variant="contained" type="submit" className="submit-form">

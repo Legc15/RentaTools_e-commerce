@@ -7,6 +7,7 @@ import { getInformationFromEndpoints, putEditedInformation } from "../../api/req
 import { ENDPOINTS_CODE } from "../../api/constants"
 import { Button } from "@mui/material"
 import { ContextGlobal } from "../../api/global.context.helper"
+import ImagesForm from "../../components/Forms/ImagesForm/index.jsx"
 
 const initialState = {
   name: "",
@@ -50,6 +51,16 @@ const Edit = () => {
     }
   }
 
+  const parsedImages = product.images.map((image) => {
+    return {
+      title: image.title,
+      url: image.url,
+      product: {
+        id: id,
+      },
+    }
+  })
+
   return (
     <div className="body edit-container  page-container">
       <div>
@@ -59,7 +70,16 @@ const Edit = () => {
       </div>
       <h2 className="form-title">Editar Producto</h2>
       {product !== initialState ? (
-        <ProductForm categories={categories} initialState={product} handleSubmitProduct={handleEditProduct} buttonLabel="Editar producto" />
+        <>
+          <ProductForm
+            categories={categories}
+            initialState={product}
+            handleSubmitProduct={handleEditProduct}
+            buttonLabel="Editar producto"
+          />
+          <h2 className="form-title">Editar Imágenes</h2>
+          <ImagesForm buttonLabel="Editar Imágenes" initialState={parsedImages} productId={id} />
+        </>
       ) : (
         ""
       )}

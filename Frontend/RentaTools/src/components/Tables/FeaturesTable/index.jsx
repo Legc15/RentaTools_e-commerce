@@ -10,8 +10,6 @@ import { Button } from "@mui/material"
 import "./styles.css"
 
 import "sweetalert2/src/sweetalert2.scss"
-import { FEATURE_ICONS } from "../../../api/constants"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const FeaturesTable = ({ features }) => {
   return (
@@ -41,7 +39,10 @@ const FeaturesTable = ({ features }) => {
               </TableCell>
 
               <TableCell align="center">{name}</TableCell>
-              <TableCell align="center">{<FontAwesomeIcon icon={FEATURE_ICONS[icon]} />}</TableCell>
+              <TableCell align="center">
+                {" "}
+                <i className={`fa-solid ${icon}`}></i>
+              </TableCell>
               <TableCell align="center">
                 <div className="table-buttons">
                   <Button variant="outlined" className="button button-delete">
