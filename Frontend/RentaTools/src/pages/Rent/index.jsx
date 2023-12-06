@@ -14,31 +14,36 @@ import { useNavigate } from "react-router-dom"
 
 const Rent = () => {
     const location = useLocation()
-    const { reservedDates, id } = location.state
+    const { reservedDates, productInfo } = location.state
     const [isReservationConfirmed, setIsReservationConfirmed] = useState(false);
+    const [isReservationFailed, setIsReservationFailed] = useState(false);
+
 
     const handleConfirmReservation = async () => {
-
+        setIsReservationFailed(false)
         const reservationData = {
-            productId: id,
+            productId: productInfo.id,
             userId: getUserId(),
             reservationFrom: reservedDates.reservationFrom,
             reservationTo: reservedDates.reservationTo,
         }
-        console.log(reservationData);
+        
 
-        setIsReservationConfirmed(true);
+        const response = await postNewInformation(ENDPOINTS_CODE.RESERVATIONS_CREATE, reservationData)
 
-        // const response = await postNewInformation(ENDPOINTS_CODE.RESERVATIONS_CREATE, reservationData)
-
-        // if(response.status === 200){
-        //     console.log("todo joya");
-        // }
+        if(response.status === 200){
+            setIsReservationConfirmed(true);
+        }else{setIsReservationFailed(true);
+        }
     }
     const navigate = useNavigate()
     const navigateToHome = () => {
         navigate("/")
-      }
+    }
+
+    const navigateToPrevious = () => {
+        navigate(-1)
+    }
 
 
 
@@ -49,7 +54,7 @@ const Rent = () => {
                 <div className="reserva_confirmada">
                     <h1>¡Reserva Confimada!</h1>
                     <img width="96" height="96" src="https://img.icons8.com/external-tal-revivo-regular-tal-revivo/96/external-check-scheduled-objectives-from-planned-calendar-events-date-regular-tal-revivo.png" alt="external-check-scheduled-objectives-from-planned-calendar-events-date-regular-tal-revivo" />
-
+                    <h5>Los datos de reserva fueron enviados a tu correo electronico.</h5>
                     <div className="datos_reserva">
                         <div>
                             <h2 className="titulo">Tus Datos</h2>
@@ -58,12 +63,12 @@ const Rent = () => {
 
                         <div>
                             <h2 className="titulo">Detalles del Producto</h2>
-                            <ProductReservationTable />
+                            <ProductReservationTable productInfo={productInfo} />
                         </div>
 
                         <div>
                             <h2 className="titulo">Datos de Reserva</h2>
-                            <ReservationDetailTable reservedDates={reservedDates} />
+                            <ReservationDetailTable reservedDates={reservedDates} isReservationConfirmed={isReservationConfirmed} />
                         </div>
 
                     </div>
@@ -72,8 +77,8 @@ const Rent = () => {
                 </div>
                 :
                 <div className="info">
-                    
-                    <RentCard />
+
+                    <RentCard productInfo={productInfo}  />
                     <div className="datos">
                         <div>
                             <h2 className="titulo">Tus Datos</h2>
@@ -82,13 +87,15 @@ const Rent = () => {
 
                         <div>
                             <h2 className="titulo">Datos de Reserva</h2>
-                            <ReservationDetailTable reservedDates={reservedDates} />
+                            <ReservationDetailTable reservedDates={reservedDates} navigateToPrevious={navigateToPrevious} />
                         </div>
 
                         <div className="botones">
-                            <HeaderButton type="submit" className="accion_volverAtras" buttonLabel="volver" />
+                            <HeaderButton type="submit" className="accion_volverAtras" buttonLabel="volver" onClick={navigateToPrevious} />
                             <HeaderButton type="submit" className="accion_alquilar" buttonLabel="confirmar reserva" onClick={handleConfirmReservation} />
                         </div>
+
+                        {isReservationFailed ? <h4 className="mensaje-error">Hubo un error en su reserva, por favor intentalo nuevamente!</h4>: ""}
 
                     </div>
                 </div>

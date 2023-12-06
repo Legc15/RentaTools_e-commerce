@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 
 
-const ProductReservationTable = () => {
+const ProductReservationTable = ({productInfo}) => {
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
@@ -23,8 +23,8 @@ const ProductReservationTable = () => {
         </TableHead>
         <TableBody>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="center">Martillo de demolición</TableCell>
-            <TableCell align="center">Rendimiento excepcional: el potente motor de 1,700 vatios ofrece un máximo de 2,100 BPM de energía de impacto para astillar y cincelar rápidamente, adecuado para superficies concretas de la carretera, zanjas, demolición pesada de la pared, etc.</TableCell>
+            <TableCell align="center">{productInfo.name}</TableCell>
+            <TableCell align="center">{productInfo.description}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
