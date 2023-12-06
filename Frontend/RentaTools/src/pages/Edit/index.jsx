@@ -53,6 +53,7 @@ const Edit = () => {
 
   const parsedImages = product.images.map((image) => {
     return {
+      id: image.id,
       title: image.title,
       url: image.url,
       product: {

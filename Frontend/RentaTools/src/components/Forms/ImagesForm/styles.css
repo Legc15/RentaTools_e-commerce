@@ -1,28 +1,22 @@
 @import "../../../colors.css";
 
-.plus-icon {
-  cursor: pointer;
-  display: flex;
-  border-radius: 50%;
-  padding: 3px;
-}
-
-.plus-icon:hover {
-  background-color: var(--gray);
+.form-container.add-images {
+  width: 1018px;
 }
 
 .add-images {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image-inputs {
-  width: 100%;
+.image-form {
+  width: 60%;
 }
 
-.image-form {
-  width: 100%;
+.add-images .add-button {
+  background-color: var(--dark-orange);
 }
 
 .add-images .delete-button {
@@ -31,8 +25,4 @@
 
 .add-images .edit-button {
   background-color: var(--confirm-green);
-}
-
-.add-images .add-button {
-  background-color: var(--dark-orange);
 }

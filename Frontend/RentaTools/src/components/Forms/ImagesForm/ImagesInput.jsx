@@ -2,12 +2,14 @@
 import { Stack, TextField } from "@mui/material"
 import HeaderButton from "../../button"
 import { useState } from "react"
-import { postNewInformation } from "../../../api/requestHandlers"
+import { deleteInformation, postNewInformation, putEditedInformation } from "../../../api/requestHandlers"
 import { ENDPOINTS_CODE } from "../../../api/constants"
 
 export const ImagesInput = ({ image, productId }) => {
   const [isImageUploaded, setIsImageUploaded] = useState(false)
   const [isImageUploading, setIsImageUploading] = useState(false)
+  const [isImageDeleted, setIsImageDeleted] = useState(false)
+  const [isImageDeleting, setIsImageDeleting] = useState(false)
   const [inputImage, setInputImage] = useState({ title: "", url: "", product: { id: productId } })
 
   const handleInputChange = (e) => {
@@ -17,6 +19,30 @@ export const ImagesInput = ({ image, productId }) => {
   async function handleAddImage() {
     setIsImageUploading(true)
     const response = await postNewInformation(ENDPOINTS_CODE.IMAGES_CREATE, inputImage)
+    setIsImageUploading(false)
+    if (response.status !== 200) {
+      setIsImageUploaded(false)
+      return
+    }
+
+    setIsImageUploaded(true)
+  }
+
+  async function handleDeleteImage(id) {
+    setIsImageDeleting(true)
+    const response = await deleteInformation({ endpoint: ENDPOINTS_CODE.IMAGES_DELETE, id })
+    setIsImageDeleting(false)
+    if (response.status !== 200) {
+      setIsImageDeleted(false)
+      return
+    }
+
+    setIsImageDeleted(true)
+  }
+
+  async function handleEditImage(id, url) {
+    setIsImageUploading(true)
+    const response = await putEditedInformation(ENDPOINTS_CODE.IMAGES_EDIT, { id, url }, id)
     setIsImageUploading(false)
     if (response.status !== 200) {
       setIsImageUploaded(false)
@@ -41,7 +67,14 @@ export const ImagesInput = ({ image, productId }) => {
         fullWidth
       />
       {image.url ? (
-        <HeaderButton variant="contained" type="submit" className="edit-button" buttonLabel="Editar" />
+        <HeaderButton
+          variant="contained"
+          type="submit"
+          className={`add-button ${isImageUploaded ? "edit-button" : ""}`}
+          buttonLabel={isImageUploaded ? "Editado!" : "Editar"}
+          onClick={() => handleEditImage(image.id, inputImage.url)}
+          disabled={isImageUploading}
+        />
       ) : (
         <HeaderButton
           variant="contained"
@@ -52,7 +85,14 @@ export const ImagesInput = ({ image, productId }) => {
           disabled={isImageUploading}
         />
       )}
-      <HeaderButton variant="contained" type="submit" className="delete-button" buttonLabel="Eliminar" />
+      <HeaderButton
+        variant="contained"
+        type="submit"
+        className="delete-button"
+        buttonLabel={isImageDeleted ? "Eliminado!" : "Eliminar"}
+        onClick={() => handleDeleteImage(image.id)}
+        disabled={isImageDeleting}
+      />
     </Stack>
   )
 }
