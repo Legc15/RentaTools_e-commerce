@@ -36,7 +36,12 @@ public class FeatureController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String>  deleteFeature(@PathVariable Long id) throws BadRequestException {
-        return ResponseEntity.ok(featureService.deleteFeature(id));
+        String response = featureService.deleteFeature(id);
+        if(response == "No debe haber productos con esta característica para poder eliminarla."){
+            return ResponseEntity.status(406).body(response);
+        }else{
+            return ResponseEntity.ok(response);
+        }
     }
 
 
