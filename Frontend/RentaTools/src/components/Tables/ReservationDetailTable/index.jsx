@@ -9,9 +9,7 @@ import Paper from "@mui/material/Paper"
 import { Button } from "@mui/material"
 import "./styles.css"
 
-const ReservationDetailTable = ({ reservedDates, isReservationConfirmed, navigateToPrevious }) => {
-
-
+const ReservationDetailTable = ({ reservedDates }) => {
   const options = {
     weekday: "short",
     year: "numeric",
@@ -29,20 +27,18 @@ const ReservationDetailTable = ({ reservedDates, isReservationConfirmed, navigat
             <TableCell align="center" className="table-header">
               Hasta
             </TableCell>
-            {isReservationConfirmed ? "":
             <TableCell align="center" className="table-header">
               Acción
-            </TableCell>}
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell align="center">{reservedDates.reservationFrom.toLocaleDateString("es-ES", options)}</TableCell>
             <TableCell align="center">{reservedDates.reservationTo.toLocaleDateString("es-ES", options)}</TableCell>
-            {isReservationConfirmed ? "":
             <TableCell align="center">
-              <Button onClick={navigateToPrevious}>Modificar Fecha</Button>
-            </TableCell>}
+              <Button>Modificar Fecha</Button>
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
