@@ -58,7 +58,7 @@ export default function ProductCard({ product, isHorizontal, isProductFavorited 
             {shortDescription}
           </Typography>
           <CardActions>
-            <Button className="button ver-mas" size="small" color="secondary" onClick={() => goToDetailPage(id)}>
+            <Button className="button-ver-mas" size="small" color="secondary" onClick={() => goToDetailPage(id)}>
               Ver detalle
             </Button>
           </CardActions>
