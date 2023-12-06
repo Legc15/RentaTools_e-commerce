@@ -12,6 +12,7 @@ const ImagesForm = ({ initialState, productId }) => {
     setFormData([
       ...formData,
       {
+        id: "",
         title: "",
         url: "",
         product: {
@@ -23,14 +24,14 @@ const ImagesForm = ({ initialState, productId }) => {
 
   return (
     <React.Fragment>
-      <div className="image-inputs">
+      <form className="form-container add-images">
         {formData.map((image, index) => (
           <ImagesInput image={image} index={index} key={index} productId={productId} />
         ))}
-      </div>
-      <Button variant="contained" className="add-images" onClick={handleAddInput}>
-        Agregar más imágenes
-      </Button>
+        <Button variant="contained" className="add-images" onClick={handleAddInput}>
+          Agregar más imágenes
+        </Button>
+      </form>
     </React.Fragment>
   )
 }

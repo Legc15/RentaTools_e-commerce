@@ -26,6 +26,8 @@ import {
   getReservationsByProductEndpoint,
   postNewReservationSEndpoint,
   postNewImagesEndpoint,
+  putEditedImagesEndpoint,
+  deleteImagesEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -58,6 +60,7 @@ const POST_ENDPOINTS_CODE = {
 const PUT_ENDPOINTS_CODE = {
   PRODUCT_EDIT: putEditedProductEndpoint,
   CATEGORY_EDIT: putCategoriesEndpoint,
+  IMAGES_EDIT: putEditedImagesEndpoint,
 }
 
 const PATCH_ENDPOINTS_CODE = {
@@ -68,6 +71,7 @@ const DELETE_ENDPOINTS_CODE = {
   FAVORITES_RMV: deleteFavoriteEndpoint,
   PRODUCT_DELETE: deleteProductEndpoint,
   CATEGORY_DELETE: deleteCategoriesEndpoint,
+  IMAGES_DELETE: deleteImagesEndpoint,
 }
 
 export const getInformationFromEndpoints = async ({

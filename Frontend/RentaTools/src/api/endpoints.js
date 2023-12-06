@@ -30,6 +30,8 @@ export const getIfNameExistsEndpoint = ({ parsedName }) => baseUrl[env] + "produ
 
 export const postNewProductEndpoint = () => baseUrl[env] + "products/create"
 export const postNewImagesEndpoint = () => baseUrl[env] + "images/create"
+export const putEditedImagesEndpoint = () => baseUrl[env] + "images/update"
+export const deleteImagesEndpoint = (id) => baseUrl[env] + "images/delete/" + id
 export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" + id
 export const putEditedProductEndpoint = (id) => baseUrl[env] + "products/update/" + id
 
