@@ -15,7 +15,7 @@ const initialState = {
   category: { id: "" },
   pricePerDay: 0,
   pricePerHour: 0,
-  productImage: "https://www.ventageneradores.net/16033-thickbox_default/compresor-150-litros-trifasico-compresores-de-aire.jpg",
+  productImage: "",
   images: [],
 }
 

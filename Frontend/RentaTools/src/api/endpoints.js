@@ -29,6 +29,7 @@ export const getProductDetailEndpoint = ({ id }) => baseUrl[env] + "products/" +
 export const getIfNameExistsEndpoint = ({ parsedName }) => baseUrl[env] + "products/existname?name=" + parsedName
 
 export const postNewProductEndpoint = () => baseUrl[env] + "products/create"
+export const postNewImagesEndpoint = () => baseUrl[env] + "images/create"
 export const deleteProductEndpoint = (id) => baseUrl[env] + "products/delete/" + id
 export const putEditedProductEndpoint = (id) => baseUrl[env] + "products/update/" + id
 
@@ -48,6 +49,6 @@ export const getFeaturesAllEndpoint = () => baseUrl[env] + "feature/all"
 export const getSearchEndpoint = () => baseUrl[env] + "products/search"
 export const getSearchSuggestionsEndpoint = ({ barString }) => baseUrl[env] + "products/suggestion?barString=" + barString
 
-export const getReservationsByUserEndpoint = ({id}) => baseUrl[env] + "reservation/user/" + id;
-export const getReservationsByProductEndpoint = ({id}) => baseUrl[env] + "reservation/product/" + id;
+export const getReservationsByUserEndpoint = ({ id }) => baseUrl[env] + "reservation/user/" + id
+export const getReservationsByProductEndpoint = ({ id }) => baseUrl[env] + "reservation/product/" + id
 export const postNewReservationSEndpoint = () => baseUrl[env] + "reservation/create"
