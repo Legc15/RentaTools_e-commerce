@@ -6,8 +6,23 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
 import "./styles.css"
+import { useEffect, useState } from "react"
+import { getInformationFromEndpoints } from "../../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../../api/constants"
+import { getUserId } from "../../../utils/localStorageHandler"
 
 const UserReservationDetailTable = () => {
+
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    lastName: "",
+    email: ""
+  });
+
+  useEffect(() => { getInformationFromEndpoints({ endpoint: ENDPOINTS_CODE.USER_ID, id: getUserId() }).then(response => setUserInfo(response)) }, [])
+
+
+
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
@@ -26,9 +41,9 @@ const UserReservationDetailTable = () => {
         </TableHead>
         <TableBody>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="center">Digital</TableCell>
-            <TableCell align="center">house</TableCell>
-            <TableCell align="center">DigitalHouse@gmail.com</TableCell>
+            <TableCell align="center">{userInfo.name}</TableCell>
+            <TableCell align="center">{userInfo.lastName}</TableCell>
+            <TableCell align="center">{userInfo.email}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
