@@ -20,3 +20,8 @@
 .table-buttons .button-edit {
   background-color: var(--confirm-green);
 }
+
+.product-link {
+  color: blue;
+  font-size: 16px;
+}
