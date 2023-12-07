@@ -1,21 +1,31 @@
 .listView {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
+    width: 90%;
+    gap: 2.5rem;
 }
 
 /* Para móviles */
-@media (max-width: 599px) {
+@media (max-width: 375px) {
     .listView {
-        grid-template-columns: repeat(1, 1fr); /* Una columna */
+        width: 100%;;
+        display: flex;
+        flex-direction: column;
     }
+
+
+
 }
 
 /* Para tabletas y desktop */
-@media (min-width: 600px) {
+@media (max-width: 768px) {
     .listView {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap:1rem;
+        /* Dos columnas */
+        justify-content: center;
     }
+
 }

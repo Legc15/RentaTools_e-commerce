@@ -93,16 +93,17 @@ export const Searchbar = () => {
             Buscar
           </Button>
         </form>
-
-        {isSearchInitiated ? (
-          <>
-            <h1 className="title">RESULTADOS</h1>
-            {results.length ? <ProductList products={results} /> : <h3>No se encontraron resultados.</h3>}
-            <hr />
-          </>
-        ) : (
-          ""
-        )}
+        <div className="resultado-busqueda">
+          {isSearchInitiated ? (
+            <>
+              <h1 className="title">RESULTADOS</h1>
+              {results.length ? <ProductList products={results} /> : <h3>No se encontraron resultados.</h3>}
+              
+            </>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   )
