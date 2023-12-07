@@ -54,7 +54,7 @@ export default function SignInForm() {
         <TextField label="Correo Electronico" type="text" name="email" onChange={handleInputChange} />
         <TextField label="Contraseña" type="password" name="password" onChange={handleInputChange} />
       </Box>
-      <HeaderButton buttonLabel="Ingresar" className="ingresar" type="submit" />
+      <HeaderButton buttonLabel="Ingresar" className="button botonGeneral" type="submit" />
       {!isUserValidated && !isNewAttempt ? <div className="error-message">Nombre de usuario o contraseña no válidos.</div> : ""}
       {isUserValidated ? <div className="success-message">Usuario autenticado. Redirigiendo...</div> : ""}
       {!isUserValidated ? (

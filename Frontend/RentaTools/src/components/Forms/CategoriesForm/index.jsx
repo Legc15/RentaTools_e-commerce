@@ -73,7 +73,7 @@ const CategoriesForm = ({ categoriesForm, setCategoriesForm, isNewCategory }) =>
             onChange={handleInputChange}
           />
         </Box>
-        <HeaderButton buttonLabel={isNewCategory ? "Crear Categoria" : "Modificar Categoria"} className="registrar" type="submit" />
+        <HeaderButton buttonLabel={isNewCategory ? "Crear Categoria" : "Modificar Categoria"} className="button botonGeneral" type="submit" />
         {isCategoryIncorrect ? (
           <div className="error-message">{`No se pudo ${isNewCategory ? "agregar" : "modificar"} la categoría.`}</div>
         ) : (

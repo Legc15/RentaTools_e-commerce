@@ -10,6 +10,19 @@
   padding-bottom: 2.5rem;
 }
 
+.searchbar-container .boton{
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border: none;
+  font-size: 15px;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.searchbar-container .boton:hover{
+  background-color: var(--green);
+}
+
 button.Mui-disabled {
   text-decoration: line-through;
 }

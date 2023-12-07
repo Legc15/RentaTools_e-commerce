@@ -89,7 +89,7 @@ export const Searchbar = () => {
               minDate={dayjs(formData.reservationFrom).add(1, "d")}
             />
           </LocalizationProvider>
-          <Button variant="contained" startIcon={<SearchIcon />} type="submit">
+          <Button variant="contained" className="boton" startIcon={<SearchIcon />} type="submit">
             Buscar
           </Button>
         </form>
