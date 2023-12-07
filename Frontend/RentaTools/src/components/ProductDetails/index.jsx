@@ -43,8 +43,8 @@ const ProductDetails = ({ productInfo, reservations }) => {
   const rentPathname = {
     pathname: "/rent",
   }
-  const signUpPathname = {
-    pathname: "/signup",
+  const signInPathname = {
+    pathname: "/signin",
   }
 
   return (
@@ -105,7 +105,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                 </h3>
                 <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
                 {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-                  <Link to={getUserId() ? rentPathname : signUpPathname} state={{ reservedDates, productInfo, comesFromReservation: true }}>
+                  <Link to={getUserId() ? rentPathname : signInPathname} state={{ reservedDates, productInfo }}>
                     <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
                   </Link>
                 ) : (
