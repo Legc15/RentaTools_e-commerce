@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material';
 import "./styles.css"
 
 export default function RentCard({ productInfo }) {
-  console.log(productInfo);
+
   return (
     <Card sx={{ maxWidth: 345 }} className='card'>
       <CardActionArea>

@@ -13,6 +13,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const Rent = () => {
+    
     const location = useLocation()
     const { reservedDates, productInfo } = location.state
     const [isReservationConfirmed, setIsReservationConfirmed] = useState(false);
@@ -47,7 +48,7 @@ const navigateToHome = () => {
     navigate("/")
 }
 const navigateToPrevious = () => {
-    navigate(-1)
+    navigate(-1)}
 
     return (
         <div className="rent body min-height">
@@ -105,6 +106,6 @@ const navigateToPrevious = () => {
     )
             
 }
-}
+
 
 export default Rent
