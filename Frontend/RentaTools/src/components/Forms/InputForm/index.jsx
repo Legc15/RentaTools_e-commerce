@@ -75,10 +75,10 @@ export default function InputForm() {
           flexDirection: "column"
         }}
       >
-        <TextField label="Nombre" type='text' name='name' onChange={handleInputChange} />
-        <TextField label="Apellido" type='text' name='lastName' onChange={handleInputChange} />
-        <TextField label="Correo Electronico" type='text' name='email' onChange={handleInputChange} />
-        <TextField label="Contraseña" type="password" name='password' onChange={handleInputChange} />
+        <TextField label="Nombre" type='text' name='name' onChange={handleInputChange} required />
+        <TextField label="Apellido" type='text' name='lastName' onChange={handleInputChange} required />
+        <TextField label="Correo Electronico" type='text' name='email' onChange={handleInputChange} required/>
+        <TextField label="Contraseña" type="password" name='password' onChange={handleInputChange} required />
       </Box>
       {isFormSent && !isFormCorrect ? <div className="error-message">Uno o mas campos estan incorrectos.</div> : ""}
       {isFormSent && isFormCorrect ? <div className="success-message">Usuario registrado correctamente. Redirigiendo...</div> : ""}
