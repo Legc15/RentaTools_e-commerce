@@ -16,7 +16,6 @@ const initialState = {
   pricePerDay: 0,
   pricePerHour: 0,
   productImage: "",
-  images: [],
 }
 
 const Register = () => {

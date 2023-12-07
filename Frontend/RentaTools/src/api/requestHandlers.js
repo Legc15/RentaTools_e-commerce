@@ -28,6 +28,8 @@ import {
   postNewImagesEndpoint,
   putEditedImagesEndpoint,
   deleteImagesEndpoint,
+  postNewFeatureEndpoint,
+  deleteFeatureEndpoint,
 } from "./endpoints"
 
 const GET_ENDPOINTS_CODE = {
@@ -55,6 +57,7 @@ const POST_ENDPOINTS_CODE = {
   CATEGORY_CREATE: postCategoriesEndpoint,
   RESERVATIONS_CREATE: postNewReservationSEndpoint,
   IMAGES_CREATE: postNewImagesEndpoint,
+  FEATURES_CREATE: postNewFeatureEndpoint,
 }
 
 const PUT_ENDPOINTS_CODE = {
@@ -72,6 +75,7 @@ const DELETE_ENDPOINTS_CODE = {
   PRODUCT_DELETE: deleteProductEndpoint,
   CATEGORY_DELETE: deleteCategoriesEndpoint,
   IMAGES_DELETE: deleteImagesEndpoint,
+  FEATURES_DELETE: deleteFeatureEndpoint,
 }
 
 export const getInformationFromEndpoints = async ({
