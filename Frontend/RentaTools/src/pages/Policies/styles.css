@@ -1,6 +1,5 @@
 @import "../../colors.css";
 
-
 .policiesBody {
   margin: 50px auto;
   width: 70%;
@@ -23,6 +22,7 @@
   display: flex;
   justify-content: flex-start;
   padding: 20px;
+  margin-top: 10px;
 }
 
 .button-Back {
@@ -43,32 +43,52 @@
   transition: 0.5s;
 }
 
-.terms li {
+.policies li {
   list-style: none;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+}
+
+.policies-ul {
+  list-style: none;
+  padding: 0%;
 }
 
 .policies-bullet {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
-.terms-title {
-  text-decoration:underline;
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
+.policies-title {
   text-decoration: underline;
-  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+ 
+  text-decoration: underline;
+  margin-top: 2rem;
 }
 
 .policies-discrecion {
-  width: 80%;
-  font-size: 1rem;
-  text-align: center;
+  font-size: 0.8rem;
+
   color: var(--black-color);
 }
 
 .policies-descripcion {
   font-size: 1rem;
   color: var(--black-color);
+}
+
+.policies-back-button {
+  background-color: var(--white-color);
+  text-align: right;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 6px 17px;
+  margin-right: 1rem;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+.policies-back-button:hover {
+  background-color: var(--white-color);
+  box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
