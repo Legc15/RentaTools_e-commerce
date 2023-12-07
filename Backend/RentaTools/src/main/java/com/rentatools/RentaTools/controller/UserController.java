@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> createUser(@Valid @RequestBody UserDto userDto) throws ValidationFailedException {
+    public ResponseEntity<ResponseMessage> createUser(@Valid @RequestBody UserDto userDto) throws ValidationFailedException, BadRequestException {
         userService.createUser(userDto);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "Usuario creado correctamente."));
     }

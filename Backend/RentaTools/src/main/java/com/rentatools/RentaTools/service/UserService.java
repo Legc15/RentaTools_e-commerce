@@ -26,6 +26,9 @@ public class UserService {
     private final IUserRepository iUserRepository;
 
     @Autowired
+    private final EmailService emailService;
+
+    @Autowired
     ObjectMapper mapper;
 
     public List<User> GetAllUsers() {
@@ -38,10 +41,12 @@ public class UserService {
         return GetUser;
     }
 
-    public void createUser(UserDto userDto){
+    public void createUser(UserDto userDto) throws BadRequestException{
+        if(iUserRepository.existsByEmail(userDto.getEmail()))throw new BadRequestException("Email ya existente.");
         try {
             User user = mapper.convertValue(userDto, User.class);
             iUserRepository.save(user);
+            emailService.sendEmailRegistro(user);
         }catch (Exception ex){
             throw new RuntimeException("Error en el guardado del nuevo usuario.");
         }
