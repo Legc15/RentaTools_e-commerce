@@ -47,6 +47,8 @@ export const patchEditedInformationEndpoint = (id) => baseUrl[env] + "users/role
 export const postUserValidationEndpoint = () => baseUrl[env] + "auth/login"
 
 export const getFeaturesAllEndpoint = () => baseUrl[env] + "feature/all"
+export const postNewFeatureEndpoint = () => baseUrl[env] + "feature/create"
+export const deleteFeatureEndpoint = (id) => baseUrl[env] + "feature/delete/" + id
 
 export const getSearchEndpoint = () => baseUrl[env] + "products/search"
 export const getSearchSuggestionsEndpoint = ({ barString }) => baseUrl[env] + "products/suggestion?barString=" + barString

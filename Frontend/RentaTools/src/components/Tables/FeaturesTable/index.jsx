@@ -10,8 +10,40 @@ import { Button } from "@mui/material"
 import "./styles.css"
 
 import "sweetalert2/src/sweetalert2.scss"
+import Swal from "sweetalert2/dist/sweetalert2"
+import { deleteInformation } from "../../../api/requestHandlers"
+import { ENDPOINTS_CODE } from "../../../api/constants"
+import { useState } from "react"
 
 const FeaturesTable = ({ features }) => {
+  const [isFeatureDeleted, setIsFeatureDeleted] = useState(false)
+
+  function handleDeleteFeature(id) {
+    Swal.fire({
+      title: "Eliminar característica",
+      text: "Está seguro que desea eliminar esta característica?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await deleteInformation({ id, endpoint: ENDPOINTS_CODE.FEATURES_DELETE })
+        if (response.status === 200) {
+          setIsFeatureDeleted(!isFeatureDeleted)
+          Swal.fire("Característica eliminada.", "", "success")
+          window.location.reload()
+        } else {
+          Swal.fire("Hubo un error", response.status.toString(), "error")
+        }
+      } else {
+        Swal.fire("Operación cancelada.", "", "info")
+      }
+    })
+  }
+
   return (
     <TableContainer component={Paper} className="table-container">
       <Table sx={{ minWidth: 200 }} aria-label="simple table">
@@ -45,7 +77,7 @@ const FeaturesTable = ({ features }) => {
               </TableCell>
               <TableCell align="center">
                 <div className="table-buttons">
-                  <Button variant="outlined" className="button button-delete">
+                  <Button variant="outlined" className="button button-delete" onClick={() => handleDeleteFeature(id)}>
                     Eliminar
                   </Button>
                   <Button variant="contained" type="submit" className="button button-edit">
