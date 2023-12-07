@@ -8,6 +8,7 @@
   width: 45%;
   background-color: var(--white-color);
   margin: 1rem;
+  border-radius: 40px;
 }
 
 .imagenPrincipal {
