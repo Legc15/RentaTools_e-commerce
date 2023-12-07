@@ -10,6 +10,11 @@ import javax.print.AttributeException;
 @RestControllerAdvice
 public class GlobalExceptions {
 
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ResponseMessage> badrequest(BadRequestException e){
+        return ResponseEntity.status(406).body(new ResponseMessage(HttpStatus.NOT_ACCEPTABLE, e.getMessage()));
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ResponseMessage> resourceException(ResourceNotFoundException e){
         return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseMessage(HttpStatus.NOT_FOUND, e.getMessage()));

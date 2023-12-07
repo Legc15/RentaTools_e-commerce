@@ -56,9 +56,10 @@ public class ProductController {
     public ResponseEntity<PaginateMessage<Product>> getPruductsPaginated(
             @RequestParam(defaultValue = "1", required = false) Integer page,
             @RequestParam(defaultValue = "10", required = false) Integer productsByPage,
-            @RequestParam(defaultValue = "false", required = false) boolean isRandom) {
+            @RequestParam(defaultValue = "false", required = false) boolean isRandom){
             //@RequestParam(defaultValue = "0", required = false) Long category) {
-        PaginateMessage<Product> response = productService.getProductByPage(page, productsByPage, isRandom);
+    Long category = 0L;
+    PaginateMessage<Product> response = productService.getProductByPage(page, productsByPage, isRandom, category);
         return ResponseEntity.ok(response);
     }
 

@@ -45,7 +45,7 @@ public class ProductService {
         return iProductRepository.existsByName(nameToSearch);
     }
 
-    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom){
+    public PaginateMessage<Product> getProductByPage(Integer page, Integer productsByPage, boolean isRandom, Long category){
         Page<Product> productsByPages;
         if(!isRandom){
             productsByPages = iProductRepository.findAll(PageRequest.of(page - 1, productsByPage));
