@@ -3,7 +3,8 @@
 .GaleryContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
   width: 45%;
   background-color: var(--white-color);
   margin: 1rem;
