@@ -4,7 +4,7 @@ const Policies = () => {
   return (
     <>
       <div className="policies-top">
-        <button className="button-Back" onClick={() => window.history.back()}>
+        <button className="policies-back-button" onClick={() => window.history.back()}>
           Volver Atras
         </button>
       </div>
@@ -18,7 +18,7 @@ const Policies = () => {
             herramientas para construcción, aceptas cumplir y estar sujeto a
             estos términos y condiciones de uso.
           </p>
-          <ul>
+          <ul className="policies-ul">
             <li>
               <h2 className="policies-bullet">Uso de la Plataforma</h2>
               <p className="policies-descripcion">
