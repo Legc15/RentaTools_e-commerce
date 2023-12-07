@@ -5,10 +5,10 @@ const Reservations = () => {
   
 
   return (
-    <div className="reservations-container">
+    <body className="reservations-container">
       {/*<h1>RESERVAS</h1>*/}
       <ReservationsTable />
-    </div>
+    </body>
   );
 };
 

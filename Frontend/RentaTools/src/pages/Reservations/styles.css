@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;  /* Esto hace que los elementos hijos de body se apilen verticalmente */
+  min-height: 100vh;  /* Esto hace que el body tenga al menos la altura de la ventana de visualización */
+}
 .reservations-container{
     padding: 1rem;
     
