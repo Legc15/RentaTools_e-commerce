@@ -97,7 +97,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                 </h3>
                 <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
                 {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-                  <Link to={{ pathname: "/rent" }} state={{ reservedDates, id }}>
+                  <Link to={{ pathname: "/rent" }} state={{ reservedDates, productInfo }}>
                     <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
                   </Link>
                 ) : (

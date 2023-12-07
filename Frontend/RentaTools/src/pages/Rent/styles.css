@@ -19,7 +19,7 @@
 }
 
 .datos .botones .accion_alquilar {
-  background-color: var(--confirm-green);
+  background-color: var(--black-color);
   color: var(--white-color);
   border: none;
   font-size: 20px;
@@ -65,7 +65,11 @@
 
 .reserva_confirmada {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.mensaje-error{
+  color: var(--delete-red);
 }
