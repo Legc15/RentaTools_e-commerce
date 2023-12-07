@@ -135,7 +135,7 @@ const ProductForm = ({ initialState, handleSubmitProduct, buttonLabel }) => {
             />
           </Stack>
         </div>
-        <Button variant="contained" type="submit" className="submit-form">
+        <Button variant="contained" type="submit" className="button botonGeneral">
           {buttonLabel}
         </Button>
         {isFormNotComplete ? <div className="error-message">Por favor complete todos los campos necesarios.</div> : ""}

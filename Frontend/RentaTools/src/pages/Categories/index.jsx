@@ -25,7 +25,7 @@ const Categories = () => {
   return (
     <div className="body padding">
       <div>
-        <Button variant="contained" onClick={navigateToAdmin} className="button">
+        <Button variant="contained" onClick={navigateToAdmin} className="button botonGeneral">
           Regresar al Admin
         </Button>
       </div>

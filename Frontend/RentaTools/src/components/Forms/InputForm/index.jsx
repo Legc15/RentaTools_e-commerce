@@ -4,6 +4,7 @@ import HeaderButton from "../../button"
 import { useState } from 'react';
 import { postNewInformation } from '../../../api/requestHandlers';
 import { ENDPOINTS_CODE } from '../../../api/constants';
+import "./styles.css"
 
 
 export default function InputForm() {
@@ -82,7 +83,7 @@ export default function InputForm() {
       </Box>
       {isFormSent && !isFormCorrect ? <div className="error-message">Uno o mas campos estan incorrectos.</div> : ""}
       {isFormSent && isFormCorrect ? <div className="success-message">Usuario registrado correctamente. Redirigiendo...</div> : ""}
-      <HeaderButton buttonLabel="Registrar" className="registrar" type="submit" disabled={isButtonDisabled} />
+      <HeaderButton buttonLabel="Registrar" className="button botonGeneral" type="submit" disabled={isButtonDisabled} />
     </form>
 
   )

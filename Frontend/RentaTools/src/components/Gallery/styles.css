@@ -69,8 +69,8 @@
 }
 .verMasButton {
   font-size: 15px;
-  background-color: var(--white-color);
-  color: var(--black-color);
+  background-color: var(--black-color);
+  color: var(--white-color);
   padding: 6px 35px; /* Espaciado horizontal y vertical */
   border-radius: 15px;
   transition: background-color 0.2s;
@@ -78,10 +78,11 @@
   cursor: pointer;
   font-weight: 700;
   margin: 1rem;
+  border: 0px
 }
 
 .verMasButton:hover {
-  background-color: var(--white-color);
+  background-color: var(--green);
   box-shadow: 4px 4px 15px rgba(1, 1, 1, 0.504);
 }
 

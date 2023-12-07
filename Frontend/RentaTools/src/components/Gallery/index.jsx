@@ -30,7 +30,7 @@ const Galeria = ({ imagenPrincipal, imagenes }) => {
       <div className="verMasContainer">
         <button className="verMasButton" onClick={() => setCarousel(true)}>
           {" "}
-          Ver más
+          VER MÁS
         </button>
         {mostrarCarousel ? <Carousel imagenes={imagenes} onClose={() => setCarousel(false)} /> : null}
       </div>

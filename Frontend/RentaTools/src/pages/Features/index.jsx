@@ -23,7 +23,7 @@ const Features = () => {
   return (
     <div className="body padding features-container  page-container">
       <div>
-        <Button variant="contained" onClick={navigateToAdmin} className="button">
+        <Button variant="contained" onClick={navigateToAdmin} className="button botonGeneral">
           Regresar al Admin
         </Button>
       </div>

@@ -61,3 +61,17 @@ body {
 .min-height {
   min-height: calc(100vh - 177px);
 }
+
+.button.botonGeneral{
+  background-color: var(--black-color);
+  color: var(--white-color);
+  border: none;
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 30px;
+}
+
+.button.botonGeneral:hover{
+  background-color: var(--green);
+}
+

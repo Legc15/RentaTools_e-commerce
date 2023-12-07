@@ -28,7 +28,7 @@ const ImagesForm = ({ initialState, productId }) => {
         {formData.map((image, index) => (
           <ImagesInput image={image} index={index} key={index} productId={productId} />
         ))}
-        <Button variant="contained" className="add-images" onClick={handleAddInput}>
+        <Button variant="contained" className="button botonGeneral" onClick={handleAddInput}>
           Agregar más imágenes
         </Button>
       </form>
