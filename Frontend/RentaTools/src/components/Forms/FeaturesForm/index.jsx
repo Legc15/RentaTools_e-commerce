@@ -33,7 +33,7 @@ const FeaturesForm = ({ setIsNewFeatureAdded }) => {
         <TextField label="Característica" type="text" name="name" onChange={handleInputChange} />
         <TextField label="Ícono" type="text" name="icon" onChange={handleInputChange} />
       </Box>
-      <HeaderButton buttonLabel="Crear característica" className="registrar" type="submit" />
+      <HeaderButton buttonLabel="Crear característica" className="button botonGeneral" type="submit" />
     </form>
   )
 }

@@ -60,7 +60,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
           <h1 className="product-details-title">{name}</h1>
 
           <button className="product-details-back-button" onClick={() => window.history.back()}>
-            Volver
+            VOLVER
           </button>
         </div>
         <div>
@@ -71,12 +71,14 @@ const ProductDetails = ({ productInfo, reservations }) => {
           <div className="lower-cnt">
             <div className="product-details-features">
               <h4 className="calendar-title">Características</h4>
+              <div className="caracteristicas">
               {features &&
                 features.map((feature) => (
                   <p className="products-feature" key={feature.id}>
                     <i className={`fa-solid ${feature.icon}`}></i> {feature.name}
                   </p>
                 ))}
+               </div> 
             </div>
 
             <div className="calendar">
@@ -103,7 +105,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                   Seleccionaste del {reservedDates.reservationFrom ? reservedDates.reservationFrom.toLocaleDateString("es-ES") : ""} hasta
                   el {reservedDates.reservationTo ? reservedDates.reservationTo.toLocaleDateString("es-ES") : ""}
                 </h3>
-                <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
+                <HeaderButton className="reiniciar-boton" buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
                 {reservedDates.reservationFrom && reservedDates.reservationTo ? (
                   <Link to={getUserId() ? rentPathname : signInPathname} state={{ reservedDates, productInfo }}>
                     <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />

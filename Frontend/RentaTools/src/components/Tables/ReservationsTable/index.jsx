@@ -95,6 +95,7 @@ const ReservationsTable = () => {
           color="primary"
           style={filter === "active" ? { backgroundColor: "green" } : {}}
           size={isMobile ? "small" : "medium"}
+          className="button botonGeneral"
         >
           reservas activas
         </Button>
@@ -105,6 +106,7 @@ const ReservationsTable = () => {
           color="primary"
           style={filter === "finished" ? { backgroundColor: "green" } : {}}
           size={isMobile ? "small" : "medium"}
+          className="button botonGeneral"
         >
           reservas finalizadas
         </Button>
@@ -114,11 +116,12 @@ const ReservationsTable = () => {
           color="primary"
           style={filter === "all" ? { backgroundColor: "green" } : {}}
           size={isMobile ? "small" : "medium"}
+          className="button botonGeneral"
         >
           todas las reservas
         </Button>
 
-        <Button onClick={toggleDateFilter} variant="contained" color="primary">
+        <Button onClick={toggleDateFilter} variant="contained" color="primary" className="button botonGeneral">
           {dateFilter === "asc" ? "Orden Ascendente" : "Orden  descendente"}
         </Button>
       </div>

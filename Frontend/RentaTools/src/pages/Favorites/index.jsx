@@ -32,7 +32,7 @@ export default function Favorites() {
         <div className="title">
           <h1>FAVORITOS</h1>
         </div>
-        <button className="back-button" onClick={() => window.history.back()}>
+        <button className="back-button button botonGeneral" onClick={() => window.history.back()}>
           Volver Atras
         </button>
       </div>

@@ -4,7 +4,10 @@
   width: auto;
   padding: 60px;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .titulo {
   font-size: 20px;
@@ -16,33 +19,49 @@
 .info {
   gap: 30px;
   display: flex;
+  border-radius: 30px;
+    background-color: white;
+    padding: 45px;
 }
 
 .datos .botones .accion_alquilar {
   background-color: var(--black-color);
   color: var(--white-color);
   border: none;
-  font-size: 20px;
+  font-size: 15px;
   padding: 20px;
   border-radius: 30px;
 }
+
+.datos .botones .accion_alquilar:hover {
+background-color: var(--green)}
+
 
 .reserva_confirmada .accion_enviarMail {
   background-color: var(--black-color);
   color: var(--white-color);
   border: none;
-  font-size: 20px;
+  font-size: 15px;
   padding: 20px;
   border-radius: 30px;
+}
+
+.reserva_confirmada .accion_enviarMail:hover {
+  background-color: var(--green);
 }
 
 .datos .botones .accion_volverAtras {
   background-color: var(--dark-gray);
   color: var(--white-color);
   border: none;
-  font-size: 20px;
+  font-size: 15px;
   padding: 20px;
   border-radius: 30px;
+}
+
+.datos .botones .accion_volverAtras:hover {
+  background-color: var(--green);
+  
 }
 
 .datos {
