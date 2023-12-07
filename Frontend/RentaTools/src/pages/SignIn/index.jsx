@@ -3,7 +3,7 @@ import "./styles.css"
 
 const SignIn = () => {
   return (
-    <div className="body padding">
+    <div className="body padding min-height">
       <div className="signin">
         <img
           className="logoSignin"

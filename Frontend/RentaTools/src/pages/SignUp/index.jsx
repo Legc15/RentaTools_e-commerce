@@ -6,7 +6,7 @@ const logoSignup =
 
 const SignUp = () => {
   return (
-    <div className="body padding">
+    <div className="body padding min-height">
       <div className="signup">
         <img className="logoSignup" src={logoSignup}></img>
         <InputForm />
