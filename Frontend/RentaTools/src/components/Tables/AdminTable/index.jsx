@@ -13,7 +13,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js"
 import "sweetalert2/src/sweetalert2.scss"
 import { ContextGlobal } from "../../../api/global.context.helper"
 import { deleteInformation, getInformationFromEndpoints } from "../../../api/requestHandlers"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ENDPOINTS_CODE } from "../../../api/constants"
 
 const AdminTable = () => {
@@ -88,10 +88,12 @@ const AdminTable = () => {
           {productsList.map(({ id, name, productCode, shortDescription, category }) => (
             <TableRow key={id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
               <TableCell component="th" scope="row" align="center">
-                {id}
+                <Link to={`/detail/${id}`} className="product-link">
+                  {id}
+                </Link>
               </TableCell>
 
-              <TableCell align="center">{name}</TableCell>
+              <TableCell align="center"> {name}</TableCell>
               <TableCell align="center">{productCode}</TableCell>
               <TableCell align="center">{shortDescription}</TableCell>
               <TableCell align="center">{categoriesById[category.id]}</TableCell>
