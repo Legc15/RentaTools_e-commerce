@@ -19,12 +19,10 @@ const ProductDetails = ({ productInfo, reservations }) => {
   const { name, description, productImage, images, features, id } = productInfo
   const [reservedDates, setReservedDates] = useState(initialDates)
 
-  const disableReservedDays = ({ date }) => {
+  const disableReservedDays = (date) => {
+    const parsedDate = new Date(`${date.$y}-${date.$M + 1}-${date.$D}`)
     return reservations.some((interval) => {
-      //acá filtro todos los intervalos donde la endDate sea antes de la startDate
-      if (interval.startDate <= interval.endDate) {
-        return isWithinInterval(date, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
-      }
+      return isWithinInterval(parsedDate, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
     })
   }
 
@@ -79,7 +77,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                 <StaticDatePicker
                   view="month"
                   maxDetail="month"
-                  tileDisabled={disableReservedDays}
+                  shouldDisableDate={disableReservedDays}
                   minDate={dayjs()}
                   locale="es-ES"
                   onChange={(e) => {
@@ -99,10 +97,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                 <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
                 {reservedDates.reservationFrom && reservedDates.reservationTo ? (
                   <Link to={{ pathname: "/rent" }} state={{ reservedDates, id }}>
-                    <HeaderButton 
-                      buttonLabel="Iniciar Reserva" 
-                      className="reservation-button"
-                      />
+                    <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
                   </Link>
                 ) : (
                   ""
@@ -113,9 +108,6 @@ const ProductDetails = ({ productInfo, reservations }) => {
             ""
           )}
         </div>
-
-
-
       </div>
     </div>
   )
