@@ -51,8 +51,8 @@ export default function SignInForm() {
           flexDirection: "column",
         }}
       >
-        <TextField label="Correo Electronico" type="text" name="email" onChange={handleInputChange} />
-        <TextField label="Contraseña" type="password" name="password" onChange={handleInputChange} />
+        <TextField label="Correo Electronico" type="text" name="email" onChange={handleInputChange} required />
+        <TextField label="Contraseña" type="password" name="password" onChange={handleInputChange} required />
       </Box>
       <HeaderButton buttonLabel="Ingresar" className="button botonGeneral" type="submit" />
       {!isUserValidated && !isNewAttempt ? <div className="error-message">Nombre de usuario o contraseña no válidos.</div> : ""}
