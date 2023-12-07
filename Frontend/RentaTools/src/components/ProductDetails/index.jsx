@@ -9,6 +9,7 @@ import dayjs from "dayjs"
 import { useState } from "react"
 import HeaderButton from "../button"
 import { Link } from "react-router-dom"
+import { getUserId } from "../../utils/localStorageHandler"
 
 const initialDates = {
   reservationFrom: "",
@@ -37,6 +38,13 @@ const ProductDetails = ({ productInfo, reservations }) => {
     } else {
       setReservedDates({ ...reservedDates, reservationFrom: date, isShowDates: true })
     }
+  }
+
+  const rentPathname = {
+    pathname: "/rent",
+  }
+  const signUpPathname = {
+    pathname: "/signup",
   }
 
   return (
@@ -97,7 +105,7 @@ const ProductDetails = ({ productInfo, reservations }) => {
                 </h3>
                 <HeaderButton buttonLabel="Reiniciar fechas" onClick={handleResetDates} />
                 {reservedDates.reservationFrom && reservedDates.reservationTo ? (
-                  <Link to={{ pathname: "/rent" }} state={{ reservedDates, productInfo }}>
+                  <Link to={getUserId() ? rentPathname : signUpPathname} state={{ reservedDates, productInfo, comesFromReservation: true }}>
                     <HeaderButton buttonLabel="Iniciar Reserva" className="reservation-button" />
                   </Link>
                 ) : (
