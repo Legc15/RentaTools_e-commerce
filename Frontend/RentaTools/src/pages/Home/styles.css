@@ -2,20 +2,27 @@
   gap: 20px;
 }
 
-.MuiCardContent-root {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  width: 280px;
-  gap:1rem;
-}
-
-.title-container{
+.title-container {
   align-items: center;
 }
 
-.product-image{
+.product-image {
   max-width: 250px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content .product-title {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.card-content .product-description {
+  font-size: 1rem;
 }
 
 @media (max-width: 769px) {
@@ -31,14 +38,6 @@
 
   h1 {
     font-size: 1.7rem;
-  }
-
-  .MuiCardContent-root {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    width: 240px;
-    gap:1rem;
   }
 }
 
@@ -66,10 +65,10 @@
   h1 {
     font-size: 1.5rem;
   }
-  .product-image{
+  .product-image {
     max-width: 150px;
   }
-  .MuiCardContent-root{
+  .MuiCardContent-root {
     max-width: 200px;
   }
 }

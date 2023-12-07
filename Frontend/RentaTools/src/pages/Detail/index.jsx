@@ -26,7 +26,11 @@ const Detail = () => {
     window.location.replace("/not-found")
   }
 
-  return <div className="detail-container">{isFirstRender ? <ProductDetails productInfo={product} reservations={reservations} /> : ""}</div>
+  return (
+    <div className="detail-container min-height">
+      {isFirstRender ? <ProductDetails productInfo={product} reservations={reservations} /> : ""}
+    </div>
+  )
 }
 
 export default Detail

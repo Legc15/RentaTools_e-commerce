@@ -57,3 +57,7 @@ body {
   width: 100%;
   border-radius: 50%;
 }
+
+.min-height {
+  min-height: calc(100vh - 177px);
+}

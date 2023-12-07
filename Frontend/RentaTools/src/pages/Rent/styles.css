@@ -27,13 +27,14 @@
   border-radius: 30px;
 }
 
-.reserva_confirmada .accion_enviarMail{
+.reserva_confirmada .accion_enviarMail {
   background-color: var(--black-color);
   color: var(--white-color);
   border: none;
   font-size: 20px;
   padding: 20px;
-  border-radius: 30px;}
+  border-radius: 30px;
+}
 
 .datos .botones .accion_volverAtras {
   background-color: var(--dark-gray);
@@ -56,15 +57,15 @@
   gap: 40px;
 }
 
-.datos_reserva{
+.datos_reserva {
   display: flex;
-    flex-direction: column;
-    gap: 20px;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.reserva_confirmada{
+.reserva_confirmada {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }

@@ -22,7 +22,8 @@ const ProductDetails = ({ productInfo, reservations }) => {
   const disableReservedDays = (date) => {
     const parsedDate = new Date(`${date.$y}-${date.$M + 1}-${date.$D}`)
     return reservations.some((interval) => {
-      return isWithinInterval(parsedDate, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
+      if (interval.startDate < interval.endDate)
+        return isWithinInterval(parsedDate, { start: parseISO(interval.startDate), end: parseISO(interval.endDate) })
     })
   }
 

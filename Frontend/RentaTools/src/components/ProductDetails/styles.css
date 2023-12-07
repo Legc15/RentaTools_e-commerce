@@ -11,15 +11,12 @@ h2 {
   color: var(--black-color);
 }
 
-
 .calendar .css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
   display: none;
 }
-.MuiTypography-root{
-  display:none;
-}
-.MuiPickersToolbar-root.MuiPickersLayout-toolbar.css-16d8vrz-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
-  display:none;
+
+.MuiPickersToolbar-root.MuiPickersLayout-toolbar.css-16d8vrz-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
+  display: none;
 }
 .dates-selected {
   display: flex;
@@ -30,7 +27,6 @@ h2 {
 .calendar .MuiDialogActions-root.MuiDialogActions-spacing.MuiPickersLayout-actionBar.css-knqc4i-MuiDialogActions-root {
   display: none;
 }
-
 
 .main {
   display: flex;
@@ -141,12 +137,12 @@ h2 {
   border-left: 2px solid var(--dark-gray);
   background-color: var(--white-color);
   width: 50%;
-  font-size: 0.85rem;;
+  font-size: 0.85rem;
   padding: 1rem;
   position: relative;
   z-index: 1;
 }
-.reservation-button{
+.reservation-button {
   background-color: green !important;
 }
 
@@ -159,7 +155,6 @@ h2 {
   }
 }
 
-
 @media (max-width: 769px) and (min-width: 426px) {
   .details-container {
     height: 100%;
@@ -169,7 +164,7 @@ h2 {
   }
   .product-details-container {
     margin: 0;
-    width:95%;
+    width: 95%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -194,8 +189,8 @@ h2 {
     display: flex;
     flex-direction: row;
   }
-  .leyenda-reserva{
-    font-size:0.8rem;
+  .leyenda-reserva {
+    font-size: 0.8rem;
   }
 }
 
@@ -220,7 +215,7 @@ h2 {
     width: 100%;
   }
   .product-details-container {
-    margin:0;
+    margin: 0;
     background-color: #ffffff;
     width: 100%;
     height: 100%;
@@ -276,11 +271,10 @@ h2 {
   .products-feature {
     padding: 0.5rem 0;
   }
-  .dates-selected{
-    gap:1rem
+  .dates-selected {
+    gap: 1rem;
   }
-  .leyenda-reserva{
-    font-size:0.8rem;
+  .leyenda-reserva {
+    font-size: 0.8rem;
   }
-
 }
