@@ -77,7 +77,7 @@ Para preguntas o colaboraciones, ponte en contacto con:
 •	<strong>Mercedes Lucero:</strong><br>   Scrum Master y Frontend Developer <br> lucero.mer@gmail.com<br><br>
 •	<strong>Leandro Garcia:</strong><br>   Frontend Developer <br> leandro.garcia.casariego@gmail.com<br><br>
 •	<strong>Pablo König:</strong><br>   Backend Developer (Infraestructura y Base de Datos) <br> pablokonig@hotmail.com.com<br><br>
-•	<strong>Marcelo Mirabales:</strong><br>   Testing <br> marcelo.miraballes@gmail.com<br><br>
+•	<strong>Marcelo Mirabales:</strong><br>   Testing, Frontend Developer <br> marcelo.miraballes@gmail.com<br><br>
 •	<strong>Ignacio Mazza:</strong><br>  Frontend Developer <br> ignacio1445@icloud.com<br><br>
 •	<strong>Mariano Bonnet:</strong><br>  Frontend Developer <br> mariano-bonet@hotmail.com<br><br>
 
